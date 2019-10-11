@@ -1,9 +1,10 @@
 .front, .back {
-    position: absolute;
 }
 
 .back {
     visibility: hidden;
+    position: absolute;
+    
 }
 
 .control {
