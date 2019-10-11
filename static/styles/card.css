@@ -1,0 +1,13 @@
+.front, .back {
+    position: absolute;
+}
+
+.back {
+    visibility: hidden;
+}
+
+.control {
+    border: 1px solid black;
+    padding: 1rem;
+    width: 25%;
+}
