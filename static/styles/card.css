@@ -1,22 +1,118 @@
-* {
-    position: relative;
-    margin: 0;
-    padding: 0;
-}
+
 body {
-    top: 2rem;
-    margin-left: 35%;
-    box-sizing: border-box;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
-.back {
-    visibility: hidden;
+
+.container {
+    display: flex;
+    height: 25rem;
+    width: 40rem;
+    margin: auto;
+    margin-left: 32.75%;
+    /* margin-left: 15rem; */
     position: absolute;
+    top:0;bottom:0;left:0;right:0;
+    background-position: left;
+}
+
+.card {
+    perspective: 1000;
+    /* margin-left: 1rem; */
+    float: left;
+    cursor: pointer;
+}
+.flippable {
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.flipme {
+    transform: rotateY(180deg);
+}
+
+.card, .front, .back, .success{
+    width: 18rem;
+    height: 25rem;
+    line-height: 100%;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: .5rem;
+}
+
+.front, .back, .success {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+}
+
+.front {
+    z-index: 2;
+}
+
+.back {
+    transform: rotateY(180deg);
+    font-size: 1.8rem;
+    font-family: Verdana;
+    /* margin-left: -6rem; */
+    /* top: 5rem; */
+    padding-top: 5rem;
+  }
+
+.success {
+    z-index: 2;
+    background-color: green;
+    color: white;
+    font-size: 1.2rem;
+    font-family: Verdana;
+    /* margin-left: -6rem; */
+    /* top: 5rem; */
+    padding-top: 5rem;
+    /* visibility: hidden; */
+}
+.success h5 {
+    font-size: 3.1rem;
+}
+
+.success p {
+    margin-top: 5rem;
 }
 
 .control {
-    /* position: relative; */
-
+    display: flex;
+    position: relative;
+    /* display: inline-flex; */
     border: 1px solid black;
+    /* margin-top: 60%; */
+    border-radius: 5px;
     padding: 1rem;
-    width: 30%;
+    width: 18rem;
+    /* margin-bottom: 70%; */
+    left: 35%;
+    /* margin-bottom: 70%; */
+
+}
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    transition: all .2s;
+    text-decoration: none;
+}
+
+.btn--next {
+    background-color: aquamarine;
+    color: black;
+    margin-left: .6rem;
+    visibility: hidden;
+}
+.btn:active {
+    /* in relation to initial state, not any other state */
+    transform: translateY(2rem);
+    box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
+}
+.btn:hover {
+    /* top is negative, bottom is positive on y axis */
+    transform: translateY(-.08rem);
+    box-shadow: 0 .1rem 1rem rgb(0,0,0,.2);
 }
