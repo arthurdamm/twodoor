@@ -8,10 +8,12 @@ body {
     margin-left: 35%;
     box-sizing: border-box;
 }
+/*
 .back {
     visibility: hidden;
     position: absolute;
 }
+*/
 
 .control {
     /* position: relative; */
@@ -19,4 +21,76 @@ body {
     border: 1px solid black;
     padding: 1rem;
     width: 30%;
+}
+
+@g1:#161718;
+@ge:#eeeeee;
+@g5:#555555;
+@b1:#1189d1;
+@b2:#75d2c8;
+@gr1:#18b755;
+@y1:#f3b50b;
+@o1:#ef4809;
+@r1:#E82C0C;
+
+body {
+  background:@g1;
+}
+.container {
+  height:120px;
+  width:600px;
+  margin:auto;
+  position:absolute;
+  top:0;bottom:0;left:0;right:0;
+}
+
+.flip-container {
+  perspective: 1000;
+  margin: 10px;
+  float: left;
+  cursor:pointer;
+
+  .flippable {
+    transition: 0.5s;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  .flipme {
+    transform: rotateY(180deg);
+  }
+  
+/*  &:hover{
+    .flippable {
+      transform: rotateY(180deg);
+    }
+  }*/
+  
+}
+
+.flip-container, .front, .back {
+    /*
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 40px;
+  border-radius: 5px;
+  */
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.front {
+  z-index: 2;
+}
+
+.back {
+  transform: rotateY(180deg);
 }
