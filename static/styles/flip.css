@@ -10,7 +10,7 @@ body {
 
 .control {
   position: absolute;
-  bottom: 30px;
+  top: 30rem;
 }
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -32,7 +32,8 @@ body {
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
-.flip-card:hover .flip-card-inner {
+/*.flip-card:hover .flip-card-inner {*/
+.flipme {
   transform: rotateY(180deg);
 }
 
@@ -52,5 +53,4 @@ body {
 .flip-card-back {
   background-color: dodgerblue;
   color: white;
-  transform: rotateY(180deg);
 }
