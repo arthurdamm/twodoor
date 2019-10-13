@@ -1,8 +1,14 @@
+import * as datastore from "./datastore.js";
+
 $(function() {
   let currentDoor = $('.door2');
 
+  const deck = datastore.getDeck()
+  console.log("getDeck():", deck);
+  $('#door1').html(deck[1]);
+  $('#door2').html(deck[0]);
+  
   $('.success').hide();
-  // $('.door2').hide();
   $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
     console.log("Enter Answer event");
