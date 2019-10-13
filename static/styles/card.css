@@ -133,7 +133,7 @@ input {
     right: 6rem;
     height: 4.5rem;
     width: 4.5rem;
-    margin-left: 1rem;
+    margin-left: -8.5rem;
     visibility: hidden;
 }
 .btn:active {
