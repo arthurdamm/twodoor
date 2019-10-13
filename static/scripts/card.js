@@ -1,5 +1,9 @@
+import { getDeck } from "./datastore.js";
+
 $(function() {
   let currentDoor = $('.door2');
+
+  getDeck("test!");
 
   $('.success').hide();
   // $('.door2').hide();
