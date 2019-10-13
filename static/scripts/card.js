@@ -3,6 +3,7 @@ $(function() {
 
   $('.success').hide();
   // $('.door2').hide();
+  $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
     console.log("Enter Answer event");
     if (e.which == 13) {
