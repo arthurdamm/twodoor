@@ -22,12 +22,12 @@ export const getDeck = function (arg) {
     },
   ];
   console.log(deck.length);
-  return deck.map(door => getDoorTemplate(door));
-}
+  return deck.map((door, i) => getDoorTemplate(door, i));
+};
 
-export const getDoorTemplate = function (json) {
+export const getDoorTemplate = function (json, i) {
   
-  console.log("Template:", JSON.stringify(json));
+  console.log("Template:", JSON.stringify(json, i));
 
   const template =`
           <div class="card front" style="width: 18rem;">
@@ -51,9 +51,10 @@ export const getDoorTemplate = function (json) {
           </div>
       `;
   const door = {
+    "id": i,
     "html": template,
     "performance": [],
   };
   return door;
 
-}
+};
