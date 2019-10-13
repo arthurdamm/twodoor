@@ -5,8 +5,8 @@ $(function() {
 
   const deck = datastore.getDeck()
   console.log("getDeck():", deck);
-  $('#door1').html(deck[1]);
-  $('#door2').html(deck[0]);
+  $('#door1').html(deck[2].html);
+  $('#door2').html(deck[3].html);
   
   $('.success').hide();
   $('[name=text-answer]').focus();
