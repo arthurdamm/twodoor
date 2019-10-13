@@ -1,1 +1,1 @@
-<?php include_once("flip.html"); ?>
+<?php include_once("index.html"); ?>
