@@ -1,10 +1,13 @@
-import { getDeck } from "./datastore.js";
+import * as datastore from "./datastore.js";
 
 $(function() {
   let currentDoor = $('.door2');
 
-  getDeck("test!");
-
+  console.log("getDeck():", datastore.getDeck());
+  for (const door of datastore.getDeck()) {
+    $('.deck').append(door);
+  }
+  
   $('.success').hide();
   // $('.door2').hide();
   $('[name=text-answer]').focus();
