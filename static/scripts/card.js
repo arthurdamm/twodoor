@@ -23,5 +23,9 @@ $(function() {
     console.log("Sliding:", currentDoor[0])
     currentDoor.addClass('slide');
     currentDoor.fadeOut(500);
+    if (currentDoor.hasClass('door'))
+      currentDoor = $('.door2');
+    else
+      currentDoor = $('.door');
   });
 });
