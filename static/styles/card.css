@@ -40,6 +40,10 @@ body {
     transform: rotateY(180deg);
 }
 
+.slide {
+  transform: translateX(20rem);
+}
+
 .door, .door2, .front, .back, .success{
     width: 18rem;
     height: 25rem;
