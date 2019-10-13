@@ -19,7 +19,7 @@ body {
     background-position: top;
 }
 
-.card {
+.door, .door2 {
     perspective: 1000px;
     /* margin-left: 1rem; */
     float: left;
@@ -35,7 +35,7 @@ body {
     transform: rotateY(180deg);
 }
 
-.card, .front, .back, .success{
+.door, .door2, .front, .back, .success{
     width: 18rem;
     height: 25rem;
     line-height: 100%;
@@ -95,10 +95,10 @@ body {
 .text-box {
     border-radius: 5px;
     padding: 1.25rem;
-    width: 25rem;
+    /* width: 25.5rem; */
     border: 1px solid black;
     background: aquamarine;
-    margin-left: 2.3rem;
+    margin-left: 2.5rem;
 }
 
 input {
