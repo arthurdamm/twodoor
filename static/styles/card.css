@@ -5,19 +5,22 @@ body {
 }
 
 .container {
+    /* margin-top: 20vh; */
     display: flex;
-    height: 25rem;
-    width: 40rem;
+    flex-direction: column;
+    height: 55vh;
+    width: 20rem;
     margin: auto;
-    margin-left: 32.75%;
+    margin-top: 5%;
+    /* margin-left: 32.75%; */
     /* margin-left: 15rem; */
-    position: absolute;
+    position: relative;
     top:0;bottom:0;left:0;right:0;
-    background-position: left;
+    background-position: top;
 }
 
 .card {
-    perspective: 1000;
+    perspective: 1000px;
     /* margin-left: 1rem; */
     float: left;
     cursor: pointer;
@@ -49,7 +52,7 @@ body {
 }
 
 .front {
-    z-index: 2;
+    z-index: -1;
 }
 
 .back {
@@ -62,7 +65,7 @@ body {
   }
 
 .success {
-    z-index: 2;
+    z-index: -1;
     background-color: green;
     color: white;
     font-size: 1.2rem;
@@ -76,24 +79,32 @@ body {
     font-size: 3.1rem;
 }
 
-.success p {
-    margin-top: 5rem;
-}
-
 .control {
     display: flex;
     position: relative;
-    /* display: inline-flex; */
-    border: 1px solid black;
-    /* margin-top: 60%; */
-    border-radius: 5px;
-    padding: 1rem;
-    width: 18rem;
+    justify-content: space-between;
+    margin: auto;
+    top: 20%;
+    width: 30rem;
+    /* float: left; */
     /* margin-bottom: 70%; */
-    left: 35%;
-    /* margin-bottom: 70%; */
-
+    /* margin-left: 32.75%; */ 
+    background-position: top;
 }
+
+.text-box {
+    border-radius: 5px;
+    padding: 1.25rem;
+    width: 25rem;
+    border: 1px solid black;
+    background: aquamarine;
+    margin-left: 2.3rem;
+}
+
+input {
+    width: 22.25rem;
+}
+
 .btn:link,
 .btn:visited {
     text-transform: uppercase;
@@ -102,18 +113,21 @@ body {
 }
 
 .btn--next {
-    background-color: aquamarine;
-    color: black;
-    margin-left: .6rem;
+    background-color: rgb(9, 209, 9);
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    right: 6rem;
+    height: 4.5rem;
+    width: 4.5rem;
+    margin-left: 1rem;
     visibility: hidden;
 }
 .btn:active {
     /* in relation to initial state, not any other state */
-    transform: translateY(2rem);
+    transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
 .btn:hover {
     /* top is negative, bottom is positive on y axis */
-    transform: translateY(-.08rem);
-    box-shadow: 0 .1rem 1rem rgb(0,0,0,.2);
+    transform: translateY(-.3rem);
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
