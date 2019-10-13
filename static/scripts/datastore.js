@@ -20,7 +20,6 @@ export const getDoorTemplate = function (door) {
   console.log("Template:", JSON.stringify(door));
 
   const template =`
-        <div class="flippable door" ontouchstart="this.classList.toggle('hover');">
           <div class="card front" style="width: 18rem;">
               <img class="card-img-top" src="${door.image}" alt="card image cap">
               <div class="card-body">
@@ -40,7 +39,6 @@ export const getDoorTemplate = function (door) {
                   <p class='card-text'>Keep Going :)</p>
               </div>
           </div>
-      </div>
       `;
   return template;
 }
