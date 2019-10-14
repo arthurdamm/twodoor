@@ -3,26 +3,30 @@ const getDeck = function (arg) {
     {
       "image": "static/images/tRex.jpg",
       "question": "Who is this person in the picture?",
-      "answer": "Arthur Damm!"
+      "answer": "Arthur Damm!",
+      "regex": /(arthur)|(d.*a.*m.*m)/i,
     },
     {
       "image": "static/images/real_velociraptor.jpg",
       "question": "Who is in this picture?",
-      "answer": "Scout Curry!"
+      "answer": "Scout Curry!",
+      "regex": /(Scout)|(Curry)/,
     },
     {
       "image": "static/images/brontosaurus.jpg",
       "question": "What dino is this?",
-      "answer": "Brontosaurus..."
+      "answer": "Brontosaurus...",
+      "regex": /brontosaurus/i,
     },
     {
       "image": "static/images/teradactyl.png",
       "question": "Yet it flies!?",
-      "answer": "Teradactyl."
+      "answer": "Teradactyl.",
+      "regex": /teradac.*/i,
     },
   ];
   console.log(deck.length);
-  return deck.map((door, i) => getDoorTemplate(door, i));
+  return deck.map((json, i) => getDoorTemplate(json, i));
 };
 
 const getDoorTemplate = function (json, i) {
@@ -50,11 +54,10 @@ const getDoorTemplate = function (json, i) {
               </div>
           </div>
       `;
-  const door = {
+  const card = {
     "id": i,
     "html": template,
     "performance": [],
   };
-  return door;
-
+  return {...json, ...card};
 };
