@@ -1,4 +1,4 @@
-export const getDeck = function (arg) {
+const getDeck = function (arg) {
   const deck = [
     {
       "image": "static/images/tRex.jpg",
@@ -25,7 +25,7 @@ export const getDeck = function (arg) {
   return deck.map((door, i) => getDoorTemplate(door, i));
 };
 
-export const getDoorTemplate = function (json, i) {
+const getDoorTemplate = function (json, i) {
   
   console.log("Template:", JSON.stringify(json, i));
 
