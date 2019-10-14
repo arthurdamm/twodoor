@@ -53,6 +53,8 @@ $(function() {
     let tag = e.target.tagName.toLowerCase();
     if (e.which === 39)
       nextDoorEvent();
+    else if (e.which == 32)
+      currentDoor.toggleClass('flipme');
   });
   $('.btn--next').click(nextDoorEvent);
 });
