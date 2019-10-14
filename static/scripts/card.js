@@ -16,13 +16,13 @@ $(function() {
         let succStyle = currentDoor.children('.success')[0];
         // console.log("computed style is " + getComputedStyle(succStyle).visibility);
         if(getComputedStyle(succStyle).visibility == 'hidden') {
-          currentDoor.children('.front').hide();
+          // currentDoor.children('.front').hide();
           currentDoor.children('.success').css('visibility', 'visible');
-          $('.success').fadeOut(3000, "swing");
-          $('.front').fadeIn(3000);
+          $('.success').fadeOut(1000, "swing");
+          // $('.front').fadeIn(1000);
           currentDoor.children('.front')
           .css('border', '20px solid #b8fc79');
-          $('.back').fadeIn(3000);
+          $('.back').fadeIn(1000);
           currentDoor.children('.back')
           .css('border', '20px solid #b8fc79');
           // currentDoor.children('.text-box').css('background', 'green');
