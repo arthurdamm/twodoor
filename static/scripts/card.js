@@ -3,15 +3,15 @@ import * as datastore from "./datastore.js";
 $(function() {
   let nextDoor;
   let currentDoor = $('#door2');
+  let animating = false;
   const deck = datastore.getDeck()
   console.log("getDeck():", deck);
 
-  currentDoor.html(deck[3].html);
-  currentDoor.attr('door-id', deck[3].id);
+  currentDoor.html(deck[1].html);
+  currentDoor.attr('door-id', deck[1].id);
   
   $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
-    console.log("Enter Answer event");
     if (e.which == 13) {
       currentDoor.children('.front').hide();
       currentDoor.children('.success').css('visibility', 'visible');
@@ -23,10 +23,10 @@ $(function() {
   
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');
-    currentDoor = $(this);
   });
 
-  $('.btn--next').click(function() {
+  const nextDoorEvent = function() {
+    if (animating) return;
     $('.btn--next').css('visibility', 'hidden');
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
@@ -39,14 +39,22 @@ $(function() {
 
     currentDoor.addClass('slide');
     currentDoor.fadeOut(500);
+    animating = true;
     setTimeout(function () {
       currentDoor.removeClass('slide');
       currentDoor.removeClass('flipme');
       nextDoor.after(currentDoor);
       currentDoor = nextDoor;
+      animating = false;
     }, 500);
+  }
 
+  $(document).on('keydown', function(e) {
+    let tag = e.target.tagName.toLowerCase();
+    if (e.which === 39)
+      nextDoorEvent();
   });
+  $('.btn--next').click(nextDoorEvent);
 });
 
 function getNextDoor(currentDoor, deck) {
@@ -55,5 +63,4 @@ function getNextDoor(currentDoor, deck) {
   for (const door of deck)
     if (door.id === doorId)
       return door;
-  console.log("NO NEXT DOOR!");
 }
