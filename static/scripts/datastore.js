@@ -30,9 +30,7 @@ const getDeck = function (arg) {
 };
 
 const getDoorTemplate = function (json, i) {
-  
   console.log("Template:", JSON.stringify(json, i));
-
   const template =`
           <div class="card front" style="width: 18rem;">
               <img class="card-img-top" src="${json.image}" alt="card image cap">
