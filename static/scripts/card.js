@@ -13,7 +13,7 @@ $(function() {
     if (e.which == 13 && !animating) { //enterkey
       // if (currentDoor.children('.success').values('visibility', 'visible')) {
       if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
-        let succStyle = document.querySelector('.success');
+        let succStyle = currentDoor.children('.success')[0];
         // console.log("computed style is " + getComputedStyle(succStyle).visibility);
         if(getComputedStyle(succStyle).visibility == 'hidden') {
           currentDoor.children('.front').hide();
@@ -22,9 +22,13 @@ $(function() {
           $('.front').fadeIn(3000);
           currentDoor.children('.front')
           .css('border', '20px solid #b8fc79');
+          $('.back').fadeIn(3000);
+          currentDoor.children('.back')
+          .css('border', '20px solid #b8fc79');
           // currentDoor.children('.text-box').css('background', 'green');
           // win = false;
-          }
+        } else
+          nextDoorEvent();
       currentDoor.children('.back').css('visibility', 'visible');
       currentDoor.children('.back').css('position', 'relative');
       $('.btn--next').css('visibility', 'visible');
