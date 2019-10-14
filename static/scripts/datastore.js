@@ -21,15 +21,15 @@ const getDeck = function (arg) {
     {
       "image": "static/images/teradactyl.png",
       "question": "Yet it flies!?",
-      "answer": "Teradactyl.",
-      "regex": /teradac.*/i,
+      "answer": "Pteradactyl.",
+      "regex": /p?teradac.*/i,
     },
   ];
   console.log(deck.length);
-  return deck.map((json, i) => getDoorTemplate(json, i));
+  return deck.map((json, i) => getCardTemplate(json, i));
 };
 
-const getDoorTemplate = function (json, i) {
+const getCardTemplate = function (json, i) {
   console.log("Template:", JSON.stringify(json, i));
   const template =`
           <div class="card front" style="width: 18rem;">

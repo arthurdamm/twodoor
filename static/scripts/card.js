@@ -25,6 +25,7 @@ $(function() {
 
   $('.flippable').click(function() {
     $(this).toggleClass('flipme');
+    $('[name=text-answer]').focus();
   });
 
   const nextDoorEvent = function() {
@@ -34,11 +35,10 @@ $(function() {
     $('[name=text-answer]').focus();
 
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
-    const door = getNextDoor(currentDoor, deck);
+    const door = getNextCard(currentDoor, deck);
     nextDoor.html(door.html)
     nextDoor.attr('card-id', door.id);
     nextDoor.fadeIn(1);
-    console.log("nextDoor:", nextDoor[0]);
 
     currentDoor.addClass('slide');
     currentDoor.fadeOut(500);
@@ -64,11 +64,11 @@ $(function() {
   nextDoorEvent();  // gets first card
 });
 
-function getNextDoor(currentDoor, deck) {
-  let doorId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
-  for (const door of deck)
-    if (door.id === doorId)
-      return door;
+function getNextCard(currentDoor, deck) {
+  let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
+  for (const card of deck)
+    if (card.id === cardId)
+      return card;
   return deck[0];  // default
 }
 
