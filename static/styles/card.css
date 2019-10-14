@@ -57,8 +57,9 @@ body {
     text-align: center;
     font-size: 1rem;
     border-radius: .5rem;
-}
 
+
+}
 
 .front, .back, .success {
     backface-visibility: hidden;
@@ -82,7 +83,7 @@ body {
 
 .success {
     z-index: -1;
-    background-color: green;
+    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);;
     color: white;
     font-size: 1.2rem;
     font-family: Verdana;
@@ -113,7 +114,7 @@ body {
     padding: 1.25rem;
     /* width: 25.5rem; */
     /* border: 1px solid black; */
-    background: aquamarine;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
     margin-left: -3.75rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
 

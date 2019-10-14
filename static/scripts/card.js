@@ -5,6 +5,7 @@ $(function() {
   let currentDoor = $('#door2');
   let animating = false;
   const deck = getDeck()
+
   console.log("getDeck():", deck);
 
   currentDoor.html(deck[1].html);
@@ -13,13 +14,25 @@ $(function() {
   $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
     if (e.which == 13) {
-      currentDoor.children('.front').hide();
-      currentDoor.children('.success').css('visibility', 'visible');
+      // if (currentDoor.children('.success').values('visibility', 'visible')) {
+        let succStyle = document.querySelector('.success');
+        // console.log("computed style is " + getComputedStyle(succStyle).visibility);
+        if(getComputedStyle(succStyle).visibility == 'hidden') {
+          currentDoor.children('.front').hide();
+          currentDoor.children('.success').css('visibility', 'visible');
+          $('.success').fadeOut(3000, "swing");
+          $('.front').fadeIn(3000);
+          currentDoor.children('.front')
+          .css('border', '20px solid #b8fc79');
+          // currentDoor.children('.text-box').css('background', 'green');
+          // win = false;
+      }
       currentDoor.children('.back').css('visibility', 'visible');
       currentDoor.children('.back').css('position', 'relative');
       $('.btn--next').css('visibility', 'visible');
     }
   });
+
   
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');
@@ -64,3 +77,9 @@ function getNextDoor(currentDoor, deck) {
     if (door.id === doorId)
       return door;
 }
+// var i = 500;
+// setInterval(function () {
+//     $("#stopWatch").html(i);
+//         i--;
+//     }, 1000);
+ 
