@@ -18,13 +18,12 @@ $(function() {
         if(getComputedStyle(succStyle).visibility == 'hidden') {
           // currentDoor.children('.front').hide();
           currentDoor.children('.success').css('visibility', 'visible');
-          $('.success').fadeOut(1000, "swing");
+          $('.success').hide();
+          $('.success').fadeIn(500, "swing");          
+          $('.success').fadeOut(500, "swing");
           // $('.front').fadeIn(1000);
-          currentDoor.children('.front')
-          .css('border', '20px solid #b8fc79');
-          $('.back').fadeIn(1000);
-          currentDoor.children('.back')
-          .css('border', '20px solid #b8fc79');
+          // $('.back').fadeIn(1000);
+          setTimeout(nextDoorEvent, 500);
           // currentDoor.children('.text-box').css('background', 'green');
           // win = false;
         } else
