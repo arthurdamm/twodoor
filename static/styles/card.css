@@ -145,7 +145,14 @@ input {
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
 
-.door:hover,
+.door:hover {
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+
+.deck:hover {
+    transform: translateY(-.3rem);
+}
+
 .btn:hover {
     /* top is negative, bottom is positive on y axis */
     transform: translateY(-.3rem);
