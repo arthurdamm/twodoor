@@ -8,11 +8,9 @@ $(function() {
 
   console.log("getDeck():", deck);
 
-  currentDoor.html(deck[1].html);
-  currentDoor.attr('door-id', deck[1].id);
-  
   $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
+<<<<<<< HEAD
     if (e.which == 13) {
       // if (currentDoor.children('.success').values('visibility', 'visible')) {
         let succStyle = document.querySelector('.success');
@@ -36,6 +34,7 @@ $(function() {
   
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');
+    $('[name=text-answer]').focus();
   });
 
   const nextDoorEvent = function() {
@@ -43,12 +42,12 @@ $(function() {
     $('.btn--next').css('visibility', 'hidden');
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
+
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
-    const door = getNextDoor(currentDoor, deck);
+    const door = getNextCard(currentDoor, deck);
     nextDoor.html(door.html)
-    nextDoor.attr('door-id', door.id);
+    nextDoor.attr('card-id', door.id);
     nextDoor.fadeIn(1);
-    console.log("nextDoor:", nextDoor[0]);
 
     currentDoor.addClass('slide');
     currentDoor.fadeOut(500);
@@ -64,18 +63,26 @@ $(function() {
 
   $(document).on('keydown', function(e) {
     let tag = e.target.tagName.toLowerCase();
-    if (e.which === 39)
+    if (e.which === 39)  // right arrow
       nextDoorEvent();
+    else if (e.which == 37)  // left arrow
+      currentDoor.toggleClass('flipme');
   });
   $('.btn--next').click(nextDoorEvent);
+
+  nextDoorEvent();  // gets first card
 });
 
-function getNextDoor(currentDoor, deck) {
-  let doorId = (parseInt(currentDoor.attr('door-id')) + 1) % deck.length;
+function getNextCard(currentDoor, deck) {
+  let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
+  for (const card of deck)
+    if (card.id === cardId)
+      return card;
+  return deck[0];  // default
+}
 
-  for (const door of deck)
-    if (door.id === doorId)
-      return door;
+function getCard(currentDoor, deck) {
+  return deck[parseInt(currentDoor.attr('card-id'))];
 }
 // var i = 500;
 // setInterval(function () {
