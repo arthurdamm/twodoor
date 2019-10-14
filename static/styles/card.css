@@ -29,12 +29,13 @@ body {
   height: 25rem;
 }
 
-.door, .door2 {
+.door {
     perspective: 1000px;
     /* margin-left: 1rem; */
     float: left;
     cursor: pointer;
     position: absolute;
+
 }
 .flippable {
     transition: 0.5s;
@@ -49,7 +50,7 @@ body {
   transform: translateX(20rem);
 }
 
-.door, .door2, .front, .back, .success{
+.door, .front, .back, .success{
     width: 18rem;
     height: 25rem;
     line-height: 100%;
@@ -111,9 +112,11 @@ body {
     border-radius: 5px;
     padding: 1.25rem;
     /* width: 25.5rem; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background: aquamarine;
     margin-left: -3.75rem;
+    box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
+
 }
 
 input {
@@ -141,6 +144,8 @@ input {
     transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
+
+.door:hover,
 .btn:hover {
     /* top is negative, bottom is positive on y axis */
     transform: translateY(-.3rem);

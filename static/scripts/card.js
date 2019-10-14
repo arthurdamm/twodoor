@@ -26,7 +26,10 @@ $(function() {
     currentDoor = $(this);
   });
 
-  $('.btn--next').click(function() {    
+  $('.btn--next').click(function() {
+    $('.btn--next').css('visibility', 'hidden');
+    $('[name=text-answer]').val('');
+    $('[name=text-answer]').focus();
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     const door = getNextDoor(currentDoor, deck);
     nextDoor.html(door.html)
