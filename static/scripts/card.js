@@ -10,7 +10,6 @@ $(function() {
 
   $('[name=text-answer]').focus();
   $('[name=text-answer]').keydown(function (e) {
-<<<<<<< HEAD
     if (e.which == 13) {
       // if (currentDoor.children('.success').values('visibility', 'visible')) {
         let succStyle = document.querySelector('.success');
