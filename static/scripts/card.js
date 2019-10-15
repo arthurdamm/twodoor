@@ -29,7 +29,7 @@ $(function() {
   function animate() {
     let succStyle = currentDoor.children('.success')[0];
     succStyle.style.transform = `translate3d(0, 0, ${zPos}px)`;
-    zPos = Math.sin(1.75 * counter) * 250;
+    zPos = Math.sin(1.55 * counter) * 200;
     counter += increment;
     if (counter >= 2) {
       zPos = 0; counter = 0;
