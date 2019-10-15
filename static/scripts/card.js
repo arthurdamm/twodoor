@@ -8,27 +8,31 @@ $(function() {
   $('[name=text-answer]').keydown(function (e) {
     if (e.which == 13 && !animating) { //enterkey
       if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
-        let succStyle = currentDoor.children('.success')[0];
-        if(getComputedStyle(succStyle).visibility == 'hidden') {
+        let userAnswer = currentDoor.children('.success')[0];
+        if (getComputedStyle(userAnswer).visibility == 'hidden') {
           currentDoor.children('.success').css('visibility', 'visible');
           animate();
           setTimeout(nextDoorEvent, 500);
         } else
           nextDoorEvent();
-      currentDoor.children('.back').css('visibility', 'visible');
-      currentDoor.children('.back').css('position', 'relative');
-      $('.btn--next').css('visibility', 'visible');
-    } else
-      nextDoorEvent();
+        currentDoor.children('.back').css('visibility', 'visible');
+        currentDoor.children('.back').css('position', 'relative');
+        $('.btn--next').css('visibility', 'visible');
+      } else {
+        let userAnswer = currentDoor.children('.fail')[0];
+        if (getComputedStyle(userAnswer).visibility == 'hidden')
+          currentDoor.children('.fail').css('visibility', 'visible');
+        nextDoorEvent();
+      }
     }
   });
+
   let zPos = 0;
   let counter = 0;
   const increment = Math.PI / 100;
-  
   function animate() {
-    let succStyle = currentDoor.children('.success')[0];
-    succStyle.style.transform = `translate3d(0, 0, ${zPos}px)`;
+      let zAnimate = currentDoor.children('.success')[0];
+    zAnimate.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * counter) * 200;
     counter += increment;
     if (counter >= 2) {

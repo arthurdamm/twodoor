@@ -83,10 +83,14 @@ const getCardTemplate = function (json, i) {
           </div>
           <div class="card success" style="width: 18rem;">
               <div class="card-body">
-                  <h5 class="card-title">Success!</h5>
-                  <p class='card-text'>Keep Going :)</p>
+                  <h5 class="card-icon">&#9989</h5>
               </div>
           </div>
+          <div class="card fail" style="width: 18rem;">
+          <div class="card-body">
+              <h5 class="card-icon">&#10060</h5>
+          </div>
+      </div>
       `;
   const card = {
     "id": i,
