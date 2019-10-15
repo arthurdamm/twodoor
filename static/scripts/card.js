@@ -11,9 +11,7 @@ $(function() {
         let succStyle = currentDoor.children('.success')[0];
         if(getComputedStyle(succStyle).visibility == 'hidden') {
           currentDoor.children('.success').css('visibility', 'visible');
-          $('.success').hide();
-          $('.success').fadeIn(500, "swing");          
-          $('.success').fadeOut(500, "swing");
+          animate();
           setTimeout(nextDoorEvent, 500);
         } else
           nextDoorEvent();
@@ -24,6 +22,21 @@ $(function() {
       nextDoorEvent();
     }
   });
+  let zPos = 0;
+  let counter = 0;
+  const increment = Math.PI / 100;
+  
+  function animate() {
+    let succStyle = currentDoor.children('.success')[0];
+    succStyle.style.transform = `translate3d(0, 0, ${zPos}px)`;
+    zPos = Math.sin(1.75 * counter) * 250;
+    counter += increment;
+    if (counter >= 2) {
+      zPos = 0; counter = 0;
+      return;
+    } else
+      requestAnimationFrame(animate);
+  }
 
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');

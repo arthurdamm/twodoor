@@ -5,11 +5,9 @@ html {
 }
 body {
     background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-    /* height: 95vh; */
 }
 
 .container {
-    /* margin-top: 20vh; */
     display: flex;
     flex-direction: column;
     height: 55vh;
@@ -17,10 +15,7 @@ body {
     margin: auto;
     margin-top: 5%;
     left: 3rem;
-    /* margin-left: 32.75%; */
-    /* margin-left: 15rem; */
     position: relative;
-    /* top:0;bottom:0;left:0;right:0; */
     background-position: top;
 }
 
@@ -31,11 +26,9 @@ body {
 
 .door {
     perspective: 1000px;
-    /* margin-left: 1rem; */
     float: left;
     cursor: pointer;
     position: absolute;
-
 }
 .flippable {
     transition: 0.5s;
@@ -57,15 +50,12 @@ body {
     text-align: center;
     font-size: 1rem;
     border-radius: .5rem;
-
-
 }
 
 .front, .back, .success {
     backface-visibility: hidden;
     position: absolute;
     top: 0;
-    /* left: 0; */
 }
 
 .front {
@@ -76,10 +66,8 @@ body {
     transform: rotateY(180deg);
     font-size: 1.8rem;
     font-family: Verdana;
-    /* margin-left: -6rem; */
-    /* top: 5rem; */
     padding-top: 5rem;
-  }
+}
 
 .success {
     z-index: -1;
@@ -87,10 +75,9 @@ body {
     color: white;
     font-size: 1.2rem;
     font-family: Verdana;
-    /* margin-left: -6rem; */
-    /* top: 5rem; */
     padding-top: 5rem;
     visibility: hidden;
+    transform: translate3d(0);
 }
 .success h5 {
     font-size: 3.1rem;
@@ -100,24 +87,16 @@ body {
     display: flex;
     position: relative;
     justify-content: space-between;
-    /* top: 20%; */
     margin-top: 90%;
-    /* width: 30rem; */
-    /* float: left; */
-    /* margin-bottom: 70%; */
     margin-left: 1%; 
-    /* background-position: top; */
 }
 
 .text-box {
     border-radius: 5px;
     padding: 1.25rem;
-    /* width: 25.5rem; */
-    /* border: 1px solid black; */
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
     margin-left: -3.75rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
-
 }
 
 input {
@@ -141,7 +120,6 @@ input {
     visibility: hidden;
 }
 .btn:active {
-    /* in relation to initial state, not any other state */
     transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
@@ -155,7 +133,6 @@ input {
 }
 
 .btn:hover {
-    /* top is negative, bottom is positive on y axis */
     transform: translateY(-.3rem);
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
