@@ -1,12 +1,15 @@
 $(function() {
   let nextDoor;
   let currentDoor = $('#door2');
-  let animating = false;
+  let animating = false, answered = false;
   const deck = getDeck();
   console.log("getDeck():", deck);
   $('[name=text-answer]').focus();
+  // animating = true;
+
   $('[name=text-answer]').keydown(function (e) {
-    if (e.which == 13 && !animating) { //enterkey
+    if (e.which == 13 && !animating && !answered) {
+      answered = true;
       if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
         let userAnswer = currentDoor.children('.success')[0];
         if (getComputedStyle(userAnswer).visibility == 'hidden') {
@@ -23,7 +26,7 @@ $(function() {
         currentDoor.toggleClass('flipme');
         if (getComputedStyle(userAnswer).visibility == 'hidden')
           currentDoor.children('.fail').css('visibility', 'visible');
-        setTimeout(nextDoorEvent, 1500);
+          setTimeout(nextDoorEvent, 1500);
       }
     }
   });
@@ -41,7 +44,7 @@ $(function() {
       return;
     } else
       requestAnimationFrame(animate);
-  }
+    }
 
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');
@@ -69,6 +72,7 @@ $(function() {
       nextDoor.after(currentDoor);
       currentDoor = nextDoor;
       animating = false;
+      answered = false;
     }, 500);
   }
 
