@@ -20,9 +20,10 @@ $(function() {
         $('.btn--next').css('visibility', 'visible');
       } else {
         let userAnswer = currentDoor.children('.fail')[0];
+        currentDoor.toggleClass('flipme');
         if (getComputedStyle(userAnswer).visibility == 'hidden')
           currentDoor.children('.fail').css('visibility', 'visible');
-        nextDoorEvent();
+        setTimeout(nextDoorEvent, 1500);
       }
     }
   });
@@ -33,7 +34,7 @@ $(function() {
   function animate() {
       let zAnimate = currentDoor.children('.success')[0];
     zAnimate.style.transform = `translate3d(0, 0, ${zPos}px)`;
-    zPos = Math.sin(1.55 * counter) * 200;
+    zPos = Math.sin(1.55 * counter) * 125;
     counter += increment;
     if (counter >= 2) {
       zPos = 0; counter = 0;
