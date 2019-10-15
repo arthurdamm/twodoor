@@ -7,7 +7,7 @@ const getDeck = function (arg) {
       "regex": /(arthur)|(d.*a.*m.*m)/i,
     },
     {
-      "image": "static/images/real_velociraptor.jpg",
+      "image": "static/images/velociraptor.jpg",
       "question": "Who is in this picture?",
       "answer": "Scout Curry!",
       "regex": /(Scout)|(Curry)/,
@@ -23,6 +23,42 @@ const getDeck = function (arg) {
       "question": "Yet it flies!?",
       "answer": "Pteradactyl.",
       "regex": /p?teradac.*/i,
+    },
+    {
+      "image": "static/images/water_dino_1.jpg",
+      "question": "What is this water dino?",
+      "answer": "bob",
+      "regex": /bob/i,
+    },
+    {
+      "image": "static/images/water_dino_2.jpg",
+      "question": "What is this water dino?",
+      "answer": "john",
+      "regex": /john/i,
+    },
+    {
+      "image": "static/images/water_dino_3.jpg",
+      "question": "What is this water dino?",
+      "answer": "smith",
+      "regex": /smith/i,
+    },
+    {
+      "image": "static/images/water_dino_4.jpg",
+      "question": "What is this water dino?",
+      "answer": "george",
+      "regex": /george/i,
+    },
+    {
+      "image": "static/images/triceratops.jpg",
+      "question": "Who is this now?",
+      "answer": "charles",
+      "regex": /charles/i,
+    },
+    {
+      "image": "static/images/stego.jpg",
+      "question": "Name this person?",
+      "answer": "morris",
+      "regex": /morris/i,
     },
   ];
   console.log(deck.length);
