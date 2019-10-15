@@ -67,7 +67,7 @@ $(function() {
 });
 
 function getNextCard(currentDoor, deck) {
-  return selectNextCard(deck);
+  return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
   for (const card of deck)
     if (card.id === cardId)
