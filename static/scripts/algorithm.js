@@ -7,9 +7,8 @@ const matchAnswer = function(answer, card) {
   if (card.leitnerBox)
     if (result) {
       if (card.leitnerBox < LEITNER_BOXES)
-        card.leitnerBox = ++card.leitnerBox;
-    } else if (card.leitnerBox > 1)
-      --card.leitnerBox;
+        ++card.leitnerBox;
+    } else card.leitnerBox = 1;
   return result;
 }
 
