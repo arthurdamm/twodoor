@@ -128,6 +128,10 @@ input {
     text-decoration: none;
 }
 
+.btn {
+    background: greenyellow;
+}
+
 .btn--next {
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
@@ -154,4 +158,42 @@ input {
 
 h5.card-icon {
     font-size: 120px;
+}
+h1 {
+    margin: auto;
+    margin-top: 10%;
+    height: 5rem;
+    width: 5rem;
+}
+
+.header-primary {
+    color: aliceblue;
+    text-transform: uppercase;
+    backface-visibility: hidden;
+    margin: auto;
+    position: absolute;
+    top: 4rem;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+.heading-primary--main {
+    display: block;
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: 3rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+}
+  
+.heading-primary--sub {
+   display: block;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 1.5rem;
+    animation-delay: 1s;
+    animation-name: moveInRight;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
 }
