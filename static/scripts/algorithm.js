@@ -1,11 +1,20 @@
+const LEITNER_BOXES = 5;
+
 const matchAnswer = function(answer, card) {
   console.log("matchAnswer()", answer, card);
   const result = answer.match(card.regex) != null ? 1 : 0;
   card.performance.push(result);
+  if (card.leitnerBox)
+    if (result) {
+      if (card.leitnerBox < LEITNER_BOXES)
+        card.leitnerBox = ++card.leitnerBox;
+    } else if (card.leitnerBox > 1)
+      --card.leitnerBox;
   return result;
 }
 
 const selectNextCard = function(deck, currentCard) {
+  return selectNextCardLeitner(deck);
   const getfailRate = performance => !performance.length ? 1
     : 1 - (performance.reduce((a, x) => a + x, 0) / performance.length);
   const failRateList = deck.map(card => getfailRate(card.performance));
@@ -21,12 +30,24 @@ const selectNextCard = function(deck, currentCard) {
   return deck[i];
 }
 
-const LEITNER_BOXES = 5;
-
-// Uses the Leitner System to select the next card
 const selectNextCardLeitner = function(deck) {
-  if (deck.leitnerRound === undefined)
-    deck.leitnerRound = 1;
-  deck.forEach(card => card.leitnerBox === undefined && (card.leitnerBox = 0));
+  if (!deck.leitnerRound) deck.leitnerRound = 1;
+  deck.forEach(card => card.leitnerBox === undefined && (card.leitnerBox = 1));
   console.log("selectNextCardLeitner()", deck);
+  let currentDeck;
+  do {
+    currentDeck = deck.filter(card =>
+      (deck.leitnerRound == 1 || deck.leitnerRound != card.leitnerBox)
+      && !(deck.leitnerRound % card.leitnerBox) && !card.played);
+    console.log("currentDeck:", currentDeck);
+    if (!currentDeck.length) {
+      deck.leitnerRound++;
+      deck.forEach(card => card.played = false);
+    }
+  } while (!currentDeck.length);
+  const card = currentDeck[Math.floor(Math.random() * currentDeck.length)];
+  card.played = true;
+  card.last_played = deck.leitnerRound;
+  console.log("final currentDeck:", currentDeck, "\ncard:", card);
+  return card;
 }
