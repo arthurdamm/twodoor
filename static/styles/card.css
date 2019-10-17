@@ -1,15 +1,7 @@
-
-html {
-    height: 100%;
-    width: 100%;
-}
-body {
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-}
 .logo {
     object-fit: contain;
-    width: 120px;
-    height: 120px;
+    width: 10rem;
+    height: 10rem;
     background: url("../images/doorCloseWhite.svg") no-repeat;
     display: relative;
     margin-left: 3%;
