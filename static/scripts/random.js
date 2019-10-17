@@ -2,7 +2,7 @@ $(function() {
   function removeNaN(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-  function getRandomInt(min, max) {
+  function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
   }
   function generatePair(){
@@ -10,7 +10,7 @@ $(function() {
     const color = ["#c0ffba", "#c8caca", "#ffb46c", "#ff756c", "#7FAAFF", "#909c79", "#ffffff"]
     console.log("name[0]: " + name[0]);
     console.log("color[0]: " + color[0]);
-    var pair = removeNaN(name[getRandomInt(0, name.length - 1)]) + ' ' + removeNaN(color[getRandomInt(0, color.length - 1)]);
+    var pair = removeNaN(name[getRandom(0, name.length - 1)]) + ' ' + removeNaN(color[getRandom(0, color.length - 1)]);
     console.log("pairing created: " + pair);
     return pair;
   }

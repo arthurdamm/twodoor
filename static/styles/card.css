@@ -1,30 +1,26 @@
-.logo {
-    object-fit: contain;
-    width: 10rem;
-    height: 10rem;
-    background: url("../images/doorCloseWhite.svg") no-repeat;
-    display: relative;
-    margin-left: 3%;
-    margin-top: 2%;
+html {
+    height: 100%;
+    width: 100%;
 }
-.logo:hover {
-    background: url("../images/doorOpenWhite.svg") no-repeat;
+body {
+     background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 }
-.container {
-    display: flex;
+
+.game-component {
+    display: block;
     flex-direction: column;
     height: 55vh;
     width: 32.5rem;
     margin: auto;
-    margin-top: -1%;
+    margin-top: 2%;
     left: 3rem;
     position: relative;
     background-position: top;
 }
 
 .deck {
-  position: relative;
-  height: 25rem;
+    position: relative;
+    height: 25rem;
 }
 
 .door {
@@ -75,7 +71,7 @@
     padding-top: 5rem;
 }
 
-.success{
+.success {
     /* background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
     background: rgb(0, 226, 0);
     padding-top: 5rem;
@@ -97,7 +93,7 @@
     display: flex;
     position: relative;
     justify-content: space-between;
-    margin-top: 90%;
+    margin-top: 22%;
     margin-left: 1%; 
 }
 

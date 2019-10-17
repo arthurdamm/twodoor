@@ -1,12 +1,4 @@
-
-html {
-  height: 100%;
-  width: 100%;
-}
-body {
-  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-}
-.header {
+header {
   border-bottom: .4rem solid grey;
 }
 .logo {
@@ -14,21 +6,14 @@ body {
   width: 8rem;
   height: 8rem;
   background: url("../images/doorCloseWhite.svg") no-repeat;
-  margin-left: 3%;
-  margin-top: 2%;
+  margin-left: 1%;
+  margin-top: 1%;
   animation-name: moveInLeft;
 }
 .logo:hover {
   background: url("../images/doorOpenWhite.svg") no-repeat;
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  /* transition: all .2s; */
-  text-decoration: none;
- 
-}
 .btn:active {
   transform: translateY(-2rem);
   box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
@@ -37,7 +22,8 @@ body {
   transform: translateY(-.3rem);
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
-.header-primary {
+.home-component {
+  display: block;
   color: aliceblue;
   text-transform: uppercase;
   backface-visibility: hidden;
@@ -52,7 +38,7 @@ h2 {
   display: inline-block;
   margin-top: 8%;
 }
-.header-primary--main {
+.home-component--main {
   display: block;
   font-size: 2.8rem;
   font-weight: 800;
@@ -79,7 +65,7 @@ h2 {
   animation-duration: 1s;
 }
 
-.header-primary--sub {
+.home-component--sub {
   display: block;
   font-size: 2rem;
   font-weight: 600;
