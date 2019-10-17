@@ -44,8 +44,10 @@ body {
 }
 
 .door, .front, .back, .success, .fail {
-    width: 18rem;
-    height: 25rem;
+    width: 41vh;
+    height: 60vh;
+    min-width: 5rem;
+    max-height: 150%;
     line-height: 100%;
     text-align: center;
     font-size: 1rem;
@@ -91,22 +93,29 @@ body {
 
 .control {
     display: flex;
-    position: relative;
+    position: absolute;
     justify-content: space-between;
-    margin-top: 22%;
+    /* margin-top: 25vh; */
     margin-left: 1%; 
+    bottom: -20vh;
+
+    /* margin-bottom: 5vh; */
 }
 
 .text-box {
+    height: 8vh;
+    width: 45.5vh;
     border-radius: 5px;
-    padding: 1.25rem;
+    padding: 2.25vh;
+    /* margin-bottom: 5%; */
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-    margin-left: -3.75rem;
+    margin-left: -1.75rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
 }
 
 input {
-    width: 22.25rem;
+    height: 3.75vh;
+    width: 40vh;
 }
 
 .btn:link,
@@ -116,24 +125,21 @@ input {
     text-decoration: none;
 }
 
-.btn {
-    background: greenyellow;
-}
+
 
 .btn--next {
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-    right: 6rem;
-    height: 4.5rem;
-    width: 4.5rem;
-    margin-left: -8.5rem;
-    visibility: hidden;
+    right: 6vh;
+    height: 110%;
+    width: 150%;
+    margin-left: 2vh;
+    /* visibility: hidden; */
 }
 .btn:active {
     transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
-
 
 .deck:hover {
     transform: translateY(-.3rem);
@@ -152,36 +158,4 @@ h1 {
     margin-top: 10%;
     height: 5rem;
     width: 5rem;
-}
-
-.header-primary {
-    color: aliceblue;
-    text-transform: uppercase;
-    backface-visibility: hidden;
-    margin: auto;
-    position: absolute;
-    top: 4rem;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    margin-left: 5%;
-    margin-top: 1%;
-}
-.heading-primary--main {
-    display: block;
-    font-size: 4rem;
-    font-weight: 500;
-    letter-spacing: 3rem;
-    animation-name: moveInLeft;
-    animation-duration: 1s;
-}
-  
-.heading-primary--sub {
-   display: block;
-    font-size: 2rem;
-    font-weight: 900;
-    letter-spacing: 1.5rem;
-    animation-delay: 1s;
-    animation-name: moveInRight;
-    animation-duration: 1s;
-    animation-fill-mode: backwards;
 }

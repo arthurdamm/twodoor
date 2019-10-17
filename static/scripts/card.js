@@ -15,7 +15,7 @@ $(function() {
         if (getComputedStyle(userAnswer).visibility == 'hidden') {
           currentDoor.children('.success').css('visibility', 'visible');
           animate();
-          setTimeout(nextDoorEvent, 500);
+          setTimeout(nextDoorEvent, 700);
         } else
           nextDoorEvent();
         currentDoor.children('.back').css('visibility', 'visible');
@@ -37,7 +37,7 @@ $(function() {
   function animate() {
       let zAnimate = currentDoor.children('.success')[0];
     zAnimate.style.transform = `translate3d(0, 0, ${zPos}px)`;
-    zPos = Math.sin(1.55 * counter) * 125;
+    zPos = Math.sin(1.55 * counter) * 155;
     counter += increment;
     if (counter >= 2) {
       zPos = 0; counter = 0;
