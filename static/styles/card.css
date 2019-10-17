@@ -1,27 +1,26 @@
-
 html {
     height: 100%;
     width: 100%;
 }
 body {
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+     background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
 }
 
-.container {
-    display: flex;
+.game-component {
+    display: block;
     flex-direction: column;
     height: 55vh;
     width: 32.5rem;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 2%;
     left: 3rem;
     position: relative;
     background-position: top;
 }
 
 .deck {
-  position: relative;
-  height: 25rem;
+    position: relative;
+    height: 25rem;
 }
 
 .door {
@@ -45,8 +44,10 @@ body {
 }
 
 .door, .front, .back, .success, .fail {
-    width: 18rem;
-    height: 25rem;
+    width: 41vh;
+    height: 60vh;
+    min-width: 5rem;
+    max-height: 150%;
     line-height: 100%;
     text-align: center;
     font-size: 1rem;
@@ -72,7 +73,7 @@ body {
     padding-top: 5rem;
 }
 
-.success{
+.success {
     /* background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
     background: rgb(0, 226, 0);
     padding-top: 5rem;
@@ -92,22 +93,29 @@ body {
 
 .control {
     display: flex;
-    position: relative;
+    position: absolute;
     justify-content: space-between;
-    margin-top: 90%;
+    /* margin-top: 25vh; */
     margin-left: 1%; 
+    bottom: -20vh;
+
+    /* margin-bottom: 5vh; */
 }
 
 .text-box {
+    height: 8vh;
+    width: 45.5vh;
     border-radius: 5px;
-    padding: 1.25rem;
+    padding: 2.25vh;
+    /* margin-bottom: 5%; */
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-    margin-left: -3.75rem;
+    margin-left: -1.75rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
 }
 
 input {
-    width: 22.25rem;
+    height: 3.75vh;
+    width: 40vh;
 }
 
 .btn:link,
@@ -117,20 +125,21 @@ input {
     text-decoration: none;
 }
 
+
+
 .btn--next {
     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
     clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-    right: 6rem;
-    height: 4.5rem;
-    width: 4.5rem;
-    margin-left: -8.5rem;
-    visibility: hidden;
+    right: 6vh;
+    height: 110%;
+    width: 150%;
+    margin-left: 2vh;
+    /* visibility: hidden; */
 }
 .btn:active {
     transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
-
 
 .deck:hover {
     transform: translateY(-.3rem);
@@ -143,4 +152,10 @@ input {
 
 h5.card-icon {
     font-size: 120px;
+}
+h1 {
+    margin: auto;
+    margin-top: 10%;
+    height: 5rem;
+    width: 5rem;
 }
