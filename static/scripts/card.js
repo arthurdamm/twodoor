@@ -30,7 +30,6 @@ $(function() {
       }
     }
   });
-
   let zPos = 0;
   let counter = 0;
   const increment = Math.PI / 100;
@@ -44,7 +43,7 @@ $(function() {
       return;
     } else
       requestAnimationFrame(animate);
-    }
+  }
 
   $(".flippable").click(function() {
     $(this).toggleClass('flipme');
@@ -99,4 +98,30 @@ function getNextCard(currentDoor, deck) {
 
 function getCard(currentDoor, deck) {
   return deck[parseInt(currentDoor.attr('card-id'))];
+}
+
+function resetTimer() {
+document.getElementById('timer').innerHTML =
+  005 + ":" + 00;
+}
+function startTimer() {
+  var currentTime = document.getElementById('timer').innerHTML;
+  var timeArray = currentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if (s == 59) 
+    m = m - 1;
+  console.log("minute=" + m, "second=" + s);
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  if (s > 0 || m > 0)
+    setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0)
+    sec = "0" + sec; // add zero in front of numbers < 10
+  if (sec < 0)
+    sec = "59";
+  return sec;
 }
