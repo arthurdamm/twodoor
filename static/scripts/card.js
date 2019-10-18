@@ -53,7 +53,7 @@ $(function() {
 
   const nextDoorEvent = function() {
     if (animating) return;
-    $('.btn--next').css('visibility', 'hidden');
+    // $('.btn--next').css('visibility', 'hidden');
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
 
@@ -83,7 +83,7 @@ $(function() {
     else if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
   });
-  $('.btn--next').click(nextDoorEvent);
+  $('.btn--next').click(() => endDeckSession(deck));
 
   nextDoorEvent();  // gets first card
 });
