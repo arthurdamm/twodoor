@@ -53,7 +53,6 @@ $(function() {
 
   const nextDoorEvent = function() {
     if (animating) return;
-    // $('.btn--next').css('visibility', 'hidden');
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
 
