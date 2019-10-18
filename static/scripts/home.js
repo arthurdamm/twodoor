@@ -10,11 +10,13 @@ $(function() {
   });
   $('.logo').on('click', function(){
     $('.game-component').hide();
+    $('.summary-component').hide()
     $('.home-component').show();
   })
 })
 function backHome() {
   $('.home-component').hide();
+  $('.summary-component').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();
 }

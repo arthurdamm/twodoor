@@ -52,7 +52,6 @@ $(function() {
 
   const nextDoorEvent = function() {
     if (animating) return;
-    $('.btn--next').css('visibility', 'hidden');
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
 
@@ -82,7 +81,10 @@ $(function() {
     else if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
   });
-  $('.btn--next').click(nextDoorEvent);
+  $('.btn--next').click(() => endDeckSession(deck, 'Successes'));
+  $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'Successes'));
+  $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'Failures'));
+  $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'Percentage'));
 
   nextDoorEvent();  // gets first card
 });
