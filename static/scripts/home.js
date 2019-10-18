@@ -1,5 +1,6 @@
 $(function() {
   $('.game-component').hide();
+  $('.summary-component').hide();
   $('.btn.btn--deck1').on('click', function(){
     $('.btn.btn--deck1').addClass('btn--animated');
       setTimeout(backHome, 800);
