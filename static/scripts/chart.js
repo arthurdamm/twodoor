@@ -5,7 +5,7 @@ const endDeckSession = (deck) => {
   const data = deck.map(card => ({
     Card: `Card #${card.id}`,
     // Successes: card.performance.filter(result => result).length,
-    Successes: Math.floor(Math.random() * 5)
+    Successes: Math.floor(Math.random() * 7) + Math.floor(Math.random() * 3)
   }));
   renderPerformanceChart(data);
 };
@@ -26,8 +26,8 @@ const renderPerformanceChart = (data) => {
             "translate(" + margin.left + "," + margin.top + ")");
 
   const x = d3.scaleBand()
-    .range([ 0, width ])
     .domain(data.map(d => d.Card))
+    .range([0, width])
     .padding(0.1);  
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -37,18 +37,30 @@ const renderPerformanceChart = (data) => {
       .style("text-anchor", "end");
 
   const y = d3.scaleLinear()
-    .domain([0, 5])
-    .range([ height, 0]);
+    .domain([0, 10])
+    .range([height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
+  svg.append("text")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - (margin.left * .8))
+    .attr("x",0 - (height / 2))
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Successes");  
 
-  svg.selectAll(".bar")
+  const bars = svg.selectAll(".bar")
     .data(data)
     .enter()
     .append("rect")
       .attr("x", d => x(d.Card))
-      .attr("y", d => y(d.Successes))
+      .attr("y", d => height)
       .attr("width", x.bandwidth())
-      .attr("height", d => height - y(d.Successes))
-      .attr("fill", "#3F00FF")
+      .attr("height", d => 0)
+      .attr("fill", "#3F00FF");
+  bars.transition()
+    .delay(100)
+    .duration(800)
+    .attr("y", d => y(d.Successes))
+    .attr("height", d => height - y(d.Successes));
 };
