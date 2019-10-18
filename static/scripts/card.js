@@ -82,7 +82,10 @@ $(function() {
     else if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
   });
-  $('.btn--next').click(() => endDeckSession(deck));
+  $('.btn--next').click(() => endDeckSession(deck, 'Successes'));
+  $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'Successes'));
+  $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'Failures'));
+  $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'Percentage'));
 
   nextDoorEvent();  // gets first card
 });
