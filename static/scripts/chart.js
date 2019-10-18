@@ -4,7 +4,8 @@ const endDeckSession = (deck) => {
   $('.summary-component').show();
   const data = deck.map(card => ({
     Card: `Card #${card.id}`,
-    Successes: card.performance.filter(result => result).length,
+    // Successes: card.performance.filter(result => result).length,
+    Successes: Math.floor(Math.random() * 5)
   }));
   renderPerformanceChart(data);
 };
@@ -41,7 +42,7 @@ const renderPerformanceChart = (data) => {
   svg.append("g")
     .call(d3.axisLeft(y));
 
-  svg.selectAll("mybar")
+  svg.selectAll(".bar")
     .data(data)
     .enter()
     .append("rect")
