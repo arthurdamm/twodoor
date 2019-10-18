@@ -15,4 +15,5 @@ $(function() {
 function backHome() {
   $('.home-component').hide();
   $('.game-component').show();
+  $('[name=text-answer]').focus();
 }
