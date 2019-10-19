@@ -11,6 +11,7 @@ const endDeckSession = (deck, variable) => {
     Percentage: card.performance.length ? (x / card.performance.length) * 100 : 0,
   }));
   renderPerformanceChart(data, variable);
+  renderSummaryTemplate(data);
 };
 
 const renderPerformanceChart = (data, variable) => {
@@ -40,7 +41,7 @@ const renderPerformanceChart = (data, variable) => {
       .style("text-anchor", "end");
 
   const y = d3.scaleLinear()
-    .domain([0, variable == 'Percentage' ? 100 : 10])
+    .domain(variable == "Percentage" ? [0, 100] : d3.extent(data, d => d[variable]))
     .range([height, 0]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -60,7 +61,7 @@ const renderPerformanceChart = (data, variable) => {
       .attr("y", d => height)
       .attr("width", x.bandwidth())
       .attr("height", d => 0)
-      .attr("fill", variable === 'Successes' ? "#3F00FF" : "red");
+      .attr("fill", variable === "Successes" ? "green" : variable == "Failures" ? "red" : "#3F00FF");
   bars.transition()
     .delay(100)
     .duration(800)
