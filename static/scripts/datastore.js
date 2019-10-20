@@ -74,3 +74,12 @@ const getCardTemplate = (json, i) => {
   };
   return {...json, ...card};
 };
+
+
+const mapDemoPerformances = (deck, demoPerformances) => {
+  demoPerformances.forEach((l, i) => deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)]);
+  return deck;
+}
+
+const getRandomPerformance = (length) =>
+  [...Array(length)].map(x => Math.floor(Math.random() * 2));

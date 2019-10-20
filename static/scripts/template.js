@@ -25,7 +25,7 @@ const renderCardTemplate = json => `
 
 const renderSummaryTemplate = summary => `
     <h3>${summary.title}</h3>
-    <p class="summary-motivational">${summary.motivational}</p>
-    <p class="summary-score">${summary.avg_pct}</p>
-    <p class="summary-conditional">${summary.conditional}</p>
+    <p class="summary-motivational">${summary.motivationalText}</p>
+    <p class="summary-score">${summary.avgPct}</p>
+    <p class="summary-conditional">${summary.conditionalText}</p>
     <p class="summary-emoji">${summary.emoji}</p>`;
