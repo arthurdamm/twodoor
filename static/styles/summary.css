@@ -5,6 +5,7 @@
   text-align: center;
   width: 50%;
   margin: auto;
+  padding-top: 1rem;
 }
 
 .chart-buttons {
@@ -23,7 +24,27 @@
 
 .summary-template {
   margin: auto;
+  padding-top: 2rem;
 }
 
-.summary-motivational, .summary-title .summary-conditional, .summary-emoji {
+h3.summary-title {
+  font-size: 2.2rem;
+}
+
+p.summary {
+}
+
+p.summary-emoji {
+  font-size: 5rem;
+}
+
+p.summary-conditional {
+  font-style: italic;
+}
+
+p.summary-score span {
+  text-decoration: underline;
+}
+p.summary-motivational, p.summary-score, p.summary-conditional {
+  font-size: 1.5rem;
 }

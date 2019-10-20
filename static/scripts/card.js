@@ -80,6 +80,8 @@ $(function() {
       nextDoorEvent();
     else if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
+    else if (e.which == 40)  // down arrow
+      endDeckSession(deck, 'successes')
   });
   $('.btn--next').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'successes'));
