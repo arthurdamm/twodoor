@@ -80,11 +80,14 @@ $(function() {
       nextDoorEvent();
     else if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
+    else if (e.which == 40)  // down arrow
+      endDeckSession(deck, 'successes')
   });
-  $('.btn--next').click(() => endDeckSession(deck, 'Successes'));
-  $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'Successes'));
-  $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'Failures'));
-  $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'Percentage'));
+  $('.btn--next').click(() => endDeckSession(deck, 'successes'));
+  $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'successes'));
+  $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'failures'));
+  $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'percentage'));
+  $('.card-bar-chart--btn-demo').click(() => endDeckSession(deck, 'demo'));
 
   nextDoorEvent();  // gets first card
 });

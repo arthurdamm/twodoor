@@ -65,37 +65,21 @@ const getDeck = function (arg) {
   return deck.map((json, i) => getCardTemplate(json, i));
 };
 
-const getCardTemplate = function (json, i) {
-  console.log("Template:", JSON.stringify(json, i));
-  const template =`
-          <div class="card front">
-              <img class="card-img-top" src="${json.image}" alt="card image cap">
-              <div class="card-body">
-                  <h5 class="card-title">Question</h5>
-                  <p class="card-text">${json.question}</p>
-              </div>
-          </div>
-          <div class="card back">
-              <div class="card-body">
-                  <h5 class="card-title">Answer</h5>
-                  <p class="card-text">${json.answer}</p>
-              </div>
-          </div>
-          <div class="card success">
-              <div class="card-body">
-                  <h5 class="card-icon">&#9989</h5>
-              </div>
-          </div>
-          <div class="card fail" style="width: 100%;">
-          <div class="card-body">
-              <h5 class="card-icon">&#10060</h5>
-          </div>
-      </div>
-      `;
+const getCardTemplate = (json, i) => {
+  console.log("Template NEW:", JSON.stringify(json, i));
   const card = {
     "id": i,
-    "html": template,
+    "html": renderCardTemplate(json),
     "performance": [],
   };
   return {...json, ...card};
 };
+
+
+const mapDemoPerformances = (deck, demoPerformances) => {
+  demoPerformances.forEach((l, i) => deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)]);
+  return deck;
+}
+
+const getRandomPerformance = (length) =>
+  [...Array(length)].map(x => Math.floor(Math.random() * 2));
