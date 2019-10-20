@@ -41,12 +41,12 @@ const renderPerformanceSummary = data => {
 
 const renderPerformanceChart = (data, variable) => {
   console.log("renderPerformanceChart()", data);
-  const margin = {top: 30, right: 30, bottom: 70, left: 60}, 
+  const margin = {top: 50, right: 30, bottom: 70, left: 60}, 
       width = 460 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;
 
-  $("#card-bar-chart").empty();
-  const svg = d3.select("#card-bar-chart")
+  $(".card-bar-chart").empty();
+  const svg = d3.select(".card-bar-chart")
     .append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)

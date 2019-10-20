@@ -1,9 +1,10 @@
 .summary-component {
   display: flex;
-  /*text-align: center;*/
   position: relative;
   flex-direction: row;
-  border: 1px solid red;
+  text-align: center;
+  width: 50%;
+  margin: auto;
 }
 
 .chart-buttons {
@@ -12,10 +13,17 @@
   flex-direction: row;
 }
 
-.btn2 {
+.card-bar-chart {
 }
 
 .btn2.card-bar-chart--btn-demo {
   position: absolute;
   right: 0;
+}
+
+.summary-template {
+  margin: auto;
+}
+
+.summary-motivational, .summary-title .summary-conditional, .summary-emoji {
 }
