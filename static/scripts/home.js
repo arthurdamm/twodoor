@@ -17,6 +17,8 @@ $(function() {
     $('.summary-component').hide()
     $('.home-component').show();
   })
+
+  LearningGame();
 })
 
 const showGame = () => {

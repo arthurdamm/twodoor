@@ -1,54 +1,9 @@
-$(function() {
+const LearningGame = () => {
   let nextDoor;
-  let deck;
   let currentDoor = $('#door2');
+  let deck;
   let animating = false, answered = false;
-  $('[name=text-answer]').focus();
-  // animating = true;
-
-  $('[name=text-answer]').keydown(function (e) {
-    if (e.which == 13 && !animating && !answered) {
-      answered = true;
-      if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
-        let userAnswer = currentDoor.children('.success')[0];
-        if (getComputedStyle(userAnswer).visibility == 'hidden') {
-          currentDoor.children('.success').css('visibility', 'visible');
-          animate();
-          setTimeout(nextDoorEvent, 700);
-        } else
-          nextDoorEvent();
-        currentDoor.children('.back').css('visibility', 'visible');
-        currentDoor.children('.back').css('position', 'relative');
-        $('.btn--next').css('visibility', 'visible');
-      } else {
-        let userAnswer = currentDoor.children('.fail')[0];
-        currentDoor.toggleClass('flipme');
-        if (getComputedStyle(userAnswer).visibility == 'hidden')
-          currentDoor.children('.fail').css('visibility', 'visible');
-          setTimeout(nextDoorEvent, 1500);
-      }
-    }
-  });
-
-  let zPos = 0;
-  let counter = 0;
-  const increment = Math.PI / 100;
-  function animate() {
-      let zAnimate = currentDoor.children('.success')[0];
-    zAnimate.style.transform = `translate3d(0, 0, ${zPos}px)`;
-    zPos = Math.sin(1.55 * counter) * 155;
-    counter += increment;
-    if (counter >= 2) {
-      zPos = 0; counter = 0;
-      return;
-    } else
-      requestAnimationFrame(animate);
-  }
-
-  $(".flippable").click(function() {
-    $(this).toggleClass('flipme');
-    $('[name=text-answer]').focus();
-  });
+  const animate = Animator();
 
   const nextDoorEvent = function() {
     if (animating) return;
@@ -74,6 +29,30 @@ $(function() {
     }, 500);
   }
 
+  $('[name=text-answer]').keydown(function (e) {
+    if (e.which == 13 && !animating && !answered) {
+      answered = true;
+      if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
+        let userAnswer = currentDoor.children('.success')[0];
+        if (getComputedStyle(userAnswer).visibility == 'hidden') {
+          currentDoor.children('.success').css('visibility', 'visible');
+          animate(currentDoor.children('.success')[0]);
+          setTimeout(nextDoorEvent, 700);
+        } else
+          nextDoorEvent();
+        currentDoor.children('.back').css('visibility', 'visible');
+        currentDoor.children('.back').css('position', 'relative');
+        $('.btn--next').css('visibility', 'visible');
+      } else {
+        let userAnswer = currentDoor.children('.fail')[0];
+        currentDoor.toggleClass('flipme');
+        if (getComputedStyle(userAnswer).visibility == 'hidden')
+          currentDoor.children('.fail').css('visibility', 'visible');
+          setTimeout(nextDoorEvent, 1500);
+      }
+    }
+  });
+
   $(document).on('keydown', function(e) {
     let tag = e.target.tagName.toLowerCase();
     if (e.which === 39)  // right arrow
@@ -83,6 +62,12 @@ $(function() {
     else if (e.which == 40)  // down arrow
       endDeckSession(deck, 'successes')
   });
+
+  $(".flippable").click(function() {
+    $(this).toggleClass('flipme');
+    $('[name=text-answer]').focus();
+  });
+
   $('.btn--next').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'failures'));
@@ -93,9 +78,9 @@ $(function() {
     deck = newDeck;
     nextDoorEvent();
   }
-});
+};
 
-function getNextCard(currentDoor, deck) {
+const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
   return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
@@ -105,14 +90,37 @@ function getNextCard(currentDoor, deck) {
   return deck[0];  // default
 }
 
-function getCard(currentDoor, deck) {
-  return deck[parseInt(currentDoor.attr('card-id'))];
-}
+const getCard = (currentDoor, deck) =>
+  deck[parseInt(currentDoor.attr('card-id'))];
+
+const Animator = () => {
+  let zPos = 0;
+  let zDelta = 0;
+  let element;
+  const increment = Math.PI / 100;
+
+  const animate = () => {
+    element.style.transform = `translate3d(0, 0, ${zPos}px)`;
+    zPos = Math.sin(1.55 * zDelta) * 155;
+    zDelta += increment;
+    if (zDelta >= 2) {
+      zPos = 0; zDelta = 0;
+      return;
+    } else
+      requestAnimationFrame(animate);
+  };
+
+  return (_element) => {
+    element = _element;
+    animate();
+  }
+};
 
 function resetTimer() {
-document.getElementById('timer').innerHTML =
-  005 + ":" + 00;
+  document.getElementById('timer').innerHTML =
+    005 + ":" + 00;
 }
+
 function startTimer() {
   var currentTime = document.getElementById('timer').innerHTML;
   var timeArray = currentTime.split(/[:]+/);
