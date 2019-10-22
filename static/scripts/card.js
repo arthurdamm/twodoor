@@ -1,6 +1,6 @@
 const LearningGame = () => {
-  let nextDoor;
   let currentDoor = $('#door2');
+  let nextDoor;
   let deck;
   let animating = false, answered = false;
   const animate = Animator();
@@ -9,13 +9,11 @@ const LearningGame = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
-
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     const card = getNextCard(currentDoor, deck);
     nextDoor.html(card.html)
     nextDoor.attr('card-id', card.id);
     nextDoor.fadeIn(1);
-
     currentDoor.addClass('slide');
     currentDoor.fadeOut(500);
     animating = true;
@@ -53,12 +51,13 @@ const LearningGame = () => {
     }
   });
 
-  $(document).on('keydown', function(e) {
-    let tag = e.target.tagName.toLowerCase();
-    if (e.which === 39)  // right arrow
-      nextDoorEvent();
-    else if (e.which == 37)  // left arrow
+  $(document).on('keydown', (e) => {
+    if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
+    else if (e.which == 38) // up arrow
+      showGame();
+    else if (e.which === 39)  // right arrow
+      nextDoorEvent();
     else if (e.which == 40)  // down arrow
       endDeckSession(deck, 'successes')
   });
