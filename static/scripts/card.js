@@ -5,7 +5,7 @@ const LearningGame = () => {
   let animating = false, answered = false;
   const animate = Animator();
 
-  const nextDoorEvent = function() {
+  const nextDoorEvent = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
     $('[name=text-answer]').focus();
@@ -27,31 +27,35 @@ const LearningGame = () => {
     }, 500);
   }
 
-  $('[name=text-answer]').keydown(function (e) {
-    if (e.which == 13 && !animating && !answered) {
-      answered = true;
-      if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
-        let userAnswer = currentDoor.children('.success')[0];
-        if (getComputedStyle(userAnswer).visibility == 'hidden') {
-          currentDoor.children('.success').css('visibility', 'visible');
-          animate(currentDoor.children('.success')[0]);
-          setTimeout(nextDoorEvent, 700);
-        } else
-          nextDoorEvent();
-        currentDoor.children('.back').css('visibility', 'visible');
-        currentDoor.children('.back').css('position', 'relative');
-        $('.btn--next').css('visibility', 'visible');
-      } else {
-        let userAnswer = currentDoor.children('.fail')[0];
-        currentDoor.toggleClass('flipme');
-        if (getComputedStyle(userAnswer).visibility == 'hidden')
-          currentDoor.children('.fail').css('visibility', 'visible');
-          setTimeout(nextDoorEvent, 1500);
-      }
+  const answerEvent = () => {
+    if (animating || answered)
+      return;
+    answered = true;
+    if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
+      let userAnswer = currentDoor.children('.success')[0];
+      if (getComputedStyle(userAnswer).visibility == 'hidden') {
+        currentDoor.children('.success').css('visibility', 'visible');
+        animate(currentDoor.children('.success')[0]);
+        setTimeout(nextDoorEvent, 700);
+      } else
+        nextDoorEvent();
+      currentDoor.children('.back').css('visibility', 'visible');
+      currentDoor.children('.back').css('position', 'relative');
+      $('.btn--next').css('visibility', 'visible');
+    } else {
+      let userAnswer = currentDoor.children('.fail')[0];
+      currentDoor.toggleClass('flipme');
+      if (getComputedStyle(userAnswer).visibility == 'hidden')
+        currentDoor.children('.fail').css('visibility', 'visible');
+        setTimeout(nextDoorEvent, 1500);
     }
+  };
+
+  $('[name=text-answer]').keydown((e) => {
+    if (e.which == 13) answerEvent();
   });
 
-  $(document).on('keydown', (e) => {
+  $(document).keydown((e) => {
     if (e.which == 37)  // left arrow
       currentDoor.toggleClass('flipme');
     else if (e.which == 38) // up arrow
