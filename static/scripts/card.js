@@ -1,9 +1,8 @@
 $(function() {
   let nextDoor;
+  let deck;
   let currentDoor = $('#door2');
   let animating = false, answered = false;
-  const deck = getDeck();
-  console.log("getDeck():", deck);
   $('[name=text-answer]').focus();
   // animating = true;
 
@@ -30,6 +29,7 @@ $(function() {
       }
     }
   });
+
   let zPos = 0;
   let counter = 0;
   const increment = Math.PI / 100;
@@ -56,9 +56,9 @@ $(function() {
     $('[name=text-answer]').focus();
 
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
-    const door = getNextCard(currentDoor, deck);
-    nextDoor.html(door.html)
-    nextDoor.attr('card-id', door.id);
+    const card = getNextCard(currentDoor, deck);
+    nextDoor.html(card.html)
+    nextDoor.attr('card-id', card.id);
     nextDoor.fadeIn(1);
 
     currentDoor.addClass('slide');
@@ -88,11 +88,15 @@ $(function() {
   $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'failures'));
   $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'percentage'));
   $('.card-bar-chart--btn-demo').click(() => endDeckSession(deck, 'demo'));
-
-  nextDoorEvent();  // gets first card
+  $('.game-component')[0].changeDeck = (newDeck) => {
+    console.log("changeDeck()", newDeck);
+    deck = newDeck;
+    nextDoorEvent();
+  }
 });
 
 function getNextCard(currentDoor, deck) {
+  if (!deck) return {};
   return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
   for (const card of deck)

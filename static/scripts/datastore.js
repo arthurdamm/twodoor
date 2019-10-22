@@ -1,5 +1,49 @@
-const getDeck = function (arg) {
-  const deck = [
+const loadDeck = function (arg) {
+  const decks = {
+    "dino": getDinoDeck,
+    "color": generateColorDeck,
+  }
+  return decks[arg]().map((json, i) => getCardTemplate(json, i));
+};
+
+const generateColorDeck = (amount) => {
+  const words = ["agility", "altruism", "appeal", "beneficial", "bold", "creative", "capable", "dynamic", "drive", "empathy", "educate", "determination", "eager", "encourage", "fun", "helpful", "joy", "nice", "optimist", "polite", "quality", "reliable", "rockstar", "skilled", "spontaneous", "stellar", "teach", "tolerance", "value"];
+  const colors = ["maroon", "brown", "slategray", "gray", "azure", "deeppink", "indigo", "orchid", "navy", "dodgerblue", "teal", "paleturquoise", "olive", "mediumseagreen", "yellow", "khaki", "orangered", "crimson"];
+  const deck = [];
+  let word;
+  amount = amount || 10;
+  while (amount--)
+    deck.push({
+      color: popRandomElement(colors),
+      question: "What is this inspiration?",
+      answer: word = popRandomElement(words),
+      regex: RegExp(word),
+    });
+  return deck;
+}
+
+const getCardTemplate = (json, i) => {
+  console.log("Template NEW:", JSON.stringify(json, i));
+  const card = {
+    "id": i,
+    "html": renderCardTemplate(json),
+    "performance": [],
+  };
+  return {...json, ...card};
+};
+
+
+const mapDemoPerformances = (deck, demoPerformances) => {
+  demoPerformances.forEach((l, i) =>
+    deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)]);
+  return deck;
+}
+
+const getRandomPerformance = (length) =>
+  [...Array(length)].map(x => Math.floor(Math.random() * 2));
+
+const getDinoDeck = () =>
+  [
     {
       "image": "static/images/tRex.jpg",
       "question": "Who is this person in the picture?",
@@ -61,25 +105,3 @@ const getDeck = function (arg) {
       "regex": /morris/i,
     },
   ];
-  console.log(deck.length);
-  return deck.map((json, i) => getCardTemplate(json, i));
-};
-
-const getCardTemplate = (json, i) => {
-  console.log("Template NEW:", JSON.stringify(json, i));
-  const card = {
-    "id": i,
-    "html": renderCardTemplate(json),
-    "performance": [],
-  };
-  return {...json, ...card};
-};
-
-
-const mapDemoPerformances = (deck, demoPerformances) => {
-  demoPerformances.forEach((l, i) => deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)]);
-  return deck;
-}
-
-const getRandomPerformance = (length) =>
-  [...Array(length)].map(x => Math.floor(Math.random() * 2));
