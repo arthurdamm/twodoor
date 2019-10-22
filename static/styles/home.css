@@ -1,17 +1,21 @@
 header {
   border-bottom: .4rem solid grey;
+  margin-top: 4px;
 }
 .logo {
   object-fit: contain;
-  width: 8rem;
-  height: 8rem;
-  background: url("../images/doorCloseWhite.svg") no-repeat;
+  display: absolute;
+  /* border: .4rem solid grey; */
+  /* border-radius: 50%; */
+  width: 6rem;
+  height: 6rem;
+  background: url("../images/doorClose80px.svg") no-repeat;
   margin-left: 1%;
   margin-top: 1%;
   animation-name: moveInLeft;
 }
 .logo:hover {
-  background: url("../images/doorOpenWhite.svg") no-repeat;
+  background: url("../images/doorOpen80px.svg") no-repeat;
 }
 
 .btn:active {
@@ -36,11 +40,11 @@ header {
 
 h2 {
   display: inline-block;
-  margin-top: 8%;
+  margin-top: 5%;
 }
 .home-component--main {
   display: block;
-  font-size: 2.8rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: 2rem;
   animation-name: moveInRight;
@@ -67,8 +71,9 @@ h2 {
 
 .home-component--sub {
   display: block;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
+  margin-top: 5%;
   letter-spacing: 1.5rem;
   animation-delay: 1s;
   animation-name: moveInRight;
