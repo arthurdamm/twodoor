@@ -1,8 +1,9 @@
 const renderCardTemplate = json => `
-  <div class="card front">
-      <img class="card-img-top" src="${json.image}" alt="card image cap">
-      <div class="card-body">
-          <h5 class="card-title">Question</h5>
+  <div class="card front">` + (json.image ?
+      `<img class="card-img-top" src="${json.image}" alt="card image cap">
+      <div class="card-body">` :
+      `<div class="card-body" style="background-color: ${json.color}">`) +
+          `<h5 class="card-title">Question</h5>
           <p class="card-text">${json.question}</p>
       </div>
   </div>
