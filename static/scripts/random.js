@@ -12,3 +12,5 @@ const getRandom = (min, max) =>
 
 const removeNaN = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
+
+const sum = (list) => list.reduce((a, x) => a + x, 0);
