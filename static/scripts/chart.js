@@ -1,7 +1,6 @@
 const endDeckSession = (deck, variable) => {
   console.log('endDeckSession()', variable)
-  $('.game-component').hide();
-  $('.summary-component').show();
+  showSummary();
   let x;
   if (variable == 'demo')
     deck = mapDemoPerformances(deck, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
