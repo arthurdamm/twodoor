@@ -122,7 +122,7 @@ const Animator = () => {
 
 const startTimer = () => {
   console.log("starttime");
-  document.querySelector('.timer').time = 3;
+  document.querySelector('.timer').time = 60 * 2;
   printTimer(); 
 }
 
