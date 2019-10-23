@@ -24,11 +24,9 @@ header {
 } */
 
 .bttn:active {
-  /*transform: translateY(-2rem);*/
   box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
 .bttn:hover {
-  /*transform: translateY(-.3rem);*/
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 .home-component {
@@ -39,15 +37,18 @@ header {
   position: relative;
   margin-left: 5%;
   margin-top: 1%;
-  /* transform: translate(-50%, -50%); */
   text-align: center;
+}
+
+.deck-selector {
+  flex-direction: row;
 }
 
 h2 {
   display: inline-block;
-  margin-top: 5%;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
 }
 .home-component--main {
   display: block;
@@ -69,6 +70,12 @@ h2 {
   width: 4rem;
   background-color: blue;
   cursor: pointer;
+  vertical-align: middle;
+  margin-right: .3rem;
+}
+
+.bttn--deck1:hover, .bttn--deck2:hover {
+  transform: translateX(.6rem);
 }
 
 .bttn--animated {
