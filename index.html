@@ -23,40 +23,42 @@
     <div class="home-component">
       <div class="home-component--main">Welcome to TwoDoor!</div>
       <div class="home-component--sub">Ready to begin?</div>
-      <div class="btn__container">
-        <a href="#" class="btn btn--deck1"></a>
-        <h2 class="deck1Text">Deck 1: Face Recognition</h2>
-        <br>
-        <a href="#" class="btn btn--deck2"></a>
-        <h2 class="deck1Text">Deck 2: Random</h2>
+      <div class="bttn-container">
+        <div class = "deck-selector">
+          <a href="#" class="bttn bttn--deck1"></a>
+          <h2 class="deck1Text">Deck 1: Face Recognition</h2>
+        </div>
+        <div class = "deck-selector">
+          <a href="#" class="bttn bttn--deck2"></a>
+          <h2 class="deck1Text">Deck 2: Random</h2>
+        </div>
       </div>
     </div>
-  <div class="game-component">
-    <div class="timer"></div>
-    <div class="deck">
-      <div class="flippable door" id="door1" ontouchstart="this.classList.toggle('hover');"></div>
-      <div class="flippable door" id="door2" ontouchstart="this.classList.toggle('hover');"></div>
-    </div>
-    
-    <div class="control">
-      <div class="text-box">
-          <input type="text" name="text-answer" placeholder="...">
+    <div class="game-component">
+      <div class="timer"></div>
+      <div class="deck">
+        <div class="flippable door" id="door1" ontouchstart="this.classList.toggle('hover');"></div>
+        <div class="flippable door" id="door2" ontouchstart="this.classList.toggle('hover');"></div>
+      </div> 
+      <div class="control">
+        <div class="text-box">
+            <input type="text" name="text-answer" placeholder="...">
+        </div>
+        <div class="next-button">
+          <a href="#" class="bttn bttn--next"></a>
+        </div>
       </div>
-      <div class="next-button">
-        <a href="#" class="btn btn--next"></a>
+    </div>
+    <div class="summary-component">
+      <div class="chart-buttons">
+        <button class="bttn2 card-bar-chart--bttn-successes">Successes</button>
+        <button class="bttn2 card-bar-chart--bttn-failures">Failures</button>
+        <button class="bttn2 card-bar-chart--bttn-percentage">Percentage</button>
       </div>
+      <button class="bttn2 card-bar-chart--bttn-demo">Demo</button>
+      <div class="card-bar-chart"></div>
+      <div class="summary-template"></div>
     </div>
-  </div>
-  <div class="summary-component">
-    <div class="chart-buttons">
-      <button class="btn2 card-bar-chart--btn-successes">Successes</button>
-      <button class="btn2 card-bar-chart--btn-failures">Failures</button>
-      <button class="btn2 card-bar-chart--btn-percentage">Percentage</button>
-    </div>
-    <button class="btn2 card-bar-chart--btn-demo">Demo</button>
-    <div class="card-bar-chart"></div>
-    <div class="summary-template"></div>
-  </div>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
