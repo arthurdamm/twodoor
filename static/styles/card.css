@@ -162,17 +162,23 @@ h1 {
     display: flex;
     flex-direction: row;
     position: relative;
-    width: 42rem;
-    height: 10rem;
+    width: 40rem;
+    height: 6rem;
+    margin-bottom: 5px;
 }
 .cardLeft {
     float: left;
-    margin-right: 32rem;
-    margin-left: -20rem;
+    margin-right: 24rem;
+    margin-left: -15.5rem;
+    margin-bottom: 4rem;
     border: 5px solid blue;
-
 }
 .cardRight {
     float: right;
     border: 5px solid blue;
+    margin-bottom: 4rem;
+}
+
+.cancel-session {
+    background-image: '../images/stop.svg'
 }

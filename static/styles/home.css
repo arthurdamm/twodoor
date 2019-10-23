@@ -19,8 +19,9 @@ header {
   background: url("../images/doorOpen80px.svg") no-repeat;
 }
 
-.bttn {
-}
+/* .bttn {
+  
+} */
 
 .bttn:active {
   /*transform: translateY(-2rem);*/
