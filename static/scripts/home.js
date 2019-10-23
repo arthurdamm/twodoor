@@ -3,13 +3,13 @@ $(() => {
   LearningGame();
 
   $('.game-component')[0].deckType = "dino";
-  $('.btn--deck1').on('click', () => {
-    $('.btn--deck1').addClass('btn--animated');
+  $('.bttn--deck1').on('click', () => {
+    $('.bttn--deck1').addClass('bttn--animated');
     $('.game-component')[0].deckType = "dino";
     showGame();
   });
-  $('.btn--deck2').on('click', () => {
-    $('.btn--deck2').addClass('btn--animated');
+  $('.bttn--deck2').on('click', () => {
+    $('.bttn--deck2').addClass('bttn--animated');
     $('.game-component')[0].deckType = "color";
     showGame();
   });
