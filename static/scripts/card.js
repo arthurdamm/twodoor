@@ -81,6 +81,7 @@ const LearningGame = () => {
     deck = newDeck;
     nextDoorEvent();
   }
+  document.querySelector('.game-component').queryDeck = () => deck;
 };
 
 const getNextCard = (currentDoor, deck) => {
@@ -119,29 +120,27 @@ const Animator = () => {
   }
 };
 
-function resetTimer() {
-  document.getElementById('timer').innerHTML =
-    005 + ":" + 00;
+const startTimer = () => {
+  console.log("starttime");
+  document.querySelector('.timer').time = 3;
+  printTimer(); 
 }
 
-function startTimer() {
-  var currentTime = document.getElementById('timer').innerHTML;
-  var timeArray = currentTime.split(/[:]+/);
-  var m = timeArray[0];
-  var s = checkSecond((timeArray[1] - 1));
-  if (s == 59) 
-    m = m - 1;
-  console.log("minute=" + m, "second=" + s);
-  document.getElementById('timer').innerHTML =
-    m + ":" + s;
-  if (s > 0 || m > 0)
-    setTimeout(startTimer, 1000);
+const printTimer = () => {
+  let currentTime = document.querySelector('.timer').time--;
+  $('.timer').text(renderTime(currentTime--));
+  if (currentTime >= 0)
+    setTimeout(printTimer, 1000);
+  else {
+    console.log("timer done");
+    endDeckSession($('.game-component')[0].queryDeck(), 'failures');
+  }
 }
 
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0)
-    sec = "0" + sec; // add zero in front of numbers < 10
-  if (sec < 0)
-    sec = "59";
-  return sec;
+const renderTime = (sec) => {
+  let min = Math.floor(sec / 60);
+  let secs = (sec - min * 60) % 60;
+  if (secs < 10)
+    secs = '0' + secs;
+  return (min + ':' + secs);
 }
