@@ -127,14 +127,16 @@ input {
 }
 
 .bttn--next {
-    background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
-    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-    right: 6vh;
-    height: 110%;
-    width: 150%;
-    margin-left: 2vh;
-    /* visibility: hidden; */
+  display: inline-flex;
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  height: 4rem;
+  width: 4rem;
+  background-color: blue;
+  cursor: pointer;
+  vertical-align: middle;
 }
+
 .bttn:active {
     transform: translateY(-2rem);
     box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
