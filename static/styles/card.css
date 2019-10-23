@@ -11,7 +11,6 @@ body {
     flex-direction: column;
     height: 55vh;
     width: 55vh;
-    /* min-height: 500px; */
     margin: auto;
     margin-top: 2%;
     left: 3rem;
@@ -157,4 +156,23 @@ h1 {
     margin-top: 10%;
     height: 5rem;
     width: 5rem;
+}
+
+.instruction-component {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 42rem;
+    height: 10rem;
+}
+.cardLeft {
+    float: left;
+    margin-right: 32rem;
+    margin-left: -20rem;
+    border: 5px solid blue;
+
+}
+.cardRight {
+    float: right;
+    border: 5px solid blue;
 }
