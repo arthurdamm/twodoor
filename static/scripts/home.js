@@ -28,6 +28,7 @@ const showGame = () => {
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
+  startTimer();
 };
 
 const showSummary = () => {
