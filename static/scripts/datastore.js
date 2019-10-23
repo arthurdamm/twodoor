@@ -8,7 +8,7 @@ const loadDeck = function (arg) {
 
 const generateColorDeck = (amount) => {
   const words = ["agility", "altruism", "appeal", "beneficial", "bold", "creative", "capable", "dynamic", "drive", "empathy", "educate", "determination", "eager", "encourage", "fun", "helpful", "joy", "nice", "optimist", "polite", "quality", "reliable", "rockstar", "skilled", "spontaneous", "stellar", "teach", "tolerance", "value"];
-  const colors = ["maroon", "brown", "slategray", "gray", "azure", "deeppink", "indigo", "orchid", "navy", "dodgerblue", "teal", "paleturquoise", "olive", "mediumseagreen", "yellow", "khaki", "orangered", "crimson"];
+  const colors = ["crimson", "hotpink", "yellow", "orange", "darkgreen", "lightgreen", "cyan", "indigo", "blue", "lightgray", "darkgrey"];
   const deck = [];
   let word;
   amount = amount || 10;
