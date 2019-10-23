@@ -3,7 +3,7 @@ const FAILURE_THRESHOLD = .25;
 const TRIES_THRESHOLD = 6.0;
 
 const matchAnswer = function(answer, card) {
-  console.log("matchAnswer()", answer, card);
+  // console.log("matchAnswer()", answer, card);
   const result = answer.match(card.regex) != null ? 1 : 0;
   card.performance.push(result);
   if (card.leitnerBox)
@@ -15,7 +15,6 @@ const matchAnswer = function(answer, card) {
 }
 
 const selectNextCard = function(deck, currentCard) {
-  deck.tries ? deck.tries++ : deck.tries = 1;
   deck = staggerActiveDeck(deck);
   return selectNextCardLeitner(deck);
   const sumFails = sum(getFailRates(deck));
@@ -47,12 +46,13 @@ const selectNextCardLeitner = function(deck) {
   const card = currentDeck[Math.floor(Math.random() * currentDeck.length)];
   card.played = true;
   card.last_played = deck.leitnerRound;
-  console.log("currentDeck:", currentDeck, "\ncard:", card);
+  // console.log("currentDeck:", currentDeck, "\ncard:", card);
   return card;
 }
 
 const staggerActiveDeck = (deck) => {
   console.log("staggerActiveDeck()", deck);
+  deck.tries ? deck.tries++ : deck.tries = 1;
   const activeDeck = deck.filter(card => card.active);
   let staggering = false;
   if (!activeDeck.length) {
@@ -60,11 +60,11 @@ const staggerActiveDeck = (deck) => {
     staggering = true;
   }
   if (getDeckFailRate(activeDeck) <= FAILURE_THRESHOLD) {
-    console.log("FAILURE_THRESHOLD met:", FAILURE_THRESHOLD);
+    console.log("FAILURE_THRESHOLD met");
     staggering = true;
   }
   if (getDeckTries(deck, activeDeck) >= TRIES_THRESHOLD) {
-    console.log("TRIES_THRESHOLD met:", TRIES_THRESHOLD)
+    console.log("TRIES_THRESHOLD met")
     deck.tries = 1
     staggering = true;
   }
@@ -72,8 +72,10 @@ const staggerActiveDeck = (deck) => {
     stagger = deck.stagger ? deck.stagger++ : deck.stagger = 1;
     console.log("staggering...", stagger);
     const passiveDeck = deck.filter(card => !card.active);
+    let e;
     while (stagger-- > 0)
-      popRandomElement(passiveDeck).active = 1;
+      if (e = popRandomElement(passiveDeck))
+        e.active = 1;
   }
   console.log("activeDeck now:", deck.filter(card => card.active));
   return deck;
@@ -94,4 +96,5 @@ const getFailRates = deck => deck.map(card => getFailRate(card.performance));
 const getDeckTries = (deck, activeDeck) => {
   const deckTries = deck.tries / activeDeck.length;
   console.log("getDeckTries()", deckTries);
+  return deckTries;
 }
