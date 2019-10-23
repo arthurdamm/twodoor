@@ -18,7 +18,7 @@ const selectNextCard = function(deck, currentCard) {
   deck.tries ? deck.tries++ : deck.tries = 1;
   deck = staggerActiveDeck(deck);
   return selectNextCardLeitner(deck);
-  const sumFails = sum(failRateList(deck));
+  const sumFails = sum(getFailRates(deck));
   const randomBar = Math.random() * sumFails;
   let i = 0, subSumFails = 0
   for (; i < deck.length; i++)
@@ -54,10 +54,23 @@ const selectNextCardLeitner = function(deck) {
 const staggerActiveDeck = (deck) => {
   console.log("staggerActiveDeck()", deck);
   const activeDeck = deck.filter(card => card.active);
-  if (!activeDeck.length || getDeckFailRate(activeDeck) <= FAILURE_THRESHOLD
-    || (deck.tries / activeDeck.length >= TRIES_THRESHOLD && (deck.tries = 1))) {
-    console.log("staggering...");
-    let stagger = deck.stagger ? deck.stagger++ : deck.stagger = 1;
+  let staggering = false;
+  if (!activeDeck.length) {
+    console.log("ActiveDeck empty");
+    staggering = true;
+  }
+  if (getDeckFailRate(activeDeck) <= FAILURE_THRESHOLD) {
+    console.log("FAILURE_THRESHOLD met:", FAILURE_THRESHOLD);
+    staggering = true;
+  }
+  if (getDeckTries(deck, activeDeck) >= TRIES_THRESHOLD) {
+    console.log("TRIES_THRESHOLD met:", TRIES_THRESHOLD)
+    deck.tries = 1
+    staggering = true;
+  }
+  if (staggering) {
+    stagger = deck.stagger ? deck.stagger++ : deck.stagger = 1;
+    console.log("staggering...", stagger);
     const passiveDeck = deck.filter(card => !card.active);
     while (stagger-- > 0)
       popRandomElement(passiveDeck).active = 1;
@@ -67,13 +80,18 @@ const staggerActiveDeck = (deck) => {
 }
 
 const getDeckFailRate = deck => {
-  const list = failRateList(deck);
-  const deckFailureRate = list.length ? sum(list) / list.length : 1;
-  console.log("deckFailureRate()", deckFailureRate);
-  return deckFailureRate;  
+  const failRates = getFailRates(deck);
+  const deckFailRate = failRates.length ? sum(failRates) / failRates.length : 1;
+  console.log("deckFailRate()", deckFailRate);
+  return deckFailRate;  
 }
 
 const getFailRate = performance => !performance.length ? 1
     : 1 - (performance.reduce((a, x) => a + x, 0) / performance.length);
 
-const failRateList = deck => deck.map(card => getFailRate(card.performance));
+const getFailRates = deck => deck.map(card => getFailRate(card.performance));
+
+const getDeckTries = (deck, activeDeck) => {
+  const deckTries = deck.tries / activeDeck.length;
+  console.log("getDeckTries()", deckTries);
+}
