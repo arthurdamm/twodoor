@@ -11,7 +11,6 @@ body {
     flex-direction: column;
     height: 55vh;
     width: 55vh;
-    /* min-height: 500px; */
     margin: auto;
     margin-top: 2%;
     left: 3rem;
@@ -157,4 +156,29 @@ h1 {
     margin-top: 10%;
     height: 5rem;
     width: 5rem;
+}
+
+.instruction-component {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 40rem;
+    height: 6rem;
+    margin-bottom: 5px;
+}
+.cardLeft {
+    float: left;
+    margin-right: 24rem;
+    margin-left: -15.5rem;
+    margin-bottom: 4rem;
+    border: 5px solid blue;
+}
+.cardRight {
+    float: right;
+    border: 5px solid blue;
+    margin-bottom: 4rem;
+}
+
+.cancel-session {
+    background-image: '../images/stop.svg'
 }
