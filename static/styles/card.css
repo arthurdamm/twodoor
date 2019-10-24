@@ -21,10 +21,11 @@ body {
 .deck {
     position: relative;
     height: 25rem;
+    perspective: 1000px;
 }
 
 .door {
-    perspective: 1000px;
+    
     float: left;
     cursor: pointer;
     position: absolute;
@@ -59,11 +60,14 @@ body {
     position: absolute;
     top: 0;
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+    background-color: white;
+    color: black;
 
 }
 
 .front {
     z-index: -1;
+    transform: rotateY(0deg); /* Firefox 31 fix */
 }
 
 .back {
