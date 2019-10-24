@@ -7,6 +7,7 @@ const loadDeck = function (arg) {
 };
 
 const generateColorDeck = (amount) => {
+  console.log("generateColorDeck()...");
   const words = ["agility", "altruism", "appeal", "beneficial", "bold", "creative", "capable", "dynamic", "drive", "empathy", "educate", "determination", "eager", "encourage", "fun", "helpful", "joy", "nice", "optimist", "polite", "quality", "reliable", "rockstar", "skilled", "spontaneous", "stellar", "teach", "tolerance", "value"];
   const colors = ["crimson", "hotpink", "yellow", "orange", "darkgreen", "lightgreen", "cyan", "indigo", "blue", "lightgray"];
   const deck = [];
@@ -19,6 +20,7 @@ const generateColorDeck = (amount) => {
       answer: word = popRandomElement(words),
       regex: RegExp(word),
     });
+  console.log("done.");
   return deck;
 }
 

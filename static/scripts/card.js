@@ -35,7 +35,7 @@ const LearningGame = () => {
       let userAnswer = currentDoor.children('.success')[0];
       if (getComputedStyle(userAnswer).visibility == 'hidden') {
         currentDoor.children('.success').css('visibility', 'visible');
-        animate(currentDoor.children('.success')[0]);
+        animate(userAnswer);
         setTimeout(nextDoorEvent, 700);
       } else
         nextDoorEvent();
@@ -86,7 +86,7 @@ const LearningGame = () => {
 
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
-  return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
+  // return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
   for (const card of deck)
     if (card.id === cardId)

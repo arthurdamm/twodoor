@@ -2,7 +2,7 @@ $(() => {
   showHome();
   LearningGame();
 
-  $('.game-component')[0].deckType = "dino";
+  $('.game-component')[0].deckType = "color";
   $('.deck-selector-1').on('click', () => {
     console.log('click1');
     $('.bttn--deck1').addClass('bttn--animated');

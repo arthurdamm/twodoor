@@ -21,11 +21,11 @@ body {
 .deck {
     position: relative;
     height: 25rem;
-    perspective: 1000px;
+    border: solid red;
 }
 
 .door {
-    
+    perspective: 1000px;
     float: left;
     cursor: pointer;
     position: absolute;
@@ -74,20 +74,18 @@ body {
     transform: rotateY(180deg);
     font-size: 1.8rem;
     font-family: Verdana;
-    padding-top: 5rem;
+/*    padding-top: 5rem;*/
 }
 
 .success {
-    /* background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
-    background: rgb(0, 226, 0);
-    padding-top: 5rem;
+     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); 
+    /*background: rgb(0, 226, 0);*/
     visibility: hidden;
     transform: translate3d(0);
 }
 .fail {
-    /* background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%); */
-    background: rgb(189, 68, 68);
-    padding-top: 5rem;
+     background-image: linear-gradient(120deg, pink 0%, red 100%); 
+    /*background: rgb(189, 68, 68);*/
     visibility: hidden;
     transform: translate3d(0);
 }
@@ -95,13 +93,19 @@ body {
     font-size: 3.1rem;
 }
 
+.card-img-top {
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .control {
     display: flex;
-    position: absolute;
+    /*position: absolute;*/
     justify-content: space-between;
     /* margin-top: 25vh; */
     margin-left: 1%; 
     bottom: -20vh;
+    border: 1px solid yellow;
 
     /* margin-bottom: 5vh; */
 }
