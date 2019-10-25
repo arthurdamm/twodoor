@@ -145,8 +145,12 @@ input {
     transform: translateY(-.3rem);
 }
 
-.bttn:hover {
-    transform: translateY(-.3rem);
+.bttn--next:hover {
+    transform: translateX(.3rem);
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+.bttn--cancel:hover {
+    transform: translateX(-.3rem);
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
