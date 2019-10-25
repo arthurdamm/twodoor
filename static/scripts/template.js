@@ -18,7 +18,7 @@ const renderCardTemplate = json => `
           <h5 class="card-icon">&#9989</h5>
       </div>
   </div>
-  <div class="card fail" style="width: 100%; background-color: yellow;">
+  <div class="card fail">
   <div class="card-body">
       <h5 class="card-icon">&#10060</h5>
   </div>
