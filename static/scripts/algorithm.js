@@ -1,6 +1,6 @@
 const LEITNER_BOXES = 5;
 const FAILURE_THRESHOLD = .25;
-const TRIES_THRESHOLD = 6.0;
+const TRIES_THRESHOLD = 7.0;
 
 const matchAnswer = function(answer, card) {
   // console.log("matchAnswer()", answer, card);

@@ -16,7 +16,7 @@ const generateColorDeck = (amount) => {
   while (amount--)
     deck.push({
       color: popRandomElement(colors),
-      question: "What is this inspiration?",
+      question: "What inspiration is this?",
       answer: word = popRandomElement(words),
       regex: RegExp(word),
     });
@@ -49,20 +49,20 @@ const getDinoDeck = () =>
     {
       "image": "static/images/tRex.jpg",
       "question": "Who is this person in the picture?",
-      "answer": "Arthur Damm!",
-      "regex": /(arthur)|(d.*a.*m.*m)/i,
+      "answer": "Arthur",
+      "regex": /(arthur)/i,
     },
     {
       "image": "static/images/velociraptor.jpg",
       "question": "Who is in this picture?",
-      "answer": "Scout Curry!",
-      "regex": /(Scout)|(Curry)/i,
+      "answer": "Scout",
+      "regex": /(Scout)/i,
     },
     {
       "image": "static/images/brontosaurus.jpg",
       "question": "What dino is this?",
-      "answer": "Brontosaurus...",
-      "regex": /bronto?saurus/i,
+      "answer": "Bronto",
+      "regex": /bronto/i,
     },
     {
       "image": "static/images/teradactyl.png",

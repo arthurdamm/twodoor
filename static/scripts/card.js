@@ -86,7 +86,7 @@ const LearningGame = () => {
 
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
-  // return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
+  return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
   for (const card of deck)
     if (card.id === cardId)
@@ -122,7 +122,7 @@ const Animator = () => {
 
 const startTimer = () => {
   console.log("starttime");
-  document.querySelector('.timer').time = 60 * 2;
+  document.querySelector('.timer').time = 60 * 3;
   printTimer(); 
 }
 

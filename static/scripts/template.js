@@ -15,11 +15,13 @@ const renderCardTemplate = json => `
   </div>
   <div class="card success">
       <div class="card-body">
+          <h5 class="card-result">Success!</h5>
           <h5 class="card-icon">&#9989</h5>
       </div>
   </div>
   <div class="card fail">
   <div class="card-body">
+      <h5 class="card-result">Failure</h5>
       <h5 class="card-icon">&#10060</h5>
   </div>
 </div>`;
