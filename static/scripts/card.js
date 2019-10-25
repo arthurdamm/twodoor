@@ -123,6 +123,7 @@ const Animator = () => {
 const startTimer = () => {
   console.log("starttime");
   document.querySelector('.timer').time = 60 * 3;
+  clearTimeout(document.querySelector('.timer').timeoutID)
   printTimer(); 
 }
 
@@ -130,7 +131,7 @@ const printTimer = () => {
   let currentTime = document.querySelector('.timer').time--;
   $('.timer').text(renderTime(currentTime--));
   if (currentTime >= 0)
-    setTimeout(printTimer, 1000);
+    document.querySelector('.timer').timeoutID = setTimeout(printTimer, 1000);
   else {
     console.log("timer done");
     endDeckSession($('.game-component')[0].queryDeck(), 'failures');
