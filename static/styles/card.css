@@ -178,6 +178,7 @@ input {
   cursor: pointer;
   vertical-align: middle;
   float: right;
+  margin-left: 5px; /* merge */
 }
 
 .bttn:active {
@@ -189,8 +190,12 @@ input {
     transform: translateY(-.3rem);
 }
 
-.bttn:hover {
-    transform: translateY(-.3rem);
+.bttn--next:hover {
+    transform: translateX(.3rem);
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+.bttn--cancel:hover {
+    transform: translateX(-.3rem);
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
@@ -205,28 +210,40 @@ h1 {
 }
 
 .instruction-component {
+    z-index: -1;
     display: flex;
     flex-direction: row;
     position: relative;
-    width: 40rem;
+    width: 46rem;
     height: 6rem;
-    margin-bottom: 5px;
+    bottom: -4rem;
 }
 .cardLeft {
     float: left;
-    margin-right: 24rem;
-    margin-left: -15.5rem;
-    margin-bottom: 4rem;
-    border: 5px solid blue;
-    visibility: hidden;
+    margin-right: 33.5rem;
+    margin-left: -20.5rem;
+    margin-bottom: 3.5rem;
+    padding: .5rem;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 .cardRight {
     float: right;
-    border: 5px solid blue;
-    margin-bottom: 4rem;
-    visibility: hidden;
+    padding: .5rem;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    margin-bottom: 3.5rem;
 }
 
-.cancel-session {
-    background-image: '../images/stop.svg'
+/* .cancel-button {
+    height: 80%;
+    width: 80%;
+} */
+.bttn--cancel {
+    display: inline-flex;
+    height: 4rem;
+    width: 4rem;
+    background-image: linear-gradient(120deg, #ff4444 0%, #ff7d7d 100%);
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: -30rem;
 }

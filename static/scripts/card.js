@@ -71,7 +71,8 @@ const LearningGame = () => {
     $('[name=text-answer]').focus();
   });
 
-  $('.bttn--next').click(() => endDeckSession(deck, 'successes'));
+  $('.bttn--next').click(() => answerEvent());
+  $('.bttn--cancel').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--bttn-successes').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--bttn-failures').click(() => endDeckSession(deck, 'failures'));
   $('.card-bar-chart--bttn-percentage').click(() => endDeckSession(deck, 'percentage'));
