@@ -56,18 +56,12 @@ const LearningGame = () => {
   });
 
   $(document).keydown((e) => {
-    if (e.which == 37)  // left arrow
-      currentDoor.toggleClass('flipme');
-    else if (e.which == 38) // up arrow
-      showGame();
-    else if (e.which === 39)  // right arrow
-      nextDoorEvent();
-    else if (e.which == 40)  // down arrow
-      endDeckSession(deck, 'successes')
   });
 
   $(".flippable").click(function() {
-    $(this).toggleClass('flipme');
+    const that = $(this);
+    that.addClass('shakeme');
+    setTimeout(() => that.removeClass('shakeme'), 500);
     $('[name=text-answer]').focus();
   });
 
