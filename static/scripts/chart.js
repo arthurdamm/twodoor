@@ -2,6 +2,7 @@ const endDeckSession = (deck, variable) => {
   console.log('endDeckSession()', variable)
   showSummary();
   let x;
+  deck = JSON.parse(JSON.stringify(deck));
   if (variable == 'demo')
     deck = mapDemoPerformances(deck, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
   console.log('deck now', deck)

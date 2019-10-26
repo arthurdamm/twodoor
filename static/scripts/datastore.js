@@ -18,7 +18,7 @@ const generateColorDeck = (amount) => {
       color: popRandomElement(colors),
       question: "What inspiration is this?",
       answer: word = popRandomElement(words),
-      regex: RegExp(word),
+      regex: RegExp(word, "i"),
     });
   console.log("done.");
   return deck;
