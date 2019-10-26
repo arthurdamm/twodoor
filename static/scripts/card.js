@@ -35,7 +35,7 @@ const LearningGame = () => {
       let userAnswer = currentDoor.children('.success')[0];
       if (getComputedStyle(userAnswer).visibility == 'hidden') {
         currentDoor.children('.success').css('visibility', 'visible');
-        animate(currentDoor.children('.success')[0]);
+        animate(userAnswer);
         setTimeout(nextDoorEvent, 700);
       } else
         nextDoorEvent();
@@ -123,7 +123,8 @@ const Animator = () => {
 
 const startTimer = () => {
   console.log("starttime");
-  document.querySelector('.timer').time = 60 * 2;
+  document.querySelector('.timer').time = 60 * 3;
+  clearTimeout(document.querySelector('.timer').timeoutID)
   printTimer(); 
 }
 
@@ -131,7 +132,7 @@ const printTimer = () => {
   let currentTime = document.querySelector('.timer').time--;
   $('.timer').text(renderTime(currentTime--));
   if (currentTime >= 0)
-    setTimeout(printTimer, 1000);
+    document.querySelector('.timer').timeoutID = setTimeout(printTimer, 1000);
   else {
     console.log("timer done");
     endDeckSession($('.game-component')[0].queryDeck(), 'failures');

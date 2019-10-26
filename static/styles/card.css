@@ -1,9 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
 html {
     height: 100%;
     width: 100%;
 }
+
 body {
-     background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+  font-family: verdana;
 }
 
 .game-component {
@@ -11,8 +18,8 @@ body {
     flex-direction: column;
     height: 55vh;
     width: 55vh;
-    margin: auto;
-    margin-top: 2%;
+    margin: 0 auto;
+    /*margin-top: 2%;*/
     left: 3rem;
     position: relative;
     background-position: top;
@@ -20,14 +27,15 @@ body {
 
 .deck {
     position: relative;
-    height: 25rem;
+    height: 60vh;
+    margin: 0 auto;
 }
 
 .door {
     perspective: 1000px;
-    float: left;
     cursor: pointer;
     position: absolute;
+    margin: 0 auto;
 }
 .flippable {
     transition: 0.5s;
@@ -48,10 +56,10 @@ body {
     height: 60vh;
     min-width: 5rem;
     max-height: 150%;
-    line-height: 100%;
+    /*line-height: 100%;*/
     text-align: center;
-    font-size: 1rem;
-    border-radius: .5rem;
+    /*font-size: 1rem;*/
+    border-radius: .688rem;
 }
 
 .front, .back, .success, .fail {
@@ -59,63 +67,99 @@ body {
     position: absolute;
     top: 0;
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
-
+    background-color: white;
+    color: black;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .front {
     z-index: -1;
+    transform: rotateY(0deg); /* Firefox 31 fix */
 }
 
 .back {
     transform: rotateY(180deg);
     font-size: 1.8rem;
-    font-family: Verdana;
-    padding-top: 5rem;
 }
 
 .success {
-    /* background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); */
-    background: rgb(0, 226, 0);
-    padding-top: 5rem;
+     background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); 
+    /*background: rgb(0, 226, 0);*/
     visibility: hidden;
     transform: translate3d(0);
+    align-items: center;
 }
 .fail {
-    /* background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%); */
-    background: rgb(189, 68, 68);
-    padding-top: 5rem;
+    background-image: linear-gradient(120deg, pink 0%, red 100%); 
+    /*background: rgb(189, 68, 68);*/
     visibility: hidden;
     transform: translate3d(0);
+    align-items: center;
 }
-.success h5 {
-    font-size: 3.1rem;
+.success h5, .fail h5 {
+  font-size: 2.5rem;
+}
+
+
+/* Card Content */
+.card-img-top {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+.card-body {
+}
+
+.card-text {
+  font-size: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.75rem;
+  /*margin-top: 1.5rem;*/
 }
 
 .control {
     display: flex;
-    position: absolute;
-    justify-content: space-between;
-    /* margin-top: 25vh; */
-    margin-left: 1%; 
-    bottom: -20vh;
-
-    /* margin-bottom: 5vh; */
+    /*position: fixed;*/
+    /*position: relative;*/
+    /*float:left;*/
+    /*bottom: 1rem;*/
+    /*justify-content: space-between;*/
+    justify-content: center;
+    margin: auto;
+    margin-top: 2rem;
+    align-items: center;
 }
 
 .text-box {
     height: 8vh;
     width: 47.5vh;
     border-radius: 5px;
-    padding: 2.25vh;
+    /*padding: 2.25vh;*/
     /* margin-bottom: 5%; */
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-    margin-left: -1.75rem;
+    margin-left: -2.5rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 input {
     height: 3.75vh;
     width: 40vh;
+}
+
+.next-button {
+  position: relative;
+  right: -1rem;
 }
 
 .bttn:link,
@@ -133,7 +177,8 @@ input {
   width: 4rem;
   cursor: pointer;
   vertical-align: middle;
-  margin-left: 5px;
+  float: right;
+  margin-left: 5px; /* merge */
 }
 
 .bttn:active {
