@@ -14,16 +14,19 @@ header {
   margin-top: 1%;
   animation-name: moveInLeft;
 }
+
 .logo:hover {
   background: url("../images/doorOpen80px.svg") no-repeat;
 }
 
-.btn:active {
-  transform: translateY(-2rem);
+/* .bttn {
+  
+} */
+
+.bttn:active {
   box-shadow: 0 4rem 1.8rem rgb(0,0,0,.2);
 }
-.btn:hover {
-  transform: translateY(-.3rem);
+.bttn:hover {
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 .home-component {
@@ -34,13 +37,14 @@ header {
   position: relative;
   margin-left: 5%;
   margin-top: 1%;
-  /* transform: translate(-50%, -50%); */
   text-align: center;
 }
 
 h2 {
   display: inline-block;
-  margin-top: 5%;
+  margin: 0;
+  padding: 0;
+  vertical-align: middle;
 }
 .home-component--main {
   display: block;
@@ -50,21 +54,37 @@ h2 {
   animation-name: moveInRight;
   animation-duration: 1s;
 }
-.btn__container {
+.bttn-container {
   display: inline-block;
   margin-top: 7.5%;
 }
-.btn--deck1, .btn--deck2 {
+
+.deck-selector {
+  flex-direction: row;
+  text-align: left;
+  text-transform: none;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  color: black;
+}
+
+.bttn--deck1, .bttn--deck2 {
   display: inline-flex;
   background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-  height: 4rem;
-  width: 4rem;
+  height: 3rem;
+  width: 3rem;
   background-color: blue;
   cursor: pointer;
+  vertical-align: middle;
+  margin-right: .3rem;
 }
 
-.btn--animated {
+.bttn--deck1:hover, .bttn--deck2:hover {
+  transform: translateX(.6rem);
+}
+
+.bttn--animated {
   animation-name: moveOutRight;
   animation-duration: 1s;
 }

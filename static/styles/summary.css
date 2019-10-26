@@ -17,7 +17,21 @@
 .card-bar-chart {
 }
 
-.btn2.card-bar-chart--btn-demo {
+.bttn--summary {
+  font-size: 1.5rem;
+  border-radius: .5rem;
+  padding: 0.25rem;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.bttn--summary:hover {
+  box-shadow: 0 0rem 1.8rem rgb(0,0,0,.2);
+  background-color: lightblue;
+  transition: all 0.2s ease 0s;
+}
+
+.bttn--summary.card-bar-chart--bttn-demo {
   position: absolute;
   right: 0;
 }

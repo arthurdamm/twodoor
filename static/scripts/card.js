@@ -35,13 +35,13 @@ const LearningGame = () => {
       let userAnswer = currentDoor.children('.success')[0];
       if (getComputedStyle(userAnswer).visibility == 'hidden') {
         currentDoor.children('.success').css('visibility', 'visible');
-        animate(currentDoor.children('.success')[0]);
+        animate(userAnswer);
         setTimeout(nextDoorEvent, 700);
       } else
         nextDoorEvent();
       currentDoor.children('.back').css('visibility', 'visible');
       currentDoor.children('.back').css('position', 'relative');
-      $('.btn--next').css('visibility', 'visible');
+      $('.bttn--next').css('visibility', 'visible');
     } else {
       let userAnswer = currentDoor.children('.fail')[0];
       currentDoor.toggleClass('flipme');
@@ -71,11 +71,12 @@ const LearningGame = () => {
     $('[name=text-answer]').focus();
   });
 
-  $('.btn--next').click(() => endDeckSession(deck, 'successes'));
-  $('.card-bar-chart--btn-successes').click(() => endDeckSession(deck, 'successes'));
-  $('.card-bar-chart--btn-failures').click(() => endDeckSession(deck, 'failures'));
-  $('.card-bar-chart--btn-percentage').click(() => endDeckSession(deck, 'percentage'));
-  $('.card-bar-chart--btn-demo').click(() => endDeckSession(deck, 'demo'));
+  $('.bttn--next').click(() => answerEvent());
+  $('.bttn--cancel').click(() => endDeckSession(deck, 'successes'));
+  $('.card-bar-chart--bttn-successes').click(() => endDeckSession(deck, 'successes'));
+  $('.card-bar-chart--bttn-failures').click(() => endDeckSession(deck, 'failures'));
+  $('.card-bar-chart--bttn-percentage').click(() => endDeckSession(deck, 'percentage'));
+  $('.card-bar-chart--bttn-demo').click(() => endDeckSession(deck, 'demo'));
   $('.game-component')[0].changeDeck = (newDeck) => {
     console.log("changeDeck()", newDeck);
     deck = newDeck;
@@ -122,7 +123,8 @@ const Animator = () => {
 
 const startTimer = () => {
   console.log("starttime");
-  document.querySelector('.timer').time = 60 * 2;
+  document.querySelector('.timer').time = 60 * 3;
+  clearTimeout(document.querySelector('.timer').timeoutID)
   printTimer(); 
 }
 
@@ -130,7 +132,7 @@ const printTimer = () => {
   let currentTime = document.querySelector('.timer').time--;
   $('.timer').text(renderTime(currentTime--));
   if (currentTime >= 0)
-    setTimeout(printTimer, 1000);
+    document.querySelector('.timer').timeoutID = setTimeout(printTimer, 1000);
   else {
     console.log("timer done");
     endDeckSession($('.game-component')[0].queryDeck(), 'failures');

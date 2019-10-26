@@ -2,14 +2,15 @@ $(() => {
   showHome();
   LearningGame();
 
-  $('.game-component')[0].deckType = "dino";
-  $('.btn--deck1').on('click', () => {
-    $('.btn--deck1').addClass('btn--animated');
+  $('.game-component')[0].deckType = "color";
+  $('.deck-selector-1').on('click', () => {
+    console.log('click1');
+    $('.bttn--deck1').addClass('bttn--animated');
     $('.game-component')[0].deckType = "dino";
     showGame();
   });
-  $('.btn--deck2').on('click', () => {
-    $('.btn--deck2').addClass('btn--animated');
+  $('.deck-selector-2').on('click', () => {
+    $('.bttn--deck2').addClass('bttn--animated');
     $('.game-component')[0].deckType = "color";
     showGame();
   });
