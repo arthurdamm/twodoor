@@ -31,8 +31,8 @@ body {
     margin: 0 auto;
 }
 
-.deck:hover {
-  transform: translateY(-1rem);
+.door:hover {
+  transform: translateY(-0.5rem);
 }
 
 .door {

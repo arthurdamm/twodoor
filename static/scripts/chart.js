@@ -7,7 +7,7 @@ const endDeckSession = (deck, variable) => {
     deck = mapDemoPerformances(deck, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
   console.log('deck now', deck)
     // deck = deck.map(card => (card.performance = getRandomPerformance(10), card))
-  const data = deck.map(card => ({
+  const data = deck.map(card => ({...card,
     card: `Card #${card.id}`,
     successes: x = card.performance.filter(result => result).length,
     failures: card.performance.filter(result => !result).length,
@@ -26,8 +26,8 @@ const renderPerformanceSummary = data => {
     {range: [26, 50], text: "A reasonable job.", emoji: "&#128578;"},
     {range: [0, 25], text: "Well, you tried...", emoji: "&#129325;"},
   ];
-  const x = Math.round(data.reduce((a, d) => a + d.percentage, 0) / data.length);
-  console.log("x:", x);
+  const x = Math.round(data.reduce((a, d) => a + d.successes, 0) /
+                       data.reduce((a, d) => a + d.performance.length, 0) * 100);
   const m = motivationals.filter(m => x >= m.range[0] && x <= m.range[1])[0];
   const summary = {
     avgPct: x,
