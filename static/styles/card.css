@@ -31,6 +31,10 @@ body {
     margin: 0 auto;
 }
 
+.door:hover {
+  transform: translateY(-0.5rem);
+}
+
 .door {
     perspective: 1000px;
     cursor: pointer;
@@ -72,6 +76,7 @@ body {
     justify-content: center;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .front {

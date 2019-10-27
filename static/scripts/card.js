@@ -56,6 +56,8 @@ const LearningGame = () => {
   });
 
   $(document).keydown((e) => {
+    if (e.which == 27)  // escape key
+      location.href = "#text-answer";
   });
 
   $(".flippable").click(function() {
