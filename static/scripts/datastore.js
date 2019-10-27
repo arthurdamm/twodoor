@@ -1,5 +1,6 @@
 const loadDeck = function (arg) {
   const decks = {
+    "face": getFaceDeck,
     "dino": getDinoDeck,
     "color": generateColorDeck,
   }
@@ -107,3 +108,68 @@ const getDinoDeck = () =>
       "regex": /morris/i,
     },
   ];
+
+
+const getFaceDeck = () =>
+  [
+    {
+      "image": "static/images/face1.jpg",
+      "question": "Who is this?",
+      "answer": "Haley",
+      "regex": /haley/i,
+    },
+    {
+      "image": "static/images/face2.jpg",
+      "question": "Who is this?",
+      "answer": "Camila",
+      "regex": /camila/i,
+    },
+    {
+      "image": "static/images/face3.jpg",
+      "question": "Who is this?",
+      "answer": "Paola",
+      "regex": /paola/i,
+    },
+    {
+      "image": "static/images/face4.jpg",
+      "question": "Who is this?",
+      "answer": "Isabela",
+      "regex": /isabell?a/i,
+    },
+    {
+      "image": "static/images/face5.jpg",
+      "question": "Who is this?",
+      "answer": "Sarah",
+      "regex": /sarah?/i,
+    },
+    {
+      "image": "static/images/face6.jpg",
+      "question": "Who is this?",
+      "answer": "Henry",
+      "regex": /henry/i,
+    },
+    {
+      "image": "static/images/face7.jpg",
+      "question": "Who is this?",
+      "answer": "Davis",
+      "regex": /davis/i,
+    },
+    {
+      "image": "static/images/face8.jpg",
+      "question": "Who is this?",
+      "answer": "Isaac",
+      "regex": /isaac/i,
+    },
+    {
+      "image": "static/images/face9.jpg",
+      "question": "Who is this?",
+      "answer": "Elliot",
+      "regex": /elliot/i,
+    },
+    {
+      "image": "static/images/face10.jpg",
+      "question": "Who is this?",
+      "answer": "Ruben",
+      "regex": /ruben/i,
+    },
+  ]
