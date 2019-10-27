@@ -2,6 +2,12 @@ $(() => {
   showHome();
   LearningGame();
 
+  $('.deck-selector-0').on('click', () => {
+    console.log('click0');
+    $('.bttn--deck1').addClass('bttn--animated');
+    $('.game-component')[0].deckType = "tutorial";
+    showGame();
+  });
   $('.game-component')[0].deckType = "color";
   $('.deck-selector-1').on('click', () => {
     console.log('click1');
@@ -35,7 +41,12 @@ const showGame = () => {
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
-  startTimer();
+  if ($('.game-component')[0].deckType !== "tutorial") {
+    startTimer();
+    $('.instruction-component').hide();
+  }
+  else
+    $('.instruction-component').show();
 };
 
 const showSummary = () => {

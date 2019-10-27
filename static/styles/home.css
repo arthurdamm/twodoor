@@ -25,7 +25,7 @@ header {
 
 .home-component {
   display: block;
-  color: aliceblue;
+  color: black;
   text-transform: uppercase;
   backface-visibility: hidden;
   position: relative;
@@ -72,6 +72,9 @@ h2 {
   cursor: pointer;
   vertical-align: middle;
   margin-right: .3rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
 }
 
 .bttn--deck:hover {
@@ -119,13 +122,22 @@ h2 {
     transform: translateX(0);
     visibility: visible;
   }
-  /* animation ends */
-  80% {
-    opacity: 1;
-  }
   100% {
-    visibility: hidden;
+    /* visibility: hidden; */
     opacity: 0;
     transform: translateX(30rem);
+  }
+}
+
+@keyframes moveInLeft {
+  /* before animation starts */
+  0% {
+    opacity: 1;
+    transform: translateX(-30rem);
+    visibility: visible;
+  }
+  100% {
+    /* visibility: hidden; */
+    transform: translateX(0);
   }
 }

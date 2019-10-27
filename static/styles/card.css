@@ -235,27 +235,39 @@ h1 {
 .instruction-component {
     z-index: -1;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     position: relative;
-    width: 46rem;
-    height: 6rem;
-    bottom: 0rem;
+    width: 25rem;
+    height: 0rem;
+    bottom: 3rem;
+    padding: .5rem;
+    text-align: center;
 }
-.cardLeft {
+
+.controlLeft {
     float: left;
-    margin-right: 33.5rem;
-    margin-left: -20.5rem;
-    margin-bottom: 3.5rem;
-    /*padding: .5rem;*/
+    margin-top: 33rem;
+    margin-right: 34.5rem;
+    margin-left: -22.5rem;
+    margin-bottom: -2.55rem;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    text-align: center;
+    box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
-.cardRight {
+.controlRight {
     float: right;
-    /*padding: .5rem;*/
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    margin-bottom: 3.5rem;
-    text-align: center;
+    margin-left: 27rem;
+    margin-right: -17rem;
+    box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
+}
+
+.timerRight {
+    float: right;
+    margin-top: -37.5rem;
+    margin-right: -18rem;
+    margin-left: 25rem;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
 
 /* .cancel-button {
@@ -270,5 +282,13 @@ h1 {
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     cursor: pointer;
     vertical-align: middle;
-    margin-left: -33.25rem;
+    margin-left: -31.25rem;
+}
+
+.timer {
+    margin-left: 18vh;
+    margin-top: -9vh;
+    margin-bottom: 10vh;
+    z-index: 2;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
 }
