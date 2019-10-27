@@ -19,7 +19,6 @@ body {
     height: 55vh;
     width: 55vh;
     margin: 0 auto;
-    /*margin-top: 2%;*/
     left: 3rem;
     position: relative;
     background-position: top;
@@ -28,10 +27,10 @@ body {
 .deck {
     position: relative;
     height: 60vh;
-    margin: 0 auto;
+    width: 41vh;
 }
 
-.door:hover {
+.deck:hover {
   transform: translateY(-0.5rem);
 }
 
