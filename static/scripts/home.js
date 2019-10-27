@@ -6,11 +6,17 @@ $(() => {
   $('.deck-selector-1').on('click', () => {
     console.log('click1');
     $('.bttn--deck1').addClass('bttn--animated');
-    $('.game-component')[0].deckType = "dino";
+    $('.game-component')[0].deckType = "face";
     showGame();
   });
   $('.deck-selector-2').on('click', () => {
+    console.log('click1');
     $('.bttn--deck2').addClass('bttn--animated');
+    $('.game-component')[0].deckType = "dino";
+    showGame();
+  });
+  $('.deck-selector-3').on('click', () => {
+    $('.bttn--deck3').addClass('bttn--animated');
     $('.game-component')[0].deckType = "color";
     showGame();
   });
