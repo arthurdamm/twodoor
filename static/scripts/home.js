@@ -19,13 +19,13 @@ $(() => {
 
 const showHome = () => {
   $('.game-component').hide();
-  $('.summary-component').hide()
+  // $('.summary-overlay').hide()
   $('.home-component').show();
 };
 
 const showGame = () => {
   $('.home-component').hide();
-  $('.summary-component').hide();
+  // $('.summary-overlay').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
@@ -33,7 +33,8 @@ const showGame = () => {
 };
 
 const showSummary = () => {
-  $('.home-component').hide();
-  $('.game-component').hide();
-  $('.summary-component').show();
+  // $('.home-component').hide();
+  // $('.game-component').hide();
+  // $('.summary-overlay').show();
+  location.href = "#summary-overlay";
 };
