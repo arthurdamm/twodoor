@@ -9,7 +9,7 @@ html {
 }
 
 body {
-  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   font-family: verdana;
 }
 
@@ -109,7 +109,6 @@ body {
   font-size: 2.5rem;
 }
 
-
 /* Card Content */
 .card-img-top {
   width: 100%;
@@ -129,7 +128,6 @@ p {
 
 .card-title {
   font-size: 1.75rem;
-  /*margin-top: 1.5rem;*/
 }
 
 .shakeme {
@@ -152,11 +150,6 @@ p {
 
 .control {
     display: flex;
-    /*position: fixed;*/
-    /*position: relative;*/
-    /*float:left;*/
-    /*bottom: 1rem;*/
-    /*justify-content: space-between;*/
     justify-content: center;
     margin: auto;
     margin-top: 2rem;
@@ -167,10 +160,8 @@ p {
     height: 8vh;
     width: 47.5vh;
     border-radius: 5px;
-    /*padding: 2.25vh;*/
-    /* margin-bottom: 5%; */
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-    margin-left: -2.5rem;
+    margin-left: -2.2rem;
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
     display: flex;
     justify-content: center;
@@ -262,7 +253,7 @@ h1 {
  
 .controlLeft {
     float: left;
-    margin-top: 33rem;
+    margin-top: 14.1rem;
     margin-right: 34.5rem;
     margin-left: -22.5rem;
     margin-bottom: -2.55rem;
@@ -276,6 +267,15 @@ h1 {
     margin-right: -17rem;
     box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
+.cardRight {
+    float: right;
+    margin-left: 28rem;
+    margin-right: -16rem;
+    margin-top: 10rem;
+    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+    box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
+    padding: .5rem;
+}
 
 .timerRight {
     float: right;
@@ -288,7 +288,7 @@ h1 {
 
 .timer {
     font-size: 2rem;
-    margin-left: 14vh;
+    margin-left: 15vh;
     margin-top: -9vh;
     margin-bottom: 8vh;
     z-index: 2;

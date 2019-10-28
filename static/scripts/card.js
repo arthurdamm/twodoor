@@ -148,4 +148,4 @@ const renderTime = (sec) => {
   return (min + ':' + secs);
 }
 
-$('.logo').click(() => { clearTimeout(document.querySelector('.timer').timeoutID)});
+$('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID));
