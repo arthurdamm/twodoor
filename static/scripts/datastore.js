@@ -3,6 +3,7 @@ const loadDeck = function (arg) {
     "face": getFaceDeck,
     "dino": getDinoDeck,
     "color": generateColorDeck,
+    "trivia": getTriviaDeck,
   }
   return decks[arg]().map((json, i) => getCardTemplate(json, i));
 };
@@ -172,4 +173,53 @@ const getFaceDeck = () =>
       "answer": "Ruben",
       "regex": /ruben/i,
     },
-  ]
+  ];
+
+const getTriviaDeck = () =>
+  [
+    {
+      "question": "How do you finish centering a DIV whose top-left corner has been centered with:<br /><i>position: absolute; <br />top: 0; left: 0;</i>?",
+      "answer": "transform: translate(-50%, -50%);",
+      "regex": /(transform:)?\s*translate\(-50%,\s*-50%\);?/i,
+    },
+    {
+      "question": "How do you center a DIV element horizontally?",
+      "answer": "margin: 0 auto;",
+      "regex": /margin:\s*0?\s*auto;?/i,
+    },
+    {
+      "question": "How do you center a DIV element <em>vertically</em> within a flexbox of row direction?",
+      "answer": "align-items: center;",
+      "regex": /align-items:\s*center;?/i,
+    },
+    {
+      "question": "How do you center a DIV element <em>horizontally</em> within a flexbox of row direction?",
+      "answer": "justify-content: center;",
+      "regex": /justify-content:\s*center;?/i,
+    },
+    {
+      "question": "How do you center TEXT horizontally?",
+      "answer": "text-align: center;",
+      "regex": /text-align:\s*center;?/i,
+    },
+    {
+      "question": "How do you center TEXT vertically in a DIV of <i>height: 108px;</i>?",
+      "answer": "line-height: 108px;",
+      "regex": /line-height:\s*108px;?/i,
+    },
+    {
+      "question": "With no styles applied, what is the default font size for normal text?",
+      "answer": "16px",
+      "regex": /16\s*(px)|(pixels)/i,
+    },
+    {
+      "question": "Which CSS unit scales to viewport height?",
+      "answer": "vh",
+      "regex": /vh;?/i,
+    },
+    {
+      "question": "What selector selects a .mydiv class only if it is a direct child of the body tag?",
+      "answer": "body > .mydiv {}",
+      "regex": /body\s*>\s*\.mydiv(\s*{.*})?/i,
+    },
+  ];
