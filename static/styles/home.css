@@ -1,6 +1,6 @@
 header {
   border-bottom: .4rem solid grey;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .logo {
   object-fit: contain;
@@ -8,10 +8,10 @@ header {
   /* border: .4rem solid grey; */
   /* border-radius: 50%; */
   width: 6rem;
-  height: 6rem;
+  height: 5rem;
   background: url("../images/doorClose80px.svg") no-repeat;
   margin-left: 1%;
-  margin-top: 1%;
+  margin-top: 0%;
   animation-name: moveInLeft;
 }
 
