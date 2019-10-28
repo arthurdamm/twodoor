@@ -1,5 +1,6 @@
 const loadDeck = function (arg) {
   const decks = {
+    "tutorial": getTutorialDeck,
     "face": getFaceDeck,
     "dino": getDinoDeck,
     "color": generateColorDeck,
@@ -172,4 +173,12 @@ const getFaceDeck = () =>
       "answer": "Ruben",
       "regex": /ruben/i,
     },
+  ]
+const getTutorialDeck = () => 
+  [
+    {
+      "question": "Question to answer (answer: I love learning!)",
+      "answer": "I love learning!",
+      "regex": /(i love learning)?(!*)/i
+    }
   ]
