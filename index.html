@@ -23,41 +23,47 @@
       <div class="home-component--main">Welcome to TwoDoor!</div>
       <div class="home-component--sub">Ready to begin?</div>
       <div class="bttn-container">
-        <div class = "deck-selector deck-selector-1">
+        <div class="deck-selector deck-selector-0">
+          <a href="#" class="bttn--deck bttn--deck0"></a>
+          <h2 class="deck0Text">How to Play</h2>
+        </div>
+        <div class="deck-selector deck-selector-1">
           <a href="#" class="bttn--deck bttn--deck1"></a>
           <h2 class="deck1Text">Deck 1: Face Recognition</h2>
         </div>
-        <div class = "deck-selector deck-selector-2">
+        <div class="deck-selector deck-selector-2">
           <a href="#" class="bttn--deck bttn--deck2"></a>
           <h2 class="deck2Text">Deck 2: Dino Deck</h2>
         </div>
-        <div class = "deck-selector deck-selector-3">
+        <div class="deck-selector deck-selector-3">
           <a href="#" class="bttn--deck bttn--deck3"></a>
           <h2 class="deck3Text">Deck 3: Color Coding</h2>
         </div>
       </div>
     </div>
     <div class="game-component">
-      <div class="timer"></div>
+      <div class="timer">3:00</div>
       <div class="deck">
         <div class="flippable door" id="door1" ontouchstart="this.classList.toggle('hover');"></div>
         <div class="flippable door" id="door2" ontouchstart="this.classList.toggle('hover');"></div>
       </div>
       <div class="control">
-        <div class="text-box">
-            <input type="text" name="text-answer" id="text-answer" placeholder="...">
-        </div>
-
-        <div class="next-button">
-          <a href="#" class="bttn bttn--next"></a>
-        </div>
         <div class="cancel-button">
           <div class="bttn bttn--cancel"></div>
         </div>
+        <div class="text-box">
+            <input type="text" name="text-answer" id="text-answer" placeholder="...">
+        </div>
+        <div class="next-button">
+          <a href="#" class="bttn bttn--next"></a>
+        </div>
+
       </div>
       <div class="instruction-component">
-        <div class="cardLeft">Click here to end the game</div>
-        <div class="cardRight">Press enter or click the button to submit</div>
+        <div class="timerRight">You will be timed! when the timer hits zero, the game will end and your performance is displayed</div>
+        <div class="cardRight">Remember: This isnt a test! You will not know all the answers, and that's ok. The game is made to train you through repetition and failure.</div>
+        <div class="controlLeft">Click here to end the game</div>
+        <div class="controlRight">Press enter or click this button to submit</div>
       </div>
     </div>
     

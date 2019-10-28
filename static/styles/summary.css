@@ -102,6 +102,7 @@ p.summary-conditional {
 p.summary-score span {
   text-decoration: underline;
 }
+
 p.summary-motivational, p.summary-score, p.summary-conditional {
   font-size: 1.5rem;
 }
