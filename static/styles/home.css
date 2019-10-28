@@ -130,14 +130,15 @@ h2 {
 }
 
 @keyframes moveInLeft {
-  /* before animation starts */
   0% {
     opacity: 1;
     transform: translateX(-30rem);
     visibility: visible;
   }
+  80% {
+    transform: translateX(.2rem);
+  }
   100% {
-    /* visibility: hidden; */
     transform: translateX(0);
   }
 }
