@@ -179,6 +179,6 @@ const getTutorialDeck = () =>
     {
       "question": "Question to answer (answer: I love learning!)",
       "answer": "I love learning!",
-      "regex": /i love learning!/i,
+      "regex": /(i love learning)\i?(!*)/
     }
   ]
