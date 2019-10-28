@@ -46,6 +46,7 @@ const showGame = () => {
     $('.instruction-component').hide();
   }
   else
+    stopTimer();
     $('.instruction-component').show();
 };
 

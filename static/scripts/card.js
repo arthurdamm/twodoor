@@ -124,6 +124,11 @@ const startTimer = () => {
   printTimer(); 
 }
 
+const stopTimer = () => {
+  clearTimeout(document.querySelector('.timer').timeoutID);
+  document.querySelector('.timer').time = 60 * 3;
+}
+
 const printTimer = () => {
   let currentTime = document.querySelector('.timer').time--;
   $('.timer').text(renderTime(currentTime--));
@@ -142,3 +147,5 @@ const renderTime = (sec) => {
     secs = '0' + secs;
   return (min + ':' + secs);
 }
+
+$('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID));
