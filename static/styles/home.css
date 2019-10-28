@@ -1,17 +1,14 @@
 header {
   border-bottom: .4rem solid grey;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .logo {
   object-fit: contain;
-  display: absolute;
-  /* border: .4rem solid grey; */
-  /* border-radius: 50%; */
   width: 6rem;
-  height: 6rem;
+  height: 5rem;
   background: url("../images/doorClose80px.svg") no-repeat;
   margin-left: 1%;
-  margin-top: 1%;
+  margin-top: 0%;
   animation-name: moveInLeft;
 }
 
@@ -25,7 +22,7 @@ header {
 
 .home-component {
   display: block;
-  color: aliceblue;
+  color: black;
   text-transform: uppercase;
   backface-visibility: hidden;
   position: relative;
@@ -72,6 +69,9 @@ h2 {
   cursor: pointer;
   vertical-align: middle;
   margin-right: .3rem;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-fill-mode: backwards;
 }
 
 .bttn--deck:hover {
@@ -119,13 +119,23 @@ h2 {
     transform: translateX(0);
     visibility: visible;
   }
-  /* animation ends */
-  80% {
-    opacity: 1;
-  }
   100% {
-    visibility: hidden;
+    /* visibility: hidden; */
     opacity: 0;
     transform: translateX(30rem);
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(-30rem);
+    visibility: visible;
+  }
+  80% {
+    transform: translateX(.2rem);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
