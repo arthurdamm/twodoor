@@ -11,7 +11,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="static/styles/index.css">
-  <link rel="stylesheet" href="static/styles/game.css">
   <link rel="stylesheet" href="static/styles/card.css">
   <link rel="stylesheet" href="static/styles/home.css">
   <link rel="stylesheet" href="static/styles/summary.css">
@@ -20,6 +19,7 @@
   <body>
     <header class="header">
       <div class="logo" id="logo"></div>
+      <div class="timer">3:00</div>
     </header>
 
     <div class="main-container">
@@ -52,7 +52,6 @@
       </div>
 
       <div class="game-component">
-        <div class="timer">3:00</div>
         <div class="deck">
           <div class="flippable door" id="door1" ontouchstart="this.classList.toggle('hover');"></div>
           <div class="flippable door" id="door2" ontouchstart="this.classList.toggle('hover');"></div>

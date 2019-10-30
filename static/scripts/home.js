@@ -1,12 +1,9 @@
 $(() => {
+  showHome();
   LearningGame();
-  $('.game-component')[0].deckType = "face";
-  showGame();
-  
 
   $('.deck-selector-0').on('click', () => {
     console.log('click0');
-    $('.bttn--deck1').addClass('bttn--animated');
     $('.game-component')[0].deckType = "tutorial";
     showGame();
   });
