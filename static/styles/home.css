@@ -1,21 +1,3 @@
-header {
-  border-bottom: .4rem solid grey;
-  margin-top: 3px;
-}
-.logo {
-  object-fit: contain;
-  width: 6rem;
-  height: 5rem;
-  background: url("../images/doorClose80px.svg") no-repeat;
-  margin-left: 1%;
-  margin-top: 0%;
-  animation-name: moveInLeft;
-}
-
-.logo:hover {
-  background: url("../images/doorOpen80px.svg") no-repeat;
-}
-
 .bttn--deck:hover {
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }

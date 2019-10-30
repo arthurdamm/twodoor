@@ -4,7 +4,6 @@ $(() => {
 
   $('.deck-selector-0').on('click', () => {
     console.log('click0');
-    $('.bttn--deck1').addClass('bttn--animated');
     $('.game-component')[0].deckType = "tutorial";
     showGame();
   });
@@ -31,11 +30,13 @@ $(() => {
 });
 
 const showHome = () => {
+  $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').show();
 };
 
 const showGame = () => {
+  $('.timer').show();
   $('.home-component').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();
