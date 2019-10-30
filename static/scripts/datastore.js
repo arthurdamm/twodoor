@@ -228,9 +228,9 @@ const getTriviaDeck = () =>
 const getTutorialDeck = () => 
   [
     {
-      "question": "Question to answer (answer: I love learning!)",
+      "question": "Question to answer<br/ ><i>(hit enter to see answer!)</i>",
       "answer": "I love learning!",
-      "regex": /(i love learning)?(!*)/i
+      "regex": /i love learning!*/i
     }
   ];
 
