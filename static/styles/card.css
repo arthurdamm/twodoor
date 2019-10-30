@@ -116,6 +116,7 @@ p {
     justify-content: center;
     align-items: center;
     margin-top: 2rem;
+    width: 100%;
 }
 
 .text-box {
@@ -160,7 +161,6 @@ input {
   width: 4rem;
   cursor: pointer;
   vertical-align: middle;
-  /*float: right;*/
 }
 
 .bttn--cancel {
@@ -198,10 +198,9 @@ h1 {
 }
 
 .instruction-component {
-    /*z-index: -1;*/
+    position: relative;
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 25rem;
     height: 0rem;
     bottom: 3rem;
@@ -221,8 +220,8 @@ h1 {
 .controlRight {
     float: right;
     background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
-    margin-left: 29rem;
-    margin-right: -17rem;
+    margin-left: 28.5rem;
+    margin-right: -16.5rem;
     box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
 .cardRight {
@@ -244,15 +243,21 @@ h1 {
     box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
 
-/*.timer {
-    font-size: 2rem;
-    margin-left: 15vh;
-    margin-top: -9vh;
-    margin-bottom: 8vh;
-    z-index: 2;
-    font-family: Verdana, Geneva, Tahoma, sans-serif
+@media only screen and (max-width: 600px) {
+
+  .control {
+    margin-top: .25rem;
+  }
+
+  .text-box {
+    min-width: 8rem;
+  }
+
+  input {
+    min-width: 5rem;
+  }
 }
-*/
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }

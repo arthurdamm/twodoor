@@ -30,11 +30,13 @@ $(() => {
 });
 
 const showHome = () => {
+  $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').show();
 };
 
 const showGame = () => {
+  $('.timer').show();
   $('.home-component').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();

@@ -34,7 +34,6 @@ header {
   width: 120px;
   background: url("../images/doorClose80px.svg") no-repeat;
   margin-left: 1%;
-  animation-name: moveInLeft;
 }
 
 .logo:hover {
@@ -43,10 +42,7 @@ header {
 
 .timer {
     font-size: 2rem;
-    /*margin-left: 15vh;
-    margin-top: -9vh;
-    margin-bottom: 8vh;
-    z-index: 2;*/
+    display: none;
 }
 
 .main-container {
