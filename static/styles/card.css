@@ -1,40 +1,27 @@
-* {
-  padding: 0;
-  margin: 0;
-}
-
-html {
-    height: 100%;
-    width: 100%;
-}
-
-body {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  font-family: verdana;
-}
-
 .game-component {
-    display: block;
+    display: flex;
     flex-direction: column;
-    height: 55vh;
-    width: 55vh;
-    margin: 0 auto;
-    left: 3rem;
+    align-items: center;
     position: relative;
     background-position: top;
+    border: 3px solid red;
 }
 
 .deck {
     position: relative;
-    height: 60vh;
-    width: 41vh;
+    /*height: 25rem;
+    width: 19rem;*/
+    min-height: 28rem;
+    min-width: 20rem;
+    /*height: 60vh;*/
+    /*width: 41vh;*/
     transition: all .4s;
     border-radius: .688rem;
 }
 
 .deck:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+    transform: translateY(-0.5rem);
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
 .door {
@@ -58,10 +45,10 @@ body {
 }
 
 .door, .front, .back, .success, .fail {
-    width: 41vh;
-    height: 60vh;
-    min-width: 5rem;
-    max-height: 150%;
+    /*width: 41vh;*/
+    /*height: 60vh;*/
+    width: 100%;
+    height: 100%;
     /*line-height: 100%;*/
     text-align: center;
     /*font-size: 1rem;*/
@@ -151,36 +138,44 @@ p {
 .control {
     display: flex;
     justify-content: center;
-    margin: auto;
+    /*margin: auto;*/
     margin-top: 2rem;
     align-items: center;
+    /*border: 3px dotted red;*/
 }
 
 .text-box {
-    height: 8vh;
-    width: 47.5vh;
+    /*height: 8vh;
+    width: 47.5vh;*/
+    min-width: 20rem;
+    min-height: 4rem;
     border-radius: 5px;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);;
-    margin-left: -2.2rem;
+    /*margin-left: -2.2rem;*/
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 
 input {
-    height: 3.75vh;
-    width: 40vh;
+    /*height: 3.75vh;
+    width: 40vh;*/
+    min-width: 18rem;
+    min-height: 1.25rem;
     font-size: 1.25rem;
 }
 
 .next-button {
   position: relative;
-  right: -1rem;
+  /*display: none;*/
 }
 
 .cancel-button {
-    position: relative;
+  position: relative;
+  /*display: none;*/
 }
 
 .bttn:link,
@@ -199,19 +194,19 @@ input {
   cursor: pointer;
   vertical-align: middle;
   float: right;
-  margin-left: .5rem; /* merge */
+  /*margin-left: .5rem; /* merge */*/
 }
 
 .bttn--cancel {
-    display: inline-flex;
-    float: left;
+    /*display: inline-flex;*/
+    /*float: left;*/
     height: 4rem;
     width: 4rem;
     background-image: linear-gradient(120deg, #ff4444 0%, #ff7d7d 100%);
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     cursor: pointer;
     vertical-align: middle;
-    margin-left: -8.25rem;
+    /*margin-left: -8.25rem;*/
 }
 
 .bttn:active {
