@@ -27,7 +27,7 @@ h2 {
   animation-name: moveInRight;
   animation-duration: 1s;
 }
-.bttn-container {
+.deck-container {
   display: inline-block;
   margin-top: 7.5%;
 }
