@@ -4,6 +4,7 @@ const loadDeck = function (arg) {
     "face": getFaceDeck,
     "dino": getDinoDeck,
     "color": generateColorDeck,
+    "trivia": getTriviaDeck,
   }
   return decks[arg]().map((json, i) => getCardTemplate(json, i));
 };
@@ -18,7 +19,7 @@ const generateColorDeck = (amount) => {
   while (amount--)
     deck.push({
       color: popRandomElement(colors),
-      question: "What inspiration is this?",
+      question: "Which word has been coded to this color?",
       answer: word = popRandomElement(words),
       regex: RegExp(word, "i"),
     });
@@ -50,63 +51,63 @@ const getDinoDeck = () =>
   [
     {
       "image": "static/images/tRex.jpg",
-      "question": "Who is this person in the picture?",
-      "answer": "Arthur",
-      "regex": /(arthur)/i,
+      "question": "What dino is this?",
+      "answer": "Tyrannosaurus Rex",
+      "regex": /((t?yrann?osaurus)|t)?\s*rex/i,
     },
     {
       "image": "static/images/velociraptor.jpg",
-      "question": "Who is in this picture?",
-      "answer": "Scout",
-      "regex": /(Scout)/i,
+      "question": "What dino is this?",
+      "answer": "Velociraptor",
+      "regex": /(veloci)?raptor/i,
     },
     {
       "image": "static/images/brontosaurus.jpg",
       "question": "What dino is this?",
-      "answer": "Bronto",
-      "regex": /bronto/i,
+      "answer": "Brontosaurus",
+      "regex": /brontosaurus|bronto|saurus/i,
     },
     {
       "image": "static/images/teradactyl.png",
-      "question": "Yet it flies!?",
-      "answer": "Pteradactyl.",
+      "question": "What is this flying dino?",
+      "answer": "Pteradactyl",
       "regex": /p?teradac.*/i,
     },
     {
-      "image": "static/images/water_dino_1.jpg",
+      "image": "static/images/plesiosaur.jpg",
       "question": "What is this water dino?",
-      "answer": "bob",
-      "regex": /bob/i,
+      "answer": "Plesiosaur",
+      "regex": /plesiosaur/i,
     },
     {
-      "image": "static/images/water_dino_2.jpg",
+      "image": "static/images/mosasaurus.jpg",
       "question": "What is this water dino?",
-      "answer": "john",
-      "regex": /john/i,
+      "answer": "Mosasaurus",
+      "regex": /mosasaurus/i,
     },
     {
-      "image": "static/images/water_dino_3.jpg",
+      "image": "static/images/helicoprion.jpg",
       "question": "What is this water dino?",
-      "answer": "smith",
-      "regex": /smith/i,
+      "answer": "Helicoprion",
+      "regex": /helicoprion/i,
     },
     {
-      "image": "static/images/water_dino_4.jpg",
+      "image": "static/images/nothosaurus.jpg",
       "question": "What is this water dino?",
-      "answer": "george",
-      "regex": /george/i,
+      "answer": "Nothosaurus",
+      "regex": /nothosaurus/i,
     },
     {
       "image": "static/images/triceratops.jpg",
-      "question": "Who is this now?",
-      "answer": "charles",
-      "regex": /charles/i,
+      "question": "What dino is this?",
+      "answer": "Triceratops",
+      "regex": /triceratops/i,
     },
     {
       "image": "static/images/stego.jpg",
-      "question": "Name this person?",
-      "answer": "morris",
-      "regex": /morris/i,
+      "question": "What dino is this?",
+      "answer": "Stegosaurus",
+      "regex": /stegosaurus/i,
     },
   ];
 
@@ -173,12 +174,63 @@ const getFaceDeck = () =>
       "answer": "Ruben",
       "regex": /ruben/i,
     },
-  ]
+  ];
+
+const getTriviaDeck = () =>
+  [
+    {
+      "question": "How do you finish centering a DIV whose top-left corner has been centered with:<br /><i>position: absolute; <br />top: 0; left: 0;</i>?",
+      "answer": "transform: translate(-50%, -50%);",
+      "regex": /(transform:)?\s*translate\(-50%,\s*-50%\);?/i,
+    },
+    {
+      "question": "How do you center a DIV element horizontally?",
+      "answer": "margin: 0 auto;",
+      "regex": /margin:\s*0?\s*auto;?/i,
+    },
+    {
+      "question": "How do you center a DIV element <em>vertically</em> within a flexbox of row direction?",
+      "answer": "align-items: center;",
+      "regex": /align-items:\s*center;?/i,
+    },
+    {
+      "question": "How do you center a DIV element <em>horizontally</em> within a flexbox of row direction?",
+      "answer": "justify-content: center;",
+      "regex": /justify-content:\s*center;?/i,
+    },
+    {
+      "question": "How do you center TEXT horizontally?",
+      "answer": "text-align: center;",
+      "regex": /text-align:\s*center;?/i,
+    },
+    {
+      "question": "How do you center TEXT vertically in a DIV of <i>height: 108px;</i>?",
+      "answer": "line-height: 108px;",
+      "regex": /line-height:\s*108px;?/i,
+    },
+    {
+      "question": "With no styles applied, what is the default font size for normal text?",
+      "answer": "16px",
+      "regex": /16\s*(px)|(pixels)/i,
+    },
+    {
+      "question": "Which CSS unit scales to viewport height?",
+      "answer": "vh",
+      "regex": /vh;?/i,
+    },
+    {
+      "question": "What selector selects a .mydiv class only if it is a direct child of the body tag?",
+      "answer": "body > .mydiv {}",
+      "regex": /body\s*>\s*\.mydiv(\s*{.*})?/i,
+    },
+  ];
+
 const getTutorialDeck = () => 
   [
     {
-      "question": "Question to answer (answer: I love learning!)",
+      "question": "Question to answer<br/ ><i>(hit enter to see answer!)</i>",
       "answer": "I love learning!",
-      "regex": /(i love learning)?(!*)/i
+      "regex": /i love learning!*/i
     }
-  ]
+  ];
+

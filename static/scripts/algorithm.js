@@ -69,7 +69,7 @@ const staggerActiveDeck = (deck) => {
     staggering = true;
   }
   if (staggering) {
-    stagger = deck.stagger ? deck.stagger++ : deck.stagger = 1;
+    stagger = deck.stagger ? deck.stagger++ : (deck.stagger = 2, deck.stagger--);
     console.log("staggering...", stagger);
     const passiveDeck = deck.filter(card => !card.active);
     let e;
