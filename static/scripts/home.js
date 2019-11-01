@@ -31,6 +31,7 @@ const showGame = () => {
   }
   else {
     stopTimer();
+    $('.instruction-component').css('visibility', 'visible');
     $('.instruction-component').show();
   }
 };

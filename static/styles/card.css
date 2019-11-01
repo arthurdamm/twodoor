@@ -209,6 +209,7 @@ h1 {
     bottom: 3rem;
     padding: .5rem;
     text-align: center;
+    visibility: hidden;
 }
  
 .controlLeft {
