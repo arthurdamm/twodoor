@@ -1,12 +1,9 @@
 const endDeckSession = (deck, variable) => {
-  console.log('endDeckSession()', variable)
   showSummary();
-  let x;
   deck = JSON.parse(JSON.stringify(deck));
   if (variable == 'demo')
     deck = mapDemoPerformances(deck, [10, 9, 8, 7, 6, 5, 4, 3, 2, 1])
-  console.log('deck now', deck)
-    // deck = deck.map(card => (card.performance = getRandomPerformance(10), card))
+  let x;
   const data = deck.map(card => ({...card,
     card: `Card #${card.id}`,
     successes: x = card.performance.filter(result => result).length,
@@ -18,7 +15,6 @@ const endDeckSession = (deck, variable) => {
 };
 
 const renderPerformanceSummary = data => {
-  console.log("renderPerformanceSummary()", data);
   const titles = ["Good job!", "Good work!", "Nice!", "Good-good!"]
   const motivationals = [
     {range: [76, 100], text: "An amazing performance!", emoji: "&#128579;"},
@@ -40,7 +36,6 @@ const renderPerformanceSummary = data => {
 }
 
 const renderPerformanceChart = (data, variable) => {
-  console.log("renderPerformanceChart()", data);
   const margin = {top: 50, right: 30, bottom: 70, left: 60}, 
       width = 460 - margin.left - margin.right,
       height = 400 - margin.top - margin.bottom;

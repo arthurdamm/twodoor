@@ -56,6 +56,9 @@
     background-color: white;
     color: black;
     text-align: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
 }
 
 .front {
