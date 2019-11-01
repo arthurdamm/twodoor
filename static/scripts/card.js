@@ -65,6 +65,12 @@ const LearningGame = () => {
       currentDoor.toggleClass('flipme');
     else if (e.which == 40) // down key
       nextDoorEvent();
+    else if (e.which == 187) // +
+      $('.game-component')[0].queryDeck().forEach(card => card.active = 1);
+    else if (e.which == 189) { // -
+      $('.game-component')[0].queryDeck().forEach(card => card.active = 0);
+      $('.game-component')[0].queryDeck().stagger = 0;
+    }
   });
   $(".flippable").click(function() {
     const that = $(this);
