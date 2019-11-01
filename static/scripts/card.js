@@ -28,8 +28,7 @@ const LearningGame = () => {
   }
 
   const answerEvent = () => {
-    if (animating || answered)
-      return;
+    if (animating || answered) return;
     answered = true;
     if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
       let userAnswer = currentDoor.children('.success')[0];
@@ -54,19 +53,20 @@ const LearningGame = () => {
   $('[name=text-answer]').keydown((e) => {
     if (e.which == 13) answerEvent();
   });
-
   $(document).keydown((e) => {
     if (e.which == 27)  // escape key
       location.href = "#text-answer";
+    else if (e.which == 38) // up key
+      currentDoor.toggleClass('flipme');
+    else if (e.which == 40) // down key
+      nextDoorEvent();
   });
-
   $(".flippable").click(function() {
     const that = $(this);
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
     $('[name=text-answer]').focus();
   });
-
   $('.bttn--next').click(() => answerEvent());
   $('.bttn--cancel').click(() => endDeckSession(deck, 'successes'));
   $('.card-bar-chart--bttn-successes').click(() => endDeckSession(deck, 'successes'));
@@ -74,7 +74,6 @@ const LearningGame = () => {
   $('.card-bar-chart--bttn-percentage').click(() => endDeckSession(deck, 'percentage'));
   $('.card-bar-chart--bttn-demo').click(() => endDeckSession(deck, 'demo'));
   $('.game-component')[0].changeDeck = (newDeck) => {
-    console.log("changeDeck()", newDeck);
     deck = newDeck;
     nextDoorEvent();
   }
@@ -119,7 +118,6 @@ const Animator = () => {
 };
 
 const startTimer = () => {
-  console.log("starttime");
   document.querySelector('.timer').time = 60 * 3;
   clearTimeout(document.querySelector('.timer').timeoutID)
   printTimer(); 
@@ -136,7 +134,6 @@ const printTimer = () => {
   if (currentTime >= 0)
     document.querySelector('.timer').timeoutID = setTimeout(printTimer, 1000);
   else {
-    console.log("timer done");
     endDeckSession($('.game-component')[0].queryDeck(), 'failures');
   }
 }

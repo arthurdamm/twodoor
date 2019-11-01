@@ -11,7 +11,6 @@ const loadDeck = function (arg) {
 };
 
 const generateColorDeck = (amount) => {
-  console.log("generateColorDeck()...");
   const words = ["agility", "altruism", "appeal", "beneficial", "bold", "creative", "capable", "dynamic", "drive", "empathy", "educate", "determination", "eager", "encourage", "fun", "helpful", "joy", "nice", "optimist", "polite", "quality", "reliable", "rockstar", "skilled", "spontaneous", "stellar", "teach", "tolerance", "value"];
   const colors = ["crimson", "hotpink", "yellow", "orange", "darkgreen", "lightgreen", "cyan", "indigo", "blue", "lightgray"];
   const deck = [];
@@ -24,12 +23,10 @@ const generateColorDeck = (amount) => {
       answer: word = popRandomElement(words),
       regex: RegExp(word, "i"),
     });
-  console.log("done.");
   return deck;
 }
 
 const getCardTemplate = (json, i) => {
-  console.log("Template NEW:", JSON.stringify(json, i));
   const card = {
     "id": i,
     "html": renderCardTemplate(json),
@@ -40,8 +37,8 @@ const getCardTemplate = (json, i) => {
 
 
 const mapDemoPerformances = (deck, demoPerformances) => {
-  demoPerformances.forEach((l, i) =>
-    deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)]);
+  demoPerformances.forEach((l, i) => (deck[i] &&
+    (deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)])));
   return deck;
 }
 
@@ -243,8 +240,8 @@ const getTutorialDeck = () =>
 const getPresentationDeck = () =>
   [
     {
-      "question": "Who are the <b>1337</b> developers of TwoDoor?",
-      "answer": "Scout Curry & Arthur Damm",
+      "question": "Who are the developers of TwoDoor?",
+      "answer": "Scout Curry &<br> Arthur Damm",
       "regex": /(scout\s*(curry)?)|(arthur\s*(damm)?)/i,
     },
     {
