@@ -2,6 +2,16 @@ $(() => {
   showHome();
   LearningGame();
 
+  $('.bttn--algo').on('click', () => {
+    if ($('.bttn--algo')[0].clicked) {
+      $('.bttn--algo')[0].clicked = 0;
+      $('.bttn--algo').removeClass('bttn--algo-red');
+    } else {
+      $('.bttn--algo')[0].clicked = 1;
+      $('.bttn--algo').addClass('bttn--algo-red');
+    }
+  });
+
   $('.deck-selector-0').on('click', () => {
     console.log('click0');
     $('.game-component')[0].deckType = "tutorial";
