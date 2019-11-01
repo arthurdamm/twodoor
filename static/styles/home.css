@@ -121,3 +121,13 @@ h2 {
     transform: translateX(0);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .bttn--deck {
+    display: none;
+  }
+
+  .deck-selector {
+    color: indigo;
+  }
+}

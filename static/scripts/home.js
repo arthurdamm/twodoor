@@ -1,7 +1,6 @@
 $(() => {
   showHome();
   LearningGame();
-
   $('.bttn--algo').on('click', () => {
     if ($('.bttn--algo')[0].clicked) {
       $('.bttn--algo')[0].clicked = 0;
@@ -10,21 +9,17 @@ $(() => {
       $('.bttn--algo')[0].clicked = 1;
       $('.bttn--algo').addClass('bttn--algo-red');
     }
+    $('[name=text-answer]').focus();
   });
-
   $('.deck-selector-0').on('click', () => {
-    console.log('click0');
     $('.game-component')[0].deckType = "tutorial";
     showGame();
   });
-  $('.game-component')[0].deckType = "color";
   $('.deck-selector-1').on('click', () => {
-    console.log('click1');
     $('.game-component')[0].deckType = "face";
     showGame();
   });
   $('.deck-selector-2').on('click', () => {
-    console.log('click1');
     $('.game-component')[0].deckType = "dino";
     showGame();
   });
@@ -34,6 +29,10 @@ $(() => {
   });
   $('.deck-selector-4').on('click', () => {
     $('.game-component')[0].deckType = "trivia";
+    showGame();
+  });
+  $('.deck-selector-5').on('click', () => {
+    $('.game-component')[0].deckType = "presentation";
     showGame();
   });
   $('.logo').on('click', showHome);

@@ -5,6 +5,7 @@ const loadDeck = function (arg) {
     "dino": getDinoDeck,
     "color": generateColorDeck,
     "trivia": getTriviaDeck,
+    "presentation": getPresentationDeck,
   }
   return decks[arg]().map((json, i) => getCardTemplate(json, i));
 };
@@ -179,33 +180,33 @@ const getFaceDeck = () =>
 const getTriviaDeck = () =>
   [
     {
+      "question": "How do you center a DIV element <em>vertically</em> within a flexbox of row direction?",
+      "answer": "<i>align-items</i>: center;",
+      "regex": /align-items:\s*center;?/i,
+    },
+    {
       "question": "How do you finish centering a DIV whose top-left corner has been centered with:<br /><i>position: absolute; <br />top: 0; left: 0;</i>?",
-      "answer": "transform: translate(-50%, -50%);",
+      "answer": "<i>transform</i>: translate(-50%, -50%);",
       "regex": /(transform:)?\s*translate\(-50%,\s*-50%\);?/i,
     },
     {
       "question": "How do you center a DIV element horizontally?",
-      "answer": "margin: 0 auto;",
+      "answer": "<i>margin</i>: 0 auto;",
       "regex": /margin:\s*0?\s*auto;?/i,
     },
     {
-      "question": "How do you center a DIV element <em>vertically</em> within a flexbox of row direction?",
-      "answer": "align-items: center;",
-      "regex": /align-items:\s*center;?/i,
-    },
-    {
       "question": "How do you center a DIV element <em>horizontally</em> within a flexbox of row direction?",
-      "answer": "justify-content: center;",
+      "answer": "<i>justify-content</i>: center;",
       "regex": /justify-content:\s*center;?/i,
     },
     {
       "question": "How do you center TEXT horizontally?",
-      "answer": "text-align: center;",
+      "answer": "<i>text-align</i>: center;",
       "regex": /text-align:\s*center;?/i,
     },
     {
       "question": "How do you center TEXT vertically in a DIV of <i>height: 108px;</i>?",
-      "answer": "line-height: 108px;",
+      "answer": "<i>line-height</i>: 108px;",
       "regex": /line-height:\s*108px;?/i,
     },
     {
@@ -214,14 +215,19 @@ const getTriviaDeck = () =>
       "regex": /16\s*(px)|(pixels)/i,
     },
     {
-      "question": "Which CSS unit scales to viewport height?",
-      "answer": "vh",
-      "regex": /vh;?/i,
+      "question": "What property automatically includes an element's border and padding in its size?",
+      "answer": "<i>box-sizing</i>: border-box;",
+      "regex": /box-sizing:\s*border-box;?/i,
     },
     {
       "question": "What selector selects a .mydiv class only if it is a direct child of the body tag?",
       "answer": "body > .mydiv {}",
       "regex": /body\s*>\s*\.mydiv(\s*{.*})?/i,
+    },
+    {
+      "question": "How do you enable smooth scrolling of all links that target an anchor?",
+      "answer": "html {<br><i>scroll-behavior</i>: smooth; }",
+      "regex": /html\s*{\s*scroll-behavior:\s*smooth;?\s*}/i,
     },
   ];
 
@@ -234,3 +240,31 @@ const getTutorialDeck = () =>
     }
   ];
 
+const getPresentationDeck = () =>
+  [
+    {
+      "question": "Who are the <b>1337</b> developers of TwoDoor?",
+      "answer": "Scout Curry & Arthur Damm",
+      "regex": /(scout\s*(curry)?)|(arthur\s*(damm)?)/i,
+    },
+    {
+      "question": "What key attribute makes TwoDoor unique?",
+      "answer": "Adaptive",
+      "regex": /adapt|adaptive|adaptable|adaptability/i,
+    },
+    {
+      "question": "What evidence-based learning technique optimizes study time?",
+      "answer": "Spaced Repetition",
+      "regex": /spaced?\s*rep(etition)?/i,
+    },
+    {
+      "question": "What data-scientific function could be plotted to further optimize learning?",
+      "answer": "Forgetting Curve",
+      "regex": /forgetting\s*curve/i,
+    },
+    {
+      "question": "What's the best software school around?",
+      "answer": "Holberton School",
+      "regex": /holberton|holbie|holby/i,
+    },
+  ];
