@@ -3,6 +3,7 @@ const LearningGame = () => {
   let nextDoor;
   let deck;
   let animating = false, answered = false;
+  let timeoutID;
   const animate = Animator();
 
   const nextDoorEvent = () => {
@@ -28,14 +29,18 @@ const LearningGame = () => {
   }
 
   const answerEvent = () => {
-    if (animating || answered) return;
+    if (animating || answered) {
+      clearTimeout(timeoutID);
+      nextDoorEvent();
+      return;
+    }
     answered = true;
     if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
       let userAnswer = currentDoor.children('.success')[0];
       if (getComputedStyle(userAnswer).visibility == 'hidden') {
         currentDoor.children('.success').css('visibility', 'visible');
         animate(userAnswer);
-        setTimeout(nextDoorEvent, 700);
+        timeoutID = setTimeout(nextDoorEvent, 700);
       } else
         nextDoorEvent();
       currentDoor.children('.back').css('visibility', 'visible');
@@ -46,7 +51,7 @@ const LearningGame = () => {
       currentDoor.toggleClass('flipme');
       if (getComputedStyle(userAnswer).visibility == 'hidden')
         currentDoor.children('.fail').css('visibility', 'visible');
-        setTimeout(nextDoorEvent, 1500);
+        timeoutID = setTimeout(nextDoorEvent, 1500);
     }
   };
 
