@@ -27,7 +27,7 @@ h2 {
   animation-name: moveInRight;
   animation-duration: 1s;
 }
-.bttn-container {
+.deck-container {
   display: inline-block;
   margin-top: 7.5%;
 }
@@ -119,5 +119,15 @@ h2 {
   }
   100% {
     transform: translateX(0);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bttn--deck {
+    display: none;
+  }
+
+  .deck-selector {
+    color: indigo;
   }
 }
