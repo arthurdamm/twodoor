@@ -83,7 +83,8 @@ const LearningGame = () => {
 
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
-  return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
+  if (!$('.bttn--algo')[0].clicked)
+    return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
   for (const card of deck)
     if (card.id === cardId)
