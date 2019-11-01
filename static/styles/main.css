@@ -50,8 +50,8 @@ header {
 .bttn--algo {
   display: block;
   position: absolute;
-  top: 0;
-  right: 2%;
+  top: 0.4rem;
+  right: 0.4rem;
   background: black;
   border-radius: 100%;
   height: 4rem;
@@ -60,22 +60,11 @@ header {
   background: radial-gradient(circle at 20px 20px, #493cff, #000);
 }
 
+.bttn--algo-red {
+  background: radial-gradient(circle at 20px 20px, #ff5c5c, #000);
+}
 
 .main-container {
   width: 100%;
   height: 90%;
-}
-
-
-.bttn--algo-red {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: 2%;
-  background: black;
-  border-radius: 100%;
-  height: 4rem;
-  width: 4rem;
-  margin: 0;
-  background: radial-gradient(circle at 20px 20px, #ff5c5c, #000);
 }
