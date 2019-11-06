@@ -18,7 +18,9 @@ Written with ❤️ by:
 TwoDoor runs entirely on the front-end client-side with no local dependencies. Simply clone this repository and open the _main.html_ with your browser or point your web server's document root at it.
 
 ## Usage
-Simply open the _main.html_ with your browser to display the built-in deck demos. Select one of the demos to start the memory-training learning game.
+Whose ready to play?
+![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/tutorial_all.jpg)
+The homepage is your access to all of the prebuilt decks. Each one was made for a purpose, to emphasize the wide usage of the app.
 
 ## Contributing
 TwoDoor is open to contributions. Please contact the developers before submitting pull requests.
