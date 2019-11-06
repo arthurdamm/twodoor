@@ -1,5 +1,5 @@
 # TwoDoor
-![alt-text](https://github.com/arthurdamm/twodoor/blob/master/static/images/doorClose80px.svg)
+                  ![alt-text](https://github.com/arthurdamm/twodoor/blob/master/static/images/doorClose80px.svg)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
