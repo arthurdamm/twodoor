@@ -1,4 +1,5 @@
 # TwoDoor
+![alt-text](https://github.com/arthurdamm/twodoor/blob/master/static/images/doorClose80px.svg)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
@@ -20,7 +21,7 @@ TwoDoor runs entirely on the front-end client-side with no local dependencies. S
 Simply open the _main.html_ with your browser to display the built-in deck demos. Select one of the demos to start the memory-training learning game.
 
 ## Contributing
-TwoDoor is open to contributions. Please contact the developers before submitting pull requets.
+TwoDoor is open to contributions. Please contact the developers before submitting pull requests.
 
 ## Related Projects
 
@@ -30,6 +31,7 @@ TwoDoor is open to contributions. Please contact the developers before submittin
 TwoDoor uses just a few basic technologies:
 * [JQuery](https://jquery.com/)
 * [DS3.js](https://d3js.org/)
+* Javascript
 * HTML & CSS
 
 License
