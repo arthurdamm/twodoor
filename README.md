@@ -1,5 +1,5 @@
 # TwoDoor
-   ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/doorClose200px.png?style=centerme)
+   ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/doorClose200px.png?style=center)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
@@ -33,6 +33,11 @@ TwoDoor uses just a few basic technologies:
 * [DS3.js](https://d3js.org/)
 * Javascript
 * HTML & CSS
+
+img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
 
 License
 
