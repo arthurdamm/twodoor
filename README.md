@@ -1,5 +1,5 @@
 # TwoDoor
-   <img align="center" src="![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/doorClose200px.png)">
+   ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/doorClose200px.png)
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
