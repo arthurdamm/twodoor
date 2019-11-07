@@ -3,7 +3,10 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
+The goal is to make an adaptive flashcard tutoring app that we, as well as any user, will use to help convert information from short-term to long-term memory. The simple process of memorization is a key component to any learning structure.
+
 Twodoor is an _adaptive_ virtual flashcard tutor written in Javascript & currently deployed as a wep application at: http://twodoor.herokuapp.com/
+
 
 Written with ❤️ by:
 * [Scout Curry](https://www.linkedin.com/in/scout-curry-96356217a/) - Full-Stack Developer
