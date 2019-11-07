@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
-The goal is to make an adaptive flashcard tutoring app that we, as well as any user, will use to help convert information from short-term to long-term memory. The simple process of memorization is a key component to any learning structure.
-
 Twodoor is an _adaptive_ virtual flashcard tutor written in Javascript & currently deployed as a wep application at: http://twodoor.herokuapp.com/
 
 
@@ -67,10 +65,19 @@ You can keep playing after the summary screen is shown :)
 ## Contributing
 TwoDoor is open to contributions. Please contact the developers before submitting pull requests.
 
-## Related Projects
+
+## The Story
+
+The goal is to make an adaptive flashcard tutoring app that we, as well as any user, will use to help convert information from short-term to long-term memory. The simple process of memorization is a key component to any learning structure. 
+This app was Arthur's vision, as he has been a tutor for 7 years before joining the Holberton curriculum. Scout joined in on the team for project-partnering experience as well as enthusiasm for the potential the product holds. We spent most of the time pair programming the app and had an amazing experience working together. We implemented features as we saw fit, which led to muddled roles throughout development, but led to an overall sense that the app is but an extension of our capabilities.
 
 
-### Tech
+## The Future
+
+We are both very excited to continue adding features, such as a backend with authentication for users and ability for anyone to create their own decks. When a deck is created, it may be added to a list of recently added and most popular decks, which will be displayed on the home page. It's also important to be able to send your custom made decks to other users, so teachers can make decks applicable to the lesson they are teaching and send them to their students.
+
+
+## Tech
 
 TwoDoor uses just a few basic technologies:
 * [JQuery](https://jquery.com/)
