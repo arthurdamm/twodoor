@@ -43,6 +43,15 @@ Since we are making this app for ourselves as much as for the user, the css triv
 
 Ihe simple yet effective interface provides feedback for each answer through unique animations.
 
+![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/tutorial_toolbar.jpg)
+
+Simple yet gets the job done, the toolbar has three components: the *home logo*, *timer*, and *algorithm button*.
+The *home logo* will take you back to the home page at any point during the session. the *timer* starts at 3 minutes, and when it reaches zero the *summary page* is rendered. The *algorithm button* was implemented to remove the deck staggering, for presentation purposes.
+
+![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/tutorial_learningGame_control.jpg)
+
+Again, the control has three components: The *cancel session* button that closes the session and renders the summary overlay. the *input text* is auto-focused when you start the session, and used to type and submit your answer. the *next* button also submits your answer, for people who arent as comfortable with pressing *enter*.
+
 
 ## Contributing
 TwoDoor is open to contributions. Please contact the developers before submitting pull requests.
