@@ -45,7 +45,7 @@ Ihe simple yet effective interface provides feedback for each answer through uni
 
 ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/tutorial_toolbar.jpg)
 
-Simple yet gets the job done, the toolbar has three components: the *home logo*, *timer*, and *algorithm button*.
+The toolbar has three components: the *home logo*, *timer*, and *algorithm button*.
 The *home logo* will take you back to the home page at any point during the session. the *timer* starts at 3 minutes, and when it reaches zero the *summary page* is rendered. The *algorithm button* was implemented to remove the deck staggering, for presentation purposes.
 
 
