@@ -11,9 +11,9 @@ Written with ❤️ by:
 * [Arthur Damm](https://www.linkedin.com/in/arthur-damm-96527042/) - Full-Stack Developer
 
 ## Features
-* Adaptive Algorithm - we use a custom implementation of the Leitner System, an evidence-based method of spaced-repetition. It serves as a robust way to show you the cards you don’t know more frequently than the ones you do, and staggers how many cards you are working with in the active tag at any given time to keep the information manageable.
-* Polished UX - We know that if the learning game is not fun and engaging, no one will want to play it. So we invested a large part of our design and development time into creating an agile, intuitive interface with eye-catching animations that keep the user actively engaged with positive and negative reinforcement.
-* Responsive - TwoDoor is designed to display on any screen and is desktop, tablet, and mobile-friendly so you can use it to train or refresh your memory with any device, anytime, anywhere.
+* _Adaptive Algorithm_ - we use a custom implementation of the Leitner System, an evidence-based method of spaced-repetition. It serves as a robust way to show you the cards you don’t know more frequently than the ones you do, and staggers how many cards you are working with in the active tag at any given time to keep the information manageable.
+* _Polished UX_ - We know that if the learning game is not fun and engaging, no one will want to play it. So we invested a large part of our design and development time into creating an agile, intuitive interface with eye-catching animations that keep the user actively engaged with positive and negative reinforcement.
+* _Responsive_ - TwoDoor is designed to display on any screen and is desktop, tablet, and mobile-friendly so you can use it to train or refresh your memory with any device, anytime, anywhere.
 
 ## Installation
 TwoDoor runs entirely on the front-end client-side with no local dependencies. Simply clone this repository and open the _main.html_ with your browser or point your web server's document root at it.
