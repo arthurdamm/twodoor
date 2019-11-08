@@ -81,9 +81,9 @@ We are both very excited to continue adding features, such as a backend with aut
 
 TwoDoor uses just a few basic technologies:
 * [JQuery](https://jquery.com/)
+* [HTML5](https://html5.org/)
+* [CSS3](https://www.w3.org/Style/CSS/Overview.en.html)
 * [DS3.js](https://d3js.org/)
-* Javascript
-* HTML & CSS
 
 ## License
 
