@@ -21,7 +21,7 @@ TwoDoor runs entirely on the front-end client-side with no local dependencies. S
 ## Usage
 
 ### Home
-Whose ready to play?
+Who's ready to play?
 ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/tutorial_all.jpg)
 
 The homepage is your access to all of the prebuilt decks. Each one was made for a purpose, to emphasize the wide usage of the app. User-made decks coming soon!
@@ -36,7 +36,7 @@ Using the app during development, we were getting used to the answers. When this
 
 ![alt-text](https://github.com/arthurdamm/twodoor/blob/scout/static/images/deck_css_trivia.jpg)
 
-Since we are making this app for ourselves as much as for the user, the css trivia deck was fun to create and quiz ourselves on, so we dont forget all the useful info!
+Since we are making this app for ourselves as much as for the user, the css trivia deck was fun to create and quiz ourselves on, so we don't forget all the useful info!
 
 ### Game Session
 
@@ -85,6 +85,6 @@ TwoDoor uses just a few basic technologies:
 * Javascript
 * HTML & CSS
 
-License
+## License
 
 MIT
