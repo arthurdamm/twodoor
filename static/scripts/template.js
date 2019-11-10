@@ -1,3 +1,8 @@
+/**
+ * Renders a card HTML template from JSON data.
+ * @param {Object} json JSON card object.
+ * @return {string} HTML card components populated with data.
+ */
 const renderCardTemplate = json => `
   <div class="card front" style="background-color: ${json.color}">` + (json.image ?
       `<img class="card-img-top" src="${json.image}" alt="card image cap">
@@ -24,6 +29,11 @@ const renderCardTemplate = json => `
   </div>
 </div>`;
 
+/**
+ * Renders summary HTML template from custom data.
+ * @param {Object} summary Custom summary data.
+ * @return {string} HTML summary template populated with data.
+ */
 const renderSummaryTemplate = summary => `
     <h3 class="summary-title">${summary.title}</h3>
     <p class="summary-motivational">${summary.motivationalText}</p>

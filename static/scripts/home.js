@@ -1,3 +1,14 @@
+/**
+ * @fileoverview Module for Home Component.
+ * Application starting point and toggles visibility of other components.
+ * @package
+ */
+
+/**
+ * Main on $(document).ready() event & application start.
+ * Displays Home Component, instantiates new Learning Game, and registers input
+ * events.
+ */
 $(() => {
   showHome();
   LearningGame();
@@ -13,12 +24,18 @@ $(() => {
   $('.logo').on('click', showHome);
 });
 
+/**
+ * Displays Home Component
+ */
 const showHome = () => {
   $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').show();
 };
 
+/**
+ * Displays Game Component, sets up deck, toggles instructions.
+ */
 const showGame = () => {
   $('.timer').show();
   $('.home-component').hide();
@@ -36,6 +53,9 @@ const showGame = () => {
   }
 };
 
+/**
+ * Displays Summary Component
+ */
 const showSummary = () => {
   location.href = "#summary-overlay";
 };
