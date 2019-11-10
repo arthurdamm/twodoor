@@ -1,4 +1,14 @@
-const loadDeck = function (arg) {
+/**
+ * @fileoverview Module for Data Store.
+ * @package
+ */
+
+ /**
+  * Loads requested deck data as JSON array.
+  * @param {string} deckName The deck name to load.
+  * @return {Array<Object>} Deck represented by JSON array of card objects.
+  */
+const loadDeck = (deckName) => {
   const decks = {
     "tutorial": getTutorialDeck,
     "face": getFaceDeck,
@@ -7,16 +17,21 @@ const loadDeck = function (arg) {
     "trivia": getTriviaDeck,
     "presentation": getPresentationDeck,
   }
-  return decks[arg]().map((json, i) => getCardTemplate(json, i));
+  return decks[deckName]().map((json, i) => getCardTemplate(json, i));
 };
 
-const generateColorDeck = (amount) => {
+ /**
+  * Generates deck of random color->word encoded cards.
+  * @param {number} length The deck size.
+  * @return {Array<Object>} Deck represented by JSON array of card objects.
+  */
+const generateColorDeck = (length) => {
   const words = ["agility", "altruism", "appeal", "beneficial", "bold", "creative", "capable", "dynamic", "drive", "empathy", "educate", "determination", "eager", "encourage", "fun", "helpful", "joy", "nice", "optimist", "polite", "quality", "reliable", "rockstar", "skilled", "spontaneous", "stellar", "teach", "tolerance", "value"];
   const colors = ["crimson", "hotpink", "yellow", "orange", "darkgreen", "lightgreen", "cyan", "indigo", "blue", "lightgray"];
   const deck = [];
   let word;
-  amount = amount || 10;
-  while (amount--)
+  length = length || 10;
+  while (length--)
     deck.push({
       color: popRandomElement(colors),
       question: "Which word has been coded to this color?",
@@ -26,6 +41,12 @@ const generateColorDeck = (amount) => {
   return deck;
 }
 
+ /**
+  * Creates a card object from a template populated with JSON data.
+  * @param {Object} json The JSON data for this card.
+  * @param {number} i This card's index in its deck.
+  * @return {Object} The new card object.
+  */
 const getCardTemplate = (json, i) => {
   const card = {
     "id": i,
@@ -35,16 +56,32 @@ const getCardTemplate = (json, i) => {
   return {...json, ...card};
 };
 
-
+/**
+ * Maps demo performance data, as an array of values between 1 and 0, to each
+ * card of the deck.
+ * @param {Array<Object>} deck Deck to map.
+ * @param {Array<number>} demoPerformance Data represented by array of card
+ * successes.
+ * @return {Array<Object} Deck mapped with formatted performance data.
+ */
 const mapDemoPerformances = (deck, demoPerformances) => {
   demoPerformances.forEach((l, i) => (deck[i] &&
     (deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)])));
   return deck;
 }
 
+/**
+ * Creates a random array of 1's & 0's representing card performance data.
+ * @param {number} length The number of performances.
+ * @return {Array<number>} Card performance data represented as 1's & 0's.
+ */
 const getRandomPerformance = (length) =>
   [...Array(length)].map(x => Math.floor(Math.random() * 2));
 
+/**
+ * Creates the Dino Deck from raw JSON data.
+ * @return {Array<Object>} Deck represented by JSON array of card objects.
+ */
 const getDinoDeck = () =>
   [
     {
@@ -109,7 +146,10 @@ const getDinoDeck = () =>
     },
   ];
 
-
+/**
+ * Creates the Face Deck from raw JSON data.
+ * @return {Array<Object>} Deck represented by JSON array of card objects.
+ */
 const getFaceDeck = () =>
   [
     {
@@ -174,6 +214,10 @@ const getFaceDeck = () =>
     },
   ];
 
+/**
+ * Creates the CSS Trivia Deck from raw JSON data.
+ * @return {Array<Object>} Deck represented by JSON array of card objects.
+ */
 const getTriviaDeck = () =>
   [
     {
@@ -228,6 +272,10 @@ const getTriviaDeck = () =>
     },
   ];
 
+/**
+ * Creates the Tutorial Deck from raw JSON data.
+ * @return {Array<Object>} Deck represented by JSON array of card objects.
+ */
 const getTutorialDeck = () => 
   [
     {
@@ -237,6 +285,10 @@ const getTutorialDeck = () =>
     }
   ];
 
+/**
+ * Creates the Presentation Day Deck from raw JSON data.
+ * @return {Array<Object>} Deck represented by JSON array of card objects.
+ */
 const getPresentationDeck = () =>
   [
     {

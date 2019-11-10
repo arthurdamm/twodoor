@@ -1,3 +1,9 @@
+/**
+ * Displays summary overlay upon the end of Learning Game session and
+ * prepares deck performance data by variable.
+ * @param {Object} deck The deck used in the session.
+ * @param {string} variable The variable to chart in the overlay.
+ */
 const endDeckSession = (deck, variable) => {
   showSummary();
   deck = JSON.parse(JSON.stringify(deck));
@@ -14,7 +20,11 @@ const endDeckSession = (deck, variable) => {
   renderPerformanceSummary(data);
 };
 
-const renderPerformanceSummary = data => {
+/**
+ * Renders custom performance summary from templates for given session data.
+ * @param {Object} data The given deck performance data.
+ */
+const renderPerformanceSummary = (data) => {
   const titles = ["Good job!", "Good work!", "Nice!", "Good-good!"]
   const motivationals = [
     {range: [76, 100], text: "An amazing performance!", emoji: "&#128579;"},
@@ -35,6 +45,11 @@ const renderPerformanceSummary = data => {
   $('.summary-template').html(renderSummaryTemplate(summary));
 }
 
+/**
+ * Renders D3.js bar chart from performance data for given variable.
+ * @param {Object} data The given deck performance data.
+ * @param {string} variable The given variable to chart.
+ */
 const renderPerformanceChart = (data, variable) => {
   const margin = {top: 50, right: 30, bottom: 70, left: 60}, 
       width = 460 - margin.left - margin.right,
