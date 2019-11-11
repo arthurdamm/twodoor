@@ -4,7 +4,7 @@
  */
 
 /**
- * Renders a card HTML template from JSON data.
+ * Renders Card HTML template from JSON data.
  * @param {Object} json JSON card object.
  * @return {string} HTML card components populated with data.
  */
@@ -35,7 +35,7 @@ const renderCardTemplate = json => `
 </div>`;
 
 /**
- * Renders summary HTML template from custom data.
+ * Renders Summary HTML template from custom data.
  * @param {Object} summary Custom summary data.
  * @return {string} HTML summary template populated with data.
  */
