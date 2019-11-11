@@ -106,11 +106,16 @@ const LearningGame = () => {
   });
   // Events for Control Component and Summary Component.
   $('.bttn--next').click(() => answerEvent());
-  $('.bttn--cancel').click(() => endDeckSession(deck, 'successes'));
-  $('.card-bar-chart--bttn-successes').click(() => endDeckSession(deck, 'successes'));
-  $('.card-bar-chart--bttn-failures').click(() => endDeckSession(deck, 'failures'));
-  $('.card-bar-chart--bttn-percentage').click(() => endDeckSession(deck, 'percentage'));
-  $('.card-bar-chart--bttn-demo').click(() => endDeckSession(deck, 'demo'));
+  $('.bttn--cancel').click(() =>
+    endDeckSession(deck, chartVariables.SUCCESS));
+  $('.card-bar-chart--bttn-successes').click(() =>
+    endDeckSession(deck, chartVariables.SUCCESS));
+  $('.card-bar-chart--bttn-failures').click(() =>
+    endDeckSession(deck, chartVariables.FAILURE));
+  $('.card-bar-chart--bttn-percentage').click(() =>
+    endDeckSession(deck, chartVariables.PERCENTAGE));
+  $('.card-bar-chart--bttn-demo').click(() =>
+    endDeckSession(deck, chartVariables.DEMO));
 
   /**
    * Sets the current deck and fires off a nextDoorEvent to select first card.
@@ -215,7 +220,7 @@ const printTimer = () => {
   if (currentTime >= 0)
     document.querySelector('.timer').timeoutID = setTimeout(printTimer, 1000);
   else {
-    endDeckSession($('.game-component')[0].queryDeck(), 'failures');
+    endDeckSession($('.game-component')[0].queryDeck(), chartVariables.FAILURE);
   }
 }
 

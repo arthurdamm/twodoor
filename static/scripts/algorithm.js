@@ -57,7 +57,7 @@ const selectNextCardFailure = function(deck) {
 const selectNextCardLeitner = function(deck) {
   if (!deck.leitnerRound) deck.leitnerRound = 1;
   deck.forEach(card => card.leitnerBox === undefined && (card.leitnerBox = 1));
-  console.log("selectNextCardLeitner()", deck);
+  console.log('selectNextCardLeitner()', deck);
   let currentDeck;
   do {
     /* Filter unplayed cards from active deck if their Leitner Box is a
@@ -103,7 +103,7 @@ const staggerActiveDeck = (deck) => {
       if (e = popRandomElement(passiveDeck))
         e.active = 1;
   }
-  console.log("ActiveDeck now:", deck.filter(card => card.active));
+  console.log('ActiveDeck now:', deck.filter(card => card.active));
   return deck;
 }
 
@@ -116,7 +116,7 @@ const staggerActiveDeck = (deck) => {
 const getDeckFailRate = (deck) => {
   const failRates = getFailRates(deck);
   const deckFailRate = failRates.length ? sum(failRates) / failRates.length : 1;
-  console.log("deckFailRate()", deckFailRate);
+  console.log('deckFailRate()', deckFailRate);
   return deckFailRate;  
 }
 
@@ -142,6 +142,6 @@ const getFailRates = (deck) => deck.map(card => getFailRate(card.performance));
  */
 const getDeckTries = (deck, activeDeck) => {
   const deckTries = deck.tries / activeDeck.length;
-  console.log("getDeckTries()", deckTries);
+  console.log('getDeckTries()', deckTries);
   return deckTries;
 }
