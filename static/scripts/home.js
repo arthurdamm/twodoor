@@ -18,7 +18,7 @@ $(() => {
     $('[name=text-answer]').focus();
   });
   $('.deck-container').find('.deck-selector').click(function() {
-    $('.game-component')[0].deckType = $(this).attr("deck");
+    $('.game-component')[0].deckType = $(this).attr('deck');
     showGame();
   })
   $('.logo').on('click', showHome);
@@ -42,7 +42,7 @@ const showGame = () => {
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
-  if ($('.game-component')[0].deckType !== "tutorial") {
+  if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
     startTimer();
     $('.instruction-component').hide();
   }
@@ -57,5 +57,5 @@ const showGame = () => {
  * Displays Summary Component
  */
 const showSummary = () => {
-  location.href = "#summary-overlay";
+  location.href = '#summary-overlay';
 };

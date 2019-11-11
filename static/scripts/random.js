@@ -1,4 +1,9 @@
 /**
+ * @fileoverview Module for functions related to random selection.
+ * @package
+ */
+
+/**
  * Pops random element from array.
  * @param {Array<*>} array A given array of unknown type.
  * @return {*} The popped element.

@@ -1,4 +1,9 @@
 /**
+ * @fileoverview Module for HTML templates.
+ * @package
+ */
+
+/**
  * Renders a card HTML template from JSON data.
  * @param {Object} json JSON card object.
  * @return {string} HTML card components populated with data.
