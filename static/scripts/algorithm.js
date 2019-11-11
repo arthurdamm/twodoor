@@ -101,7 +101,7 @@ const staggerActiveDeck = (deck) => {
     let e;
     while (stagger-- > 0)
       if (e = popRandomElement(passiveDeck))
-        e.active = true;
+        e.active = 1;
   }
   console.log('ActiveDeck now:', deck.filter(card => card.active));
   return deck;
