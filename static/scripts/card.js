@@ -4,14 +4,39 @@
  */
 
 /**
- * Class en-closure for Learning Game instance.
+ * @classdesc En-closure for Learning Game instance.
+ * @class LearningGame
  */
 const LearningGame = () => {
+  /**
+   * The DOM door object currently visible on top.
+   * @member {Object} currentDoor
+   */
   let currentDoor = $('#door2');
+  /**
+   * The DOM door object invisible beneath the currentDoor.
+   * @member {Object} nextDoor
+   */
   let nextDoor;
+  /**
+   * The deck currently in play.
+   * @member {Array<Object} deck
+   */
   let deck;
-  let animating = false, answered = false;
+  /** Flag true if animating the current card.
+   * @member {boolean} animating
+   */
+  let animating = false;
+  /** Flag true if answered the current card.
+   * @member {boolean} answered
+   */
+  let answered = false;
+  /** ID of nextDoorEvent timeout.
+   * @member {number} timeoutID
   let timeoutID;
+  /** Animator instance for zoom-in-out success animation.
+   * @const {Animator} animate
+   */
   const animate = Animator();
 
   /**
@@ -45,7 +70,7 @@ const LearningGame = () => {
   }
 
   /**
-   * Parses user answer for current card & invokes nextDoorEvent
+   * Parses user answer for current card & invokes nextDoorEvent.
    */
   const answerEvent = () => {
     // Rush event if already answered
@@ -161,24 +186,41 @@ const getCard = (currentDoor, deck) =>
   deck[parseInt(currentDoor.attr('card-id'))];
 
 /**
- * Class en-closure for DOM element Animator.
+ * @classdesc En-closure for DOM element Animator.
+ * @class Animator
  * @return {Animator} New Animator setter closure.
  */
 const Animator = () => {
-  let zPos = 0;
-  let zDelta = 0;
-  let element;
-  const increment = Math.PI / 100;
-
   /**
-   * Animates current element with zoom-in-out.
+   * How many radians to increment by every tick.
+   * @const {number} increment
+   */
+  const increment = Math.PI / 100;
+  /**
+   * Current z-position of animated element.
+   * @member {number} zPos
+   */
+  let zPos = 0;
+  /**
+   * Current angular displacement of animated element.
+   * @member {number} zDelta
+   */
+  let zDelta = 0;
+  /**
+   * DOM element to animate.
+   * @member {Object} element
+   */
+  let element;
+  
+  /**
+   * Animates element with zoom-in-out by mapping z-position to sin wave.
    */
   const animate = () => {
     element.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * zDelta) * 155;
     zDelta += increment;
-    if (zDelta >= 2) {
-      zPos = 0; zDelta = 0;
+    if (zDelta >= 2) {  // Done animating
+      zPos = zDelta = 0;
       return;
     } else
       requestAnimationFrame(animate);

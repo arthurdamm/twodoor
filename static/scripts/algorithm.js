@@ -1,8 +1,22 @@
-// The number of Leinter Boxes to use for partitioning the active deck.
+/**
+ * @fileoverview Module for Learning Algorithms
+ * @package
+ */
+
+/**
+ * The number of Leitner Boxes to use for partitioning the active deck.
+ * @const {number} LEITNER_BOXES
+ */
 const LEITNER_BOXES = 5;
-// The deck failure mean percentage at which new cards are released.
+/**
+ * The deck failure mean percentage at which new cards are released.
+ * @const {number} LEITNER_BOXES
+ */
 const FAILURE_THRESHOLD = .25;
-// The number of tries per card in active deck before new cards are released.
+/**
+ * The number of tries per card in active deck before new cards are released.
+ * @const {number} LEITNER_BOXES
+ */
 const TRIES_THRESHOLD = 6.0;
 
 /**
@@ -14,11 +28,13 @@ const TRIES_THRESHOLD = 6.0;
 const matchAnswer = function(answer, card) {
   const result = answer.match(card.regex) != null ? 1 : 0;
   card.performance.push(result);
-  if (card.leitnerBox)
+  if (card.leitnerBox) {
     if (result) {
       if (card.leitnerBox < LEITNER_BOXES)
         ++card.leitnerBox;
-    } else card.leitnerBox = 1;
+    } else
+      card.leitnerBox = 1;
+  }
   return result;
 }
 
@@ -59,9 +75,9 @@ const selectNextCardLeitner = function(deck) {
   deck.forEach(card => card.leitnerBox === undefined && (card.leitnerBox = 1));
   console.log('selectNextCardLeitner()', deck);
   let currentDeck;
+  /* Filter unplayed cards from active deck if their Leitner Box is a
+     multiple of the current Leitner Round */
   do {
-    /* Filter unplayed cards from active deck if their Leitner Box is a
-    multiple of the current Leitner Round */
     currentDeck = deck.filter(card => card.active &&
       (deck.leitnerRound == 1 || deck.leitnerRound != card.leitnerBox)
       && !(deck.leitnerRound % card.leitnerBox) && !card.played);
