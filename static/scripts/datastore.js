@@ -37,8 +37,16 @@ const loadDeck = (deckName) => {
     .map((json, i) => getCardTemplate(json, i));
 };
 
-const getCustomDeck = () =>
-  JSON.parse($('[name=text-input]').val());
+/**
+ * Loads custom deck data from build input box.
+ */
+const getCustomDeck = () => {
+  const jsonArray = JSON.parse($('[name=text-input]').val());
+  for (obj of jsonArray)
+    if (typeof obj.regex === 'string')
+      obj.regex = RegExp(obj.regex, 'i');
+  return jsonArray;
+}
 
  /**
   * Generates deck of random color->word encoded cards.
