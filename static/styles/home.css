@@ -131,3 +131,7 @@ h2 {
     color: indigo;
   }
 }
+
+.build-component {
+  display: none;
+}

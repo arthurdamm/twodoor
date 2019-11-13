@@ -30,8 +30,20 @@ $(() => {
 const showHome = () => {
   $('.timer').hide();
   $('.game-component').hide();
+  $('.build-component').hide();
   $('.home-component').show();
+
 };
+
+/**
+ * Displays Build Component
+ */
+const showBuild = () => {
+  $('.timer').hide();
+  $('.game-component').hide();
+  $('.home-component').hide();
+  $('.build-component').show();
+}
 
 /**
  * Displays Game Component, sets up deck, toggles instructions.
@@ -39,6 +51,7 @@ const showHome = () => {
 const showGame = () => {
   $('.timer').show();
   $('.home-component').hide();
+  $('.build-component').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));

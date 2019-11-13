@@ -15,6 +15,7 @@ const decks = {
   COLOR: 'color',
   TRIVIA: 'trivia',
   PRESENTATION: 'presentation',
+  CUSTOM: 'custom'
 };
 
  /**
@@ -30,10 +31,14 @@ const loadDeck = (deckName) => {
     [decks.COLOR, generateColorDeck],
     [decks.TRIVIA, getTriviaDeck],
     [decks.PRESENTATION, getPresentationDeck],
+    [decks.CUSTOM, getCustomDeck]
   ];
   return deckFactories.filter((o) => o[0] === deckName)[0][1]()
     .map((json, i) => getCardTemplate(json, i));
 };
+
+const getCustomDeck = () =>
+  JSON.parse($('[name=text-input]').val());
 
  /**
   * Generates deck of random color->word encoded cards.
