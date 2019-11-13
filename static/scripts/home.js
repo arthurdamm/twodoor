@@ -18,8 +18,12 @@ $(() => {
     $('[name=text-answer]').focus();
   });
   $('.deck-container').find('.deck-selector').click(function() {
-    $('.game-component')[0].deckType = $(this).attr('deck');
-    showGame();
+    if ($(this).attr('deck') === 'custom')
+      showBuild();
+    else {
+      $('.game-component')[0].deckType = $(this).attr('deck');
+      showGame();
+    }
   })
   $('.logo').on('click', showHome);
 });
@@ -43,6 +47,10 @@ const showBuild = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.build-component').show();
+  $('.bttn--build').click(() => {
+    $('.game-component')[0].deckType = decks.CUSTOM;
+    showGame();
+  })
 }
 
 /**
