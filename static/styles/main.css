@@ -48,7 +48,7 @@ header {
 }
 
 .bttn--algo {
-  display: block;
+  display: none;
   position: absolute;
   top: 0.4rem;
   right: 0.4rem;
@@ -62,6 +62,13 @@ header {
 
 .bttn--algo-red {
   background: radial-gradient(circle at 20px 20px, #ff5c5c, #000);
+}
+
+.signin-component {
+  color: indigo;
+  position: absolute;
+  padding-right: 1rem;
+  right: 0;
 }
 
 .main-container {
