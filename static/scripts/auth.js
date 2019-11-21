@@ -8,7 +8,7 @@ const authenticate = () => {
         console.log('uiShown()');
       },
     },
-    signInSuccessUrl: 'http://localhost/main.html',
+    signInSuccessUrl: 'http://www.arthurdamm.com/main.html',
     signInOptions: [
       // Leave the lines as is for the providers you want to offer your users.
       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
