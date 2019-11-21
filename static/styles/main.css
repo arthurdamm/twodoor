@@ -66,8 +66,9 @@ header {
 
 .signin-component {
   color: indigo;
-  margin-left: auto;
+  position: absolute;
   padding-right: 1rem;
+  right: 0;
 }
 
 .main-container {
