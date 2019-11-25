@@ -46,8 +46,9 @@ const showBuild = () => {
   $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').hide();
+  $('.timer').hide();
   $('.build-component').show();
-  $('.bttn--build').click(() => {
+  $('.bttn--play').click(() => {
     $('.game-component')[0].deckType = decks.CUSTOM;
     showGame();
   })
