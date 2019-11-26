@@ -12,6 +12,23 @@
 $(() => {
   showHome();
   LearningGame();
+  const firebase = authenticate();
+  $('.bttn--signin').on('click', function() {
+    console.log('bttn--signin click');
+    if ($(this).text() == 'SIGN IN')
+    {
+      showSignin();
+    }
+    else
+    {
+      firebase.auth().signOut().then(function() {
+        $('.bttn--signin').text('SIGN IN');
+        $('.signin-welcome').text('Welcome Guest!');
+      }).catch(function(error) {
+        console.log(error);
+      });
+    }
+  });
   $('.bttn--algo').on('click', function() {
     $(this)[0].clicked = !$(this)[0].clicked
     $(this).toggleClass('bttn--algo-red');
@@ -35,6 +52,7 @@ const showHome = () => {
   $('.timer').hide();
   $('.game-component').hide();
   $('.build-component').hide();
+  $('#firebaseui-auth-container').hide();
   $('.home-component').show();
 
 };
@@ -61,6 +79,7 @@ const showGame = () => {
   $('.timer').show();
   $('.home-component').hide();
   $('.build-component').hide();
+  $('#firebaseui-auth-container').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
@@ -80,4 +99,14 @@ const showGame = () => {
  */
 const showSummary = () => {
   location.href = '#summary-overlay';
+};
+
+/**
+ * Displays FirebaseAuth Sign In Component
+ */
+const showSignin = () => {
+  $('.timer').hide();
+  $('.game-component').hide();
+  $('.home-component').hide();
+  $('#firebaseui-auth-container').show();
 };
