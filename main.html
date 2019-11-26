@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="static/styles/card.css">
   <link rel="stylesheet" href="static/styles/home.css">
   <link rel="stylesheet" href="static/styles/summary.css">
+  <link rel="stylesheet" href="static/styles/build.css">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
 
   </head>
@@ -35,6 +36,10 @@
         <div class="home-component--main">Welcome to TwoDoor!</div>
         <div class="home-component--sub">Ready to begin?</div>
         <div class="deck-container">
+          <div class="deck-selector deck-selector-b" deck="custom">
+            <a href="#" class="bttn--deck bttn--build"></a>
+            <h2 class="deckText">Build a Deck!</h2>
+          </div>
           <div class="deck-selector deck-selector-0" deck="tutorial">
             <a href="#" class="bttn--deck bttn--deck0"></a>
             <h2 class="deckText">How to Play?</h2>
@@ -99,6 +104,10 @@
           <div class="summary-template"></div>
         </div>
       </div>
+    <div class="build-component">
+      <textarea type="text-input" name="text-input" id="text-input" placeholder="JSON here!"></textarea>
+      <a href="#" class="bttn--play"></a>
+    </div>
 
       <div id="firebaseui-auth-container"></div>
     </div>

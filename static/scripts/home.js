@@ -35,8 +35,12 @@ $(() => {
     $('[name=text-answer]').focus();
   });
   $('.deck-container').find('.deck-selector').click(function() {
-    $('.game-component')[0].deckType = $(this).attr('deck');
-    showGame();
+    if ($(this).attr('deck') === 'custom')
+      showBuild();
+    else {
+      $('.game-component')[0].deckType = $(this).attr('deck');
+      showGame();
+    }
   })
   $('.logo').on('click', showHome);
 });
@@ -47,9 +51,26 @@ $(() => {
 const showHome = () => {
   $('.timer').hide();
   $('.game-component').hide();
+  $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.home-component').show();
+
 };
+
+/**
+ * Displays Build Component
+ */
+const showBuild = () => {
+  $('.timer').hide();
+  $('.game-component').hide();
+  $('.home-component').hide();
+  $('.timer').hide();
+  $('.build-component').show();
+  $('.bttn--play').click(() => {
+    $('.game-component')[0].deckType = decks.CUSTOM;
+    showGame();
+  })
+}
 
 /**
  * Displays Game Component, sets up deck, toggles instructions.
@@ -57,6 +78,7 @@ const showHome = () => {
 const showGame = () => {
   $('.timer').show();
   $('.home-component').hide();
+  $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.game-component').show();
   $('[name=text-answer]').focus();

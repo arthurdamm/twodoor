@@ -135,7 +135,7 @@ p {
     box-shadow: 0 1rem 2rem rgb(0,0,0,.2);
 }
 
-input {
+#text-answer {
     min-width: 18rem;
     min-height: 1.25rem;
     font-size: 1.25rem;
