@@ -29,13 +29,15 @@ h2 {
   animation-duration: 1s;
 }
 .deck-container {
-  display: inline-block;
+  display: inline-grid;
   margin-top: 7.5%;
 }
 
 .deck-selector {
-  flex-direction: row;
-  text-align: left;
+  /* text-align: left; */
+  width: 50%;
+  grid-template-rows: 50%;
+  /* grid-template-columns: 50%; */
   text-transform: none;
   font-size: 1.25rem;
   margin-top: 0.5rem;
