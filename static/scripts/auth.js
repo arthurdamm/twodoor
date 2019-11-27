@@ -47,3 +47,5 @@ const authenticate = () => {
 
   return firebase;
 }
+
+const user = () => firebase.auth().currentUser;

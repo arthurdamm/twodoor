@@ -105,7 +105,18 @@
         </div>
       </div>
     <div class="build-component">
-      <textarea type="text-input" name="text-input" id="text-input" placeholder="JSON here!"></textarea>
+      <textarea type="text-input" name="text-input" id="text-input" placeholder="JSON here!">[
+        {
+          "question": "Do we know what we're doing, kinda?",
+          "answer": "Yes",
+          "regex": "y(es)?"
+        },
+        {
+          "question": "What key attribute makes TwoDoor unique?",
+          "answer": "Adaptive",
+          "regex": "adapt|adaptive|adaptable|adaptability"
+        }
+    ]</textarea>
       <a href="#" class="bttn--play"></a>
     </div>
 
@@ -149,6 +160,9 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
+
+  const db = firebase.firestore();
+
   </script>
 
   </body>

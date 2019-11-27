@@ -43,6 +43,10 @@ $(() => {
     }
   })
   $('.logo').on('click', showHome);
+  $('.bttn--play').click(() => {
+    $('.game-component')[0].deckType = decks.CUSTOM;
+    showGame();
+  })
 });
 
 /**
@@ -54,7 +58,27 @@ const showHome = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.home-component').show();
-
+  if (user()) {
+    let userData = db.collection("users").doc(user().uid);
+    userData.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+            for (deck of doc.data().decks) {
+              const div = `
+                <div class="deck-selector deck-selector-0" deck="tutorial">
+                <a href="#" class="bttn--deck bttn--deck0"></a>
+                <h2 class="deckText">custom deck</h2>
+                </div>`;
+              $('.deck-container').append(div);
+              }
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  }
 };
 
 /**
@@ -66,10 +90,6 @@ const showBuild = () => {
   $('.home-component').hide();
   $('.timer').hide();
   $('.build-component').show();
-  $('.bttn--play').click(() => {
-    $('.game-component')[0].deckType = decks.CUSTOM;
-    showGame();
-  })
 }
 
 /**

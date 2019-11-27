@@ -41,7 +41,44 @@ const loadDeck = (deckName) => {
  * Loads custom deck data from build input box.
  */
 const getCustomDeck = () => {
-  const jsonArray = JSON.parse($('[name=text-input]').val());
+  const text = $('[name=text-input]').val()
+  const jsonArray = JSON.parse(text);
+  if (user()) {
+    let userData = db.collection("users").doc(user().uid);
+
+    userData.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Document data:", doc.data());
+            let data = doc.data();
+            if (data.decks.indexOf(text) === -1) {
+              console.log("adding data...");
+              data.decks.push(text);
+              db.collection("users").doc(user().uid).set(data)
+              .then(function() {
+                console.log("Document successfully written!");
+              })
+              .catch(function(error) {
+                console.error("Error writing document: ", error);
+              });
+            } 
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            db.collection("users").doc(user().uid).set({
+              name: user().displayName,
+              decks: [text]
+          })
+          .then(function() {
+              console.log("Document successfully written!");
+          })
+          .catch(function(error) {
+              console.error("Error writing document: ", error);
+          });
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  }
   for (obj of jsonArray)
     if (typeof obj.regex === 'string')
       obj.regex = RegExp(obj.regex, 'i');
