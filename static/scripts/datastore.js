@@ -15,7 +15,8 @@ const decks = {
   COLOR: 'color',
   TRIVIA: 'trivia',
   PRESENTATION: 'presentation',
-  CUSTOM: 'custom'
+  CUSTOM: 'custom',
+  BUILDER: 'builder'
 };
 
  /**
@@ -31,11 +32,25 @@ const loadDeck = (deckName) => {
     [decks.COLOR, generateColorDeck],
     [decks.TRIVIA, getTriviaDeck],
     [decks.PRESENTATION, getPresentationDeck],
-    [decks.CUSTOM, getCustomDeck]
+    [decks.CUSTOM, getCustomDeck],
+    [decks.BUILDER, getBuilderDeck]
   ];
   return deckFactories.filter((o) => o[0] === deckName)[0][1]()
     .map((json, i) => getCardTemplate(json, i));
 };
+
+/**
+ * Loads user-built decks from db
+ */
+const getBuilderDeck = () => {
+  text = $('.game-component')[0].deckText;
+  console.log("getBuilderDeck: " + text);
+  const jsonArray = JSON.parse(text);
+  for (obj of jsonArray)
+    if (typeof obj.regex === 'string')
+      obj.regex = RegExp(obj.regex, 'i');
+  return jsonArray;
+}
 
 /**
  * Loads custom deck data from build input box.

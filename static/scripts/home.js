@@ -34,14 +34,26 @@ $(() => {
     $(this).toggleClass('bttn--algo-red');
     $('[name=text-answer]').focus();
   });
-  $('.deck-container').find('.deck-selector').click(function() {
+  $(document).on('click', '.deck-selector', function () {
+    console.log("custom clicker");
     if ($(this).attr('deck') === 'custom')
       showBuild();
     else {
       $('.game-component')[0].deckType = $(this).attr('deck');
+      $('.game-component')[0].deckText = $(this).attr('text');
+      console.log("THIS TEXT: ", $(this).attr('text'));
       showGame();
     }
-  })
+  });
+  // $('.deck-container').find('.deck-selector').click(function() {
+  //   if ($(this).attr('deck') === 'custom')
+  //     showBuild();
+  //   else {
+  //     $('.game-component')[0].deckType = $(this).attr('deck');
+  //     $('.game-component')[0].deckText = $(this).attr('text');
+  //     showGame();
+  //   }
+  // })
   $('.logo').on('click', showHome);
   $('.bttn--play').click(() => {
     $('.game-component')[0].deckType = decks.CUSTOM;
@@ -58,19 +70,24 @@ const showHome = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.home-component').show();
+  console.log("checking user...");
   if (user()) {
+    console.log("found user...");
     let userData = db.collection("users").doc(user().uid);
     userData.get().then(function(doc) {
         if (doc.exists) {
-            console.log("Document data:", doc.data());
+            console.log("LOADING DECKS:", doc.data());
+            let i = 0;
             for (deck of doc.data().decks) {
               const div = `
-                <div class="deck-selector deck-selector-0" deck="tutorial">
-                <a href="#" class="bttn--deck bttn--deck0"></a>
-                <h2 class="deckText">custom deck</h2>
+                <div class="deck-selector custom-deck-${++i}" deck="builder">
+                <a href="#" class="bttn--deck"></a>
+                <h2 class="deckText">Custom Deck ${i}</h2>
                 </div>`;
               $('.deck-container').append(div);
-              }
+              console.log("THIS DECK: ", deck);
+              $(`.custom-deck-${i}`).attr('text', deck);
+            }
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
