@@ -70,32 +70,6 @@ const showHome = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.home-component').show();
-  console.log("checking user...");
-  if (user()) {
-    console.log("found user...");
-    let userData = db.collection("users").doc(user().uid);
-    userData.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("LOADING DECKS:", doc.data());
-            let i = 0;
-            for (deck of doc.data().decks) {
-              const div = `
-                <div class="deck-selector custom-deck-${++i}" deck="builder">
-                <a href="#" class="bttn--deck"></a>
-                <h2 class="deckText">Custom Deck ${i}</h2>
-                </div>`;
-              $('.deck-container').append(div);
-              console.log("THIS DECK: ", deck);
-              $(`.custom-deck-${i}`).attr('text', deck);
-            }
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-  }
 };
 
 /**

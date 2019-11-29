@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Module for User Authentication and Data
+ * @package
+ */
+
+
 const authenticate = () => {
   console.log('authenticate()');
   var uiConfig = {
@@ -36,6 +42,7 @@ const authenticate = () => {
     if (user) {
       $('.signin-welcome').text(`Hi ${user.displayName}!`);
       $('.bttn--signin').text('SIGN OUT');
+      loadCustomDecks();
     }
     
   });
@@ -48,4 +55,40 @@ const authenticate = () => {
   return firebase;
 }
 
+/**
+ * Returns currently authenticated user or null
+ * @return {Object} currently authenticated user or null
+ */
 const user = () => firebase.auth().currentUser;
+
+/**
+ * Loads user's custom decks and populates them into the home component
+ * deck container.
+ */
+const loadCustomDecks = () => {
+  console.log("loadCustomDecks()");
+  if (user()) {
+    let userData = db.collection("users").doc(user().uid);
+    userData.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Found document:", doc.data());
+            $('.custom-deck').remove();
+            for (let [i, deck] of doc.data().decks.entries()) {
+              const div = `
+                <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
+                <a href="#" class="bttn--deck"></a>
+                <h2 class="deckText">Custom Deck ${i}</h2>
+                </div>`;
+              $('.deck-container').append(div);
+              console.log("THIS DECK: ", deck);
+              $(`.custom-deck-${i}`).attr('text', deck);
+            }
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  }
+}
