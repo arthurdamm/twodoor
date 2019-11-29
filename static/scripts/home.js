@@ -78,9 +78,10 @@ const showHome = () => {
         if (doc.exists) {
             console.log("LOADING DECKS:", doc.data());
             let i = 0;
+            $('.custom-deck').remove();
             for (deck of doc.data().decks) {
               const div = `
-                <div class="deck-selector custom-deck-${++i}" deck="builder">
+                <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
                 <a href="#" class="bttn--deck"></a>
                 <h2 class="deckText">Custom Deck ${i}</h2>
                 </div>`;
