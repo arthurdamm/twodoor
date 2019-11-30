@@ -151,6 +151,8 @@ h2 {
 
   .deck-selector {
     color: indigo;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
