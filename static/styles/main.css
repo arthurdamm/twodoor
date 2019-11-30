@@ -32,9 +32,8 @@ header {
 .logo {
   position: absolute;
   left: 0;
-  height: 4rem;
-  width: 4rem;
-  border: 3px solid green;
+  height: 5rem;
+  width: 5rem;
   background: url("../images/doorClose80px.svg") no-repeat;
   background-size: 100% 100%;
   margin-left: 1%;
