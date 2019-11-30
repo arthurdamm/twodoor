@@ -76,7 +76,6 @@ const loadCustomDecks = () => {
             for (let [i, deck] of doc.data().decks.entries()) {
               const div = `
                 <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
-                <a href="#" class="bttn--deck"></a>
                 <h2 class="deckText">Custom Deck ${i}</h2>
                 </div>`;
               $('.deck-container').append(div);
