@@ -151,8 +151,8 @@ h2 {
 
   .deck-selector {
     color: red;
-    margin-left: 0;
-    margin-right: 0;
+    margin-left: .1rem;
+    margin-right: .1rem;
   }
 }
 
