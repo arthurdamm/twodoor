@@ -31,16 +31,18 @@ header {
 
 .logo {
   position: absolute;
-  top: -11.6px;
   left: 0;
-  height: 120px;
-  width: 120px;
+  height: 4rem;
+  width: 4rem;
+  border: 3px solid green;
   background: url("../images/doorClose80px.svg") no-repeat;
+  background-size: 100% 100%;
   margin-left: 1%;
 }
 
 .logo:hover {
   background: url("../images/doorOpen80px.svg") no-repeat;
+  background-size: 100% 100%;
 }
 
 .timer {
