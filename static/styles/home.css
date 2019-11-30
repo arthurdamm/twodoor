@@ -9,7 +9,7 @@
   text-transform: uppercase;
   backface-visibility: hidden;
   position: relative;
-  margin-left: 5%;
+  /* margin-left: 5%; */
   margin-top: 1%;
   text-align: center;
 }
@@ -29,20 +29,38 @@ h2 {
   animation-duration: 1s;
 }
 .deck-container {
-  display: inline-grid;
-  margin-top: 7.5%;
+  display: inline-flex;
+  margin-top: 5.5%;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-grow: 1;
+
 }
 
 .deck-selector {
-  /* text-align: left; */
-  width: 50%;
-  grid-template-rows: 50%;
-  /* grid-template-columns: 50%; */
+  height: 28rem;
+  width: 20rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  margin-bottom: 1rem;
   text-transform: none;
   font-size: 1.25rem;
-  margin-top: 0.5rem;
+  margin-top: 2.5rem;
   color: black;
+  background-color: white;
+  border-radius: .688rem;
+  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
+
+.deck-selector:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+
+.deckText {
+  margin-top: 40%;
+}
+
 
 .bttn--deck {
   display: inline-flex;
