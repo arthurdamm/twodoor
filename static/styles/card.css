@@ -257,6 +257,10 @@ h1 {
     min-width: 8rem;
   }
 
+  #text-answer {
+    min-width: 8rem;
+  }
+
   input {
     min-width: 5rem;
   }
