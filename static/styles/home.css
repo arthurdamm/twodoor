@@ -39,6 +39,7 @@ h2 {
 }
 
 .deck-selector {
+  transition: all .4s;
   height: 28rem;
   width: 20rem;
   margin-left: 4rem;
@@ -55,7 +56,7 @@ h2 {
 
 .deck-selector:hover {
   transform: translateY(-0.5rem);
-  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+  box-shadow: 0 1.2rem 1.2rem rgb(0,0,0,.3);
 }
 
 .deckText {
