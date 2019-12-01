@@ -37,6 +37,7 @@
   position: absolute;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
 }
 
@@ -106,4 +107,12 @@ p.summary-score span {
 
 p.summary-motivational, p.summary-score, p.summary-conditional {
   font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .summary-component {
+    width: 90%;
+    color: red;
+    flex-direction: column;
+  }
 }
