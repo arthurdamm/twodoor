@@ -153,7 +153,7 @@ body {
   opacity: 0; }
 
 .btn--animated {
-  animation: moveInBottom .5s ease-out 2s;
+  animation: moveInBottom .5s ease-out;
   animation-fill-mode: backwards; }
 
 .btn-next:link, .btn-next:visited {
