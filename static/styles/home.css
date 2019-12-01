@@ -28,6 +28,7 @@ h2 {
   animation-name: moveInRight;
   animation-duration: 1s;
 }
+
 .deck-container {
   display: inline-flex;
   margin-top: 5.5%;
@@ -145,8 +146,14 @@ h2 {
 }
 
 @media only screen and (max-width: 600px) {
+
+  .home-component--main {
+    font-size: 2rem;
+    letter-spacing: 1rem;
+  }
+
   .bttn--deck {
-    display: none;
+      display: none;
   }
 
   .deck-selector {

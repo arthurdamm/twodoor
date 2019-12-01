@@ -8,6 +8,7 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -16,7 +17,10 @@ body {
   line-height: 1.7;
   margin-top: 20px;
   color: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
 
 .navbar {
   z-index: 3;
@@ -318,4 +322,17 @@ body {
 
 .footer__plug {
   color: lightgrey;
-  text-decoration: none; }
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .heading-primary--main {
+    font-size: 4rem;
+    letter-spacing: 1rem; }
+
+  .heading-primary--sub {
+    font-size: 2rem;
+    letter-spacing: 1rem; }
+
+}
