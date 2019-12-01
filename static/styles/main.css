@@ -6,6 +6,7 @@
 html {
   height: 100%;
   width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -15,6 +16,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
 header {
