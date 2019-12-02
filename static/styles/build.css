@@ -1,39 +1,62 @@
 .build-component {
-  display: block;
-  height: 100%;
-  width: 100%;
+  display: flex;
+  height: 60%;
+  width: 60%;
   justify-content: center;
   margin: auto;
+  flex-direction: column;
   /* border: 1px solid black; */
+  flex-wrap: nowrap;
   
 }
-#text-input {
-  height: 30rem;
-  width: 20rem;
-  /* margin: 0 auto; */
+
+.build-card-selector {
+  display: inline-flex;
+  width: 25%;
+  height: 25%;
+  justify-content: space-evenly;
 }
 
-#build-card-name{
-  width: 50%;
+.bttn--select-left {
+  width: 3rem;
+  height: 3rem;
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+}
+
+.bttn--select-right {
+  width: 3rem;
+  height: 3rem;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
 }
 
 .build-card-fields {
-  /* display: inline-flex; */
   height: 100%;
   width: 80%;
   border: 2px solid black;
 }
 
+.deck-modifier {
+  align-items: center;
+  position: absolute;
+  display: flex;
+  width: 75%;
+  height: 75%;
+  margin-left: -11%;
+  justify-content: space-between;
+}
+
 .bttn--remove-card {
-  height: 100px;
-  width: 100px;
+  height: 3rem;
+  width: 3rem;
   clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
   background-color: crimson;
 }
 
 .bttn--add-card {
-  height: 100px;
-  width: 100px;
+  height: 3rem;
+  width: 3rem;
   clip-path: polygon(66% 0, 33% 0, 33% 33%, 0 33%, 0 66%, 33% 66%, 33% 100%, 66% 100%, 66% 66%, 100% 66%, 100% 33%, 66% 33%);
   background-color: chartreuse;
 }
