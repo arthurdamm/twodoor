@@ -114,5 +114,6 @@ p.summary-motivational, p.summary-score, p.summary-conditional {
     width: 90%;
     color: red;
     flex-direction: column;
+    flex-wrap: wrap;
   }
 }
