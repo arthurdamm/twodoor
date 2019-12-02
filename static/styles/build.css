@@ -1,8 +1,9 @@
 .build-component {
+  display: block;
+  height: 100%;
   width: 100%;
-  display: inline-flex;
-  align-items: flex-end;
   justify-content: center;
+  margin: auto;
   /* border: 1px solid black; */
   
 }
@@ -10,6 +11,31 @@
   height: 30rem;
   width: 20rem;
   /* margin: 0 auto; */
+}
+
+#build-card-name{
+  width: 50%;
+}
+
+.build-card-fields {
+  /* display: inline-flex; */
+  height: 100%;
+  width: 80%;
+  border: 2px solid black;
+}
+
+.bttn--remove-card {
+  height: 100px;
+  width: 100px;
+  clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
+  background-color: crimson;
+}
+
+.bttn--add-card {
+  height: 100px;
+  width: 100px;
+  clip-path: polygon(66% 0, 33% 0, 33% 33%, 0 33%, 0 66%, 33% 66%, 33% 100%, 66% 100%, 66% 66%, 100% 66%, 100% 33%, 66% 33%);
+  background-color: chartreuse;
 }
 
 .bttn--play {

@@ -21,7 +21,7 @@ body {
 }
 
 header {
-  position: relative;
+  position: fixed;
   height: 8%;
   width: 100%;
   display: flex;
