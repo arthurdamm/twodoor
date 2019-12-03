@@ -2,12 +2,16 @@ const HB_URL = "https://intranet.hbtn.io";
 
 let authToken;
 
-const request_json = {
+let getemail = () => "";
+let getapikey = () => "";
+let getpassword = () => "";
+
+const requestJson = () => ({
   api_key: getapikey(),
   email: getemail(),
   password: getpassword(),
   scope: "random_peers"
-};
+});
 
 const authenticationRequest = json => ({
   async: true,
@@ -22,7 +26,7 @@ const authenticationRequest = json => ({
 
 
 const authenticateUserHB = () => {
-  $.ajax(authenticationRequest(request_json))
+  $.ajax(authenticationRequest(requestJson()))
     .done(({ _authToken }) => {
       authToken = _authToken;
       console.log("Authentication successful:", authToken);
