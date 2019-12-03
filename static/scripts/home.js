@@ -37,8 +37,12 @@ $(() => {
   });
   $(document).on('click', '.deck-selector', function () {
     console.log("custom clicker");
-    if ($(this).attr('deck') === 'custom')
+    if ($(this).attr('deck') === 'custom') {
       showBuild();
+    }
+    else if($(this).attr('deck') === decks.HOLBIE) {
+      showHolbie();
+    }
     else {
       $('.game-component')[0].deckType = $(this).attr('deck');
       $('.game-component')[0].deckText = $(this).attr('text');
@@ -75,8 +79,23 @@ const showHome = () => {
   $('.game-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
+  $('.holbie-component').hide();
   $('.home-component').show();
 };
+
+/**
+ * Displays Holbie Component
+ */
+const showHolbie = () => {
+  console.log("showHolbie()");
+  $('.timer').hide();
+  $('.game-component').hide();
+  $('.home-component').hide();
+  $('.timer').hide();
+  $('.build-component').hide();
+  $('#firebaseui-auth-container').hide();
+  $('.holbie-component').show();
+}
 
 /**
  * Displays Build Component
@@ -86,6 +105,7 @@ const showBuild = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.timer').hide();
+  $('.holbie-component').hide();
   $('.build-component').show();
 }
 
@@ -97,7 +117,9 @@ const showGame = () => {
   $('.home-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
+  $('.holbie-component').hide();
   $('.game-component').show();
+
   $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
   if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
@@ -125,5 +147,7 @@ const showSignin = () => {
   $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').hide();
+  $('.build-component').hide();
+  $('.holbie-component').hide();
   $('#firebaseui-auth-container').show();
 };
