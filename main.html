@@ -36,6 +36,9 @@
         <div class="home-component--main">Welcome to TwoDoor!</div>
         <div class="home-component--sub">Ready to begin?</div>
         <div class="deck-container">
+          <div class="deck-selector deck-selector-h" deck="holbie">
+            <h2 class="deckText">Team Holbie 🙃</h2>
+          </div>
           <div class="deck-selector deck-selector-b" deck="custom">
             <h2 class="deckText">Build a Deck!</h2>
           </div>
@@ -116,7 +119,18 @@
         <div class="bttn--add-card"></div>
       </div>
       <div class="bttn--play"></div>
+    </div>
 
+    <div class="holbie-component">
+      <br />
+      <br />
+      <br />
+      <form id="holbie-signin" onSubmit="authenticateUserHB();">
+        <input name="holbie-email" type="text" />
+        <input name="holbie-password" type="password" />
+        <input name="holbie-apikey" type="password" />
+        <input name="holbie-submit" type="submit" value="Submit" />
+      </form>
     </div>
 
       <div id="firebaseui-auth-container"></div>

@@ -16,7 +16,8 @@ const decks = {
   TRIVIA: 'trivia',
   PRESENTATION: 'presentation',
   CUSTOM: 'custom',
-  BUILDER: 'builder'
+  BUILDER: 'builder',
+  HOLBIE: 'holbie',
 };
 
  /**
