@@ -24,14 +24,31 @@ const authenticationRequest = json => ({
   data: JSON.stringify(json)
 });
 
+const randomPeersRequest = (authToken, number, cohorts) => ({
+  async: true,
+  crossDomain: true,
+  url: `${HB_URL}/users/random_peers.json`,
+  method: 'GET',
+  data: {
+    auth_token: authToken,
+    number: number,
+    cohorts: cohorts,
+  }
+});
 
 const authenticateUserHB = () => {
   $.ajax(authenticationRequest(requestJson()))
-    .done(({ _authToken }) => {
-      authToken = _authToken;
+    .done(({ auth_token }) => {
+      authToken = auth_token;
       console.log("Authentication successful:", authToken);
     })
     .fail(() => {
       console.log("Authentication failed.");
     });
-}
+};
+
+const getRandomPeers = () => {
+  $.ajax(randomPeersRequest(authToken, 5, 8))
+    .done(data => console.log("PEERS:", data))
+    .fail(data => console.log("PEERS FAILED:", data));
+};
