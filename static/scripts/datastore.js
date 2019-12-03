@@ -67,6 +67,8 @@ const getCustomDeck = () => {
         if (doc.exists) {
             console.log("Document data:", doc.data());
             let data = doc.data();
+            if (!data.decks)
+              data.decks = [];
             if (data.decks.indexOf(text) === -1) {
               console.log("adding data...");
               data.decks.push(text);
