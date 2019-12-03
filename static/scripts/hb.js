@@ -4,7 +4,7 @@ let authToken;
 
 let getemail = () => $("[name=holbie-email]").val();
 let getpassword = () => $("[name=holbie-password]").val();
-let getapikey = () => "96a4134e30845c1fe3ed6e016f19e423";
+let getapikey = () =>  $("[name=holbie-apikey]").val();
 
 const requestJson = () => ({
   api_key: getapikey(),
@@ -60,12 +60,16 @@ const populateRandomPeers = () => {
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => {
       console.log("POPULATE PEERS:", data);
-      const deck = data.map(o => ({
+      const _deck = data.map(o => ({
         question: "Who is this?",
         answer: o.full_name + "<br>" + o.cohort,
         image: o.picture,
         regex: o.full_name,
       }));
+      const deck = {
+        deckName: "Holbie",
+        deck: _deck
+      }
       $('.game-component')[0].deckType = decks.BUILDER;
       $('.game-component')[0].deckText = JSON.stringify(deck);
       showGame();
