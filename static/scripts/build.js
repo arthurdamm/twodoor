@@ -5,6 +5,7 @@
 
 const saveCard = () => {
   console.log("saveCard()");
+  const deckName = $('[name=build-deck-name]').val();
   const questionText = $('[name=question-field]').val();
   const answerText = $('[name=answer-field]').val();
   const regexText = $('[name=regex-field]').val();
@@ -14,6 +15,7 @@ const saveCard = () => {
     regex: regexText,
   };
   const deck = getBuilderDeck();
+  deck.deckName = deckName;
   const cardIndex = getBuilderIndex() - 1;
   deck[cardIndex] = card;
 }
@@ -77,6 +79,11 @@ const goPlay = function() {
   saveCard();
   console.log("DECKY:", getBuilderDeck())
   console.log("STRINGY:", JSON.stringify(getBuilderDeck()))
+  const obj = {
+    deckName: getBuilderDeck().deckName,
+    deck: getBuilderDeck()
+  }
+  $('.game-component')[0].deckText = JSON.stringify(obj);
   $('.game-component')[0].deckText = JSON.stringify(getBuilderDeck())
   $('.game-component')[0].deckType = decks.CUSTOM;
 }

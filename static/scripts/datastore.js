@@ -47,10 +47,10 @@ const getBuiltDeck = () => {
   text = $('.game-component')[0].deckText;
   console.log("getBuiltDeck: " + text);
   const jsonArray = JSON.parse(text);
-  for (obj of jsonArray)
+  for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
       obj.regex = RegExp(obj.regex, 'i');
-  return jsonArray;
+  return jsonArray.deck;
 }
 
 /**
@@ -96,10 +96,10 @@ const getCustomDeck = () => {
         console.log("Error getting document:", error);
     });
   }
-  for (obj of jsonArray)
+  for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
       obj.regex = RegExp(obj.regex, 'i');
-  return jsonArray;
+  return jsonArray.deck;
 }
 
  /**

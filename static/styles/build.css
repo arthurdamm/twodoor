@@ -19,7 +19,7 @@
 .build-card-selector {
   display: inline-flex;
   width: 25rem;
-  height: 10rem;
+  height: 4rem;
   justify-content: space-evenly;
   align-items: center;
 }
