@@ -56,9 +56,14 @@ $(() => {
   // })
   $('.logo').on('click', showHome);
   $('.bttn--play').click(() => {
-    $('.game-component')[0].deckType = decks.CUSTOM;
+    goPlay();
     showGame();
   })
+
+  $('.bttn--select-left').click(goLeft);
+  $('.bttn--select-right').click(goRight);
+  $('.bttn--add-card').click(goPlus);
+  $('.bttn--remove-card').click(goMinus);
 });
 
 /**

@@ -45,8 +45,10 @@ const matchAnswer = function(answer, card) {
  * @return {Object} The newly selected card.
  */
 const selectNextCard = function(deck, currentCard) {
-  deck = staggerActiveDeck(deck);
-  return selectNextCardLeitner(deck);
+  if (deck.length) {
+    deck = staggerActiveDeck(deck);
+    return selectNextCardLeitner(deck);
+  }
 }
 
 /**

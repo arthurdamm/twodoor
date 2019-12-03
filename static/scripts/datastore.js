@@ -33,7 +33,7 @@ const loadDeck = (deckName) => {
     [decks.TRIVIA, getTriviaDeck],
     [decks.PRESENTATION, getPresentationDeck],
     [decks.CUSTOM, getCustomDeck],
-    [decks.BUILDER, getBuilderDeck]
+    [decks.BUILDER, getBuiltDeck]
   ];
   return deckFactories.filter((o) => o[0] === deckName)[0][1]()
     .map((json, i) => getCardTemplate(json, i));
@@ -42,9 +42,9 @@ const loadDeck = (deckName) => {
 /**
  * Loads user-built decks from db
  */
-const getBuilderDeck = () => {
+const getBuiltDeck = () => {
   text = $('.game-component')[0].deckText;
-  console.log("getBuilderDeck: " + text);
+  console.log("getBuiltDeck: " + text);
   const jsonArray = JSON.parse(text);
   for (obj of jsonArray)
     if (typeof obj.regex === 'string')
@@ -56,7 +56,8 @@ const getBuilderDeck = () => {
  * Loads custom deck data from build input box.
  */
 const getCustomDeck = () => {
-  const text = $('[name=text-input]').val()
+  // const text = $('[name=text-input]').val()
+  const text = $('.game-component')[0].deckText;
   const jsonArray = JSON.parse(text);
   if (user()) {
     let userData = db.collection("users").doc(user().uid);

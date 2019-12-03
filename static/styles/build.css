@@ -1,22 +1,88 @@
 .build-component {
-  width: 100%;
-  display: inline-flex;
-  align-items: flex-end;
+  display: flex;
+  position: relative;
+  height: 75%;
+  width: 45%;
+  margin-top: 4rem;
   justify-content: center;
+  margin: auto;
+  align-items: center;
+  flex-direction: column;
   /* border: 1px solid black; */
+  flex-wrap: nowrap;
   
 }
-#text-input {
-  height: 30rem;
-  width: 20rem;
-  /* margin: 0 auto; */
+
+.build-deck-name {
+  margin-bottom: 5%;
+}
+
+.build-card-selector {
+  display: inline-flex;
+  width: 25rem;
+  height: 10rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.bttn--select-left {
+  width: 3rem;
+  height: 3rem;
+  clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  /* margin-right: 1%; */
+}
+
+.bttn--select-right {
+  width: 3rem;
+  height: 3rem;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  /* margin-left: 1%; */
+}
+
+.build-card-fields {
+  height: 21rem;
+  width: 18rem;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  border: 2px solid black;
+}
+
+.field {
+  width: 17.5rem;
+  height: 5rem;
+  z-index: -1;
+}
+
+.deck-modifier {
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.bttn--remove-card {
+  height: 3rem;
+  width: 3rem;
+  clip-path: polygon(0 33%, 100% 33%, 100% 66%, 0 66%);
+  background-color: crimson;
+  margin-right: 1%;
+}
+
+.bttn--add-card {
+  height: 3rem;
+  width: 3rem;
+  clip-path: polygon(66% 0, 33% 0, 33% 33%, 0 33%, 0 66%, 33% 66%, 33% 100%, 66% 100%, 66% 66%, 100% 66%, 100% 33%, 66% 33%);
+  background-color: chartreuse;
+  margin-left: 1%;
 }
 
 .bttn--play {
   background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
-  width: 6rem;
+  width: 4rem;
   height: 6rem;
   position: relative;
-  margin-left: 1.5rem;
+  align-self: flex-end;
 }
