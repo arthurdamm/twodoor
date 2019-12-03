@@ -10,7 +10,6 @@
  * events.
  */
 $(() => {
-  authenticateUserHB();
   showHome();
   LearningGame();
   const firebase = authenticate();
@@ -69,6 +68,12 @@ $(() => {
   $('.bttn--select-right').click(goRight);
   $('.bttn--add-card').click(goPlus);
   $('.bttn--remove-card').click(goMinus);
+
+  $('#holbie-signin').submit(function (e) {
+    console.log("submit()")
+    e.preventDefault();
+    authenticateUserHB();
+  });
 });
 
 /**

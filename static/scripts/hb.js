@@ -2,9 +2,9 @@ const HB_URL = "https://intranet.hbtn.io";
 
 let authToken;
 
-let getemail = () => "";
-let getapikey = () => "";
-let getpassword = () => "";
+let getemail = () => $("[name=holbie-email]").val();
+let getpassword = () => $("[name=holbie-password]").val();
+let getapikey = () => "96a4134e30845c1fe3ed6e016f19e423";
 
 const requestJson = () => ({
   api_key: getapikey(),
@@ -41,14 +41,34 @@ const authenticateUserHB = () => {
     .done(({ auth_token }) => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
+      $('.holbie-status').html('Authentication successful...');
+      populateRandomPeers();
     })
     .fail(() => {
       console.log("Authentication failed.");
+      $('.holbie-status').html('Authentication failed!');
     });
 };
 
 const getRandomPeers = () => {
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => console.log("PEERS:", data))
+    .fail(data => console.log("PEERS FAILED:", data));
+};
+
+const populateRandomPeers = () => {
+  $.ajax(randomPeersRequest(authToken, 5, 8))
+    .done(data => {
+      console.log("POPULATE PEERS:", data);
+      const deck = data.map(o => ({
+        question: "Who is this?",
+        answer: o.full_name + "<br>" + o.cohort,
+        image: o.picture,
+        regex: o.full_name,
+      }));
+      $('.game-component')[0].deckType = decks.BUILDER;
+      $('.game-component')[0].deckText = JSON.stringify(deck);
+      showGame();
+    })
     .fail(data => console.log("PEERS FAILED:", data));
 };
