@@ -17,7 +17,7 @@ const decks = {
   PRESENTATION: 'presentation',
   CUSTOM: 'custom',
   BUILDER: 'builder',
-  HOLBIE: 'holbie',
+  HOLBIE: 'holbie'
 };
 
  /**
