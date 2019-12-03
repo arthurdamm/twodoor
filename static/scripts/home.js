@@ -10,6 +10,7 @@
  * events.
  */
 $(() => {
+  authenticateUserHB();
   showHome();
   LearningGame();
   const firebase = authenticate();
