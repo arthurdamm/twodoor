@@ -59,6 +59,11 @@ $(() => {
     $('.game-component')[0].deckType = decks.CUSTOM;
     showGame();
   })
+
+  $('.bttn--select-left').click(goLeft);
+  $('.bttn--select-right').click(goRight);
+  $('.bttn--add-card').click(goPlus);
+  $('.bttn--remove-card').click(goMinus);
 });
 
 /**
