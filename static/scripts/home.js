@@ -56,7 +56,7 @@ $(() => {
   // })
   $('.logo').on('click', showHome);
   $('.bttn--play').click(() => {
-    $('.game-component')[0].deckType = decks.CUSTOM;
+    goPlay();
     showGame();
   })
 

@@ -72,3 +72,11 @@ const goMinus = function() {
     setBuilderIndex(getBuilderLength());
   loadCard();
 }
+
+const goPlay = function() {
+  saveCard();
+  console.log("DECKY:", getBuilderDeck())
+  console.log("STRINGY:", JSON.stringify(getBuilderDeck()))
+  $('.game-component')[0].deckText = JSON.stringify(getBuilderDeck())
+  $('.game-component')[0].deckType = decks.CUSTOM;
+}

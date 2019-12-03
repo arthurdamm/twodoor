@@ -56,7 +56,8 @@ const getBuiltDeck = () => {
  * Loads custom deck data from build input box.
  */
 const getCustomDeck = () => {
-  const text = $('[name=text-input]').val()
+  // const text = $('[name=text-input]').val()
+  const text = $('.game-component')[0].deckText;
   const jsonArray = JSON.parse(text);
   if (user()) {
     let userData = db.collection("users").doc(user().uid);
