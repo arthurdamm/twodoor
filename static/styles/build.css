@@ -91,3 +91,10 @@
   cursor: pointer;
   align-self: flex-end;
 }
+
+@media only screen and (max-width: 600px) {
+  .build-component {
+    width: 5%;
+    height: 5%;
+  }
+}
