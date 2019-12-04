@@ -126,6 +126,7 @@ const showGame = () => {
   $('.game-component').show();
 
   if (!isMobile()) $('[name=text-answer]').focus();
+  else $('bttn--next').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
   if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
     startTimer();

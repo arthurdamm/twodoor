@@ -47,6 +47,7 @@ const LearningGame = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
     if (!isMobile()) $('[name=text-answer]').focus();
+    else $('bttn--next').focus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
@@ -128,6 +129,7 @@ const LearningGame = () => {
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
     if (!isMobile()) $('[name=text-answer]').focus();
+    else $('bttn--next').focus();
   });
   // Events for Control Component and Summary Component.
   $('.bttn--next').click(() => answerEvent());
