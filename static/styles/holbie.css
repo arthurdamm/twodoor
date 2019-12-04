@@ -1,0 +1,28 @@
+.holbie-component {
+  width: 33%;
+  margin: auto;
+}
+
+.holbie-component {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#holbie-signin {
+  width: 100%;
+}
+
+#holbie-signin input {
+  display: block;
+  width: 50%;
+  margin: 1% auto;
+  border: 2px solid black;
+  border-radius: 10%;
+}
+
+#holbie-signin input[type=submit]{
+  width: 25%;
+}
