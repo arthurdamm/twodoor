@@ -63,10 +63,9 @@
   align-items: center;
   display: inline-flex;
   justify-content: space-between;
+   color: rgb(134, 36, 32);
 }
-/* .deck {
-  color: linear-gradient(120deg, #B7312C, rgb(248, 248, 248))
-} */
+
 .bttn--remove-card {
   height: 4rem;
   width: 4rem;
