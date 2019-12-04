@@ -43,6 +43,18 @@ header {
   background-size: 100% 100%;
   margin-left: 1%;
 }
+
+
+.holb-logo {
+  position: absolute;
+  height: 3.5rem;
+  width: 3.5rem;
+  left: 8%;
+  background: url("../images/holberton-logo-simple-200s.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+
 .logo:hover {
   background: url("../images/doorOpen80px.svg") no-repeat;
   background-size: 100% 100%;
@@ -93,3 +105,4 @@ header {
     height: 100vh;
   }
 }
+ 
