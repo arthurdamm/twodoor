@@ -88,11 +88,6 @@ const loadCustomDecks = () => {
                   </div>`;
                 $('.deck-container').append(div);
               }
-              const div = `
-                <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
-                <h2 class="deckText">Custom Deck ${i}</h2>
-                </div>`;
-              $('.deck-container').append(div);
               console.log("THIS DECK: ", deck);
               $(`.custom-deck-${i}`).attr('text', deck);
             }
