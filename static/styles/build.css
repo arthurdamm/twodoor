@@ -56,6 +56,7 @@
   width: 17.5rem;
   height: 5rem;
   z-index: -1;
+  color: rgb(134, 36, 32)
 }
 
 .deck-modifier {
@@ -92,11 +93,4 @@
   position: relative;
   cursor: pointer;
   align-self: flex-end;
-}
-
-@media only screen and (max-width: 600px) {
-  .build-component {
-    width: 5%;
-    height: 5%;
-  }
 }
