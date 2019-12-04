@@ -284,4 +284,4 @@ const renderTime = (sec) => {
 $('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID));
 
 const isMobile = (max_width) =>
-  window.matchMedia(`only screen and (max-width: ${max_width || 600}px)`).matches;
+  window.matchMedia(`only screen and (max-width: ${max_width || 800}px)`).matches;
