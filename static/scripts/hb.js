@@ -64,8 +64,8 @@ const populateRandomPeers = () => {
         question: "Who is this?",
         answer: o.full_name + "<br>" + o.cohort,
         image: o.picture,
-        regex: o.full_name.replace(/ /g, "|") + "|" +
-          unidecode(o.full_name.replace(/ /g, "|")),
+        regex: o.full_name.trim().replace(/( )+/g, "|") + "|" +
+          unidecode(o.full_name.trim().replace(/( )+/g, "|")),
       }));
       const deck = {
         deckName: "Holbie",
