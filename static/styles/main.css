@@ -87,9 +87,13 @@ header {
 
 @media only screen and (max-width: 600px) {
   header {
-    height: 12%;
+    height: 14%;
   }
   .main-container {
-    height: 88%;
+    height: 92%;
+  }
+  body {
+    top: 15%;
+    height: 85%;
   }
 }
