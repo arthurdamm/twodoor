@@ -46,7 +46,7 @@ const LearningGame = () => {
   const nextDoorEvent = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
-    $('[name=text-answer]').focus();
+    if (!isMobile()) $('[name=text-answer]').focus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
@@ -127,7 +127,7 @@ const LearningGame = () => {
     const that = $(this);
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
-    $('[name=text-answer]').focus();
+    if (!isMobile()) $('[name=text-answer]').focus();
   });
   // Events for Control Component and Summary Component.
   $('.bttn--next').click(() => answerEvent());
@@ -282,3 +282,6 @@ const renderTime = (sec) => {
  * Binds click on logo event to stop timer.
  */
 $('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID));
+
+const isMobile = (max_width) =>
+  window.matchMedia(`only screen and (max-width: ${max_width || 600}px)`).matches;

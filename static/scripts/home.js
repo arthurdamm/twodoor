@@ -125,7 +125,7 @@ const showGame = () => {
   $('.holbie-component').hide();
   $('.game-component').show();
 
-  $('[name=text-answer]').focus();
+  if (!isMobile()) $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
   if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
     startTimer();
