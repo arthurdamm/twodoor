@@ -146,12 +146,8 @@ const showGame = () => {
   $('.holbie-component').hide();
   $('.game-component').show();
 
-<<<<<<< HEAD
-  $('[name=text-answer]').focus();
-=======
   if (!isMobile()) $('[name=text-answer]').focus();
   else $('bttn--next').focus();
->>>>>>> 36714a4bc27d8f4141b8c252802f8b662c7d7541
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
   if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
     startTimer();
