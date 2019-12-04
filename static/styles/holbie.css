@@ -1,0 +1,45 @@
+.holbie-component {
+  width: 33%;
+  margin: auto;
+  font-size: 2rem;
+}
+
+.holbie-component {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.holbie-status {
+  text-align: center;
+}
+
+#holbie-signin {
+  width: 100%;
+}
+
+#holbie-signin input {
+  display: block;
+  width: 50%;
+  margin: 1% auto;
+  border: 2px solid black;
+  border-radius: 10%;
+  font-size: 1.25rem;
+}
+
+#holbie-signin input[type=submit]{
+  width: 25%;
+}
+
+@media only screen and (max-width: 600px) {
+  .holbie-component {
+    width: 100%;
+  }
+
+  #holbie-signin input {
+    width: 75%;
+  }
+}
+
