@@ -59,6 +59,27 @@ $(() => {
   //   }
   // })
   $('.logo').on('click', showHome);
+  const holbLogo = $('.holb-logo');
+  holbLogo.state = "classic";
+  $('.holb-logo').on('click', function() {
+    if (holbLogo.state != "holb") {
+      $('header').css('background-image', 'linear-gradient(120deg, #B7312C, #B7312C');
+      $('header').css('border-bottom', '.4rem solid #B5E3D8');
+      $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
+      $('.deck-selector').css('background-color', '#B7312C');
+      $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
+      $('h2').css('color', 'white');
+      holbLogo.state = "holb";
+    } else {
+      $('header').css('background-image', 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%');
+      $('header').css('border-bottom', '.4rem solid rgb(128, 128, 128)');
+      $('body').css('background-image', 'linear-gradient(15deg, #62137a 0%, #d08080 100%)');
+      $('.deck-selector').css('background-color', '#fff');
+      $('.deck-selector').css('border', '#fff')
+      $('h2').css('color', 'black');
+      holbLogo.state = "classic";
+    }
+  })
   $('.bttn--play').click(() => {
     goPlay();
     showGame();
@@ -125,7 +146,7 @@ const showGame = () => {
   $('.holbie-component').hide();
   $('.game-component').show();
 
-  if (!isMobile()) $('[name=text-answer]').focus();
+  $('[name=text-answer]').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
   if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
     startTimer();
