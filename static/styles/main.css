@@ -12,7 +12,7 @@ html {
 body {
   height: 91.5%;
   width: 100%;
-  top: 8.5%;
+  top: 10%;
   background-image: linear-gradient(15deg, #62137a 0%, #d08080 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -87,7 +87,7 @@ header {
 
 @media only screen and (max-width: 600px) {
   header {
-    height: 12%;
+    height: 8%;
   }
   .main-container {
     height: 88%;
