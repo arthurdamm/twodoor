@@ -9,9 +9,9 @@ html {
   overflow-x: hidden;
 }
 body {
-  height: 91.5%;
+  height: 92%;
   width: 100%;
-  top: 8.5%;
+  top: 8%;
   background-image: linear-gradient(15deg, #62137a 0%, #d08080 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -45,13 +45,15 @@ header {
 }
 
 
-.holb-logo {
+.holbie-logo {
   position: absolute;
   height: 3.5rem;
   width: 3.5rem;
-  left: 8%;
+  left: 4rem;
+  margin-left: 1%;
   background: url("../images/holberton-logo-simple-200s.png") no-repeat;
   background-size: 100% 100%;
+  color: white;
 }
 
 

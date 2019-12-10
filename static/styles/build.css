@@ -48,7 +48,6 @@
   flex-direction: column;
   justify-content: center;
   flex-wrap: nowrap;
-  border: 2px solid black;
   padding: 5%;
 }
 
@@ -63,7 +62,7 @@
   align-items: center;
   display: inline-flex;
   justify-content: space-between;
-   color: rgb(134, 36, 32);
+  color: rgb(0, 0, 0);
 }
 
 .bttn--remove-card {
