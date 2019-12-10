@@ -59,17 +59,18 @@ $(() => {
   //   }
   // })
   $('.logo').on('click', showHome);
-  const holbLogo = $('.holb-logo');
-  holbLogo.state = "classic";
-  $('.holb-logo').on('click', function() {
-    if (holbLogo.state != "holb") {
+  const holbieLogo = $('.holbie-logo');
+  holbieLogo.state = "classic";
+  $('.holbie-logo').on('click', function() {
+    if (holbieLogo.state != "holb") {
       $('header').css('background-image', 'linear-gradient(120deg, #B7312C, #B7312C');
       $('header').css('border-bottom', '.4rem solid #B5E3D8');
       $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
       $('.deck-selector').css('background-color', '#B7312C');
       $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
       $('h2').css('color', 'white');
-      holbLogo.state = "holb";
+      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
+      holbieLogo.state = "holb";
     } else {
       $('header').css('background-image', 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%');
       $('header').css('border-bottom', '.4rem solid rgb(128, 128, 128)');
@@ -77,7 +78,8 @@ $(() => {
       $('.deck-selector').css('background-color', '#fff');
       $('.deck-selector').css('border', '#fff')
       $('h2').css('color', 'black');
-      holbLogo.state = "classic";
+      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s.png")');
+      holbieLogo.state = "classic";
     }
   })
   $('.bttn--play').click(() => {
