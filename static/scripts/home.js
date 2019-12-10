@@ -139,13 +139,13 @@ const showBuild = () => {
  * Displays Game Component, sets up deck, toggles instructions.
  */
 const showGame = () => {
+  if ($('.game-component').is(':visible')) return;
   $('.timer').show();
   $('.home-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.holbie-component').hide();
   $('.game-component').show();
-
   if (!isMobile()) $('[name=text-answer]').focus();
   else $('bttn--next').focus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));

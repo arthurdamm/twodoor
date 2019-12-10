@@ -3,6 +3,7 @@ const HB_URL = "https://intranet.hbtn.io";
 let authToken;
 
 let peerCache = {};
+let lastCacheSize = 0;
 let pollCount = 0;
 let stopPoll = false;
 
@@ -55,7 +56,7 @@ const authenticateUserHB = () => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
-      populateRandomPeers();
+      repopulateRandomPeers();
     })
     .fail(() => {
       console.log("Authentication failed.");
@@ -93,7 +94,7 @@ const populateRandomPeers = () => {
 
 const repopulateRandomPeers = () => {
   console.log("repopulateRandomPeers()");
-  if (stopPoll || ++pollCount > 10) return;
+  if (stopPoll || ++pollCount > 3) return;
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => {
       printObj(data);
@@ -109,18 +110,28 @@ const repopulateRandomPeers = () => {
       _deck.forEach(o => ((!peerCache[o.cohort] && (peerCache[o.cohort] = {})),
         peerCache[o.cohort][o.full_name] = o));
       console.log("REPOPULATE PEERS: " + Object.keys(peerCache).length);
-      const deck = {
-        deckName: "Holbie",
-        deck: _deck
-      }
-      if (Object.keys(peerCache).length < 10)
+      updateDeckFromCache();
+      showGame();
+      if (!peerCache['SF-0119'] || Object.keys(peerCache['SF-0119']).length < 20)
         repopulateRandomPeers();
-      //$('.game-component')[0].deckType = decks.BUILDER;
-      //$('.game-component')[0].deckText = JSON.stringify(deck);
-      //showGame();
     })
     .fail(data => console.log("REPEERS FAILED:", data));
 };
+
+const updateDeckFromCache = () => {
+  console.log("updateDeckFromCache()");
+  const _deck = Object.values(peerCache['SF-0119'] || {});
+  if (_deck.length <= lastCacheSize)
+    return console.log("lastCacheSize fail");
+  lastCacheSize = _deck.length;
+  const deck = {
+    deckName: "Holbie",
+    deck: _deck,
+  };
+  $('.game-component')[0].deckType = decks.BUILDER;
+  $('.game-component')[0].deckText = JSON.stringify(deck);
+  $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
+}
 
 const printObj = (obj) => {
   str = '';
