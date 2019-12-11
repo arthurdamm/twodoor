@@ -97,6 +97,10 @@ $(() => {
     e.preventDefault();
     authenticateUserHB();
   });
+  $('#holbie-deck-selector').submit(function (e) {
+    console.log("Play!()")
+    e.preventDefault();
+  });
 });
 
 /**
@@ -107,7 +111,8 @@ const showHome = () => {
   $('.game-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.home-component').show();
 };
 
@@ -122,7 +127,13 @@ const showHolbie = () => {
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').show();
+  if (authToken) {
+    $('.holbie-signin-component').hide();
+    $('.holbie-select-component').show();
+  } else {
+    $('.holbie-select-component').hide();
+    $('.holbie-signin-component').show();
+  }
 }
 
 /**
@@ -133,7 +144,8 @@ const showBuild = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.timer').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.build-component').show();
 }
 
@@ -146,7 +158,8 @@ const showGame = () => {
   $('.home-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.game-component').show();
   if (!isMobile()) $('[name=text-answer]').focus();
   else $('bttn--next').focus();
@@ -177,6 +190,7 @@ const showSignin = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.build-component').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('#firebaseui-auth-container').show();
 };

@@ -1,15 +1,32 @@
-.holbie-component {
+.holbie-select-component,
+.holbie-signin-component {
+  padding-top: 10%;
   width: 33%;
   margin: auto;
-  font-size: 2rem;
-}
-
-.holbie-component {
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  /*
+  justify-content: center;
+  align-items: center;*/
+}
+
+.holbie-select-component * {
+  /*margin-right: auto;*/
+}
+
+.holbie-select-container {
+  margin: 2%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#holbie-deck-selector {
+  margin: 0 auto;
 }
 
 .holbie-status {
@@ -29,12 +46,13 @@
   font-size: 1.25rem;
 }
 
-#holbie-signin input[type=submit]{
+#holbie-signin input[type=submit] {
   width: 25%;
 }
 
 @media only screen and (max-width: 600px) {
-  .holbie-component {
+  .holbie-select-component,
+  .holbie-signin-component {
     width: 100%;
   }
 
@@ -42,4 +60,3 @@
     width: 75%;
   }
 }
-

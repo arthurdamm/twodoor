@@ -1,11 +1,6 @@
 const HB_URL = "https://intranet.hbtn.io";
 
-let authToken;
-
-let peerCache = {};
-let lastCacheSize = 0;
-let pollCount = 0;
-let stopPoll = false;
+const MAX_POLL_COUNT = 20;
 
 /**
  * Enum for cohort types
@@ -15,6 +10,13 @@ let stopPoll = false;
 const cohorts = {
   8: ['NHV-0119', 'BOG-0119', 'SF-0119']
 };
+
+let authToken;
+
+let peerCache = {};
+let lastCacheSize = 0;
+let pollCount = 0;
+let stopPoll = false;
 
 let getemail = () => $("[name=holbie-email]").val();
 let getpassword = () => $("[name=holbie-password]").val();
@@ -56,7 +58,8 @@ const authenticateUserHB = () => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
-      repopulateRandomPeers();
+      // repopulateRandomPeers();
+      showHolbie();
     })
     .fail(() => {
       console.log("Authentication failed.");
@@ -94,7 +97,7 @@ const populateRandomPeers = () => {
 
 const repopulateRandomPeers = () => {
   console.log("repopulateRandomPeers()");
-  if (stopPoll || ++pollCount > 3) return;
+  if (stopPoll || ++pollCount > MAX_POLL_COUNT) return;
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => {
       printObj(data);
@@ -111,9 +114,8 @@ const repopulateRandomPeers = () => {
         peerCache[o.cohort][o.full_name] = o));
       console.log("REPOPULATE PEERS: " + Object.keys(peerCache).length);
       updateDeckFromCache();
-      showGame();
-      if (!peerCache['SF-0119'] || Object.keys(peerCache['SF-0119']).length < 20)
-        repopulateRandomPeers();
+      // if (!peerCache['SF-0119'] || Object.keys(peerCache['SF-0119']).length < 20)
+      //   repopulateRandomPeers();
     })
     .fail(data => console.log("REPEERS FAILED:", data));
 };
@@ -131,6 +133,7 @@ const updateDeckFromCache = () => {
   $('.game-component')[0].deckType = decks.BUILDER;
   $('.game-component')[0].deckText = JSON.stringify(deck);
   $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
+  showGame();
 }
 
 const printObj = (obj) => {
