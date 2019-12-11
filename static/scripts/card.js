@@ -44,17 +44,10 @@ const LearningGame = () => {
    * the two doors and thus the cards they hold.
    */
   const nextDoorEvent = () => {
-    if (animating) return;
+    console.log("nextDoorEvent()");
+    if (animating) return console.log("returning!");
     $('[name=text-answer]').val('');
-    if (!isMobile()) {
-      console.log("Focusing desktop");
-      $('[name=text-answer]').focus();
-    }
-    else if (!$('[name=text-answer]').is(':focus')) {
-      console.log("Focusing mobile anchor");
-      setTimeout(() => location.href = "#game-anchor", 0);
-    } else
-      console.log("Focusing nothing;");
+    checkGameFocus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
@@ -309,6 +302,18 @@ $('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID))
 
 const isMobile = (max_width) =>
   window.matchMedia(`only screen and (max-width: ${max_width || 800}px)`).matches;
+
+const checkGameFocus = () => {
+if (!isMobile()) {
+      console.log("Focusing desktop");
+      $('[name=text-answer]').focus();
+    }
+    else if (!$('[name=text-answer]').is(':focus')) {
+      console.log("Focusing mobile anchor");
+      setTimeout(() => location.href = "#game-anchor", 0);
+    } else
+      console.log("Focusing nothing;");
+}
 
 /**
  * resizes card when keyboard is open on mobile
