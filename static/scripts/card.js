@@ -47,7 +47,6 @@ const LearningGame = () => {
     console.log("nextDoorEvent()");
     if (animating) return console.log("returning!");
     $('[name=text-answer]').val('');
-    checkGameFocus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
@@ -74,6 +73,7 @@ const LearningGame = () => {
    * Parses user answer for current card & invokes nextDoorEvent.
    */
   const answerEvent = () => {
+    checkGameFocus();
     // Rush event if already answered
     if (animating || answered) {
       clearTimeout(timeoutID);
@@ -325,5 +325,6 @@ if (isMobile()) {
   }).on("focusout", function() {
     $('.deck').css("min-height", "28rem");
     $('.deck').css("min-width", "20rem");
-  });;
+    checkGameFocus();
+  });
 }
