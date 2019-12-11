@@ -46,8 +46,8 @@ const LearningGame = () => {
   const nextDoorEvent = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
-    if (!isMobile()) $('[name=text-answer]').focus();
-    else $('bttn--next').focus();
+    $('[name=text-answer]').focus();
+    // else $('bttn--next').focus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
@@ -302,3 +302,16 @@ $('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID))
 
 const isMobile = (max_width) =>
   window.matchMedia(`only screen and (max-width: ${max_width || 800}px)`).matches;
+
+/**
+ * resizes card when keyboard is open on mobile
+ */
+if (isMobile()) {
+  $('[name=text-answer]').on("focus", function() {
+    $('.deck').css("min-height", "12rem");
+    $('.deck').css("min-width", "10rem");
+  }).on("focusout", function() {
+    $('.deck').css("min-height", "28rem");
+    $('.deck').css("min-width", "20rem");
+  });;
+}
