@@ -107,7 +107,7 @@ const showHome = () => {
   $('.game-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
   $('.home-component').show();
 };
 
@@ -122,7 +122,7 @@ const showHolbie = () => {
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').show();
+  $('.holbie-signin-component').show();
 }
 
 /**
@@ -133,7 +133,7 @@ const showBuild = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.timer').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
   $('.build-component').show();
 }
 
@@ -146,7 +146,7 @@ const showGame = () => {
   $('.home-component').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
   $('.game-component').show();
   if (!isMobile()) $('[name=text-answer]').focus();
   else $('bttn--next').focus();
@@ -177,6 +177,6 @@ const showSignin = () => {
   $('.game-component').hide();
   $('.home-component').hide();
   $('.build-component').hide();
-  $('.holbie-component').hide();
+  $('.holbie-signin-component').hide();
   $('#firebaseui-auth-container').show();
 };

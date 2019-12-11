@@ -1,10 +1,7 @@
-.holbie-component {
+.holbie-signin-component {
   width: 33%;
   margin: auto;
   font-size: 2rem;
-}
-
-.holbie-component {
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -29,12 +26,12 @@
   font-size: 1.25rem;
 }
 
-#holbie-signin input[type=submit]{
+#holbie-signin input[type=submit] {
   width: 25%;
 }
 
 @media only screen and (max-width: 600px) {
-  .holbie-component {
+  .holbie-signin-component {
     width: 100%;
   }
 
@@ -42,4 +39,3 @@
     width: 75%;
   }
 }
-
