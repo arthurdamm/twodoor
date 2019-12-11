@@ -132,7 +132,27 @@
         <input name="holbie-apikey" type="text" placeholder="Holberton Api Key:" />
         <input name="holbie-email" type="text" placeholder="Holberton Email" />
         <input name="holbie-password" type="password" placeholder="Holberton Password" />
-        <input name="holbie-submit" type="submit" value="Submit" />
+        <input name="holbie-submit" type="submit" value="Signin" />
+      </form>
+    </div>
+
+    <div class="holbie-select-component">
+      <div class="holbie-deck-text">Select Your Deck!</div>
+      <label for="holbie-cohort-select">Cohort:</label>
+      <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
+        <option value="BOG-0119">BOG-0119</option>
+        <option value="SF-0119">SF-0119</option>
+        <option value="NHV-0119">NHV-0119</option>
+      </select>
+      <label for="holbie-size-select">Peers:</label>
+      <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+      </select>
+      <form id="holbie-deck-selector">
+        <input name="holbie-deck-submit" type="submit" value="Play!" />
       </form>
     </div>
 

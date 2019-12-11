@@ -1,12 +1,19 @@
+.holbie-select-component,
 .holbie-signin-component {
   width: 33%;
   margin: auto;
   font-size: 2rem;
   display: flex;
   flex-direction: column;
-  align-content: center;
-  justify-content: center;
   align-items: center;
+  justify-content: left;
+  /*
+  justify-content: center;
+  align-items: center;*/
+}
+
+.holbie-select-component * {
+  margin-right: auto;
 }
 
 .holbie-status {

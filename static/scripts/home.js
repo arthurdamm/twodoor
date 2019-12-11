@@ -122,7 +122,13 @@ const showHolbie = () => {
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  $('.holbie-signin-component').show();
+  if (!authToken) {
+    $('.holbie-signin-component').hide();
+    $('.holbie-select-component').show();
+  } else {
+    $('.holbie-select-component').hide();
+    $('.holbie-signin-component').show();
+  }
 }
 
 /**

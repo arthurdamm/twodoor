@@ -58,7 +58,8 @@ const authenticateUserHB = () => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
-      repopulateRandomPeers();
+      // repopulateRandomPeers();
+      showHolbie();
     })
     .fail(() => {
       console.log("Authentication failed.");
