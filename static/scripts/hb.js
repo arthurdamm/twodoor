@@ -1,6 +1,6 @@
 const HB_URL = "https://intranet.hbtn.io";
 
-const MAX_POLL_COUNT = 20;
+const MAX_POLL_ATTEMPTS = 20;
 
 /**
  * Enum for cohort types
@@ -95,12 +95,14 @@ const populateRandomPeers = () => {
     .fail(data => console.log("PEERS FAILED:", data));
 };
 
-const repopulateRandomPeers = () => {
-  console.log("repopulateRandomPeers()");
-  if (stopPoll || ++pollCount > MAX_POLL_COUNT) return;
+const repopulateRandomPeers = (cohort, numPeers, attempts) => {
+  cohort = cohort || cohorts['8'][0];
+  numPeers = numPeers || 5;
+  attempts = attempts || 0;
+  console.log(`repopulateRandomPeers() cohort: ${cohort} attempts:${attempts}`);
+  if (stopPoll || ++attempts >= MAX_POLL_ATTEMPTS) return;
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => {
-      printObj(data);
       data = data.filter(o => !peerCache[o.cohort] || !peerCache[o.cohort][o.full_name]);
       const _deck = data.map(o => ({
         ...o,
@@ -113,18 +115,18 @@ const repopulateRandomPeers = () => {
       _deck.forEach(o => ((!peerCache[o.cohort] && (peerCache[o.cohort] = {})),
         peerCache[o.cohort][o.full_name] = o));
       console.log("REPOPULATE PEERS: " + Object.keys(peerCache).length);
-      updateDeckFromCache();
-      // if (!peerCache['SF-0119'] || Object.keys(peerCache['SF-0119']).length < 20)
-      //   repopulateRandomPeers();
+      updateDeckFromCache(cohort);
+      if (!peerCache[cohort] || Object.keys(peerCache[cohort]).length < numPeers)
+        repopulateRandomPeers(cohort, numPeers, attempts);
     })
     .fail(data => console.log("REPEERS FAILED:", data));
 };
 
-const updateDeckFromCache = () => {
-  console.log("updateDeckFromCache()");
-  const _deck = Object.values(peerCache['SF-0119'] || {});
-  if (_deck.length <= lastCacheSize)
-    return console.log("lastCacheSize fail");
+const updateDeckFromCache = (cohort) => {
+  console.log(`updateDeckFromCache() cohort:${cohort}`);
+  const _deck = Object.values(peerCache[cohort] || {});
+  // if (_deck.length <= lastCacheSize)
+  //   return console.log("lastCacheSize fail");
   lastCacheSize = _deck.length;
   const deck = {
     deckName: "Holbie",
@@ -135,19 +137,3 @@ const updateDeckFromCache = () => {
   $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
   showGame();
 }
-
-const printObj = (obj) => {
-  str = '';
-  if (obj.length > 0) {
-    str += '[';
-    for (let e of obj)
-      str += `${e}, `;
-    str += ']\n'
-  } else {
-    str += '{';
-    for (let [key, value] in Object.entries(obj))
-      str += `${key}: ${value}, `;
-    str += '}\n';
-  }
-  console.log(str);
-};
