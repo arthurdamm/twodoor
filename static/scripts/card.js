@@ -302,3 +302,16 @@ $('.logo').click(() => clearTimeout(document.querySelector('.timer').timeoutID))
 
 const isMobile = (max_width) =>
   window.matchMedia(`only screen and (max-width: ${max_width || 800}px)`).matches;
+
+/**
+ * resizes card when keyboard is open on mobile
+ */
+if (isMobile()) {
+  $('[name=text-answer]').on("focus", function() {
+    $('.deck').css("min-height", "15rem");
+    $('.deck').css("min-width", "12rem");
+  }).on("focusout", function() {
+    $('.deck').css("min-height", "28rem");
+    $('.deck').css("min-width", "20rem");
+  });;
+}
