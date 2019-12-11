@@ -88,16 +88,13 @@ header {
 }
 .main-container {
   width: 100%;
-  height: 90%;
+  /* height: 90%; */
 }
 @media only screen and (max-width: 600px) {
   header {
     position: relative;
     z-index: 0;
     height: 14%;
-  }
-  .main-container {
-    height: 100%;
   }
   body {
     top: 0%;
