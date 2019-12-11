@@ -308,8 +308,8 @@ const isMobile = (max_width) =>
  */
 if (isMobile()) {
   $('[name=text-answer]').on("focus", function() {
-    $('.deck').css("min-height", "15rem");
-    $('.deck').css("min-width", "12rem");
+    $('.deck').css("min-height", "12rem");
+    $('.deck').css("min-width", "10rem");
   }).on("focusout", function() {
     $('.deck').css("min-height", "28rem");
     $('.deck').css("min-width", "20rem");
