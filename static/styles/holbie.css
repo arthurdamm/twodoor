@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: left;
+  color: blue;
   /*
   justify-content: center;
   align-items: center;*/
@@ -14,6 +15,7 @@
 
 .holbie-select-component * {
   margin-right: auto;
+  color: red;
 }
 
 .holbie-status {
