@@ -46,10 +46,15 @@ const LearningGame = () => {
   const nextDoorEvent = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
-    if (!isMobile())
+    if (!isMobile()) {
+      console.log("Focusing desktop");
       $('[name=text-answer]').focus();
-    else if (!$('[name=text-answer]').is(':focus'))
-      location.href = "#game-anchor";
+    }
+    else if (!$('[name=text-answer]').is(':focus')) {
+      console.log("Focusing mobile anchor");
+      setTimeout(() => location.href = "#game-anchor", 0);
+    } else
+      console.log("Focusing nothing;");
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
