@@ -97,6 +97,10 @@ $(() => {
     e.preventDefault();
     authenticateUserHB();
   });
+  $('#holbie-deck-selector').submit(function (e) {
+    console.log("Play!()")
+    e.preventDefault();
+  });
 });
 
 /**
@@ -108,6 +112,7 @@ const showHome = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.home-component').show();
 };
 
@@ -140,6 +145,7 @@ const showBuild = () => {
   $('.home-component').hide();
   $('.timer').hide();
   $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.build-component').show();
 }
 
@@ -153,6 +159,7 @@ const showGame = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('.game-component').show();
   if (!isMobile()) $('[name=text-answer]').focus();
   else $('bttn--next').focus();
@@ -184,5 +191,6 @@ const showSignin = () => {
   $('.home-component').hide();
   $('.build-component').hide();
   $('.holbie-signin-component').hide();
+  $('.holbie-select-component').hide();
   $('#firebaseui-auth-container').show();
 };
