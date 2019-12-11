@@ -306,7 +306,7 @@ const isMobile = (max_width) =>
 /**
  * resizes card when keyboard is open on mobile
  */
-if (!isMobile()) {
+if (isMobile()) {
   $('[name=text-answer]').on("focus", function() {
     $('.deck').css("min-height", "15rem");
     $('.deck').css("min-width", "12rem");
