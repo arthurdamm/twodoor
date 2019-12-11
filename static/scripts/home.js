@@ -122,7 +122,7 @@ const showHolbie = () => {
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
-  if (!authToken) {
+  if (authToken) {
     $('.holbie-signin-component').hide();
     $('.holbie-select-component').show();
   } else {
