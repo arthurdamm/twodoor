@@ -22,7 +22,7 @@ const LearningGame = () => {
    * The deck currently in play.
    * @member {Array<Object} deck
    */
-  let deck;
+  let deck = [];
   /** Flag true if animating the current card.
    * @member {boolean} animating
    */
@@ -149,9 +149,24 @@ const LearningGame = () => {
    * @param {Object} The new deck to use.
    */
   $('.game-component')[0].changeDeck = (newDeck) => {
+    console.log("changeDeck(): " + newDeck.length);
     deck = newDeck;
     nextDoorEvent();
   }
+
+  /**
+   * Updates the current deck with data collected in background.
+   * @param {Object} The new cards to update.
+   */
+  $('.game-component')[0].updateDeck = (newDeck) => {
+    const nd = newDeck.filter(o =>
+      deck.filter(s => s.answer == o.answer).length == 0);
+    deck = deck.concat(nd);
+    deck.forEach(o => o.active = 0);
+    deck.stagger = 0;
+    console.log("updateDeck() now: " + deck.length);
+  }
+
   /**
    * Gets the current deck for other Components.
    * @return {Object} The current deck in the Learning Game.
