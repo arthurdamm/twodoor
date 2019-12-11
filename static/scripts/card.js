@@ -46,8 +46,8 @@ const LearningGame = () => {
   const nextDoorEvent = () => {
     if (animating) return;
     $('[name=text-answer]').val('');
-    if (!isMobile()) $('[name=text-answer]').focus();
-    else $('bttn--next').focus();
+    $('[name=text-answer]').focus();
+    // else $('bttn--next').focus();
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
