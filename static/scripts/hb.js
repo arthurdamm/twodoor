@@ -58,11 +58,10 @@ const authenticateUserHB = () => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
-      // repopulateRandomPeers();
       showHolbie();
     })
     .fail(() => {
-      console.log("Authentication failed.");
+      console.log("Authentication failed!");
       $('.holbie-status').html('Authentication failed!');
     });
 };
@@ -73,37 +72,16 @@ const getRandomPeers = () => {
     .fail(data => console.log("PEERS FAILED:", data));
 };
 
-const populateRandomPeers = () => {
-  $.ajax(randomPeersRequest(authToken, 5, 8))
-    .done(data => {
-      console.log("POPULATE PEERS:", data);
-      const _deck = data.map(o => ({
-        question: "Who is this?",
-        answer: o.full_name + "<br>" + o.cohort,
-        image: o.picture,
-        regex: o.full_name.trim().replace(/( )+/g, "|") + "|" +
-          unidecode(o.full_name.trim().replace(/( )+/g, "|")),
-      }));
-      const deck = {
-        deckName: "Holbie",
-        deck: _deck
-      }
-      $('.game-component')[0].deckType = decks.BUILDER;
-      $('.game-component')[0].deckText = JSON.stringify(deck);
-      showGame();
-    })
-    .fail(data => console.log("PEERS FAILED:", data));
-};
-
 const repopulateRandomPeers = (cohort, numPeers, attempts) => {
   cohort = cohort || cohorts['8'][0];
   numPeers = numPeers || 5;
-  attempts = attempts || 0;
+  attempts = ++attempts || 1;
   console.log(`repopulateRandomPeers() cohort: ${cohort} attempts:${attempts}`);
-  if (stopPoll || ++attempts >= MAX_POLL_ATTEMPTS) return;
+  if (stopPoll || attempts >= MAX_POLL_ATTEMPTS) return;
   $.ajax(randomPeersRequest(authToken, 5, 8))
     .done(data => {
       data = data.filter(o => !peerCache[o.cohort] || !peerCache[o.cohort][o.full_name]);
+      console.log("New data: " + JSON.stringify(data));
       const _deck = data.map(o => ({
         ...o,
         question: "Who is this?",
@@ -114,26 +92,25 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
       }));
       _deck.forEach(o => ((!peerCache[o.cohort] && (peerCache[o.cohort] = {})),
         peerCache[o.cohort][o.full_name] = o));
-      console.log("REPOPULATE PEERS: " + Object.keys(peerCache).length);
       updateDeckFromCache(cohort);
       if (!peerCache[cohort] || Object.keys(peerCache[cohort]).length < numPeers)
         repopulateRandomPeers(cohort, numPeers, attempts);
     })
-    .fail(data => console.log("REPEERS FAILED:", data));
+    .fail(data => (console.log("REPEERS FAILED: ", data),
+      updateDeckFromCache(cohort)));
 };
 
 const updateDeckFromCache = (cohort) => {
   console.log(`updateDeckFromCache() cohort:${cohort}`);
   const _deck = Object.values(peerCache[cohort] || {});
-  // if (_deck.length <= lastCacheSize)
-  //   return console.log("lastCacheSize fail");
-  lastCacheSize = _deck.length;
-  const deck = {
-    deckName: "Holbie",
-    deck: _deck,
-  };
-  $('.game-component')[0].deckType = decks.BUILDER;
-  $('.game-component')[0].deckText = JSON.stringify(deck);
-  $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
-  showGame();
+  if (_deck.length) {
+    const deck = {
+      deckName: "Holbie",
+      deck: _deck,
+    };
+    $('.game-component')[0].deckType = decks.BUILDER;
+    $('.game-component')[0].deckText = JSON.stringify(deck);
+    $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
+    showGame();
+  }
 }
