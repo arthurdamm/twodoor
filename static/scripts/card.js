@@ -49,7 +49,7 @@ const LearningGame = () => {
     if (!isMobile())
       $('[name=text-answer]').focus();
     else if (!$('[name=text-answer]').is(':focus'))
-      $('bttn--next').focus();
+      location.href = "#game-anchor";
     // Determine which door is currently showing on top
     nextDoor = $(currentDoor.attr('id') === 'door1' ? '#door2' : '#door1');
     // select next card in deck and assign it to the next door
