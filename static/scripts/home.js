@@ -100,6 +100,10 @@ $(() => {
   $('#holbie-deck-selector').submit(function (e) {
     console.log("Play!()")
     e.preventDefault();
+    const cohort = $('#holbie-cohort-select').val();
+    const numPeers = parseInt($('#holbie-size-select').val());
+    const attempts = 0;
+    repopulateRandomPeers(cohort, numPeers, attempts);
   });
 });
 
