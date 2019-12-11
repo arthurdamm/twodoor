@@ -8,8 +8,12 @@ const MAX_POLL_ATTEMPTS = 20;
  * @enum {string}
  */
 const cohorts = {
-  8: ['NHV-0119', 'BOG-0119', 'SF-0119']
+  8: ['BOG-0119', 'NHV-0119', 'SF-0119'],
+  9: ['BOG-0619', 'MED-0619', 'NHV-0619', 'SF-0619'],
+  10: ['BOG-0919', 'CAL-0919', 'MED-0919', 'NHV-0919', 'SF-0919', 'TUN-0919'],
 };
+
+const cohortToNumMap = {};
 
 let authToken;
 
@@ -67,7 +71,7 @@ const authenticateUserHB = () => {
 };
 
 const getRandomPeers = () => {
-  $.ajax(randomPeersRequest(authToken, 5, 8))
+  $.ajax(randomPeersRequest(authToken, 5, 10))
     .done(data => console.log("PEERS:", data))
     .fail(data => console.log("PEERS FAILED:", data));
 };
@@ -78,7 +82,7 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
   attempts = ++attempts || 1;
   console.log(`repopulateRandomPeers() cohort: ${cohort} attempts:${attempts}`);
   if (stopPoll || attempts >= MAX_POLL_ATTEMPTS) return;
-  $.ajax(randomPeersRequest(authToken, 5, 8))
+  $.ajax(randomPeersRequest(authToken, 5, getCohortNum(cohort)))
     .done(data => {
       data = data.filter(o => !peerCache[o.cohort] || !peerCache[o.cohort][o.full_name]);
       console.log("New data: " + JSON.stringify(data));
@@ -113,4 +117,27 @@ const updateDeckFromCache = (cohort) => {
     $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
     showGame();
   }
+}
+
+const populateCohortSelectors = () => {
+  console.log('populateCohortSelectors()');
+  // $('#holbie-cohort-select option').remove();
+  for (const cohortNum in cohorts) {
+    console.log("pop: ", cohortNum);
+    for (const cohort of cohorts[cohortNum]) {
+      $('#holbie-cohort-select')
+        .append(`<option value="${cohort}">${cohort}</option>`);
+    }
+  }
+}
+
+const getCohortNum = (cohort) => {
+  let ret = cohortToNumMap[cohort];
+  if (!ret) {
+    for (const cohortNum in cohorts)
+      for (const _cohort of cohorts[cohortNum])
+        cohortToNumMap[_cohort] = cohortNum;
+    ret = cohortToNumMap[cohort];
+  }
+  return parseInt(ret);
 }

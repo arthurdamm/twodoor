@@ -105,6 +105,7 @@ $(() => {
     const attempts = 0;
     repopulateRandomPeers(cohort, numPeers, attempts);
   });
+  populateCohortSelectors();
 });
 
 /**
