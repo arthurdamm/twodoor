@@ -310,7 +310,7 @@ if (!isMobile()) {
     }
     else if (!$('[name=text-answer]').is(':focus')) {
       console.log("Focusing mobile anchor");
-      setTimeout(() => (console.log("NOW!"), location.href = "#game-anchor"), 500);
+      setTimeout(() => (console.log("Focus!"), location.href = "#game-anchor"), 500);
     } else
       console.log("Focusing nothing;");
 }
