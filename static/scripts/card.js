@@ -99,7 +99,7 @@ const LearningGame = () => {
       let userAnswer = currentDoor.children('.fail')[0];
       currentDoor.toggleClass('flipme');
       if (getComputedStyle(userAnswer).visibility == 'hidden')
-        currentDoor.children('.fail').css('visibility', 'visible');
+        // currentDoor.children('.fail').css('visibility', 'visible');
         timeoutID = setTimeout(nextDoorEvent, 1500);
     }
   };
