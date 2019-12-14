@@ -1,5 +1,7 @@
 .game-component {
-    position: relative;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,6 +302,10 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
+
+  .game-component {
+    bottom: 5%;
+  }
 
   .control {
     margin-top: .25rem;
