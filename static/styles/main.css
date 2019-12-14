@@ -89,7 +89,7 @@ header {
 .main-container {
   position: relative;
   height: 100%;
-  height; fill-available;
+  height: fill-available;
   height:-webkit-fill-available;
   width: 100%;
 }
