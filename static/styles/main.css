@@ -87,10 +87,11 @@ header {
   right: 0;
 }
 .main-container {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  position: relative;
   height: 100%;
+  height; fill-available;
+  height:-webkit-fill-available;
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
