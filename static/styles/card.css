@@ -1,5 +1,7 @@
 .game-component {
-    position: relative;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -44,10 +46,18 @@
 }
 
 .flipme {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
 
 .slide {
+  -webkit-transform: translateX(20rem);
+  -moz-transform: translateX(20rem);
+  -ms-transform: translateX(20rem);
+  -o-transform: translateX(20rem);
   transform: translateX(20rem);
 }
 
@@ -60,6 +70,10 @@
     flex-direction: column;
     justify-content: center;
     overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: .688rem;
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
@@ -73,10 +87,19 @@
 
 .front {
     z-index: -1;
+    -webkit-transform: rotateY(0deg); /* Firefox 31 fix */
+    -moz-transform: rotateY(0deg); /* Firefox 31 fix */
+    -ms-transform: rotateY(0deg); /* Firefox 31 fix */
+    -o-transform: rotateY(0deg); /* Firefox 31 fix */
     transform: rotateY(0deg); /* Firefox 31 fix */
+    
 }
 
 .back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
     font-size: 1.8rem;
 }
@@ -85,6 +108,10 @@
      background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%); 
     /*background: rgb(0, 226, 0);*/
     visibility: hidden;
+    -webkit-transform: translate3d(0);
+    -moz-transform: translate3d(0);
+    -ms-transform: translate3d(0);
+    -o-transform: translate3d(0);
     transform: translate3d(0);
     align-items: center;
 }
@@ -92,6 +119,10 @@
     background-image: linear-gradient(120deg, pink 0%, red 100%); 
     /*background: rgb(189, 68, 68);*/
     visibility: hidden;
+    -webkit-transform: translate3d(0);
+    -moz-transform: translate3d(0);
+    -ms-transform: translate3d(0);
+    -o-transform: translate3d(0);
     transform: translate3d(0);
     align-items: center;
 }
@@ -169,6 +200,10 @@ p {
 .bttn--next {
   display: inline-flex;
   background-image: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  -webkit-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -moz-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -ms-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+  -o-clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
   height: 4rem;
   width: 4rem;
@@ -180,6 +215,10 @@ p {
     height: 4rem;
     width: 4rem;
     background-image: linear-gradient(120deg, #ff4444 0%, #ff7d7d 100%);
+    -webkit-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    -moz-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    -ms-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    -o-clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
     cursor: pointer;
     vertical-align: middle;
@@ -263,6 +302,10 @@ h1 {
 }
 
 @media only screen and (max-width: 600px) {
+
+  .game-component {
+    bottom: 5%;
+  }
 
   .control {
     margin-top: .25rem;
