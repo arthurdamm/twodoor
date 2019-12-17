@@ -18,19 +18,16 @@ const renderCardTemplate = json => `
       </div>
   </div>
   <div class="card back">
+      <div class="card-icon success">&#9989</div>
+      <div class="card-icon fail">&#10060</div>
       <div class="card-body">
           <h5 class="card-title">Answer</h5>
           <p class="card-text">${json.answer}</p>
       </div>
   </div>
-  <div class="card success">
-      <div class="card-body">
-          <h5 class="card-icon">&#9989</h5>
-      </div>
-  </div>
+
   <div class="card fail">
   <div class="card-body">
-      <h5 class="card-icon">&#10060</h5>
   </div>
 </div>`;
 
