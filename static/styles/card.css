@@ -353,6 +353,7 @@ h1 {
 
 .animate-card-icon {
   transition: 1s;
+  -webkit-transtion: 1s;
   font-size: 15rem;
   color: rgba(255, 255, 255, 0);
 }
