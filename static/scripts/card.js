@@ -83,14 +83,19 @@ const LearningGame = () => {
     answered = true;
     // Match user answer against card back
     if (matchAnswer($('[name=text-answer]').val(), getCard(currentDoor, deck))) {
-      // Animate success
-      let userAnswer = currentDoor.children('.success')[0];
+        // Animate success
+      let userAnswer = currentDoor.find('.success')[0];
       if (getComputedStyle(userAnswer).visibility == 'hidden') {
-        currentDoor.children('.success').css('visibility', 'visible');
-        animate(userAnswer);
-        timeoutID = setTimeout(nextDoorEvent, 700);
-      } else
+        currentDoor.toggleClass('flipme');
+        currentDoor.find('.success').css('visibility', 'visible');
+        // currentDoor.find('.success').fadeOut(750);
+        currentDoor.find('.success').addClass('animate-card-icon');
+      animate(userAnswer);
+      timeoutID = setTimeout(nextDoorEvent, 1500);
+      } else {
         nextDoorEvent();
+      }
+      currentDoor.children('.back').addClass('success-border');
       currentDoor.children('.back').css('visibility', 'visible');
       currentDoor.children('.back').css('position', 'relative');
       $('.bttn--next').css('visibility', 'visible');
@@ -98,7 +103,15 @@ const LearningGame = () => {
       // Animate failure
       let userAnswer = currentDoor.children('.fail')[0];
       currentDoor.toggleClass('flipme');
-      if (getComputedStyle(userAnswer).visibility == 'hidden')
+      if (getComputedStyle(userAnswer).visibility == 'hidden') {
+        currentDoor.find('.fail').css('visibility', 'visible');
+        // currentDoor.find('.fail').fadeOut(750);
+        currentDoor.find('.fail').addClass('animate-card-icon');
+        currentDoor.children('.back').addClass('fail-border');
+
+      } 
+      animate(userAnswer);
+      timeoutID = setTimeout(nextDoorEvent, 1500);
         currentDoor.children('.fail').css('visibility', 'visible');
         timeoutID = setTimeout(nextDoorEvent, 1500);
     }
@@ -233,6 +246,7 @@ const Animator = () => {
    * Animates element with zoom-in-out by mapping z-position to sin wave.
    */
   const animate = () => {
+    console.log("animating...", element)
     element.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * zDelta) * 155;
     zDelta += increment;
@@ -310,7 +324,7 @@ if (!isMobile()) {
     }
     else if (!$('[name=text-answer]').is(':focus')) {
       console.log("Focusing mobile anchor");
-      setTimeout(() => (console.log("Focus!"), location.href = "#game-anchor"), 500);
+      setTimeout(() => (console.log("Focus!"), location.href = "#game-anchor"), 100);
     } else
       console.log("Focusing nothing;");
 }
