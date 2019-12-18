@@ -54,7 +54,7 @@ const renderDeckSelectorTemplate = deck => `
     <h2 class="deckText">${deck.text}</h2>
   </div>
   <div class="back">
-    <h2>The Back!</h2>
+    <h4>Play Now!</h4>
     <div class="bttn bttn--deck" deck="${deck.name}"></div>
   </div>
 </div>`;

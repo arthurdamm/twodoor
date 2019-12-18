@@ -18,7 +18,7 @@ h2 {
   display: inline-block;
   margin: 0;
   padding: 0;
-  margin-top: 20%;
+  /* margin-top: 20%; */
   vertical-align: middle;
 }
 .home-component--main {
@@ -61,14 +61,13 @@ h2 {
 /* clip-path: polygon(66% 0, 33% 0, 33% 33%, 0 33%, 0 66%, 33% 66%, 33% 100%, 66% 100%, 66% 66%, 100% 66%, 100% 33%, 66% 33%); */
 
 
-/*.deck-selector:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.2rem 1.2rem rgb(0,0,0,.3);
-}*/
-
-.deckText {
-  margin-top: 40%;
+.deck-selector:hover {
+  box-shadow: 0 3rem 3rem rgb(0,0,0,.3);
 }
+
+/* .deckText {
+  margin-top: 40%;
+} */
 
 
 .bttn--deck {

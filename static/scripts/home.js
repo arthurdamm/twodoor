@@ -67,7 +67,7 @@ $(() => {
       $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
       $('.deck-selector').css('background-color', '#B7312C');
       $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
-      $('h2').css('color', 'white');
+      // $('h2').css('color', 'white');
       // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
       holbieLogo.state = "holb";
     } else {
