@@ -50,9 +50,9 @@ h2 {
   font-size: 1.25rem;
   margin-top: 2.5rem;
   color: black;
-  background-color: white;
   border-radius: .688rem;
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+  perspective: 1000px;
 }
 
 /* .deck-selector-b {
@@ -61,10 +61,10 @@ h2 {
 /* clip-path: polygon(66% 0, 33% 0, 33% 33%, 0 33%, 0 66%, 33% 66%, 33% 100%, 66% 100%, 66% 66%, 100% 66%, 100% 33%, 66% 33%); */
 
 
-.deck-selector:hover {
+/*.deck-selector:hover {
   transform: translateY(-0.5rem);
   box-shadow: 0 1.2rem 1.2rem rgb(0,0,0,.3);
-}
+}*/
 
 .deckText {
   margin-top: 40%;

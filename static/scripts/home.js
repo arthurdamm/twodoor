@@ -36,19 +36,20 @@ $(() => {
   });
   $(document).on('click', '.deck-selector', function () {
     console.log("custom clicker");
-    if ($(this).attr('deck') === 'custom') {
-      showBuild();
-    }
-    else if($(this).attr('deck') === decks.HOLBIE) {
-      showHolbie();
-    }
-    else {
-      $('.game-component')[0].deckType = $(this).attr('deck');
-      $('.game-component')[0].deckText = $(this).attr('text');
-      console.log("THIS TEXT: ", $(this).attr('text'));
-      showGame();
-    }
-  });
+    $(this).toggleClass('flipme');
+  //   if ($(this).attr('deck') === 'custom') {
+  //     showBuild();
+  //   }
+  //   else if($(this).attr('deck') === decks.HOLBIE) {
+  //     showHolbie();
+  //   }
+  //   else {
+  //     $('.game-component')[0].deckType = $(this).attr('deck');
+  //     $('.game-component')[0].deckText = $(this).attr('text');
+  //     console.log("THIS TEXT: ", $(this).attr('text'));
+  //     showGame();
+  //   }
+  // });
   // $('.deck-container').find('.deck-selector').click(function() {
   //   if ($(this).attr('deck') === 'custom')
   //     showBuild();
@@ -57,7 +58,7 @@ $(() => {
   //     $('.game-component')[0].deckText = $(this).attr('text');
   //     showGame();
   //   }
-  // })
+  })
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
