@@ -84,6 +84,7 @@ h2 {
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-fill-mode: backwards;
+  align-self: center;
 }
 
 .bttn--deck:hover,

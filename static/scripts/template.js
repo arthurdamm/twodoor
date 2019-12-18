@@ -42,3 +42,19 @@ const renderSummaryTemplate = summary => `
     <p class="summary-score">Overall score: <em><span>${summary.avgPct}%</span></em>!</p>
     <p class="summary-conditional">${summary.conditionalText}</p>
     <p class="summary-emoji">${summary.emoji}</p>`;
+
+/**
+ * Renders Deck Selector component for each deck.
+ * @param {Object} Deck object with JSON data.
+ * @return {string} HTML deck selector element populated with data.
+ */
+const renderDeckSelectorTemplate = deck => `
+<div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${deck.name}">
+  <div class="front">
+    <h2 class="deckText">${deck.text}</h2>
+  </div>
+  <div class="back">
+    <h2>The Back!</h2>
+    <div class="bttn bttn--deck" deck="${deck.name}"></div>
+  </div>
+</div>`;

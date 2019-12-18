@@ -11,6 +11,7 @@
  */
 $(() => {
   showHome();
+  populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
   $('.bttn--signin').on('click', function() {
@@ -34,31 +35,28 @@ $(() => {
     $(this).toggleClass('bttn--algo-red');
     $('[name=text-answer]').focus();
   });
+
   $(document).on('click', '.deck-selector', function () {
     console.log("custom clicker");
     $(this).toggleClass('flipme');
-  //   if ($(this).attr('deck') === 'custom') {
-  //     showBuild();
-  //   }
-  //   else if($(this).attr('deck') === decks.HOLBIE) {
-  //     showHolbie();
-  //   }
-  //   else {
-  //     $('.game-component')[0].deckType = $(this).attr('deck');
-  //     $('.game-component')[0].deckText = $(this).attr('text');
-  //     console.log("THIS TEXT: ", $(this).attr('text'));
-  //     showGame();
-  //   }
-  // });
-  // $('.deck-container').find('.deck-selector').click(function() {
-  //   if ($(this).attr('deck') === 'custom')
-  //     showBuild();
-  //   else {
-  //     $('.game-component')[0].deckType = $(this).attr('deck');
-  //     $('.game-component')[0].deckText = $(this).attr('text');
-  //     showGame();
-  //   }
-  })
+  });
+
+  $(document).on('click', '.deck-selector .bttn--deck', function () {
+    console.log("BTTN-DECK", $(this).closest('.deck-selector').attr('deck'));
+    if ($(this).closest('.deck-selector').attr('deck') === decks.BUILDER.name) {
+      showBuild();
+    }
+    else if($(this).closest('.deck-selector').attr('deck') === decks.HOLBIE.name) {
+      showHolbie();
+    }
+    else {
+      $('.game-component')[0].deckType = $(this).closest('.deck-selector').attr('deck');
+      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
+      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
+      showGame();
+    }
+  });
+
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";

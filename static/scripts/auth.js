@@ -75,19 +75,13 @@ const loadCustomDecks = () => {
             $('.custom-deck').remove();
             for (let [i, deck] of doc.data().decks.entries()) {
               let parsed = JSON.parse(deck);
-              if (parsed.deckName == "") {
-                const div = `
-                  <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
-                  <h2 class="deckText">Custom Deck ${i}</h2>
-                  </div>`;
-                $('.deck-container').append(div);
-              } else {
-                const div = `
-                  <div class="deck-selector custom-deck custom-deck-${++i}" deck="builder">
-                  <h2 class="deckText">${parsed.deckName}</h2>
-                  </div>`;
-                $('.deck-container').append(div);
-              }
+              if (parsed.deckName == "")
+                parsed.deckName = `Custom Deck ${i}`;
+              parsed.custom = 1;
+              parsed.name = decks.CUSTOM.name;
+              parsed.text = parsed.deckName;
+              parsed.i = i;
+              addDeck(parsed);
               console.log("THIS DECK: ", deck);
               $(`.custom-deck-${i}`).attr('text', deck);
             }
