@@ -89,12 +89,13 @@ const LearningGame = () => {
         currentDoor.toggleClass('flipme');
         currentDoor.find('.success').css('visibility', 'visible');
         // currentDoor.find('.success').fadeOut(750);
-        currentDoor.find('.success').addClass('animate-card-icon'); 
+        currentDoor.find('.success').addClass('animate-card-icon');
       animate(userAnswer);
       timeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
+      currentDoor.children('.back').addClass('success-border');
       currentDoor.children('.back').css('visibility', 'visible');
       currentDoor.children('.back').css('position', 'relative');
       $('.bttn--next').css('visibility', 'visible');
@@ -106,6 +107,8 @@ const LearningGame = () => {
         currentDoor.find('.fail').css('visibility', 'visible');
         // currentDoor.find('.fail').fadeOut(750);
         currentDoor.find('.fail').addClass('animate-card-icon');
+        currentDoor.children('.back').addClass('fail-border');
+
       } 
       animate(userAnswer);
       timeoutID = setTimeout(nextDoorEvent, 1500);
