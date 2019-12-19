@@ -137,7 +137,7 @@ const LearningGame = () => {
     }
   });
   // Binds click event on card to shake animation.
-  $(".flippable").click(function() {
+  $(".game-component .flippable").click(function() {
     const that = $(this);
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
