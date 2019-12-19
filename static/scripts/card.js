@@ -136,6 +136,7 @@ const LearningGame = () => {
       $('.game-component')[0].queryDeck().stagger = 0;
     }
   });
+
   // Binds click event on card to shake animation.
   $(".game-component .flippable").click(function() {
     const that = $(this);
@@ -342,3 +343,9 @@ if (isMobile()) {
     checkGameFocus();
   });
 }
+
+currentDoor.find('.settings-icon').on('click', function() {
+  console.log("clicked!")
+  currentDoor.find('.settings').css('display', 'absolute');
+  currentDoor.toggleClass('flipme');
+});

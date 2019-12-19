@@ -28,8 +28,8 @@
 
 
 .deck:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+    /* transform: translateY(-0.5rem); */
+    box-shadow: 0 0 3rem rgba(66, 54, 54, 0.4);
 }
 
 .door {
@@ -366,5 +366,21 @@ h1 {
 .fail-border {
   transition: 1s;
   border: 25px solid rgb(184, 8, 8);
+}
 
+.settings-icon {
+  z-index: 3;
+  position: absolute;
+  right: 0;
+  top: 0;
+  backface-visibility: visible; 
+  overflow: visible;
+  background: url("../images/settings-icon.png") no-repeat;
+  background-size: 100% 100%;
+  width: 2.5rem;
+  height: 2rem;
+}
+
+.settings {
+  display: none;
 }
