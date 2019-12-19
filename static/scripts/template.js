@@ -27,6 +27,7 @@ const renderCardTemplate = json => `
         <p class="card-text">${json.answer}</p>
     </div>
   </div>
+  <div class="card fail"></div>
 </div>`;
 
 /**

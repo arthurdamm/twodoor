@@ -344,7 +344,7 @@ if (isMobile()) {
   });
 }
 
-currentDoor.find('.settings-icon').on('click', function() {
+currentDoor.find('settings-icon').on('click', function() {
   console.log("clicked!")
   currentDoor.find('.settings').css('display', 'absolute');
   currentDoor.toggleClass('flipme');
