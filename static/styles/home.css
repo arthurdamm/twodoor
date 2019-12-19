@@ -18,7 +18,7 @@ h2 {
   display: inline-block;
   margin: 0;
   padding: 0;
-  margin-top: 20%;
+  /* margin-top: 20%; */
   vertical-align: middle;
 }
 .home-component--main {
@@ -50,9 +50,9 @@ h2 {
   font-size: 1.25rem;
   margin-top: 2.5rem;
   color: black;
-  background-color: white;
   border-radius: .688rem;
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+  perspective: 1000px;
 }
 
 /* .deck-selector-b {
@@ -62,13 +62,12 @@ h2 {
 
 
 .deck-selector:hover {
-  transform: translateY(-0.5rem);
-  box-shadow: 0 1.2rem 1.2rem rgb(0,0,0,.3);
+  box-shadow: 0 3rem 3rem rgb(0,0,0,.3);
 }
 
-.deckText {
+/* .deckText {
   margin-top: 40%;
-}
+} */
 
 
 .bttn--deck {
@@ -84,6 +83,7 @@ h2 {
   animation-name: moveInLeft;
   animation-duration: 1s;
   animation-fill-mode: backwards;
+  align-self: center;
 }
 
 .bttn--deck:hover,

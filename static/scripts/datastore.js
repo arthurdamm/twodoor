@@ -3,22 +3,7 @@
  * @package
  */
 
-/**
- * Enum for deck types.
- * @readonly
- * @enum {string}
- */
-const decks = {
-  TUTORIAL: 'tutorial',
-  FACE: 'face',
-  DINO: 'dino',
-  COLOR: 'color',
-  TRIVIA: 'trivia',
-  PRESENTATION: 'presentation',
-  CUSTOM: 'custom',
-  BUILDER: 'builder',
-  HOLBIE: 'holbie'
-};
+
 
  /**
   * Loads requested deck data as JSON array.
@@ -26,18 +11,8 @@ const decks = {
   * @return {Array<Object>} Deck represented by JSON array of card objects.
   */
 const loadDeck = (deckName) => {
-  const deckFactories = [
-    [decks.TUTORIAL, getTutorialDeck],
-    [decks.FACE, getFaceDeck],
-    [decks.DINO, getDinoDeck],
-    [decks.COLOR, generateColorDeck],
-    [decks.TRIVIA, getTriviaDeck],
-    [decks.PRESENTATION, getPresentationDeck],
-    [decks.CUSTOM, getCustomDeck],
-    [decks.BUILDER, getBuiltDeck]
-  ];
-  return deckFactories.filter((o) => o[0] === deckName)[0][1]()
-    .map((json, i) => getCardTemplate(json, i));
+  console.log("loadDeck()", deckName);
+  return decks[deckName].factory().map((json, i) => getCardTemplate(json, i));
 };
 
 /**
@@ -401,3 +376,38 @@ const getPresentationDeck = () =>
       'regex': /holberton|holbie|holby/i,
     },
   ];
+
+/**
+ * Enum for deck types.
+ * @readonly
+ * @enum {string}
+ */
+const decks = {
+  HOLBIE: {
+    name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getCustomDeck
+  },
+  FACE: {
+    name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
+  },
+  BUILDER: {
+    name: 'BUILDER', text: 'Build a Deck!', factory: getBuiltDeck
+  },
+  DINO: {
+    name: 'DINO', text: 'Dino Deck', factory: getDinoDeck
+  },
+  COLOR: {
+    name: 'COLOR', text: 'Color Coding', factory: generateColorDeck
+  },
+  TRIVIA: {
+    name: 'TRIVIA', text: 'CSS Trivia', factory: getTriviaDeck
+  },
+  PRESENTATION: {
+    name: 'PRESENTATION', text: 'PRESENTATION ❤️ DAY!', factory: getPresentationDeck
+  },
+  CUSTOM: {
+    name: 'CUSTOM', text: 'Custom', factory: getCustomDeck
+  },
+  TUTORIAL: { 
+    name: 'TUTORIAL', text: 'How to Play?', factory: getTutorialDeck
+  },
+};

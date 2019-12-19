@@ -11,6 +11,7 @@
  */
 $(() => {
   showHome();
+  populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
   $('.bttn--signin').on('click', function() {
@@ -34,30 +35,28 @@ $(() => {
     $(this).toggleClass('bttn--algo-red');
     $('[name=text-answer]').focus();
   });
+
   $(document).on('click', '.deck-selector', function () {
     console.log("custom clicker");
-    if ($(this).attr('deck') === 'custom') {
+    $(this).toggleClass('flipme');
+  });
+
+  $(document).on('click', '.deck-selector .bttn--deck', function () {
+    console.log("BTTN-DECK", $(this).closest('.deck-selector').attr('deck'));
+    if ($(this).closest('.deck-selector').attr('deck') === decks.BUILDER.name) {
       showBuild();
     }
-    else if($(this).attr('deck') === decks.HOLBIE) {
+    else if($(this).closest('.deck-selector').attr('deck') === decks.HOLBIE.name) {
       showHolbie();
     }
     else {
-      $('.game-component')[0].deckType = $(this).attr('deck');
-      $('.game-component')[0].deckText = $(this).attr('text');
-      console.log("THIS TEXT: ", $(this).attr('text'));
+      $('.game-component')[0].deckType = $(this).closest('.deck-selector').attr('deck');
+      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
+      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
       showGame();
     }
   });
-  // $('.deck-container').find('.deck-selector').click(function() {
-  //   if ($(this).attr('deck') === 'custom')
-  //     showBuild();
-  //   else {
-  //     $('.game-component')[0].deckType = $(this).attr('deck');
-  //     $('.game-component')[0].deckText = $(this).attr('text');
-  //     showGame();
-  //   }
-  // })
+
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
@@ -68,7 +67,7 @@ $(() => {
       $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
       $('.deck-selector').css('background-color', '#B7312C');
       $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
-      $('h2').css('color', 'white');
+      // $('h2').css('color', 'white');
       // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
       holbieLogo.state = "holb";
     } else {
