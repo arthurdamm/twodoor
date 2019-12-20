@@ -1,7 +1,9 @@
 const HB_URL = "https://intranet.hbtn.io";
+const HOLBERTON_EMAIL = "@holbertonschool.com"
 
 const MAX_POLL_ATTEMPTS = 30;
 const PEER_CACHE_TTL = 600;
+
 
 /**
  * Enum for cohort types
@@ -17,6 +19,7 @@ const cohorts = {
 const cohortToNumMap = {};
 
 let authToken;
+let _profile;
 
 let peerCache = {};
 let lastCacheSize = 0;
@@ -57,15 +60,38 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
   }
 });
 
-const authenticateUserHB = () => {
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    console.log("signInWithEmailAndPassword()", error);
-  });
+const profileRequest = (authToken) => ({
+  async: true,
+  crossDomain: true,
+  url: `${HB_URL}/users/me.json`,
+  method: 'GET',
+  data: {
+    auth_token: authToken,
+  }
+});
+
+const requestUserProfile = () => {
+  $.ajax(profileRequest(authToken))
+    .done((data) => {
+      console.log("requestUserProfile()", data);
+      _profile = data;
+      showUserName();
+    })
+    .fail((error) => {
+      console.log("requestUserProfile() failed:", error);
+    });
+}
+
+const authenticateUserHB = async function () {
+  const email = getemail();
+  const hashedPass = await sha256(getpassword());
   $.ajax(authenticationRequest(requestJson()))
     .done(({ auth_token }) => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
+      authenticateUserFirebase(email, hashedPass);
+      requestUserProfile();
       showHolbie();
     })
     .fail(() => {
@@ -73,6 +99,19 @@ const authenticateUserHB = () => {
       $('.holbie-status').html('Authentication failed!');
     });
 };
+
+const authenticateUserFirebase = (email, hashedPass) => {
+  if (!email.endsWith(HOLBERTON_EMAIL))
+    email += HOLBERTON_EMAIL;
+  firebase.auth().createUserWithEmailAndPassword(email, hashedPass).catch(function(error) {
+    console.log("createUserWithEmailAndPassword()", error);
+    if (error.code == "auth/email-already-in-use") {
+      firebase.auth().signInWithEmailAndPassword(email, hashedPass).catch(function(error) {
+        console.log("signInWithEmailAndPassword()", error);
+      });
+    }
+  });
+}
 
 const getRandomPeers = () => {
   $.ajax(randomPeersRequest(authToken, 5, 10))
@@ -121,7 +160,7 @@ const updateDeckFromCache = (cohort) => {
     $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
     showGame();
   }
-}
+};
 
 const populateCohortSelectors = () => {
   console.log('populateCohortSelectors()');
@@ -133,7 +172,7 @@ const populateCohortSelectors = () => {
         .append(`<option value="${cohort}">${cohort}</option>`);
     }
   }
-}
+};
 
 const getCohortNum = (cohort) => {
   let ret = cohortToNumMap[cohort];
@@ -144,7 +183,7 @@ const getCohortNum = (cohort) => {
     ret = cohortToNumMap[cohort];
   }
   return parseInt(ret);
-}
+};
 
 const filterPeerCache = (cohort) => {
   console.log("filterPeerCache()", cohort);
@@ -152,4 +191,11 @@ const filterPeerCache = (cohort) => {
   const now = timestamp();
   deck.forEach(card =>
     now - card.timestamp >= PEER_CACHE_TTL && delete peerCache[cohort][card.full_name])
-}
+};
+
+const profile = () => _profile;
+
+const showUserName = () => {
+  if (profile())
+    $('.signin-welcome').text(`Hi ${profile().first_name}!`);
+};
