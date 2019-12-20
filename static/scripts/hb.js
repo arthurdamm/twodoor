@@ -1,6 +1,7 @@
 const HB_URL = "https://intranet.hbtn.io";
 
-const MAX_POLL_ATTEMPTS = 20;
+const MAX_POLL_ATTEMPTS = 30;
+const PEER_CACHE_TTL = 600;
 
 /**
  * Enum for cohort types
@@ -84,8 +85,6 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
   if (stopPoll || attempts >= MAX_POLL_ATTEMPTS) return;
   $.ajax(randomPeersRequest(authToken, 5, getCohortNum(cohort)))
     .done(data => {
-      data = data.filter(o => !peerCache[o.cohort] || !peerCache[o.cohort][o.full_name]);
-      console.log("New data: " + JSON.stringify(data));
       const _deck = data.map(o => ({
         ...o,
         question: "Who is this?",
@@ -93,6 +92,7 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
         image: o.picture,
         regex: o.full_name.trim().replace(/( )+/g, "|") + "|" +
           unidecode(o.full_name.trim().replace(/( )+/g, "|")),
+        timestamp: timestamp(),
       }));
       _deck.forEach(o => ((!peerCache[o.cohort] && (peerCache[o.cohort] = {})),
         peerCache[o.cohort][o.full_name] = o));
@@ -106,6 +106,7 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
 
 const updateDeckFromCache = (cohort) => {
   console.log(`updateDeckFromCache() cohort:${cohort}`);
+  filterPeerCache(cohort);
   const _deck = Object.values(peerCache[cohort] || {});
   if (_deck.length) {
     const deck = {
@@ -140,4 +141,12 @@ const getCohortNum = (cohort) => {
     ret = cohortToNumMap[cohort];
   }
   return parseInt(ret);
+}
+
+const filterPeerCache = (cohort) => {
+  console.log("filterPeerCache()", cohort);
+  const deck = Object.values(peerCache[cohort] || {});
+  const now = timestamp();
+  deck.forEach(card =>
+    now - card.timestamp >= PEER_CACHE_TTL && delete peerCache[cohort][card.full_name])
 }
