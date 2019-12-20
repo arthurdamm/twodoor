@@ -37,3 +37,5 @@ const getRandom = (min, max) =>
  * @return {number} The sum.
  */
 const sum = (list) => list.reduce((a, x) => a + x, 0);
+
+const timestamp = () => parseInt(new Date().getTime() / 1000);
