@@ -138,9 +138,11 @@ const LearningGame = () => {
   });
 
   // Binds click event on card to shake animation.
-  $(".deck .flippable").click(function() {
+  $(".deck .flippable").click(function(e) {
+    console.log("SHAKE:", e.target);
+    if (e.target == document.querySelector(".settings-icon"))
+      return;
     const that = $(this);
-    
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
     if (!isMobile()) $('[name=text-answer]').focus();
@@ -188,7 +190,8 @@ const LearningGame = () => {
    */
   document.querySelector('.game-component').queryDeck = () => deck;
 
-  $(document).on('click', '.settings-icon', function() {
+  $(document).on('click', '.settings-icon', function(e) {
+    console.log("TARGET:", e.target);
     currentDoor.find('deck').state = "settings";
     console.log(currentDoor.find('deck').state);
     // currentDoor.children('settings').css('display', 'absolute');
