@@ -58,6 +58,9 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
 });
 
 const authenticateUserHB = () => {
+  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    console.log("signInWithEmailAndPassword()", error);
+  });
   $.ajax(authenticationRequest(requestJson()))
     .done(({ auth_token }) => {
       authToken = auth_token;
