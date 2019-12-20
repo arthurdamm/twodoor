@@ -138,8 +138,9 @@ const LearningGame = () => {
   });
 
   // Binds click event on card to shake animation.
-  $(".game-component .flippable").click(function() {
+  $(".deck .flippable").click(function() {
     const that = $(this);
+    
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
     if (!isMobile()) $('[name=text-answer]').focus();
@@ -186,6 +187,16 @@ const LearningGame = () => {
    * @return {Object} The current deck in the Learning Game.
    */
   document.querySelector('.game-component').queryDeck = () => deck;
+
+  $(document).on('click', '.settings-icon', function() {
+    currentDoor.find('deck').state = "settings";
+    console.log(currentDoor.find('deck').state);
+    // currentDoor.children('settings').css('display', 'absolute');
+    currentDoor.toggleClass('flipme');
+    currentDoor.find('.card-body').css('display', 'none');
+
+  });
+
 };
 
 /** 
@@ -343,9 +354,3 @@ if (isMobile()) {
     checkGameFocus();
   });
 }
-
-currentDoor.find('settings-icon').on('click', function() {
-  console.log("clicked!")
-  currentDoor.find('.settings').css('display', 'absolute');
-  currentDoor.toggleClass('flipme');
-});
