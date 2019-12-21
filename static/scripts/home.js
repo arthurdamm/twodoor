@@ -11,6 +11,7 @@
  */
 $(() => {
   showHome();
+  $('.main-container').show();
   populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
