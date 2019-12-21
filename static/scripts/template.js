@@ -19,13 +19,13 @@ const renderCardTemplate = json => `
       </div>
   </div>
   <div class="card back">
-    <div class="card settings">
+    <div class="card settings" style="display: none">
       <input type="radio">flip on click
       <button class="bttn save-settings">save settings</button>
       </div>
     <div class="card-icon success">&#9989</div>
     <div class="card-icon fail">&#10060</div>
-    <div class="card-body">
+    <div class="card-body card-back" style="display: none">
         <h5 class="card-title">Answer</h5>
         <p class="card-text">${json.answer}</p>
     </div>

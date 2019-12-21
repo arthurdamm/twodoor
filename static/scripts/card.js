@@ -73,6 +73,10 @@ const LearningGame = () => {
    * Parses user answer for current card & invokes nextDoorEvent.
    */
   const answerEvent = () => {
+    // set initial card state to game mode
+    document.querySelector('.settings-icon').state = 'game';
+    // show card-back. Default is display none to prevent cheating
+    currentDoor.find('.card-back').css('display', '');
     checkGameFocus();
     // Rush event if already answered
     if (animating || answered) {
@@ -140,7 +144,7 @@ const LearningGame = () => {
   // Binds click event on card to shake animation.
   $(".deck .flippable").click(function(e) {
     console.log("SHAKE:", e.target);
-    if (e.target == document.querySelector(".settings-icon"))
+    if (e.target == document.querySelector(".settings-icon") || document.querySelector('.settings-icon').state == 'settings')
       return;
     const that = $(this);
     that.addClass('shakeme');
@@ -191,13 +195,22 @@ const LearningGame = () => {
   document.querySelector('.game-component').queryDeck = () => deck;
 
   $(document).on('click', '.settings-icon', function(e) {
-    console.log("TARGET:", e.target);
-    currentDoor.find('deck').state = "settings";
+    e.target.state = "settings";
     console.log(currentDoor.find('deck').state);
-    // currentDoor.children('settings').css('display', 'absolute');
     currentDoor.toggleClass('flipme');
-    currentDoor.find('.card-body').css('display', 'none');
+    // currentDoor.find('.card-back').css('display', 'none');
+    currentDoor.find('.settings').css('display', '');
+    currentDoor.find('.card-back').css('display', 'none');
 
+
+  });
+  $(document).on('click', '.save-settings', function(){
+    document.querySelector('.settings-icon').state = 'game';
+    currentDoor.toggleClass('flipme');
+    setTimeout(function() {
+      currentDoor.find('.card-back').css('display', '');
+    }, 200);
+    currentDoor.find('.settings').css('display', 'none');
   });
 
 };
