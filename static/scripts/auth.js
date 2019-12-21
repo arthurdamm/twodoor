@@ -40,7 +40,9 @@ const authenticate = () => {
     if ($('#firebaseui-auth-container').css('display') != 'none')
       showHome();
     if (user) {
-      $('.signin-welcome').text(`Hi ${user.displayName}!`);
+      const name = user.email.split('@')[0]
+      if (!profile())
+        $('.signin-welcome').text(`Hi ${name}!`);
       $('.bttn--signin').text('SIGN OUT');
       loadCustomDecks();
     }
