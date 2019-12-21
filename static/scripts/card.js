@@ -76,7 +76,9 @@ const LearningGame = () => {
     // set initial card state to game mode
     document.querySelector('.settings-icon').state = 'game';
     // show card-back. Default is display none to prevent cheating
-    currentDoor.find('.card-back').css('display', '');
+    currentDoor.find('.card-back').show();
+    currentDoor.find('.settings').hide();
+
     checkGameFocus();
     // Rush event if already answered
     if (animating || answered) {
@@ -199,8 +201,8 @@ const LearningGame = () => {
     console.log(currentDoor.find('deck').state);
     currentDoor.toggleClass('flipme');
     // currentDoor.find('.card-back').css('display', 'none');
-    currentDoor.find('.settings').css('display', '');
-    currentDoor.find('.card-back').css('display', 'none');
+    currentDoor.find('.settings').show();
+    currentDoor.find('.card-back').hide();
 
 
   });
@@ -208,9 +210,9 @@ const LearningGame = () => {
     document.querySelector('.settings-icon').state = 'game';
     currentDoor.toggleClass('flipme');
     setTimeout(function() {
-      currentDoor.find('.card-back').css('display', '');
+      currentDoor.find('.card-back').show();
     }, 200);
-    currentDoor.find('.settings').css('display', 'none');
+    currentDoor.find('.settings').hide();
   });
 
 };
