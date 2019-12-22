@@ -150,6 +150,7 @@ const LearningGame = () => {
     if (e.target == icon || icon.state == 'settings')
       return;
     else if (getSetting("flipOnClick") == true) {
+      currentDoor.find('.card-back').css('visibility', 'visible');
       currentDoor.toggleClass('flipme');
       return;
     }
