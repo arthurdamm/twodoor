@@ -62,7 +62,7 @@ h2 {
 
 
 .deck-selector:hover {
-  box-shadow: 0 3rem 3rem rgb(0,0,0,.3);
+  box-shadow: 0 1.5rem 4rem rgb(0,0,0,.3);
 }
 
 /* .deckText {

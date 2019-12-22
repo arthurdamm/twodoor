@@ -32,12 +32,18 @@ const LearningGame = () => {
    */
   let answered = false;
   /** ID of nextDoorEvent timeout.
-   * @member {number} timeoutID
-  let timeoutID;
+   * @member {number} doorTimeoutID
+   */
+  let doorTimeoutID;
+  /** ID of settings timeout.
+   * @member {number} settingsTimeoutID
+   */
+  let settingsTimeoutID;
   /** Animator instance for zoom-in-out success animation.
    * @const {Animator} animate
    */
   const animate = Animator();
+
 
   /**
    * Slides away current door and displays underlying door, switching
@@ -73,10 +79,16 @@ const LearningGame = () => {
    * Parses user answer for current card & invokes nextDoorEvent.
    */
   const answerEvent = () => {
+    // set initial card state to game mode
+    document.querySelector('.settings-icon').state = 'game';
+    // show card-back. Default is display none to prevent cheating
+    currentDoor.find('.card-back').show();
+    currentDoor.find('.settings').hide();
+
     checkGameFocus();
     // Rush event if already answered
     if (animating || answered) {
-      clearTimeout(timeoutID);
+      clearTimeout(doorTimeoutID);
       nextDoorEvent();
       return;
     }
@@ -91,7 +103,7 @@ const LearningGame = () => {
         // currentDoor.find('.success').fadeOut(750);
         currentDoor.find('.success').addClass('animate-card-icon');
       animate(userAnswer);
-      timeoutID = setTimeout(nextDoorEvent, 1500);
+      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
@@ -111,9 +123,9 @@ const LearningGame = () => {
 
       } 
       animate(userAnswer);
-      timeoutID = setTimeout(nextDoorEvent, 1500);
+      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
         currentDoor.children('.fail').css('visibility', 'visible');
-        timeoutID = setTimeout(nextDoorEvent, 1500);
+        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
     }
   };
 
@@ -136,8 +148,19 @@ const LearningGame = () => {
       $('.game-component')[0].queryDeck().stagger = 0;
     }
   });
+
   // Binds click event on card to shake animation.
-  $(".game-component .flippable").click(function() {
+  $(".deck .flippable").click(function(e) {
+    console.log("SHAKE:", e.target);
+    const icon = document.querySelector('.settings-icon');
+    if (e.target == icon || icon.state == 'settings')
+      return;
+    else if (getSetting("flipOnClick") == true) {
+      currentDoor.find('.card-back').show();
+      currentDoor.toggleClass('flipme');
+      if (!isMobile()) $('[name=text-answer]').focus();
+      return;
+    }
     const that = $(this);
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
@@ -185,6 +208,27 @@ const LearningGame = () => {
    * @return {Object} The current deck in the Learning Game.
    */
   document.querySelector('.game-component').queryDeck = () => deck;
+
+  $(document).on('click', '.settings-icon', function(e) {
+    clearTimeout(settingsTimeoutID);
+    if (getSetting("flipOnClick") == true)
+      document.querySelector('.toggle-flip').checked = true;
+    e.target.state = "settings";
+    currentDoor.find('.card-back').hide();
+    currentDoor.find('.settings').show();
+    currentDoor.toggleClass('flipme');
+  });
+  $(document).on('click', '.save-settings', function() {
+    document.querySelector('.settings-icon').state = 'game';
+    putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
+    console.log("putSetting= ", _settings)
+    currentDoor.toggleClass('flipme');
+    settingsTimeoutID = setTimeout(function() {
+      currentDoor.find('.card-back').show();
+    }, 150);
+    currentDoor.find('.settings').hide();
+  });
+
 };
 
 /** 
