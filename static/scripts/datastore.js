@@ -35,33 +35,46 @@ const getCustomDeck = () => {
   // const text = $('[name=text-input]').val()
   const text = $('.game-component')[0].deckText;
   const jsonArray = JSON.parse(text);
+  saveUserData();
+  for (obj of jsonArray.deck)
+    if (typeof obj.regex === 'string')
+      obj.regex = RegExp(obj.regex, 'i');
+  return jsonArray.deck;
+}
+
+const saveUserData = () => {
   if (user()) {
+    const text = $('.game-component')[0].deckText;
     let userData = db.collection("users").doc(user().uid);
 
     userData.get().then(function(doc) {
         if (doc.exists) {
             console.log("Document data:", doc.data());
             let data = doc.data();
+            if (!data.settings)
+              data.settings = {};
+            for (const [key, val] of Object.entries(settings()))
+              data.settings[key] = val;
             if (!data.decks)
               data.decks = [];
-            if (data.decks.indexOf(text) === -1) {
-              console.log("adding data...");
+            if (text && data.decks.indexOf(text) === -1)
               data.decks.push(text);
-              db.collection("users").doc(user().uid).set(data)
-              .then(function() {
-                console.log("Document successfully written!");
-              })
-              .catch(function(error) {
-                console.error("Error writing document: ", error);
-              });
-            } 
+            console.log("Saving data:", data);
+            db.collection("users").doc(user().uid).set(data)
+            .then(function() {
+              console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+              console.error("Error writing document: ", error);
+            });
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
             db.collection("users").doc(user().uid).set({
               name: user().displayName,
-              decks: [text]
-          })
+              decks: text ? [text] : [],
+              settings: settings(),
+            })
           .then(function() {
               console.log("Document successfully written!");
           })
@@ -73,10 +86,6 @@ const getCustomDeck = () => {
         console.log("Error getting document:", error);
     });
   }
-  for (obj of jsonArray.deck)
-    if (typeof obj.regex === 'string')
-      obj.regex = RegExp(obj.regex, 'i');
-  return jsonArray.deck;
 }
 
  /**
