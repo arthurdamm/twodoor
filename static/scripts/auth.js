@@ -74,10 +74,12 @@ const loadUserData = () => {
     userData.get().then(function(doc) {
         if (doc.exists) {
             console.log("Found document:", doc.data());
-            if (doc.data().settings)
-              for (let [key, val] in Object.entries(doc.data().settings)) {
+            if (doc.data().settings) {
+              for (const [key, val] of Object.entries(doc.data().settings)) {
                 console.log("entries in settings: ", key, val);
+                putSetting(key, val);
               }
+            }
             $('.custom-deck').remove();
             for (let [i, deck] of doc.data().decks.entries()) {
               let parsed = JSON.parse(deck);

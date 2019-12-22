@@ -53,28 +53,28 @@ const saveUserData = () => {
             let data = doc.data();
             if (!data.settings)
               data.settings = {};
-            data.settings = settings();
+            for (const [key, val] of Object.entries(settings()))
+              data.settings[key] = val;
             if (!data.decks)
               data.decks = [];
-            if (data.decks.indexOf(text) === -1) {
-              console.log("adding data...");
+            if (text && data.decks.indexOf(text) === -1)
               data.decks.push(text);
-              db.collection("users").doc(user().uid).set(data)
-              .then(function() {
-                console.log("Document successfully written!");
-              })
-              .catch(function(error) {
-                console.error("Error writing document: ", error);
-              });
-            } 
+            console.log("Saving data:", data);
+            db.collection("users").doc(user().uid).set(data)
+            .then(function() {
+              console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+              console.error("Error writing document: ", error);
+            });
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
             db.collection("users").doc(user().uid).set({
               name: user().displayName,
-              decks: [text],
-              settings: [JSON.stringify(settings())],
-          })
+              decks: text ? [text] : [],
+              settings: settings(),
+            })
           .then(function() {
               console.log("Document successfully written!");
           })
