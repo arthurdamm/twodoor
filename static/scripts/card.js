@@ -32,12 +32,18 @@ const LearningGame = () => {
    */
   let answered = false;
   /** ID of nextDoorEvent timeout.
-   * @member {number} timeoutID
-  let timeoutID;
+   * @member {number} doorTimeoutID
+   */
+  let doorTimeoutID;
+  /** ID of settings timeout.
+   * @member {number} settingsTimeoutID
+   */
+  let settingsTimeoutID;
   /** Animator instance for zoom-in-out success animation.
    * @const {Animator} animate
    */
   const animate = Animator();
+
 
   /**
    * Slides away current door and displays underlying door, switching
@@ -82,7 +88,7 @@ const LearningGame = () => {
     checkGameFocus();
     // Rush event if already answered
     if (animating || answered) {
-      clearTimeout(timeoutID);
+      clearTimeout(doorTimeoutID);
       nextDoorEvent();
       return;
     }
@@ -97,7 +103,7 @@ const LearningGame = () => {
         // currentDoor.find('.success').fadeOut(750);
         currentDoor.find('.success').addClass('animate-card-icon');
       animate(userAnswer);
-      timeoutID = setTimeout(nextDoorEvent, 1500);
+      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
@@ -117,9 +123,9 @@ const LearningGame = () => {
 
       } 
       animate(userAnswer);
-      timeoutID = setTimeout(nextDoorEvent, 1500);
+      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
         currentDoor.children('.fail').css('visibility', 'visible');
-        timeoutID = setTimeout(nextDoorEvent, 1500);
+        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
     }
   };
 
@@ -204,20 +210,20 @@ const LearningGame = () => {
   document.querySelector('.game-component').queryDeck = () => deck;
 
   $(document).on('click', '.settings-icon', function(e) {
+    clearTimeout(settingsTimeoutID);
     if (getSetting("flipOnClick") == true)
       document.querySelector('.toggle-flip').checked = true;
     e.target.state = "settings";
     currentDoor.find('.card-back').hide();
     currentDoor.find('.settings').show();
     currentDoor.toggleClass('flipme');
-    // currentDoor.find('.card-back').css('display', 'none');
   });
   $(document).on('click', '.save-settings', function() {
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
     console.log("putSetting= ", _settings)
     currentDoor.toggleClass('flipme');
-    setTimeout(function() {
+    settingsTimeoutID = setTimeout(function() {
       currentDoor.find('.card-back').show();
     }, 150);
     currentDoor.find('.settings').hide();
