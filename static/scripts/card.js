@@ -202,7 +202,7 @@ const LearningGame = () => {
   document.querySelector('.game-component').queryDeck = () => deck;
 
   $(document).on('click', '.settings-icon', function(e) {
-    if (_dict["flipOnClick"] == true)
+    if (getSetting("flipOnClick") == true)
       document.querySelector('.toggle-flip').checked = true;
     e.target.state = "settings";
     currentDoor.find('.card-back').css('visibility', 'hidden');
@@ -213,7 +213,7 @@ const LearningGame = () => {
   $(document).on('click', '.save-settings', function() {
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
-    console.log("putSetting= ", _dict)
+    console.log("putSetting= ", _settings)
     currentDoor.toggleClass('flipme');
     setTimeout(function() {
       currentDoor.find('.card-back').css('visibility', 'visible');
