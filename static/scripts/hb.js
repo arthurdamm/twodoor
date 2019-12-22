@@ -1,6 +1,9 @@
 const HB_URL = "https://intranet.hbtn.io";
+const HOLBERTON_EMAIL = "@holbertonschool.com"
 
-const MAX_POLL_ATTEMPTS = 20;
+const MAX_POLL_ATTEMPTS = 30;
+const PEER_CACHE_TTL = 600;
+
 
 /**
  * Enum for cohort types
@@ -16,6 +19,7 @@ const cohorts = {
 const cohortToNumMap = {};
 
 let authToken;
+let _profile;
 
 let peerCache = {};
 let lastCacheSize = 0;
@@ -56,12 +60,38 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
   }
 });
 
-const authenticateUserHB = () => {
+const profileRequest = (authToken) => ({
+  async: true,
+  crossDomain: true,
+  url: `${HB_URL}/users/me.json`,
+  method: 'GET',
+  data: {
+    auth_token: authToken,
+  }
+});
+
+const requestUserProfile = () => {
+  $.ajax(profileRequest(authToken))
+    .done((data) => {
+      console.log("requestUserProfile()", data);
+      _profile = data;
+      showUserName();
+    })
+    .fail((error) => {
+      console.log("requestUserProfile() failed:", error);
+    });
+}
+
+const authenticateUserHB = async function () {
+  const email = getemail();
+  const hashedPass = await sha256(getpassword());
   $.ajax(authenticationRequest(requestJson()))
     .done(({ auth_token }) => {
       authToken = auth_token;
       console.log("Authentication successful:", authToken);
       $('.holbie-status').html('Authentication successful...');
+      authenticateUserFirebase(email, hashedPass);
+      requestUserProfile();
       showHolbie();
     })
     .fail(() => {
@@ -69,6 +99,19 @@ const authenticateUserHB = () => {
       $('.holbie-status').html('Authentication failed!');
     });
 };
+
+const authenticateUserFirebase = (email, hashedPass) => {
+  if (!email.endsWith(HOLBERTON_EMAIL))
+    email += HOLBERTON_EMAIL;
+  firebase.auth().createUserWithEmailAndPassword(email, hashedPass).catch(function(error) {
+    console.log("createUserWithEmailAndPassword()", error);
+    if (error.code == "auth/email-already-in-use") {
+      firebase.auth().signInWithEmailAndPassword(email, hashedPass).catch(function(error) {
+        console.log("signInWithEmailAndPassword()", error);
+      });
+    }
+  });
+}
 
 const getRandomPeers = () => {
   $.ajax(randomPeersRequest(authToken, 5, 10))
@@ -84,8 +127,6 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
   if (stopPoll || attempts >= MAX_POLL_ATTEMPTS) return;
   $.ajax(randomPeersRequest(authToken, 5, getCohortNum(cohort)))
     .done(data => {
-      data = data.filter(o => !peerCache[o.cohort] || !peerCache[o.cohort][o.full_name]);
-      console.log("New data: " + JSON.stringify(data));
       const _deck = data.map(o => ({
         ...o,
         question: "Who is this?",
@@ -93,6 +134,7 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
         image: o.picture,
         regex: o.full_name.trim().replace(/( )+/g, "|") + "|" +
           unidecode(o.full_name.trim().replace(/( )+/g, "|")),
+        timestamp: timestamp(),
       }));
       _deck.forEach(o => ((!peerCache[o.cohort] && (peerCache[o.cohort] = {})),
         peerCache[o.cohort][o.full_name] = o));
@@ -106,6 +148,7 @@ const repopulateRandomPeers = (cohort, numPeers, attempts) => {
 
 const updateDeckFromCache = (cohort) => {
   console.log(`updateDeckFromCache() cohort:${cohort}`);
+  filterPeerCache(cohort);
   const _deck = Object.values(peerCache[cohort] || {});
   if (_deck.length) {
     const deck = {
@@ -117,7 +160,7 @@ const updateDeckFromCache = (cohort) => {
     $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
     showGame();
   }
-}
+};
 
 const populateCohortSelectors = () => {
   console.log('populateCohortSelectors()');
@@ -129,7 +172,7 @@ const populateCohortSelectors = () => {
         .append(`<option value="${cohort}">${cohort}</option>`);
     }
   }
-}
+};
 
 const getCohortNum = (cohort) => {
   let ret = cohortToNumMap[cohort];
@@ -140,4 +183,19 @@ const getCohortNum = (cohort) => {
     ret = cohortToNumMap[cohort];
   }
   return parseInt(ret);
-}
+};
+
+const filterPeerCache = (cohort) => {
+  console.log("filterPeerCache()", cohort);
+  const deck = Object.values(peerCache[cohort] || {});
+  const now = timestamp();
+  deck.forEach(card =>
+    now - card.timestamp >= PEER_CACHE_TTL && delete peerCache[cohort][card.full_name])
+};
+
+const profile = () => _profile;
+
+const showUserName = () => {
+  if (profile())
+    $('.signin-welcome').text(`Hi ${profile().first_name}!`);
+};
