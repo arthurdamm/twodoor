@@ -1,6 +1,6 @@
-const _dict = {};
-const dict = () => _dict;
+const _settings = {};
+const dict = () => _settings;
 
-const putSetting = (key, val) => _dict[key] = val;
+const putSetting = (key, val) => _settings[key] = val;
 
-const getSetting = (key) => _dict[val];
+const getSetting = (key) => _settings[val];

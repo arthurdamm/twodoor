@@ -149,7 +149,7 @@ const LearningGame = () => {
     const icon = document.querySelector('.settings-icon');
     if (e.target == icon || icon.state == 'settings')
       return;
-    else if (_dict["flipOnClick"] == true) {
+    else if (getSetting("flipOnClick") == true) {
       currentDoor.toggleClass('flipme');
       return;
     }

@@ -26,7 +26,7 @@ const renderCardTemplate = json => `
         algorithm type
         <select>
           <option value="linear">linear</option>
-          <option value="lietner">lietner</option>
+          <option value="leitner">lietner</option>
         </select>
       </div>
       <button class="bttn remove-card">remove card</button>
