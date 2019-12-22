@@ -76,8 +76,8 @@ const LearningGame = () => {
     // set initial card state to game mode
     document.querySelector('.settings-icon').state = 'game';
     // show card-back. Default is display none to prevent cheating
-    currentDoor.find('.card-back').show();
-    currentDoor.find('.settings').hide();
+    currentDoor.find('.card-back').css('visibility', 'visible');
+    currentDoor.find('.settings').css('visibility', 'hidden');
 
     checkGameFocus();
     // Rush event if already answered
@@ -146,8 +146,13 @@ const LearningGame = () => {
   // Binds click event on card to shake animation.
   $(".deck .flippable").click(function(e) {
     console.log("SHAKE:", e.target);
-    if (e.target == document.querySelector(".settings-icon") || document.querySelector('.settings-icon').state == 'settings')
+    const icon = document.querySelector('.settings-icon');
+    if (e.target == icon || icon.state == 'settings')
       return;
+    else if (_dict["flipOnClick"] == true) {
+      currentDoor.toggleClass('flipme');
+      return;
+    }
     const that = $(this);
     that.addClass('shakeme');
     setTimeout(() => that.removeClass('shakeme'), 500);
@@ -197,22 +202,23 @@ const LearningGame = () => {
   document.querySelector('.game-component').queryDeck = () => deck;
 
   $(document).on('click', '.settings-icon', function(e) {
+    if (_dict["flipOnClick"] == true)
+      document.querySelector('.toggle-flip').checked = true;
     e.target.state = "settings";
-    console.log(currentDoor.find('deck').state);
+    currentDoor.find('.card-back').css('visibility', 'hidden');
+    currentDoor.find('.settings').css('visibility', 'visible');
     currentDoor.toggleClass('flipme');
     // currentDoor.find('.card-back').css('display', 'none');
-    currentDoor.find('.settings').show();
-    currentDoor.find('.card-back').hide();
-
-
   });
-  $(document).on('click', '.save-settings', function(){
+  $(document).on('click', '.save-settings', function() {
     document.querySelector('.settings-icon').state = 'game';
+    putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
+    console.log("putSetting= ", _dict)
     currentDoor.toggleClass('flipme');
     setTimeout(function() {
-      currentDoor.find('.card-back').show();
+      currentDoor.find('.card-back').css('visibility', 'visible');
     }, 200);
-    currentDoor.find('.settings').hide();
+    currentDoor.find('.settings').css('visibility', 'hidden');
   });
 
 };
