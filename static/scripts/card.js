@@ -76,8 +76,8 @@ const LearningGame = () => {
     // set initial card state to game mode
     document.querySelector('.settings-icon').state = 'game';
     // show card-back. Default is display none to prevent cheating
-    currentDoor.find('.card-back').css('visibility', 'visible');
-    currentDoor.find('.settings').css('visibility', 'hidden');
+    currentDoor.find('.card-back').show();
+    currentDoor.find('.settings').hide();
 
     checkGameFocus();
     // Rush event if already answered
@@ -150,8 +150,9 @@ const LearningGame = () => {
     if (e.target == icon || icon.state == 'settings')
       return;
     else if (getSetting("flipOnClick") == true) {
-      currentDoor.find('.card-back').css('visibility', 'visible');
+      currentDoor.find('.card-back').show();
       currentDoor.toggleClass('flipme');
+      if (!isMobile()) $('[name=text-answer]').focus();
       return;
     }
     const that = $(this);
@@ -206,8 +207,8 @@ const LearningGame = () => {
     if (getSetting("flipOnClick") == true)
       document.querySelector('.toggle-flip').checked = true;
     e.target.state = "settings";
-    currentDoor.find('.card-back').css('visibility', 'hidden');
-    currentDoor.find('.settings').css('visibility', 'visible');
+    currentDoor.find('.card-back').hide();
+    currentDoor.find('.settings').show();
     currentDoor.toggleClass('flipme');
     // currentDoor.find('.card-back').css('display', 'none');
   });
@@ -217,9 +218,9 @@ const LearningGame = () => {
     console.log("putSetting= ", _settings)
     currentDoor.toggleClass('flipme');
     setTimeout(function() {
-      currentDoor.find('.card-back').css('visibility', 'visible');
-    }, 200);
-    currentDoor.find('.settings').css('visibility', 'hidden');
+      currentDoor.find('.card-back').show();
+    }, 150);
+    currentDoor.find('.settings').hide();
   });
 
 };

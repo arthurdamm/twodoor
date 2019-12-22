@@ -19,14 +19,14 @@ const renderCardTemplate = json => `
       </div>
   </div>
   <div class="card back">
-    <div class="card settings" style="visibility: hidden">
+    <div class="card settings" style="display: none">
       <input class="toggle-flip" type="checkbox">flip on click
       <br>
       <div class="algo-select">
         algorithm type
         <select>
-          <option value="linear">linear</option>
           <option value="leitner">leitner</option>
+          <option value="linear">linear</option>
         </select>
       </div>
       <button class="bttn remove-card">remove card</button>
@@ -34,7 +34,7 @@ const renderCardTemplate = json => `
       </div>
     <div class="card-icon success">&#9989</div>
     <div class="card-icon fail">&#10060</div>
-    <div class="card-body card-back" style="visibility: hidden">
+    <div class="card-body card-back" style="display: none">
         <h5 class="card-title">Answer</h5>
         <p class="card-text">${json.answer}</p>
     </div>
