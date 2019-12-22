@@ -1,137 +1,190 @@
-<!-- TwoDoor Landing Page -->
+<!-- TwoDoor Single Page Application - Main Component -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-
-    <link rel="stylesheet" href="static/styles/index.css">
-    <link rel="shortcut icon" type="image/png" href="static/images/doorClose80px.svg">
-    
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>TwoDoor</title>
+  <meta name="author" content="name">
+  <meta name="description" content="description here">
+  <meta name="keywords" content="keywords,here">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="static/styles/main.css">
+  <link rel="stylesheet" href="static/styles/card.css">
+  <link rel="stylesheet" href="static/styles/home.css">
+  <link rel="stylesheet" href="static/styles/summary.css">
+  <link rel="stylesheet" href="static/styles/build.css">
+  <link rel="stylesheet" href="static/styles/holbie.css">
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
+
   </head>
   <body>
-    <div class="navbar">
-      <a href="#about" class="nav-btn">summary</a>
-      <a href="#features" class="nav-btn">features</a>
-      <a href="#about-us" class="nav-btn">about us</a>
-    </div>
     <header class="header">
-
-      <div class="header__text-box">
-        <h1 class="heading-primary">
-          <span class="heading-primary--main">TwoDoor</span>
-          <span class="heading-primary--sub">An Adaptive Flashcard Tutor</span>
-        </h1>
-        <a href="main.html" class="btn btn--orange btn--animated">play now</a>
+      <div class="logo" id="logo"></div>
+      <div class="holbie-logo"></div>
+      <div class="timer">3:00</div>
+      <div class="bttn--algo"></div>
+      <div class="signin-component">
+        <div class="signin-welcome">Welcome Guest!</div>
+        <div class="bttn--signin bttn--summary">SIGN IN</div>
       </div>
     </header>
 
-    <main>
-      <section id="about" class="section-about">
-        <div class="u-center-text u-margin-bottom-large">
-          <h2 class="heading-secondary">
-            Train your brain with the smartest game on the market 
-          </h2>
-        </div>
-        <div class="row">
-          <div class="col-1-of-2">
-            <h3 class="heading-tertiary u-margin-bottom-small">Failure-Based Repetition</h3>
-            <p class="paragraph">
-              Our app is designed to help you learn/remember any topic that is important to you. Whether it is remembering coworker's names, key coding concepts, or any information under the sun, we want to help you (and ourselves) transfer concepts into long-term memory. Through failure-based repetition, you can efficiently encode any info into your brain in the most impactful way possible.
-            </p>
-          </div>
-          <div class="col-1-of-2">
-            <h3 class="heading-tertiary u-margin-bottom-small">Quick, fun to use</h3>
-            <p class="paragraph">
-              When designing this app, we knew it was important to create a fun gameplay experience. Through fun transitions, animations, and good feedback, we create a polished user experience that all will want to utilize for their brain-training needs.
-            </p>
-          </div>
-        </div>
-        <div class="u-center-text u-margin-bottom-large">
-          <h2 id="features" class="heading-secondary">Features</h2>
-        </div>
-        <div class="row">
-          <div class="col-1-of-3">
-            <h3 class="heading-quaternary u-margin-bottom-small">Adaptive Algorithm</h3>
-            <img src="static/images/algorithm-icon.png" alt="No Pic" class="feature-pic">
-            <p class="paragraph">
-              Using a variation of the Leitner system, we created a dynamic card-selection algorithm that shows a subset of the entire deck, giving the user a good chance to succeed through repetition.
-            </p>
-          </div>
-          <div class="col-1-of-3">
-            <h3 class="heading-quaternary u-margin-bottom-small">Pre-Built Decks</h3>
-            <img src="static/images/pre-built-deck-icon.png" alt="No Pic" class="feature-pic">
-            <p class="paragraph">
-              So far, the decks are pre-built to show the capabilities of the game. Some are only used to show how the algorithm can teach you completely random information within seconds. User-made decks on the way!
-            </p>
-          </div>
-          <div class="col-1-of-3">
-            <h3 class="heading-quaternary u-margin-bottom-small">Intuitive UX</h3>
-            <img src="static/images/animation-icon.png" alt="No Pic" class="feature-pic">
-            <p class="paragraph">
-              Keeping the user in mind, a polished display was crucial for creating a fun experience for all. Custom animations make for a unique experience that provides seamless positive and negative reinforcement.
-            </p>
-          </div>
-        </div>
-        <div class="u-center-text u-margin-bottom-large">
-          <h2 id="about-us" class="heading-secondary">About the team</h2>
-        </div>
-        <div class="row">
-          <div class="col-1-of-2-profile">
-            <h3 class="heading-tertiary u-margin-bottom-small">Arthur Damm</h3>
-            <img src="static/images/art.jpg" alt="No Pic" class="profile-pic arthur">
-            <p class="paragraph-profile">
-               "I spent over 7 years working as a private math, science, and programming tutor.
-	             I’ve learned that if part of the tutoring process were automated, especially the rote memorization and review, it could multiply my efforts as a personal tutor."
+    <div class="main-container">
 
-            </p>
-            <a href="https://github.com/arthurdamm" class="btn-next">Github</a>
-            <a href="https://www.linkedin.com/in/arthur-damm-96527042/" class="btn-next">LinkedIn</a>
-            <a href="https://twitter.com/arthurdamm" class="btn-next">Twitter</a>
-          </div>
-          <div class="col-1-of-2-profile">
-            <h3 class="heading-tertiary u-margin-bottom-small">Scout Curry</h3>
-            <img src="static/images/scout.jpg" alt="No Pic" class="profile-pic scout">
-            <p class="paragraph-profile">
-              "When I was first introduced to the concept of this app, I instantly fell in love with the idea. I see myself using this app in the future, so I became very interested in making the app as fun, smooth, and exciting to play as possible.
-              <br>
-              Coming out of this project, my knowledge on all things frontend has surpassed my wildest expectations. The core concepts and breakthrough moments we both learned during development will be used throughout our careers."
-            </p>
-            <a href="https://github.com/scurry222" class="btn-next">Github</a>
-            <a href="https://www.linkedin.com/in/scout-curry-96356217a/" class="btn-next">LinkedIn</a>
-            <a href="https://twitter.com/ScoutCurry" class="btn-next">Twitter</a>
-          </div>
-        </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer__logo-box">
-        <img src="static/images/doorClose80px.svg" alt="full logo" class="footer__logo">
+      <div class="home-component">
+        <div class="home-component--main">Welcome to TwoDoor!</div>
+        <div class="home-component--sub">Ready to begin?</div>
+        <div class="deck-container"></div>
       </div>
-      <div class="row">
-        <div class="col-1-of-2">
-          <div class="footer__navigation">
-            <ul class="footer__list">
-              <li class="footer__item">
-                <a href="https://github.com/arthurdamm/twodoor" class="footer__link">GitHub</a>
-              </li>
-              <li class="footer__item">
-                <a href="#" class="footer__link">Contact Us</a>
-              </li>
-            </ul>
+
+      <div class="game-component">
+        <div class="deck">
+          <div class="flippable door" id="door1" ontouchstart="this.classList.toggle('hover');"></div>
+          <div class="flippable door" id="door2" ontouchstart="this.classList.toggle('hover');"></div>
+        </div>
+        <div class="control">
+          <div class="cancel-button">
+            <div class="bttn bttn--cancel"></div>
+          </div>
+          <div class="text-box">
+              <input type="text" name="text-answer" id="text-answer" placeholder="...">
+          </div>
+          <div class="next-button">
+            <div class="bttn bttn--next"></div>
           </div>
         </div>
-        <div class="col-1-of-2">
-          <p class="footer__copyright">
-            Special thanks to <a href="https://www.udemy.com/user/jonasschmedtmann/" class="footer__plug">Jonas Schmedtmann</a> for his online course <a href="https://www.udemy.com/course/advanced-css-and-sass/" class="footer__plug">Advanced CSS and Sass</a> that provided this website's structure and knowledge on key features.
-          </p>
+        <div class="instruction-component">
+          <div class="timerRight">You will be timed! when the timer hits zero, the game will end and your performance is displayed</div>
+          <div class="cardRight">Remember: This is <em>not</em> a test! You will not know all the answers, and that's ok. The game is made to train you through repetition.</div>
+          <div class="controlLeft">Click here to end the game</div>
+          <div class="controlRight">Press enter or click this button to submit</div>
+        </div>
+        <div id="game-anchor"></div>
+      </div>
+      
+      <div class="summary-overlay" id="summary-overlay">
+        <div class="summary-component">
+          <div class="chart-buttons">
+            <div class="bttn--summary card-bar-chart--bttn-successes">Successes</div>
+            <div class="bttn--summary card-bar-chart--bttn-failures">Failures</div>
+            <div class="bttn--summary card-bar-chart--bttn-percentage">Percent</div>
+            <div class="bttn--summary card-bar-chart--bttn-demo">Demo</div>
+          </div>
+          <a href="#text-answer" class="bttn--summary bttn-end-summary">&times;</a>
+          <div class="card-bar-chart"></div>
+          <div class="summary-template"></div>
         </div>
       </div>
-    </footer>
+    <div class="build-component">
+      Name of the Deck
+      <input type="text" name="build-deck-name" id="build-deck-name">
+      <div class="build-card-selector">
+          <div class="bttn bttn--select-left"></div>
+          <div class="card-index">1 </div> / 
+          <div class="deck-length">1</div>
+          <div class="bttn bttn--select-right"></div>
+      </div>
+      <div class="deck-modifier">
+        <div class="bttn--remove-card"></div>
+        <div class="build-card-fields">
+          <div class="field-text">Question:
+            <textarea type="text" class="field" name="question-field">What attribute makes TwoDoor unique?</textarea>
+          </div>
+          <div class="field-text">Answer:
+            <textarea type="text"  class="field" name="answer-field">adaptive!</textarea>
+          </div>
+          <div class="field-text">Regex:
+            <textarea type="text"  class="field" name="regex-field">adaptive!*</textarea>
+          </div>
+        </div>
+        <div class="bttn bttn--add-card"></div>
+      </div>
+      <div class="bttn bttn--play"></div>
+    </div>
+
+    <div class="holbie-signin-component">
+      <div class="holbie-status">Please Sign In!</div>
+      <form id="holbie-signin">
+        <input name="holbie-apikey" type="text" placeholder="Holberton Api Key:" />
+        <input name="holbie-email" type="text" placeholder="Holberton Email" />
+        <input name="holbie-password" type="password" placeholder="Holberton Password" />
+        <input name="holbie-submit" type="submit" value="Signin" />
+      </form>
+    </div>
+
+    <div class="holbie-select-component">
+      <div class="holbie-deck-text">Select Your Deck!</div>
+      <div class="holbie-select-container">
+        <label for="holbie-cohort-select">Cohort:</label>
+        <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
+        </select>
+      </div>
+      <div class="holbie-select-container">
+        <label for="holbie-size-select">Peers:</label>
+        <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <form id="holbie-deck-selector">
+        <input name="holbie-deck-submit" id="holbie-deck-submit" type="submit" value="Play!" />
+      </form>
+    </div>
+
+      <div id="firebaseui-auth-container"></div>
+    </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  
+  <script src="static/scripts/card.js" type="text/javascript"></script>
+  <script src="static/scripts/datastore.js" type="text/javascript"></script>
+  <script src="static/scripts/algorithm.js" type="text/javascript"></script>
+  <script src="static/scripts/home.js" type="text/javascript"></script>
+  <script src="static/scripts/random.js" type="text/javascript"></script>
+  <script src="static/scripts/summary.js" type="text/javascript"></script>
+  <script src="static/scripts/template.js" type="text/javascript"></script>
+  <script src="static/scripts/auth.js" type="text/javascript"></script>
+  <script src="static/scripts/build.js" type="text/javascript"></script>
+  <script src="static/scripts/hb.js" type="text/javascript"></script>
+  <script src="static/scripts/unicode.js" type="text/javascript"></script>
+  <script src="static/scripts/deck.js" type="text/javascript"></script>
+  <script src="static/scripts/settings.js" type="text/javascript"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+       https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyDPFScM1l7xtz0ZIFzBTswq8B7FruIn4UE",
+      authDomain: "twodoor-63fbb.firebaseapp.com",
+      databaseURL: "https://twodoor-63fbb.firebaseio.com",
+      projectId: "twodoor-63fbb",
+      storageBucket: "twodoor-63fbb.appspot.com",
+      messagingSenderId: "734948646797",
+      appId: "1:734948646797:web:0d89896cdf4b892f2c67c4",
+      measurementId: "G-V6SF1EVRMF"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+  const db = firebase.firestore();
+
+  </script>
+
   </body>
 </html>
