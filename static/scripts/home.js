@@ -11,6 +11,7 @@
  */
 $(() => {
   showHome();
+  $('.main-container').show();
   populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
@@ -18,7 +19,7 @@ $(() => {
     console.log('bttn--signin click');
     if ($(this).text() == 'SIGN IN')
     {
-      showSignin();
+      showHolbie();
     }
     else
     {

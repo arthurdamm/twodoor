@@ -85,6 +85,7 @@ header {
   right: 0;
 }
 .main-container {
+  display: none;
   position: relative;
   height: 100%;
   height: fill-available;
