@@ -155,7 +155,7 @@ const updateDeckFromCache = (cohort) => {
       deckName: "Holbie",
       deck: _deck,
     };
-    $('.game-component')[0].deckType = decks.BUILDER.name;
+    $('.game-component')[0].deckType = decks.HOLBIE.name;
     $('.game-component')[0].deckText = JSON.stringify(deck);
     $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
     showGame();

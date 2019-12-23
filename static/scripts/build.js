@@ -84,5 +84,5 @@ const goPlay = function() {
     deck: getBuilderDeck()
   }
   $('.game-component')[0].deckText = JSON.stringify(obj);
-  $('.game-component')[0].deckType = decks.CUSTOM.name;
+  $('.game-component')[0].deckType = decks.BUILDER.name;
 }
