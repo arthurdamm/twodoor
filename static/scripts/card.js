@@ -222,12 +222,16 @@ const LearningGame = () => {
     saveUserData();
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
+    putSetting("algoType", $('.algo-select :selected').val());
     console.log("putSetting= ", _settings)
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
       currentDoor.find('.card-back').show();
     }, 150);
     currentDoor.find('.settings').hide();
+  });
+  $(document).on('click', '.remove-card', function() {
+    nextDoorEvent();
   });
 
 };

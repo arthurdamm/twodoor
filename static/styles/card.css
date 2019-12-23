@@ -389,3 +389,13 @@ h1 {
 .algo-select {
   flex-direction: row;
 }
+.flip-on-click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 1rem;
+}
+.toggle-flip {
+  margin-left: 0.5rem;
+}

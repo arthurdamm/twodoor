@@ -20,8 +20,10 @@ const renderCardTemplate = json => `
   </div>
   <div class="card back">
     <div class="card settings" style="display: none">
-      <input class="toggle-flip" type="checkbox">flip on click
-      <br>
+      <div class="flip-on-click">
+        <div class="settings-text">flip on click</div>
+        <input class="toggle-flip" type="checkbox">
+      </div>
       <div class="algo-select">
         algorithm type
         <select>
