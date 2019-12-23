@@ -45,8 +45,9 @@ const getCustomDeck = () => {
 const saveUserData = () => {
   console.log("saveUserData()");
   if (user()) {
-    const text = $('.game-component')[0].deckText;
-    let userData = db.collection("users").doc(user().uid);
+    const text = $('.game-component')[0].deckType == decks.BUILDER.name ?
+                 $('.game-component')[0].deckText : undefined;
+    const userData = db.collection("users").doc(user().uid);
 
     userData.get().then(function(doc) {
         if (doc.exists) {
