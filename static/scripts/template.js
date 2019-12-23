@@ -11,6 +11,7 @@
 const renderCardTemplate = json => `
   <div class="card front" style="background-color: ${json.color}">` + (json.image ?
       `<img class="card-img-top" src="${json.image}" alt="card image cap">
+      <div class="settings-icon"></div>
       <div class="card-body">` :
       `<div class="card-body">`) +
           `<h5 class="card-title">Question</h5>
@@ -18,17 +19,27 @@ const renderCardTemplate = json => `
       </div>
   </div>
   <div class="card back">
-      <div class="card-icon success">&#9989</div>
-      <div class="card-icon fail">&#10060</div>
-      <div class="card-body">
-          <h5 class="card-title">Answer</h5>
-          <p class="card-text">${json.answer}</p>
+    <div class="card settings" style="display: none">
+      <input class="toggle-flip" type="checkbox">flip on click
+      <br>
+      <div class="algo-select">
+        algorithm type
+        <select>
+          <option value="leitner">leitner</option>
+          <option value="linear">linear</option>
+        </select>
       </div>
+      <button class="bttn remove-card">remove card</button>
+      <button class="bttn save-settings">save settings</button>
+      </div>
+    <div class="card-icon success">&#9989</div>
+    <div class="card-icon fail">&#10060</div>
+    <div class="card-body card-back" style="display: none">
+        <h5 class="card-title">Answer</h5>
+        <p class="card-text">${json.answer}</p>
+    </div>
   </div>
-
-  <div class="card fail">
-  <div class="card-body">
-  </div>
+  <div class="card fail"></div>
 </div>`;
 
 /**

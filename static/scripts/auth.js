@@ -44,7 +44,7 @@ const authenticate = () => {
       if (!profile())
         $('.signin-welcome').text(`Hi ${name}!`);
       $('.bttn--signin').text('SIGN OUT');
-      loadCustomDecks();
+      loadUserData();
     }
     
   });
@@ -67,13 +67,19 @@ const user = () => firebase.auth().currentUser;
  * Loads user's custom decks and populates them into the home component
  * deck container.
  */
-const loadCustomDecks = () => {
-  console.log("loadCustomDecks()");
+const loadUserData = () => {
+  console.log("loadUserData()");
   if (user()) {
     let userData = db.collection("users").doc(user().uid);
     userData.get().then(function(doc) {
         if (doc.exists) {
             console.log("Found document:", doc.data());
+            if (doc.data().settings) {
+              for (const [key, val] of Object.entries(doc.data().settings)) {
+                console.log("entries in settings: ", key, val);
+                putSetting(key, val);
+              }
+            }
             $('.custom-deck').remove();
             for (let [i, deck] of doc.data().decks.entries()) {
               let parsed = JSON.parse(deck);

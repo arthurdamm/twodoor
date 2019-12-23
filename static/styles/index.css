@@ -9,7 +9,7 @@ html {
   overflow-x: hidden;
 }
 body {
-  height: 90%;
+  height: 100%;
   width: 100%;
   top: 10%;
   background-image: linear-gradient(15deg, #62137a 0%, #d08080 100%);
@@ -43,8 +43,6 @@ header {
   background-size: 100% 100%;
   margin-left: 1%;
 }
-
-
 .holbie-logo {
   position: absolute;
   height: 3.5rem;
