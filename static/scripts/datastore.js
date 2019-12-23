@@ -25,6 +25,7 @@ const getBuiltDeck = () => {
   for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
       obj.regex = RegExp(obj.regex, 'i');
+  saveUserData();
   return jsonArray.deck;
 }
 
@@ -35,7 +36,6 @@ const getCustomDeck = () => {
   // const text = $('[name=text-input]').val()
   const text = $('.game-component')[0].deckText;
   const jsonArray = JSON.parse(text);
-  saveUserData();
   for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
       obj.regex = RegExp(obj.regex, 'i');
@@ -43,6 +43,7 @@ const getCustomDeck = () => {
 }
 
 const saveUserData = () => {
+  console.log("saveUserData()");
   if (user()) {
     const text = $('.game-component')[0].deckText;
     let userData = db.collection("users").doc(user().uid);
