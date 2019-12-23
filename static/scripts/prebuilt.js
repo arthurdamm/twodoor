@@ -3,6 +3,27 @@
  * @package
  */
 
+/**
+ * Maps demo performance data, as an array of values between 1 and 0, to each
+ * card of the deck.
+ * @param {Array<Object>} deck Deck to map.
+ * @param {Array<number>} demoPerformance Data represented by array of card
+ * successes.
+ * @return {Array<Object} Deck mapped with formatted performance data.
+ */
+const mapDemoPerformances = (deck, demoPerformances) => {
+  demoPerformances.forEach((l, i) => (deck[i] &&
+    (deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)])));
+  return deck;
+}
+
+/**
+ * Creates a random array of 1's & 0's representing card performance data.
+ * @param {number} length The number of performances.
+ * @return {Array<number>} Card performance data represented as 1's & 0's.
+ */
+const getRandomPerformance = (length) =>
+  [...Array(length)].map(x => Math.floor(Math.random() * 2));
 
 /**
  * Generates deck of random color->word encoded cards.

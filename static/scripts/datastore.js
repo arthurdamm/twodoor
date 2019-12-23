@@ -89,12 +89,52 @@ const saveUserData = () => {
   }
 }
 
- /**
-  * Creates a card object from a template populated with JSON data.
-  * @param {Object} json The JSON data for this card.
-  * @param {number} i This card's index in its deck.
-  * @return {Object} The new card object.
-  */
+/**
+ * Loads user's custom decks and populates them into the home component
+ * deck container.
+ */
+const loadUserData = () => {
+  console.log("loadUserData()");
+  if (user()) {
+    let userData = db.collection("users").doc(user().uid);
+    userData.get().then(function(doc) {
+        if (doc.exists) {
+            console.log("Found document:", doc.data());
+            if (doc.data().settings) {
+              for (const [key, val] of Object.entries(doc.data().settings)) {
+                console.log("entries in settings: ", key, val);
+                putSetting(key, val);
+              }
+            }
+            $('.custom-deck').remove();
+            for (let [i, deck] of doc.data().decks.entries()) {
+              let parsed = JSON.parse(deck);
+              if (parsed.deckName == "")
+                parsed.deckName = `Custom Deck ${i}`;
+              parsed.custom = 1;
+              parsed.name = decks.CUSTOM.name;
+              parsed.text = parsed.deckName;
+              parsed.i = i;
+              addDeck(parsed);
+              console.log("THIS DECK: ", deck);
+              $(`.custom-deck-${i}`).attr('text', deck);
+            }
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }).catch(function(error) {
+        console.log("Error getting document:", error);
+    });
+  }
+}
+
+/**
+ * Creates a card object from a template populated with JSON data.
+ * @param {Object} json The JSON data for this card.
+ * @param {number} i This card's index in its deck.
+ * @return {Object} The new card object.
+ */
 const getCardTemplate = (json, i) => {
   const card = {
     id: i,
@@ -103,28 +143,6 @@ const getCardTemplate = (json, i) => {
   };
   return {...json, ...card};
 };
-
-/**
- * Maps demo performance data, as an array of values between 1 and 0, to each
- * card of the deck.
- * @param {Array<Object>} deck Deck to map.
- * @param {Array<number>} demoPerformance Data represented by array of card
- * successes.
- * @return {Array<Object} Deck mapped with formatted performance data.
- */
-const mapDemoPerformances = (deck, demoPerformances) => {
-  demoPerformances.forEach((l, i) => (deck[i] &&
-    (deck[i].performance = [...Array(l).fill(1), ...Array(10 - l).fill(0)])));
-  return deck;
-}
-
-/**
- * Creates a random array of 1's & 0's representing card performance data.
- * @param {number} length The number of performances.
- * @return {Array<number>} Card performance data represented as 1's & 0's.
- */
-const getRandomPerformance = (length) =>
-  [...Array(length)].map(x => Math.floor(Math.random() * 2));
 
 /**
  * Enum for deck types.
