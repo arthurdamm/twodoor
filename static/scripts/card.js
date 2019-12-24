@@ -102,8 +102,8 @@ const LearningGame = () => {
         currentDoor.find('.success').css('visibility', 'visible');
         // currentDoor.find('.success').fadeOut(750);
         currentDoor.find('.success').addClass('animate-card-icon');
-      animate(userAnswer);
-      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+        animate(userAnswer);
+        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
@@ -124,8 +124,7 @@ const LearningGame = () => {
       } 
       animate(userAnswer);
       doorTimeoutID = setTimeout(nextDoorEvent, 1500);
-        currentDoor.children('.fail').css('visibility', 'visible');
-        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+      currentDoor.children('.fail').css('visibility', 'visible');
     }
   };
 
