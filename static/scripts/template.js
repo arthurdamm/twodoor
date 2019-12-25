@@ -59,13 +59,50 @@ const renderSummaryTemplate = summary => `
  * @param {Object} Deck object with JSON data.
  * @return {string} HTML deck selector element populated with data.
  */
-const renderDeckSelectorTemplate = deck => `
-<div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${deck.name}">
+const renderDeckSelectorTemplate = deck => {
+  const name = deck.name + (deck.custom ? deck.i : "");
+  return `
+<div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${name}">
   <div class="front">
     <h2 class="deckText">${deck.text}</h2>
   </div>
   <div class="back">
+    <div class="deck-settings-component">
+
+      <div class="deck-settings-text">Deck Settings:</div>
+
+      <div class="deck-settings-container">
+        <label for="deck-starting-select-${name}">Starting:</label>
+        <select class="deck-starting-select" name="deck-starting-select-${name}" id="deck-starting-select-${name}" form="deck-settings-form" required>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <div class="deck-settings-container">
+        <label for="deck-stagger-select-${name}">Stagger:</label>
+        <select class="deck-stagger-select" name="deck-stagger-select-${name}" id="deck-stagger-select-${name}" form="deck-settings-form" required>
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <form class="deck-settings-form" id="deck-settings-form-${name}">
+        <input name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="Play!" />
+      </form>
+    </div>
+
     <h4>Play Now!</h4>
-    <div class="bttn bttn--deck" deck="${deck.name}"></div>
+    <div class="bttn bttn--deck" deck="${name}"></div>
   </div>
 </div>`;
+};
