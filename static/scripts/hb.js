@@ -45,7 +45,10 @@ const authenticationRequest = json => ({
   headers: {
     "Content-Type": "application/json"
   },
-  data: JSON.stringify(json)
+  data: JSON.stringify(json),
+  statusCode: {
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const randomPeersRequest = (authToken, number, cohorts) => ({
@@ -57,7 +60,10 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
     auth_token: authToken,
     number: number,
     cohorts: cohorts,
-  }
+  },
+  statusCode: {
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const profileRequest = (authToken) => ({
@@ -67,7 +73,10 @@ const profileRequest = (authToken) => ({
   method: 'GET',
   data: {
     auth_token: authToken,
-  }
+  },
+  statusCode: {
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const requestUserProfile = () => {

@@ -290,7 +290,6 @@ const Animator = () => {
    * Animates element with zoom-in-out by mapping z-position to sin wave.
    */
   const animate = () => {
-    console.log("animating...", element)
     element.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * zDelta) * 155;
     zDelta += increment;
