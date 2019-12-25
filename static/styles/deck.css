@@ -1,5 +1,4 @@
 .deck-settings-component {
-  /*border: 1px solid blue;*/
   margin: auto;
   font-size: 1.5rem;
   display: flex;
@@ -17,7 +16,7 @@
 }
 
 .deck-settings-select label {
-  padding-right: 10%;
+  margin-right: 10%;
 }
 
 
