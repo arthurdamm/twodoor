@@ -103,11 +103,11 @@ const loadUserData = () => {
             console.log("Found document:", doc.data());
             if (doc.data().settings) {
               for (const [key, val] of Object.entries(doc.data().settings)) {
-                console.log("entries in settings: ", key, val);
                 putSetting(key, val);
               }
             }
             $('.custom-deck').remove();
+            loadDeckSettings();
             for (let [i, deck] of doc.data().decks.entries()) {
               let parsed = JSON.parse(deck);
               if (parsed.deckName == "")
@@ -117,7 +117,6 @@ const loadUserData = () => {
               parsed.text = parsed.deckName;
               parsed.i = i;
               addDeck(parsed);
-              console.log("THIS DECK: ", deck);
               $(`.custom-deck-${i}`).attr('text', deck);
             }
         } else {

@@ -114,10 +114,16 @@ $(() => {
     const starting = parseInt(deckSelector.find('.deck-starting-select').val());
     const stagger = parseInt(deckSelector.find('.deck-stagger-select').val());
     const settings = getSetting(deck) || {};
-    settings.starting = starting;
-    settings.stagger = stagger;
-    putSetting(deck, settings);
 
+    // only update if not default values
+    if (starting != parseInt($('.deck-starting-select [selected]').val()))
+      settings.starting = starting;
+    if (stagger != parseInt($('.deck-stagger-select [selected]').val()))
+      settings.stagger = stagger;
+    if (Object.keys(settings).length){
+      putSetting(deck, settings);
+      saveUserData();
+    }
     if (deck === decks.BUILDER.name) {
       showBuild();
     }
