@@ -68,10 +68,9 @@ const renderDeckSelectorTemplate = deck => {
   </div>
   <div class="back">
     <div class="deck-settings-component">
-
       <div class="deck-settings-text">Deck Settings:</div>
 
-      <div class="deck-settings-container">
+      <div class="deck-settings-select">
         <label for="deck-starting-select-${name}">Starting:</label>
         <select class="deck-starting-select" name="deck-starting-select-${name}" id="deck-starting-select-${name}" form="deck-settings-form" required>
           <option value="3">3</option>
@@ -85,7 +84,7 @@ const renderDeckSelectorTemplate = deck => {
         </select>
       </div>
 
-      <div class="deck-settings-container">
+      <div class="deck-settings-select">
         <label for="deck-stagger-select-${name}">Stagger:</label>
         <select class="deck-stagger-select" name="deck-stagger-select-${name}" id="deck-stagger-select-${name}" form="deck-settings-form" required>
           <option value="1">1</option>
@@ -97,12 +96,9 @@ const renderDeckSelectorTemplate = deck => {
       </div>
 
       <form class="deck-settings-form" id="deck-settings-form-${name}">
-        <input name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="Play!" />
+        <input class="bttn bttn--deck" name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="" />
       </form>
     </div>
-
-    <h4>Play Now!</h4>
-    <div class="bttn bttn--deck" deck="${name}"></div>
   </div>
 </div>`;
 };

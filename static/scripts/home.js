@@ -43,22 +43,6 @@ $(() => {
     $(this).toggleClass('flipme');
   });
 
-  $(document).on('click', '.deck-selector .bttn--deck', function () {
-    console.log("BTTN-DECK", $(this).closest('.deck-selector').attr('deck'));
-    if ($(this).closest('.deck-selector').attr('deck') === decks.BUILDER.name) {
-      showBuild();
-    }
-    else if($(this).closest('.deck-selector').attr('deck') === decks.HOLBIE.name) {
-      showHolbie();
-    }
-    else {
-      $('.game-component')[0].deckType = $(this).closest('.deck-selector').attr('deck');
-      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
-      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
-      showGame();
-    }
-  });
-
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
