@@ -74,6 +74,8 @@ const renderDeckSelectorTemplate = deck => {
       <div class="deck-settings-select">
         <label for="deck-starting-select-${name}">Starting:</label>
         <select class="deck-starting-select" name="deck-starting-select-${name}" id="deck-starting-select-${name}" form="deck-settings-form" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
           <option value="3">3</option>
           <option value="4">4</option>
           <option value="5" selected>5</option>
