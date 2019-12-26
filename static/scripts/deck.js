@@ -17,7 +17,7 @@ const deckSelectorSubmit = function (e) {
     settings.starting = starting;
   if (stagger != parseInt($('.deck-stagger-select [selected]').val()))
     settings.stagger = stagger;
-  if (Object.keys(settings).length){
+  if (Object.keys(settings).length) {
     putSetting(deck, settings);
     saveUserData();
   }
@@ -36,13 +36,17 @@ const deckSelectorSubmit = function (e) {
 
 const addDeck = (deck) => {
   $('.deck-container').append(renderDeckSelectorTemplate(deck));
-  const settings = getSetting()
+  const name = deck.type + (deck.custom ? deck.i : "");
+  const settings = getSetting(name)
   if (settings) {
     console.log("addDeck() settings:", settings);
     if (settings.starting)
-      $('.deck-container').last('.deck-selector .deck-starting-select').val(settings.starting);
+    { 
+      console.log("SETTING STARTING TO", $('.deck-container').find('.deck-selector:last .deck-starting-select'));
+      $('.deck-container').find('.deck-selector:last .deck-starting-select').val(settings.starting);
+    }
     if (settings.stagger)
-      $('.deck-container').last('.deck-selector .deck-stagger-select').val(settings.stagger);
+      $('.deck-container').find('.deck-selector:last .deck-stagger-select').val(settings.stagger);
   }
 }
 
