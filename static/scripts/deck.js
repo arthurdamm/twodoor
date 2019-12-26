@@ -13,6 +13,14 @@ const deckSelectorSubmit = function (e) {
   const settings = getSetting(deck) || {};
 
   // only update if not default values
+  if(deck === decks.HOLBIE.name) {
+    const cohort = $('#holbie-cohort-select').val();
+    const numPeers = parseInt($('#holbie-size-select').val());
+    if (cohort != $('#holbie-cohort-select [selected]').val())
+      settings.cohort = cohort;
+    if (numPeers != parseInt($('#holbie-size-select [selected]').val()))
+      settings.numPeers = numPeers;
+  }
   if (starting != parseInt($('.deck-starting-select [selected]').val()))
     settings.starting = starting;
   if (stagger != parseInt($('.deck-stagger-select [selected]').val()))
@@ -38,13 +46,10 @@ const addDeck = (deck) => {
   $('.deck-container').append(renderDeckSelectorTemplate(deck));
   const name = deck.type + (deck.custom ? deck.i : "");
   const settings = getSetting(name)
-  if (settings) {
+  if (settings) {  
     console.log("addDeck() settings:", settings);
     if (settings.starting)
-    { 
-      console.log("SETTING STARTING TO", $('.deck-container').find('.deck-selector:last .deck-starting-select'));
       $('.deck-container').find('.deck-selector:last .deck-starting-select').val(settings.starting);
-    }
     if (settings.stagger)
       $('.deck-container').find('.deck-selector:last .deck-stagger-select').val(settings.stagger);
   }
@@ -65,6 +70,12 @@ const loadDeckSettings = () => {
     if (!settings) continue;
     console.log("loadDeckSettings()", deck.name);
     const deckSelector = $(`.deck-selector[deck=${deck.name}]`);
+    if (deck.name == decks.HOLBIE.name) {
+      if (settings.cohort)
+        $('#holbie-cohort-select').val(settings.cohort);
+      if (settings.numPeers)
+        $('#holbie-size-select').val(settings.numPeers);
+    }
     if (settings.starting)
       deckSelector.find('.deck-starting-select').val(settings.starting);
     if (settings.stagger)

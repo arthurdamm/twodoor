@@ -19,6 +19,10 @@ const FAILURE_THRESHOLD = .25;
  */
 const TRIES_THRESHOLD = 6.0;
 
+const STAGGER = 2;
+
+const STARTING = 5;
+
 /**
  * Matches user answer against regular expression on back of card.
  * @param {string} answer User answer given in text box.
@@ -114,7 +118,12 @@ const staggerActiveDeck = (deck) => {
     staggering = true;
   }
   if (staggering) {
-    stagger = deck.stagger ? deck.stagger++ : (deck.stagger = 5, deck.stagger--);
+    if (!deck.stagger) {  // first time
+      const settings = getSetting($('.game-component')[0].deckType);
+      stagger = (settings && settings.starting) || STARTING;
+      deck.stagger = (settings && settings.stagger) || STAGGER;
+    } else stagger = deck.stagger++;
+    
     const passiveDeck = deck.filter(card => !card.active);
     let e;
     while (stagger-- > 0)
