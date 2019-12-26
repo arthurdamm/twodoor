@@ -11,10 +11,11 @@
 const renderCardTemplate = json => `
   <div class="card front" style="background-color: ${json.color}">` + (json.image ?
       `<img class="card-img-top" src="${json.image}" alt="card image cap">
-      <div class="settings-icon"></div>
       <div class="card-body">` :
       `<div class="card-body">`) +
-          `<h5 class="card-title">Question</h5>
+          `
+      <div class="settings-icon"></div>
+          <h5 class="card-title">Question</h5>
           <p class="card-text">${json.question}</p>
       </div>
   </div>
@@ -60,11 +61,11 @@ const renderSummaryTemplate = summary => `
  * @return {string} HTML deck selector element populated with data.
  */
 const renderDeckSelectorTemplate = deck => {
-  const name = deck.name + (deck.custom ? deck.i : "");
+  const name = deck.type + (deck.custom ? deck.i : "");
   return `
 <div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${name}">
   <div class="front">
-    <h2 class="deckText">${deck.text}</h2>
+    <h2 class="deckText">${deck.text || name}</h2>
   </div>
   <div class="back">
     <div class="deck-settings-component">

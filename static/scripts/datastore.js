@@ -12,15 +12,17 @@
   */
 const loadDeck = (deckName) => {
   console.log("loadDeck()", deckName);
+  if (deckName.startsWith(decks.CUSTOM.name))
+    deckName = decks.CUSTOM.name;
   return decks[deckName].factory().map((json, i) => getCardTemplate(json, i));
 };
 
 /**
- * Loads user-built decks from db
+ * Loads custom deck data from build input box. 
  */
 const getBuiltDeck = () => {
   text = $('.game-component')[0].deckText;
-  console.log("getBuiltDeck: " + text);
+  console.log("getBuiltDeck()", text);
   const jsonArray = JSON.parse(text);
   for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
@@ -30,11 +32,12 @@ const getBuiltDeck = () => {
 }
 
 /**
- * Loads custom deck data from build input box.
+ * Loads user-built decks from db
  */
 const getCustomDeck = () => {
   // const text = $('[name=text-input]').val()
   const text = $('.game-component')[0].deckText;
+  console.log("getCustomDeck()", text);
   const jsonArray = JSON.parse(text);
   for (obj of jsonArray.deck)
     if (typeof obj.regex === 'string')
@@ -108,16 +111,15 @@ const loadUserData = () => {
             }
             $('.custom-deck').remove();
             loadDeckSettings();
-            for (let [i, deck] of doc.data().decks.entries()) {
-              let parsed = JSON.parse(deck);
-              if (parsed.deckName == "")
-                parsed.deckName = `Custom Deck ${i}`;
-              parsed.custom = 1;
-              parsed.name = decks.CUSTOM.name;
-              parsed.text = parsed.deckName;
-              parsed.i = i;
-              addDeck(parsed);
-              $(`.custom-deck-${i}`).attr('text', deck);
+            for (let [i, deckJSON] of doc.data().decks.entries()) {
+              let deck = JSON.parse(deckJSON);
+              if (deck.name == "")
+                deck.name = `Custom Deck ${i}`;
+              deck.custom = 1;
+              deck.type = decks.CUSTOM.name;
+              deck.i = i;
+              addDeck(deck);
+              $(`.custom-deck-${i}`).attr('text', deckJSON);
             }
         } else {
             // doc.data() will be undefined in this case

@@ -90,37 +90,7 @@ $(() => {
     const attempts = 0;
     repopulateRandomPeers(cohort, numPeers, attempts);
   });
-  $(document).on('submit', '.deck-settings-form', function (e) {
-    e.preventDefault();
-    const deckSelector = $(this).closest('.deck-selector');
-    console.log("Play Deck()", deckSelector);
-    const deck = deckSelector.attr('deck');
-    const starting = parseInt(deckSelector.find('.deck-starting-select').val());
-    const stagger = parseInt(deckSelector.find('.deck-stagger-select').val());
-    const settings = getSetting(deck) || {};
-
-    // only update if not default values
-    if (starting != parseInt($('.deck-starting-select [selected]').val()))
-      settings.starting = starting;
-    if (stagger != parseInt($('.deck-stagger-select [selected]').val()))
-      settings.stagger = stagger;
-    if (Object.keys(settings).length){
-      putSetting(deck, settings);
-      saveUserData();
-    }
-    if (deck === decks.BUILDER.name) {
-      showBuild();
-    }
-    else if(deck === decks.HOLBIE.name) {
-      showHolbie();
-    }
-    else {
-      $('.game-component')[0].deckType = deck;
-      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
-      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
-      showGame();
-    }
-  });
+  $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
 });
 
