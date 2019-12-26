@@ -70,7 +70,21 @@ const renderDeckSelectorTemplate = deck => {
   <div class="back">
     <div class="deck-settings-component">
       <div class="deck-settings-text">Deck Settings:</div>
-
+      ` + (deck.type == decks.HOLBIE.name ? `
+      <div class="holbie-select-container deck-settings-select">
+        <label for="holbie-cohort-select">Cohort:</label>
+        <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
+        </select>
+      </div>
+      <div class="holbie-select-container deck-settings-select">
+        <label for="holbie-size-select">Peers:</label>
+        <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>` : ``) + `
       <div class="deck-settings-select">
         <label for="deck-starting-select-${name}">Starting:</label>
         <select class="deck-starting-select" name="deck-starting-select-${name}" id="deck-starting-select-${name}" form="deck-settings-form" required>

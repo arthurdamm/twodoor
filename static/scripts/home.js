@@ -119,8 +119,10 @@ const showHolbie = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   if (authToken) {
-    $('.holbie-signin-component').hide();
-    $('.holbie-select-component').show();
+    const cohort = $('#holbie-cohort-select').val();
+    const numPeers = parseInt($('#holbie-size-select').val());
+    const attempts = 0;
+    repopulateRandomPeers(cohort, numPeers, attempts);
   } else {
     $('.holbie-select-component').hide();
     $('.holbie-signin-component').show();
