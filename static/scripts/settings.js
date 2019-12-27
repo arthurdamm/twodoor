@@ -1,3 +1,7 @@
+/**
+ * @fileoverview Module for Settings Functions
+ * @package
+ */
 const _settings = {};
 const settings = () => _settings;
 

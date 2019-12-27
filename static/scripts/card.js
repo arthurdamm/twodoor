@@ -220,6 +220,8 @@ const LearningGame = () => {
   $(document).on('click', '.save-settings', function() {
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
+    putSetting("algoType", $('.algo-select :selected').val());
+    console.log("putSetting= ", _settings)
     saveUserData();
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
@@ -227,7 +229,10 @@ const LearningGame = () => {
     }, 150);
     currentDoor.find('.settings').hide();
   });
-
+  $(document).on('click', '.remove-card', function() {
+    delete deck[parseInt(currentDoor.attr('card-id'))];
+    nextDoorEvent();
+  });
 };
 
 /** 
@@ -239,7 +244,7 @@ const LearningGame = () => {
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
   // Unless no-algorithm button is clicked use the current algorithm.
-  if (!$('.bttn--algo')[0].clicked)
+  if (getSetting("algoType") == "linear")
     return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   // Else just select the cards in sequence.
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
