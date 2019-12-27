@@ -48,18 +48,17 @@ const deckSelectorSubmit = function (e) {
   }
   else {
     $('.game-component')[0].deckType = deck;
-    $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
     showGame();
   }
 };
 
 const addDeck = (deck) => {
-  const name = deck.type + (deck.custom ? deck.i : "");
+  console.log("addDeck():", deck);
+  const name = (deck.name == DECKS.CUSTOM.name ? deck.deckName : deck.name);
   _decks[name] = deck;
   $('.deck-container').append(renderDeckSelectorTemplate(deck));
   const settings = getSetting(name)
   if (settings) {  
-    console.log("addDeck() settings:", settings);
     if (settings.starting)
       $('.deck-container').find('.deck-selector:last .deck-starting-select').val(settings.starting);
     if (settings.stagger)

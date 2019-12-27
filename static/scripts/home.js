@@ -123,6 +123,7 @@ const showBuild = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('.build-component').show();
+  generateCustomDeckName();
 }
 
 /**

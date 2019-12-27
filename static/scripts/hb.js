@@ -161,12 +161,12 @@ const updateDeckFromCache = (cohort) => {
   const _deck = Object.values(peerCache[cohort] || {});
   if (_deck.length) {
     const deck = {
-      deckName: "Holbie",
+      deckName: DECKS.HOLBIE.name,
       deck: _deck,
     };
     $('.game-component')[0].deckType = DECKS.HOLBIE.name;
-    $('.game-component')[0].deckText = JSON.stringify(deck);
-    $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
+    $('.game-component')[0].deck = deck;
+    $('.game-component')[0].updateDeck(loadDeck(DECKS.HOLBIE.name));
     showGame();
   }
 };
