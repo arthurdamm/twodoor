@@ -12,9 +12,9 @@
   */
 const loadDeck = (deckName) => {
   console.log("loadDeck()", deckName);
-  if (deckName.startsWith(decks.CUSTOM.name))
-    deckName = decks.CUSTOM.name;
-  return decks[deckName].factory().map((json, i) => getCardTemplate(json, i));
+  if (deckName.startsWith(DECKS.CUSTOM.name))
+    deckName = DECKS.CUSTOM.name;
+  return DECKS[deckName].factory().map((json, i) => getCardTemplate(json, i));
 };
 
 /**
@@ -48,48 +48,24 @@ const getCustomDeck = () => {
 const saveUserData = () => {
   console.log("saveUserData()");
   if (user()) {
-    const text = $('.game-component')[0].deckType == decks.BUILDER.name ?
-                 $('.game-component')[0].deckText : undefined;
     const userData = db.collection("users").doc(user().uid);
-
-    userData.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("Document data:", doc.data());
-            let data = doc.data();
-            if (!data.settings)
-              data.settings = {};
-            for (const [key, val] of Object.entries(settings()))
-              data.settings[key] = val;
-            if (!data.decks)
-              data.decks = [];
-            if (text && data.decks.indexOf(text) === -1)
-              data.decks.push(text);
-            console.log("Saving data:", data);
-            db.collection("users").doc(user().uid).set(data)
-            .then(function() {
-              console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-              console.error("Error writing document: ", error);
-            });
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-            db.collection("users").doc(user().uid).set({
-              name: user().displayName,
-              decks: text ? [text] : [],
-              settings: settings(),
-            })
-          .then(function() {
-              console.log("Document successfully written!");
-          })
-          .catch(function(error) {
-              console.error("Error writing document: ", error);
-          });
+    if (userData) {
+      const data = {};
+      data.decks = {};
+      for (const [name, deck] of Object.entries(decks())) {
+        if (name.startsWith(DECKS.CUSTOM.name)) {
+          data.decks[name] = deck;
         }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
+      }
+      data.settings = settings();
+      userData.set(data)
+      .then(function() {
+        console.log("Document successfully written!");
+      })
+      .catch(function(error) {
+        console.error("Error writing document: ", error);
+      });
+    }
   }
 }
 
@@ -102,29 +78,25 @@ const loadUserData = () => {
   if (user()) {
     let userData = db.collection("users").doc(user().uid);
     userData.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("Found document:", doc.data());
-            if (doc.data().settings) {
-              for (const [key, val] of Object.entries(doc.data().settings)) {
-                putSetting(key, val);
-              }
-            }
-            $('.custom-deck').remove();
-            loadDeckSettings();
-            for (let [i, deckJSON] of doc.data().decks.entries()) {
-              let deck = JSON.parse(deckJSON);
-              if (deck.name == "")
-                deck.name = `Custom Deck ${i}`;
-              deck.custom = 1;
-              deck.type = decks.CUSTOM.name;
-              deck.i = i;
-              addDeck(deck);
-              $(`.custom-deck-${i}`).attr('text', deckJSON);
-            }
-        } else {
+      if (doc.exists) {
+        console.log("Found document:", doc.data());
+        assignSettings(doc.data().settings);
+        $('.custom-deck').remove();
+        loadDeckSettings();
+        for (let [i, deck] of doc.data().decks.entries()) {
+          if (!deck.name)
+            deck.name = `Custom Deck ${i}`;
+          deck.custom = 1;
+          deck.type = DECKS.CUSTOM.name;
+          deck.i = i;
+          addDeck(deck);
+          // TODO not stringify/store text attr
+          $(`.custom-deck-${i}`).attr('text', JSON.stringify(deck));
+        }
+      } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-        }
+      }
     }).catch(function(error) {
         console.log("Error getting document:", error);
     });
@@ -151,7 +123,7 @@ const getCardTemplate = (json, i) => {
  * @readonly
  * @enum {string}
  */
-const decks = {
+const DECKS = {
   HOLBIE: {
     name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getCustomDeck
   },

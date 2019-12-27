@@ -3,6 +3,17 @@
  * @package
  */
 
+const _decks = {};
+
+const decks = () => _decks;
+
+const deckDelete = function(e) {
+  console.log("deckDelete");
+  const deckSelector = $(this).closest('.deck-selector');
+  const deck = deckSelector.attr('deck');
+
+}
+
 const deckSelectorSubmit = function (e) {
   e.preventDefault();
   const deckSelector = $(this).closest('.deck-selector');
@@ -13,7 +24,7 @@ const deckSelectorSubmit = function (e) {
   const settings = getSetting(deck) || {};
 
   // only update if not default values
-  if(deck === decks.HOLBIE.name) {
+  if(deck === DECKS.HOLBIE.name) {
     const cohort = $('#holbie-cohort-select').val();
     const numPeers = parseInt($('#holbie-size-select').val());
     if (cohort != $('#holbie-cohort-select [selected]').val())
@@ -29,10 +40,10 @@ const deckSelectorSubmit = function (e) {
     putSetting(deck, settings);
     saveUserData();
   }
-  if (deck === decks.BUILDER.name) {
+  if (deck === DECKS.BUILDER.name) {
     showBuild();
   }
-  else if(deck === decks.HOLBIE.name) {
+  else if(deck === DECKS.HOLBIE.name) {
     showHolbie();
   }
   else {
@@ -43,8 +54,9 @@ const deckSelectorSubmit = function (e) {
 };
 
 const addDeck = (deck) => {
-  $('.deck-container').append(renderDeckSelectorTemplate(deck));
   const name = deck.type + (deck.custom ? deck.i : "");
+  _decks[name] = deck;
+  $('.deck-container').append(renderDeckSelectorTemplate(deck));
   const settings = getSetting(name)
   if (settings) {  
     console.log("addDeck() settings:", settings);
@@ -56,8 +68,8 @@ const addDeck = (deck) => {
 }
 
 const populateDeckSelectors = () => {
-  for (deck of Object.values(decks))
-    if (deck.name !== decks.CUSTOM.name)
+  for (deck of Object.values(DECKS))
+    if (deck.name !== DECKS.CUSTOM.name)
     {
       deck.type = deck.name;
       addDeck(deck);
@@ -65,12 +77,12 @@ const populateDeckSelectors = () => {
 };
 
 const loadDeckSettings = () => {
-  for (deck of Object.values(decks)) {
+  for (deck of Object.values(_decks)) {
     const settings = getSetting(deck.name);
     if (!settings) continue;
     console.log("loadDeckSettings()", deck.name);
     const deckSelector = $(`.deck-selector[deck=${deck.name}]`);
-    if (deck.name == decks.HOLBIE.name) {
+    if (deck.name == DECKS.HOLBIE.name) {
       if (settings.cohort)
         $('#holbie-cohort-select').val(settings.cohort);
       if (settings.numPeers)
