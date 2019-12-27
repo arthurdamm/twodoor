@@ -45,6 +45,7 @@ const authenticate = () => {
         $('.signin-welcome').text(`Hi ${name}!`);
       $('.bttn--signin').text('SIGN OUT');
       loadUserData();
+      if (authToken) saveUserData();
     }
     
   });
@@ -62,43 +63,3 @@ const authenticate = () => {
  * @return {Object} currently authenticated user or null
  */
 const user = () => firebase.auth().currentUser;
-
-/**
- * Loads user's custom decks and populates them into the home component
- * deck container.
- */
-const loadUserData = () => {
-  console.log("loadUserData()");
-  if (user()) {
-    let userData = db.collection("users").doc(user().uid);
-    userData.get().then(function(doc) {
-        if (doc.exists) {
-            console.log("Found document:", doc.data());
-            if (doc.data().settings) {
-              for (const [key, val] of Object.entries(doc.data().settings)) {
-                console.log("entries in settings: ", key, val);
-                putSetting(key, val);
-              }
-            }
-            $('.custom-deck').remove();
-            for (let [i, deck] of doc.data().decks.entries()) {
-              let parsed = JSON.parse(deck);
-              if (parsed.deckName == "")
-                parsed.deckName = `Custom Deck ${i}`;
-              parsed.custom = 1;
-              parsed.name = decks.CUSTOM.name;
-              parsed.text = parsed.deckName;
-              parsed.i = i;
-              addDeck(parsed);
-              console.log("THIS DECK: ", deck);
-              $(`.custom-deck-${i}`).attr('text', deck);
-            }
-        } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-        }
-    }).catch(function(error) {
-        console.log("Error getting document:", error);
-    });
-  }
-}

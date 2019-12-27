@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="static/styles/summary.css">
     <link rel="stylesheet" href="static/styles/build.css">
     <link rel="stylesheet" href="static/styles/holbie.css">
+    <link rel="stylesheet" href="static/styles/deck.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
 
   </head>
@@ -126,28 +127,6 @@
         <input name="holbie-submit" type="submit" value="Signin" />
       </form>
     </div>
-
-    <div class="holbie-select-component">
-      <div class="holbie-deck-text">Select Your Deck!</div>
-      <div class="holbie-select-container">
-        <label for="holbie-cohort-select">Cohort:</label>
-        <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
-        </select>
-      </div>
-      <div class="holbie-select-container">
-        <label for="holbie-size-select">Peers:</label>
-        <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select>
-      </div>
-      <form id="holbie-deck-selector">
-        <input name="holbie-deck-submit" id="holbie-deck-submit" type="submit" value="Play!" />
-      </form>
-    </div>
-
       <div id="firebaseui-auth-container"></div>
     </div>
 
@@ -155,6 +134,7 @@
   <script src="https://d3js.org/d3.v4.min.js"></script>
   
   <script src="static/scripts/card.js" type="text/javascript"></script>
+  <script src="static/scripts/prebuilt.js" type="text/javascript"></script>
   <script src="static/scripts/datastore.js" type="text/javascript"></script>
   <script src="static/scripts/algorithm.js" type="text/javascript"></script>
   <script src="static/scripts/home.js" type="text/javascript"></script>

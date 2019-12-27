@@ -102,8 +102,8 @@ const LearningGame = () => {
         currentDoor.find('.success').css('visibility', 'visible');
         // currentDoor.find('.success').fadeOut(750);
         currentDoor.find('.success').addClass('animate-card-icon');
-      animate(userAnswer);
-      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+        animate(userAnswer);
+        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
@@ -124,8 +124,7 @@ const LearningGame = () => {
       } 
       animate(userAnswer);
       doorTimeoutID = setTimeout(nextDoorEvent, 1500);
-        currentDoor.children('.fail').css('visibility', 'visible');
-        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+      currentDoor.children('.fail').css('visibility', 'visible');
     }
   };
 
@@ -168,8 +167,8 @@ const LearningGame = () => {
     else $('bttn--next').focus();
   });
   // Events for Control Component and Summary Component.
-  $('.bttn--next').click(() => answerEvent());
-  $('.bttn--cancel').click(() =>
+  $('.game-component .bttn--next').click(() => answerEvent());
+  $('.game-component .bttn--cancel').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));
   $('.card-bar-chart--bttn-successes').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));
@@ -219,11 +218,11 @@ const LearningGame = () => {
     currentDoor.toggleClass('flipme');
   });
   $(document).on('click', '.save-settings', function() {
-    saveUserData();
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
     putSetting("algoType", $('.algo-select :selected').val());
     console.log("putSetting= ", _settings)
+    saveUserData();
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
       currentDoor.find('.card-back').show();
@@ -295,7 +294,6 @@ const Animator = () => {
    * Animates element with zoom-in-out by mapping z-position to sin wave.
    */
   const animate = () => {
-    console.log("animating...", element)
     element.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * zDelta) * 155;
     zDelta += increment;

@@ -11,10 +11,11 @@
 const renderCardTemplate = json => `
   <div class="card front" style="background-color: ${json.color}">` + (json.image ?
       `<img class="card-img-top" src="${json.image}" alt="card image cap">
-      <div class="settings-icon"></div>
       <div class="card-body">` :
       `<div class="card-body">`) +
-          `<h5 class="card-title">Question</h5>
+          `
+      <div class="settings-icon"></div>
+          <h5 class="card-title">Question</h5>
           <p class="card-text">${json.question}</p>
       </div>
   </div>
@@ -61,13 +62,63 @@ const renderSummaryTemplate = summary => `
  * @param {Object} Deck object with JSON data.
  * @return {string} HTML deck selector element populated with data.
  */
-const renderDeckSelectorTemplate = deck => `
-<div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${deck.name}">
+const renderDeckSelectorTemplate = deck => {
+  const name = deck.deckName || deck.name;
+  return `
+<div class="deck-selector flippable${deck.deckName ? ' custom-deck' : ''}" deck="${name}">
   <div class="front">
-    <h2 class="deckText">${deck.text}</h2>
+    <h2 class="deckText">${deck.deckName ? deck.deckName : deck.text}</h2>
   </div>
   <div class="back">
-    <h4>Play Now!</h4>
-    <div class="bttn bttn--deck" deck="${deck.name}"></div>
+    <div class="deck-settings-component">
+      <button class="bttn bttn--cancel"></button>
+      <div class="deck-settings-text">Deck Settings:</div>
+      ` + (deck.type == DECKS.HOLBIE.name ? `
+      <div class="holbie-select-container deck-settings-select">
+        <label for="holbie-cohort-select">Cohort:</label>
+        <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
+        </select>
+      </div>
+      <div class="holbie-select-container deck-settings-select">
+        <label for="holbie-size-select">Peers:</label>
+        <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+      </div>` : ``) + `
+      <div class="deck-settings-select">
+        <label for="deck-starting-select-${name}">Starting:</label>
+        <select class="deck-starting-select" name="deck-starting-select-${name}" id="deck-starting-select-${name}" form="deck-settings-form" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+      </div>
+
+      <div class="deck-settings-select">
+        <label for="deck-stagger-select-${name}">Stagger:</label>
+        <select class="deck-stagger-select" name="deck-stagger-select-${name}" id="deck-stagger-select-${name}" form="deck-settings-form" required>
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+
+      <form class="deck-settings-form" id="deck-settings-form-${name}">
+        <input class="bttn bttn--deck" name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="" />
+      </form>
+    </div>
   </div>
 </div>`;
+};

@@ -19,6 +19,10 @@ const FAILURE_THRESHOLD = .25;
  */
 const TRIES_THRESHOLD = 6.0;
 
+const STAGGER = 2;
+
+const STARTING = 5;
+
 /**
  * Matches user answer against regular expression on back of card.
  * @param {string} answer User answer given in text box.
@@ -26,7 +30,7 @@ const TRIES_THRESHOLD = 6.0;
  * @return {number} A truth value between 1 (completely correct) and 0.
  */
 const matchAnswer = function(answer, card) {
-  const result = answer.match(card.regex) != null ? 1 : 0;
+  const result = answer.match(RegExp(card.regex, "i")) != null ? 1 : 0;
   card.performance.push(result);
   if (card.leitnerBox) {
     if (result) {
@@ -114,7 +118,12 @@ const staggerActiveDeck = (deck) => {
     staggering = true;
   }
   if (staggering) {
-    stagger = deck.stagger ? deck.stagger++ : (deck.stagger = 5, deck.stagger--);
+    if (!deck.stagger) {  // first time
+      const settings = getSetting($('.game-component')[0].deckType);
+      stagger = (settings && settings.starting) || STARTING;
+      deck.stagger = (settings && settings.stagger) || STAGGER;
+    } else stagger = deck.stagger++;
+    
     const passiveDeck = deck.filter(card => !card.active);
     let e;
     while (stagger-- > 0)

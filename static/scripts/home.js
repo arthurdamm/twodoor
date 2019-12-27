@@ -31,33 +31,11 @@ $(() => {
       });
     }
   });
-  $('.bttn--algo').on('click', function() {
-    $(this)[0].clicked = !$(this)[0].clicked
-    $(this).toggleClass('bttn--algo-red');
-    $('[name=text-answer]').focus();
-  });
-
-  $(document).on('click', '.deck-selector', function () {
-    console.log("custom clicker");
+  $(document).on('click', '.deck-selector', function (e) {
+    if (["select", "input", "label", "button"].includes(e.target.tagName.toLowerCase()))
+      return;
     $(this).toggleClass('flipme');
   });
-
-  $(document).on('click', '.deck-selector .bttn--deck', function () {
-    console.log("BTTN-DECK", $(this).closest('.deck-selector').attr('deck'));
-    if ($(this).closest('.deck-selector').attr('deck') === decks.BUILDER.name) {
-      showBuild();
-    }
-    else if($(this).closest('.deck-selector').attr('deck') === decks.HOLBIE.name) {
-      showHolbie();
-    }
-    else {
-      $('.game-component')[0].deckType = $(this).closest('.deck-selector').attr('deck');
-      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
-      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
-      showGame();
-    }
-  });
-
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
@@ -86,25 +64,17 @@ $(() => {
     goPlay();
     showGame();
   })
-
   $('.bttn--select-left').click(goLeft);
   $('.bttn--select-right').click(goRight);
   $('.bttn--add-card').click(goPlus);
   $('.bttn--remove-card').click(goMinus);
-
   $('#holbie-signin').submit(function (e) {
     console.log("submit()")
     e.preventDefault();
     authenticateUserHB();
   });
-  $('#holbie-deck-selector').submit(function (e) {
-    console.log("Play!()")
-    e.preventDefault();
-    const cohort = $('#holbie-cohort-select').val();
-    const numPeers = parseInt($('#holbie-size-select').val());
-    const attempts = 0;
-    repopulateRandomPeers(cohort, numPeers, attempts);
-  });
+  $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
+  $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
 });
 
@@ -133,8 +103,10 @@ const showHolbie = () => {
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
   if (authToken) {
-    $('.holbie-signin-component').hide();
-    $('.holbie-select-component').show();
+    const cohort = $('#holbie-cohort-select').val();
+    const numPeers = parseInt($('#holbie-size-select').val());
+    const attempts = 0;
+    repopulateRandomPeers(cohort, numPeers, attempts);
   } else {
     $('.holbie-select-component').hide();
     $('.holbie-signin-component').show();
@@ -152,6 +124,7 @@ const showBuild = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('.build-component').show();
+  generateCustomDeckName();
 }
 
 /**
@@ -170,7 +143,7 @@ const showGame = () => {
   else $('bttn--next').focus();
   checkGameFocus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
-  if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
+  if ($('.game-component')[0].deckType !== DECKS.TUTORIAL) {
     startTimer();
     $('.instruction-component').hide();
   }

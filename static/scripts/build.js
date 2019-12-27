@@ -77,12 +77,16 @@ const goMinus = function() {
 
 const goPlay = function() {
   saveCard();
-  console.log("DECKY:", getBuilderDeck())
-  console.log("STRINGY:", JSON.stringify(getBuilderDeck()))
   const obj = {
     deckName: getBuilderDeck().deckName,
     deck: getBuilderDeck()
   }
-  $('.game-component')[0].deckText = JSON.stringify(obj);
-  $('.game-component')[0].deckType = decks.CUSTOM.name;
+  $('.game-component')[0].deck = obj;
+  $('.game-component')[0].deckType = DECKS.BUILDER.name;
+}
+
+const generateCustomDeckName = () => {
+  let i = 0;
+  while (decks()[DECKS.CUSTOM.name + i]) i++;
+  $('#build-deck-name').val(DECKS.CUSTOM.name + i);
 }
