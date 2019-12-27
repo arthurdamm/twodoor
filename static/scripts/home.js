@@ -32,7 +32,7 @@ $(() => {
     }
   });
   $(document).on('click', '.deck-selector', function (e) {
-    if (["select", "input", "label"].includes(e.target.tagName.toLowerCase()))
+    if (["select", "input", "label", "button"].includes(e.target.tagName.toLowerCase()))
       return;
     $(this).toggleClass('flipme');
   });
@@ -73,6 +73,7 @@ $(() => {
     e.preventDefault();
     authenticateUserHB();
   });
+  $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
 });
@@ -123,6 +124,7 @@ const showBuild = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('.build-component').show();
+  generateCustomDeckName();
 }
 
 /**

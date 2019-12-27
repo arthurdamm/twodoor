@@ -61,14 +61,15 @@ const renderSummaryTemplate = summary => `
  * @return {string} HTML deck selector element populated with data.
  */
 const renderDeckSelectorTemplate = deck => {
-  const name = deck.type + (deck.custom ? deck.i : "");
+  const name = deck.deckName || deck.name;
   return `
-<div class="deck-selector flippable${deck.custom ? ' custom-deck custom-deck-' + deck.i : ''}" deck="${name}">
+<div class="deck-selector flippable${deck.deckName ? ' custom-deck' : ''}" deck="${name}">
   <div class="front">
-    <h2 class="deckText">${deck.text || name}</h2>
+    <h2 class="deckText">${deck.deckName ? deck.deckName : deck.text}</h2>
   </div>
   <div class="back">
     <div class="deck-settings-component">
+      <button class="bttn bttn--cancel"></button>
       <div class="deck-settings-text">Deck Settings:</div>
       ` + (deck.type == DECKS.HOLBIE.name ? `
       <div class="holbie-select-container deck-settings-select">

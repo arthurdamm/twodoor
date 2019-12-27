@@ -12,37 +12,32 @@
   */
 const loadDeck = (deckName) => {
   console.log("loadDeck()", deckName);
-  if (deckName.startsWith(DECKS.CUSTOM.name))
-    deckName = DECKS.CUSTOM.name;
-  return DECKS[deckName].factory().map((json, i) => getCardTemplate(json, i));
+  const factory = decks()[deckName].factory || DECKS.CUSTOM.factory;
+  return factory(deckName).map((json, i) => getCardTemplate(json, i));
 };
 
 /**
  * Loads custom deck data from build input box. 
  */
-const getBuiltDeck = () => {
-  text = $('.game-component')[0].deckText;
-  console.log("getBuiltDeck()", text);
-  const jsonArray = JSON.parse(text);
-  for (obj of jsonArray.deck)
-    if (typeof obj.regex === 'string')
-      obj.regex = RegExp(obj.regex, 'i');
-  saveUserData();
-  return jsonArray.deck;
+const getBuiltDeck = (deckName) => {
+  console.log("getBuiltDeck()", deckName);
+  deck = $('.game-component')[0].deck;
+  if (deckName != DECKS.HOLBIE.name) {
+    Object.assign(deck, DECKS.CUSTOM);
+    delete deck.factory;
+    addDeck(deck);
+    saveUserData();
+  }
+  return deck.deck;
 }
 
 /**
  * Loads user-built decks from db
  */
-const getCustomDeck = () => {
-  // const text = $('[name=text-input]').val()
-  const text = $('.game-component')[0].deckText;
-  console.log("getCustomDeck()", text);
-  const jsonArray = JSON.parse(text);
-  for (obj of jsonArray.deck)
-    if (typeof obj.regex === 'string')
-      obj.regex = RegExp(obj.regex, 'i');
-  return jsonArray.deck;
+const getCustomDeck = (deckName) => {
+  console.log("getCustomDeck()", deckName);
+  const deck = decks()[deckName].deck;
+  return deck;
 }
 
 const saveUserData = () => {
@@ -53,7 +48,7 @@ const saveUserData = () => {
       const data = {};
       data.decks = {};
       for (const [name, deck] of Object.entries(decks())) {
-        if (name.startsWith(DECKS.CUSTOM.name)) {
+        if (deck.name == DECKS.CUSTOM.name) {
           data.decks[name] = deck;
         }
       }
@@ -83,15 +78,8 @@ const loadUserData = () => {
         assignSettings(doc.data().settings);
         $('.custom-deck').remove();
         loadDeckSettings();
-        for (let [i, deck] of doc.data().decks.entries()) {
-          if (!deck.name)
-            deck.name = `Custom Deck ${i}`;
-          deck.custom = 1;
-          deck.type = DECKS.CUSTOM.name;
-          deck.i = i;
+        for (let [i, deck] of Object.entries(doc.data().decks)) {
           addDeck(deck);
-          // TODO not stringify/store text attr
-          $(`.custom-deck-${i}`).attr('text', JSON.stringify(deck));
         }
       } else {
             // doc.data() will be undefined in this case
@@ -125,7 +113,7 @@ const getCardTemplate = (json, i) => {
  */
 const DECKS = {
   HOLBIE: {
-    name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getCustomDeck
+    name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getBuiltDeck
   },
   FACE: {
     name: 'FACE', text: 'Name Recognition', factory: getFaceDeck

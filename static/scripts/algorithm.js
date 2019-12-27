@@ -30,7 +30,7 @@ const STARTING = 5;
  * @return {number} A truth value between 1 (completely correct) and 0.
  */
 const matchAnswer = function(answer, card) {
-  const result = answer.match(card.regex) != null ? 1 : 0;
+  const result = answer.match(RegExp(card.regex, "i")) != null ? 1 : 0;
   card.performance.push(result);
   if (card.leitnerBox) {
     if (result) {
