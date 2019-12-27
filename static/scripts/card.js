@@ -218,10 +218,9 @@ const LearningGame = () => {
     currentDoor.toggleClass('flipme');
   });
   $(document).on('click', '.save-settings', function() {
-    saveUserData();
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
-    console.log("putSetting= ", _settings)
+    saveUserData();
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
       currentDoor.find('.card-back').show();
