@@ -141,7 +141,7 @@ const showGame = () => {
   else $('bttn--next').focus();
   checkGameFocus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
-  if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
+  if ($('.game-component')[0].deckType !== DECKS.TUTORIAL) {
     startTimer();
     $('.instruction-component').hide();
   }

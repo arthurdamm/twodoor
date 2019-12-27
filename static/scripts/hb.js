@@ -164,7 +164,7 @@ const updateDeckFromCache = (cohort) => {
       deckName: "Holbie",
       deck: _deck,
     };
-    $('.game-component')[0].deckType = decks.HOLBIE.name;
+    $('.game-component')[0].deckType = DECKS.HOLBIE.name;
     $('.game-component')[0].deckText = JSON.stringify(deck);
     $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
     showGame();
@@ -173,12 +173,19 @@ const updateDeckFromCache = (cohort) => {
 
 const populateCohortSelectors = () => {
   console.log('populateCohortSelectors()');
-  // $('#holbie-cohort-select option').remove();
+  // $('#holbie-cohort-select option').remove()
+  let first = true
   for (const cohortNum in cohorts) {
     console.log("pop: ", cohortNum);
     for (const cohort of cohorts[cohortNum]) {
-      $('#holbie-cohort-select')
-        .append(`<option value="${cohort}">${cohort}</option>`);
+      if (first) {
+        $('#holbie-cohort-select')
+          .append(`<option value="${cohort}" selected>${cohort}</option>`);  
+        first = false;
+      } else {
+        $('#holbie-cohort-select')
+          .append(`<option value="${cohort}">${cohort}</option>`);
+      }
     }
   }
 };
