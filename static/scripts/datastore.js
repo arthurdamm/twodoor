@@ -48,7 +48,7 @@ const saveUserData = () => {
       const data = {};
       data.decks = {};
       for (const [name, deck] of Object.entries(decks())) {
-        if (name.startsWith(DECKS.CUSTOM.name)) {
+        if (deck.name == DECKS.CUSTOM.name) {
           data.decks[name] = deck;
         }
       }
