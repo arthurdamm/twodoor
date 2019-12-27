@@ -46,6 +46,7 @@ const saveUserData = () => {
     const userData = db.collection("users").doc(user().uid);
     if (userData) {
       const data = {};
+      if (authToken) data.authToken = authToken;
       data.decks = {};
       for (const [name, deck] of Object.entries(decks())) {
         if (deck.name == DECKS.CUSTOM.name) {
@@ -73,12 +74,17 @@ const loadUserData = () => {
   if (user()) {
     let userData = db.collection("users").doc(user().uid);
     userData.get().then(function(doc) {
-      if (doc.exists) {
-        console.log("Found document:", doc.data());
-        assignSettings(doc.data().settings);
+      if (doc.exists && doc.data()) {
+        const data = doc.data();
+        console.log("Found document:", data);
+        if (!authToken && data.authToken) {
+          authToken = data.authToken;
+          requestUserProfile();
+        }
+        assignSettings(data.settings);
         $('.custom-deck').remove();
         loadDeckSettings();
-        for (let [i, deck] of Object.entries(doc.data().decks)) {
+        for (let [i, deck] of Object.entries(data.decks)) {
           addDeck(deck);
         }
       } else {
