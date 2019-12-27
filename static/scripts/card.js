@@ -167,8 +167,8 @@ const LearningGame = () => {
     else $('bttn--next').focus();
   });
   // Events for Control Component and Summary Component.
-  $('.bttn--next').click(() => answerEvent());
-  $('.bttn--cancel').click(() =>
+  $('.game-component .bttn--next').click(() => answerEvent());
+  $('.game-component .bttn--cancel').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));
   $('.card-bar-chart--bttn-successes').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));

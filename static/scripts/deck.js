@@ -7,11 +7,14 @@ const _decks = {};
 
 const decks = () => _decks;
 
-const deckDelete = function(e) {
-  console.log("deckDelete");
+const deckSelectorDelete = function (e) {
+  console.log("deckSelectorDelete()");
+  if (!confirm("Confirm delete?")) return;
   const deckSelector = $(this).closest('.deck-selector');
   const deck = deckSelector.attr('deck');
-
+  delete decks()[deck];
+  saveUserData();
+  $(`.deck-selector[deck=${deck}]`).remove();
 }
 
 const deckSelectorSubmit = function (e) {

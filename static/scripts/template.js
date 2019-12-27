@@ -69,6 +69,7 @@ const renderDeckSelectorTemplate = deck => {
   </div>
   <div class="back">
     <div class="deck-settings-component">
+      <button class="bttn bttn--cancel"></button>
       <div class="deck-settings-text">Deck Settings:</div>
       ` + (deck.type == DECKS.HOLBIE.name ? `
       <div class="holbie-select-container deck-settings-select">
