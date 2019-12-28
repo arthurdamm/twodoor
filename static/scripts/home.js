@@ -94,14 +94,18 @@ const showHome = () => {
 /**
  * Displays Holbie Component
  */
-const showHolbie = () => {
-  console.log("showHolbie()");
+const showHolbie = (expireAuthToken) => {
+  console.log("showHolbie()", authToken);
   $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').hide();
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
+  if (expireAuthToken) {
+    authToken = undefined;
+    saveUserData();
+  }
   if (authToken) {
     const cohort = $('#holbie-cohort-select').val();
     const numPeers = parseInt($('#holbie-size-select').val());
