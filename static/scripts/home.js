@@ -44,13 +44,13 @@ $(() => {
       $('header').css('background-image', 'linear-gradient(120deg, #B7312C, #B7312C');
       $('header').css('border-bottom', '.4rem solid #B5E3D8');
       $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
-      $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
+      $('.deck-selector').css('border', '.3rem solid rgb(134, 36, 32)')
       // $('h2').css('color', 'white');
       // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
       holbieLogo.state = "holb";
     } else {
-      $('header').css('background', 'linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(224, 224, 224, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(187, 187, 187, 0.4) 120%) #ffffff');
-      $('header').css('border-bottom', '.4rem solid rgb(128, 128, 128)');
+      $('header').css('background-image', 'linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)');
+      $('header').css('border-bottom', '.3rem solid rgb(107, 67, 52)');
       $('body').css('background-image', 'linear-gradient(to top, #ace0f9 0%, #fff1eb 100%)');
       $('.deck-selector').css('border', '#fff')
       $('h2').css('color', 'black');

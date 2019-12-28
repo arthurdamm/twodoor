@@ -33,9 +33,6 @@ header {
   align-items: center;
   border-bottom: .3rem solid rgb(107, 67, 52);
   background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
-  /* background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
-
-
 }
 .logo {
   position: absolute;
