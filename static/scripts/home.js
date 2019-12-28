@@ -40,24 +40,18 @@ $(() => {
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
   $('.holbie-logo').on('click', function() {
-    if (holbieLogo.state != "holb") {
-      $('header').css('background-image', 'linear-gradient(120deg, #B7312C, #B7312C');
-      $('header').css('border-bottom', '.4rem solid #B5E3D8');
-      $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
-      $('.deck-selector').css('border', '.3rem solid rgb(134, 36, 32)')
-      // $('h2').css('color', 'white');
-      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
-      holbieLogo.state = "holb";
-    } else {
-      $('header').css('background-image', 'linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%)');
-      $('header').css('border-bottom', '.3rem solid rgb(107, 67, 52)');
-      $('body').css('background-image', 'linear-gradient(to top, #ace0f9 0%, #fff1eb 100%)');
-      $('.deck-selector').css('border', '#fff')
-      $('h2').css('color', 'black');
-      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s.png")');
-      holbieLogo.state = "classic";
-    }
-  })
+      holbieTheme();
+  });
+
+  const holbieTheme = () => {
+    $('header').toggleClass('hb-theme--header');
+    $('body').toggleClass('hb-theme--body');
+    $('.deck-selector').toggleClass('hb-theme--deck-selector');
+    $('.holbie-logo').toggleClass('hb-theme--logo');
+    $('.logo').toggleClass('hb-theme--td-logo');
+    $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
+  };
+
   $('.bttn--play').click(() => {
     goPlay();
     showGame();

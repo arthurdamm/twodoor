@@ -43,6 +43,7 @@ header {
   background-size: 100% 100%;
   margin-left: 1%;
 }
+
 .holbie-logo {
   position: absolute;
   height: 3.5rem;
@@ -51,7 +52,8 @@ header {
   margin-left: 1%;
   background: url("../images/holberton-logo-simple-200s.png") no-repeat;
   background-size: 100% 100%;
-  color: white;
+  transition: .5s;
+
 }
 
 
@@ -107,4 +109,29 @@ header {
     height: 100vh;
   }
 }
- 
+
+.hb-theme--header {
+  background-image: linear-gradient(120deg, #B7312C, #B7312C);
+  border-bottom: .3rem solid #B5E3D8;
+
+}
+.hb-theme--body {
+  background-image: radial-gradient(rgb(255, 255, 255), rgb(240, 240, 240));
+}
+
+.hb-theme--deck-selector {
+  border: .1rem solid rgb(212, 212, 212);
+}
+
+.hb-theme--logo {
+  background: url("../images/holberton-logo-simple-200s-white.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.hb-theme--bttn--summary {
+  background-image: #b5e3d8;
+}
+
+.hb-theme--bttn--summary:hover {
+  background-image: rgb(171, 214, 204);
+}

@@ -23,11 +23,12 @@ h2 {
 }
 .home-component--main {
   display: block;
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 800;
   letter-spacing: .2rem;
   animation-name: moveInRight;
   animation-duration: 1s;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .deck-container {
