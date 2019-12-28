@@ -152,8 +152,9 @@ const LearningGame = () => {
   $(".deck .flippable").click(function(e) {
     console.log("SHAKE:", e.target);
     const icon = document.querySelector('.settings-icon');
-    if (e.target == icon || icon.state == 'settings')
+    if (e.target == icon || icon.state == 'settings') {
       return;
+    }
     else if (getSetting("flipOnClick") == true) {
       currentDoor.find('.card-back').show();
       currentDoor.toggleClass('flipme');
@@ -221,7 +222,7 @@ const LearningGame = () => {
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
     putSetting("algoType", $('.algo-select :selected').val());
-    console.log("putSetting= ", _settings)
+    // console.log("putSetting= ", _settings)
     saveUserData();
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
@@ -234,7 +235,6 @@ const LearningGame = () => {
     nextDoorEvent();
   });
 };
-
 /** 
  * Gets the next card from the deck.
  * @param {Object} currentDoor The currently active door.
