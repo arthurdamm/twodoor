@@ -46,7 +46,11 @@ const saveUserData = () => {
     const userData = db.collection("users").doc(user().uid);
     if (userData) {
       const data = {};
-      if (authToken) data.authToken = authToken;
+      if (authToken) {
+        data.authToken = authToken;
+      } else {
+        delete data.authToken;
+      }
       data.decks = {};
       for (const [name, deck] of Object.entries(decks())) {
         if (deck.name == DECKS.CUSTOM.name) {

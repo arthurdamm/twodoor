@@ -62,6 +62,7 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
     cohorts: cohorts,
   },
   statusCode: {
+    401: () => showHolbie(true),
     429: () => alert('429 Too Many Requests: try again later!'),
   },
 });
@@ -75,6 +76,7 @@ const profileRequest = (authToken) => ({
     auth_token: authToken,
   },
   statusCode: {
+    401: () => showHolbie(true),
     429: () => alert('429 Too Many Requests: try again later!'),
   },
 });
@@ -102,6 +104,7 @@ const authenticateUserHB = async function () {
       authenticateUserFirebase(email, hashedPass);
       requestUserProfile();
       showHolbie();
+      saveUserData();
     })
     .fail(() => {
       console.log("Authentication failed!");
