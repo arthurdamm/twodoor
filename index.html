@@ -16,10 +16,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
-    <meta name="author" content="name">
-    <meta name="description" content="description here">
+    <meta name="author" content="Arthur, Scout">
+    <meta name="description" content="The Adaptive Flashcard Tutoring App">
     <meta name="keywords" content="keywords,here">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="img/svg" href="static/images/doorFavicon.png">
 
     <link rel="stylesheet" href="static/styles/index.css">
     <link rel="stylesheet" href="static/styles/card.css">
@@ -27,6 +29,7 @@
     <link rel="stylesheet" href="static/styles/summary.css">
     <link rel="stylesheet" href="static/styles/build.css">
     <link rel="stylesheet" href="static/styles/holbie.css">
+    <link rel="stylesheet" href="static/styles/deck.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
 
   </head>
@@ -45,8 +48,8 @@
     <div class="main-container">
 
       <div class="home-component">
-        <div class="home-component--main">Welcome to TwoDoor!</div>
-        <div class="home-component--sub">Ready to begin?</div>
+        <div class="home-component--main">Holbie App</div>
+        <!-- <div class="home-component--sub">The One and Only</div> -->
         <div class="deck-container"></div>
       </div>
 
@@ -103,6 +106,9 @@
           <div class="field-text">Question:
             <textarea type="text" class="field" name="question-field">What attribute makes TwoDoor unique?</textarea>
           </div>
+          <div class="field-text">(optional) image:
+            <textarea type="text" class="field" name="image-field">https://image.shutterstock.com/image-vector/sample-stamp-grunge-texture-vector-260nw-1389188327.jpg</textarea>
+          </div>
           <div class="field-text">Answer:
             <textarea type="text"  class="field" name="answer-field">adaptive!</textarea>
           </div>
@@ -124,28 +130,6 @@
         <input name="holbie-submit" type="submit" value="Signin" />
       </form>
     </div>
-
-    <div class="holbie-select-component">
-      <div class="holbie-deck-text">Select Your Deck!</div>
-      <div class="holbie-select-container">
-        <label for="holbie-cohort-select">Cohort:</label>
-        <select name="holbie-cohort-select" id="holbie-cohort-select" form="holbie-deck-selector" required>
-        </select>
-      </div>
-      <div class="holbie-select-container">
-        <label for="holbie-size-select">Peers:</label>
-        <select name="holbie-size-select" id="holbie-size-select" form="holbie-deck-selector" required>
-          <option value="5">5</option>
-          <option value="10">10</option>
-          <option value="15">15</option>
-          <option value="20">20</option>
-        </select>
-      </div>
-      <form id="holbie-deck-selector">
-        <input name="holbie-deck-submit" id="holbie-deck-submit" type="submit" value="Play!" />
-      </form>
-    </div>
-
       <div id="firebaseui-auth-container"></div>
     </div>
 

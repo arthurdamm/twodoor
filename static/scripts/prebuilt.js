@@ -35,7 +35,7 @@ const generateColorDeck = (length) => {
   const colors = ['crimson', 'hotpink', 'yellow', 'orange', 'darkgreen', 'lightgreen', 'cyan', 'indigo', 'blue', 'lightgray'];
   const deck = [];
   let word;
-  length = length || 10;
+  length = parseInt(length) || 10;
   while (length--)
     deck.push({
       color: popRandomElement(colors),

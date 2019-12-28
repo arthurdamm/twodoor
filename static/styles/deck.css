@@ -1,0 +1,48 @@
+.deck-settings-component {
+  margin: auto;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.deck-settings-select {
+  margin: 2%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+}
+
+.deck-settings-select label {
+  margin-right: 10%;
+}
+
+
+.deck-settings-select select {
+}
+
+
+.deck-settings-text {
+  font-weight: bold;
+  margin-bottom: 10%;
+}
+
+.deck-settings-form {
+  margin-top: 20%;
+}
+
+.deck-settings-component .bttn--cancel {
+  position: absolute;
+  top: .1rem;
+  right: .1rem;
+  height: 2rem;
+  width: 2rem;
+}
+
+.deck-settings-component .bttn--cancel:hover {
+  height: 2.5rem;
+  width: 2.5rem; 
+  transition-duration: .5s;
+}

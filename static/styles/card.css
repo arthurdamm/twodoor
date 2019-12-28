@@ -1,6 +1,6 @@
 .game-component {
     position: absolute;
-    bottom: 16%;
+    /* bottom: 16%; */
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -246,7 +246,7 @@ p {
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 .bttn--cancel:hover {
-    transform: translateX(-.3rem);
+/*    transform: translateX(-.3rem);*/
     box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
@@ -388,4 +388,14 @@ h1 {
 }
 .algo-select {
   flex-direction: row;
+}
+.flip-on-click {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 1rem;
+}
+.toggle-flip {
+  margin-left: 0.5rem;
 }

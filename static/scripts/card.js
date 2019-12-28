@@ -102,8 +102,8 @@ const LearningGame = () => {
         currentDoor.find('.success').css('visibility', 'visible');
         // currentDoor.find('.success').fadeOut(750);
         currentDoor.find('.success').addClass('animate-card-icon');
-      animate(userAnswer);
-      doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+        animate(userAnswer);
+        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
       } else {
         nextDoorEvent();
       }
@@ -124,8 +124,7 @@ const LearningGame = () => {
       } 
       animate(userAnswer);
       doorTimeoutID = setTimeout(nextDoorEvent, 1500);
-        currentDoor.children('.fail').css('visibility', 'visible');
-        doorTimeoutID = setTimeout(nextDoorEvent, 1500);
+      currentDoor.children('.fail').css('visibility', 'visible');
     }
   };
 
@@ -153,8 +152,9 @@ const LearningGame = () => {
   $(".deck .flippable").click(function(e) {
     console.log("SHAKE:", e.target);
     const icon = document.querySelector('.settings-icon');
-    if (e.target == icon || icon.state == 'settings')
+    if (e.target == icon || icon.state == 'settings') {
       return;
+    }
     else if (getSetting("flipOnClick") == true) {
       currentDoor.find('.card-back').show();
       currentDoor.toggleClass('flipme');
@@ -168,8 +168,8 @@ const LearningGame = () => {
     else $('bttn--next').focus();
   });
   // Events for Control Component and Summary Component.
-  $('.bttn--next').click(() => answerEvent());
-  $('.bttn--cancel').click(() =>
+  $('.game-component .bttn--next').click(() => answerEvent());
+  $('.game-component .bttn--cancel').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));
   $('.card-bar-chart--bttn-successes').click(() =>
     endDeckSession(deck, chartVariables.SUCCESS));
@@ -219,19 +219,22 @@ const LearningGame = () => {
     currentDoor.toggleClass('flipme');
   });
   $(document).on('click', '.save-settings', function() {
-    saveUserData();
     document.querySelector('.settings-icon').state = 'game';
     putSetting("flipOnClick", document.querySelector('.toggle-flip').checked);
-    console.log("putSetting= ", _settings)
+    putSetting("algoType", $('.algo-select :selected').val());
+    // console.log("putSetting= ", _settings)
+    saveUserData();
     currentDoor.toggleClass('flipme');
     settingsTimeoutID = setTimeout(function() {
       currentDoor.find('.card-back').show();
     }, 150);
     currentDoor.find('.settings').hide();
   });
-
+  $(document).on('click', '.remove-card', function() {
+    delete deck[parseInt(currentDoor.attr('card-id'))];
+    nextDoorEvent();
+  });
 };
-
 /** 
  * Gets the next card from the deck.
  * @param {Object} currentDoor The currently active door.
@@ -241,7 +244,7 @@ const LearningGame = () => {
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
   // Unless no-algorithm button is clicked use the current algorithm.
-  if (!$('.bttn--algo')[0].clicked)
+  if (getSetting("algoType") == "linear")
     return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   // Else just select the cards in sequence.
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
@@ -291,7 +294,6 @@ const Animator = () => {
    * Animates element with zoom-in-out by mapping z-position to sin wave.
    */
   const animate = () => {
-    console.log("animating...", element)
     element.style.transform = `translate3d(0, 0, ${zPos}px)`;
     zPos = Math.sin(1.55 * zDelta) * 155;
     zDelta += increment;

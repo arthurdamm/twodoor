@@ -31,80 +31,43 @@ $(() => {
       });
     }
   });
-  $('.bttn--algo').on('click', function() {
-    $(this)[0].clicked = !$(this)[0].clicked
-    $(this).toggleClass('bttn--algo-red');
-    $('[name=text-answer]').focus();
-  });
-
-  $(document).on('click', '.deck-selector', function () {
-    console.log("custom clicker");
+  $(document).on('click', '.deck-selector', function (e) {
+    if (["select", "input", "label", "button"].includes(e.target.tagName.toLowerCase()))
+      return;
     $(this).toggleClass('flipme');
   });
-
-  $(document).on('click', '.deck-selector .bttn--deck', function () {
-    console.log("BTTN-DECK", $(this).closest('.deck-selector').attr('deck'));
-    if ($(this).closest('.deck-selector').attr('deck') === decks.BUILDER.name) {
-      showBuild();
-    }
-    else if($(this).closest('.deck-selector').attr('deck') === decks.HOLBIE.name) {
-      showHolbie();
-    }
-    else {
-      $('.game-component')[0].deckType = $(this).closest('.deck-selector').attr('deck');
-      $('.game-component')[0].deckText = $(this).closest('.deck-selector').attr('text');
-      console.log("THIS TEXT: ", $(this).closest('.deck-selector').attr('text'));
-      showGame();
-    }
-  });
-
   $('.logo').on('click', showHome);
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
   $('.holbie-logo').on('click', function() {
-    if (holbieLogo.state != "holb") {
-      $('header').css('background-image', 'linear-gradient(120deg, #B7312C, #B7312C');
-      $('header').css('border-bottom', '.4rem solid #B5E3D8');
-      $('body').css('background-image', 'linear-gradient(120deg, #fff, rgb(248, 248, 248)');
-      $('.deck-selector').css('background-color', '#B7312C');
-      $('.deck-selector').css('border', '.4rem solid rgb(134, 36, 32)')
-      // $('h2').css('color', 'white');
-      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s-white.png")');
-      holbieLogo.state = "holb";
-    } else {
-      $('header').css('background-image', 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%');
-      $('header').css('border-bottom', '.4rem solid rgb(128, 128, 128)');
-      $('body').css('background-image', 'linear-gradient(15deg, #62137a 0%, #d08080 100%)');
-      $('.deck-selector').css('background-color', '#fff');
-      $('.deck-selector').css('border', '#fff')
-      $('h2').css('color', 'black');
-      // $('.holbie-logo').css('background', 'url("./static/images/holberton-logo-simple-200s.png")');
-      holbieLogo.state = "classic";
-    }
-  })
+      holbieTheme();
+  });
+
+  const holbieTheme = () => {
+    $('header').toggleClass('hb-theme--header');
+    $('body').toggleClass('hb-theme--body');
+    $('.deck-selector').toggleClass('hb-theme--deck-selector');
+    $('.holbie-logo').toggleClass('hb-theme--logo');
+    $('.logo').toggleClass('hb-theme--td-logo');
+    $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
+    $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
+  };
+
   $('.bttn--play').click(() => {
     goPlay();
     showGame();
   })
-
   $('.bttn--select-left').click(goLeft);
   $('.bttn--select-right').click(goRight);
   $('.bttn--add-card').click(goPlus);
   $('.bttn--remove-card').click(goMinus);
-
   $('#holbie-signin').submit(function (e) {
     console.log("submit()")
     e.preventDefault();
     authenticateUserHB();
   });
-  $('#holbie-deck-selector').submit(function (e) {
-    console.log("Play!()")
-    e.preventDefault();
-    const cohort = $('#holbie-cohort-select').val();
-    const numPeers = parseInt($('#holbie-size-select').val());
-    const attempts = 0;
-    repopulateRandomPeers(cohort, numPeers, attempts);
-  });
+  $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
+  $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
 });
 
@@ -124,17 +87,23 @@ const showHome = () => {
 /**
  * Displays Holbie Component
  */
-const showHolbie = () => {
-  console.log("showHolbie()");
+const showHolbie = (expireAuthToken) => {
+  console.log("showHolbie()", authToken);
   $('.timer').hide();
   $('.game-component').hide();
   $('.home-component').hide();
   $('.timer').hide();
   $('.build-component').hide();
   $('#firebaseui-auth-container').hide();
+  if (expireAuthToken) {
+    authToken = undefined;
+    saveUserData();
+  }
   if (authToken) {
-    $('.holbie-signin-component').hide();
-    $('.holbie-select-component').show();
+    const cohort = $('#holbie-cohort-select').val();
+    const numPeers = parseInt($('#holbie-size-select').val());
+    const attempts = 0;
+    repopulateRandomPeers(cohort, numPeers, attempts);
   } else {
     $('.holbie-select-component').hide();
     $('.holbie-signin-component').show();
@@ -152,6 +121,7 @@ const showBuild = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('.build-component').show();
+  generateCustomDeckName();
 }
 
 /**
@@ -170,7 +140,7 @@ const showGame = () => {
   else $('bttn--next').focus();
   checkGameFocus();
   $('.game-component')[0].changeDeck(loadDeck($('.game-component')[0].deckType));
-  if ($('.game-component')[0].deckType !== decks.TUTORIAL) {
+  if ($('.game-component')[0].deckType !== DECKS.TUTORIAL) {
     startTimer();
     $('.instruction-component').hide();
   }

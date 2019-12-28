@@ -45,7 +45,10 @@ const authenticationRequest = json => ({
   headers: {
     "Content-Type": "application/json"
   },
-  data: JSON.stringify(json)
+  data: JSON.stringify(json),
+  statusCode: {
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const randomPeersRequest = (authToken, number, cohorts) => ({
@@ -57,7 +60,11 @@ const randomPeersRequest = (authToken, number, cohorts) => ({
     auth_token: authToken,
     number: number,
     cohorts: cohorts,
-  }
+  },
+  statusCode: {
+    401: () => showHolbie(true),
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const profileRequest = (authToken) => ({
@@ -67,7 +74,11 @@ const profileRequest = (authToken) => ({
   method: 'GET',
   data: {
     auth_token: authToken,
-  }
+  },
+  statusCode: {
+    401: () => showHolbie(true),
+    429: () => alert('429 Too Many Requests: try again later!'),
+  },
 });
 
 const requestUserProfile = () => {
@@ -93,6 +104,7 @@ const authenticateUserHB = async function () {
       authenticateUserFirebase(email, hashedPass);
       requestUserProfile();
       showHolbie();
+      saveUserData();
     })
     .fail(() => {
       console.log("Authentication failed!");
@@ -152,24 +164,31 @@ const updateDeckFromCache = (cohort) => {
   const _deck = Object.values(peerCache[cohort] || {});
   if (_deck.length) {
     const deck = {
-      deckName: "Holbie",
+      deckName: DECKS.HOLBIE.name,
       deck: _deck,
     };
-    $('.game-component')[0].deckType = decks.HOLBIE.name;
-    $('.game-component')[0].deckText = JSON.stringify(deck);
-    $('.game-component')[0].updateDeck(loadDeck($('.game-component')[0].deckType));
+    $('.game-component')[0].deckType = DECKS.HOLBIE.name;
+    $('.game-component')[0].deck = deck;
+    $('.game-component')[0].updateDeck(loadDeck(DECKS.HOLBIE.name));
     showGame();
   }
 };
 
 const populateCohortSelectors = () => {
   console.log('populateCohortSelectors()');
-  // $('#holbie-cohort-select option').remove();
+  // $('#holbie-cohort-select option').remove()
+  let first = true
   for (const cohortNum in cohorts) {
     console.log("pop: ", cohortNum);
     for (const cohort of cohorts[cohortNum]) {
-      $('#holbie-cohort-select')
-        .append(`<option value="${cohort}">${cohort}</option>`);
+      if (first) {
+        $('#holbie-cohort-select')
+          .append(`<option value="${cohort}" selected>${cohort}</option>`);  
+        first = false;
+      } else {
+        $('#holbie-cohort-select')
+          .append(`<option value="${cohort}">${cohort}</option>`);
+      }
     }
   }
 };
