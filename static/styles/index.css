@@ -116,7 +116,9 @@ header {
 
 }
 .hb-theme--body {
-  background-image: radial-gradient(rgb(255, 255, 255), rgb(240, 240, 240));
+  background-image: radial-gradient(rgb(255, 255, 255), rgb(230, 230, 230));
+  /* clip-path: polygon(0 85%, 100% 75%, 100% 100%, 0% 100%);
+  color: black; */
 }
 
 .hb-theme--deck-selector {
@@ -134,4 +136,8 @@ header {
 
 .hb-theme--bttn--summary:hover {
   background-image: rgb(171, 214, 204);
+}
+
+.hb-theme--bttn--deck {
+  background-image: linear-gradient(120deg, rgb(226, 73, 68) 0%, #B7312C 100%) !important;
 }

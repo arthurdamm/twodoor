@@ -50,6 +50,7 @@ $(() => {
     $('.holbie-logo').toggleClass('hb-theme--logo');
     $('.logo').toggleClass('hb-theme--td-logo');
     $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
+    $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
   };
 
   $('.bttn--play').click(() => {
