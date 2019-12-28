@@ -25,7 +25,7 @@ h2 {
   display: block;
   font-size: 2rem;
   font-weight: 800;
-  letter-spacing: 2rem;
+  letter-spacing: .2rem;
   animation-name: moveInRight;
   animation-duration: 1s;
 }
@@ -102,7 +102,7 @@ h2 {
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 5%;
-  letter-spacing: 1.5rem;
+  letter-spacing: .2rem;
   animation-delay: 1s;
   animation-name: moveInRight;
   animation-duration: 1s;

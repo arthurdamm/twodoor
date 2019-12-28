@@ -31,9 +31,8 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border-bottom: .4rem solid grey;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(224, 224, 224, 0.15) 100%), radial-gradient(at top center, rgba(255, 255, 255, 0.4) 0%, rgba(187, 187, 187, 0.4) 120%) #ffffff; 
-  background-blend-mode: multiply,multiply;
+  border-bottom: .3rem solid rgb(107, 67, 52);
+  background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
   /* background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
 
 
@@ -83,7 +82,7 @@ header {
   background: radial-gradient(circle at 20px 20px, #ff5c5c, #000);
 }
 .signin-component {
-  color: indigo;
+  color: white;
   position: absolute;
   padding-right: 1rem;
   right: 0;
