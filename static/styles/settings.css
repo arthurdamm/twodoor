@@ -1,0 +1,75 @@
+.app-settings {
+  position: absolute;
+  right: 10rem;
+  top: 1.5rem;
+  /*border: 2px solid red;*/
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+.app-settings-icon {
+  background: url("../images/settings-icon.png") no-repeat;
+  background-size: 100% 100%;
+  width: 2.5rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.app-settings-dropdown {
+  /*display: none;*/
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 10rem;
+  /*border: 1px solid black;*/
+  opacity: 0;
+  background-color: lightgrey;
+  margin-top: 2rem;
+  transition: .33s;
+  visibility: hidden;
+  transform: translate(0%, -100%);
+  /*padding: .1rem;*/
+  /*box-shadow: 2px 2px 2px 1px grey*/
+  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+
+.app-settings:active .app-settings-dropdown,
+.app-settings:focus-within .app-settings-dropdown,
+.app-settings .app-settings-dropdown:active {
+  /*display: block;*/
+  visibility: visible;
+  opacity: 1;
+  transform: translate(0%, 0%);
+}
+
+.app-settings-dropdown li {
+  margin: 3%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+  /*justify-content: center;
+  align-content: center;*/
+  align-items: center;
+}
+
+.app-settings-dropdown li input[type=checkbox] {
+  margin-right: .25rem;
+}
+
+li.settings-title {
+  text-align: center;
+  justify-content: center;
+  /*font-weight: bold;*/
+  background-color: darkred;
+  color: white;
+  height: 1.75rem;
+  margin: 0;
+  padding: 0;
+}
