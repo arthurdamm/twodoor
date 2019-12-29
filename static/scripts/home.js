@@ -69,6 +69,28 @@ $(() => {
   $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
+
+  let prevScrollPosition = window.pageYOffset;
+  let dontScroll = false;
+  $(document).on("scroll", function (e) {
+    if (dontScroll) {
+      dontScroll = false;
+      return;
+    }
+    if (prevScrollPosition < window.pageYOffset)
+    {
+      $('header').addClass('header-invis');
+      document.activeElement.blur();
+    }
+    else
+    {
+      $('header').removeClass('header-invis');
+    }
+    prevScrollPosition = window.pageYOffset;
+  });
+  $('.app-settings-icon').click(function() {
+    dontScroll = true;
+  });
 });
 
 /**
