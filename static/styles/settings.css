@@ -1,8 +1,9 @@
 .app-settings {
   /*position: fixed;*/
-  right: 10rem;
-  top: 1.5rem;
-  /*border: 2px solid red;*/
+  position: relative;
+  /*right: 0rem;
+  top: 0rem;*/
+  /*border: 1px solid red;*/
   width: 10rem;
   display: flex;
   flex-direction: column;
