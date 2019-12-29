@@ -333,7 +333,7 @@ h1 {
   }
 
   input {
-    min-width: 5rem;
+    /*min-width: 5rem;*/
   }
 }
 
