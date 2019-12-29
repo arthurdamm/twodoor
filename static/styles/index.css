@@ -124,11 +124,11 @@ header {
     height: 14%;
   }
   body {
-    top: 0%;
-    height: 100%;
+    /*top: 0%;
+    height: 100%;*/
   }
   body, html {
-    height: 100vh;
+    /*height: 100vh;*/
   }
 }
 
