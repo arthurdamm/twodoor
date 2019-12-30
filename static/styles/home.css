@@ -165,11 +165,6 @@ h2 {
     letter-spacing: 1rem;
   }
 
-  .bttn--deck {
-      /*display: none;*/
-  }
-
-
   .deck-selector {
     color: red;
     margin-left: .1rem;

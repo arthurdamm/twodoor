@@ -399,3 +399,9 @@ h1 {
 .toggle-flip {
   margin-left: 0.5rem;
 }
+
+@media only screen and (max-width: 667vh) {
+  .deck {
+    min-height: 24rem;
+  }
+}
