@@ -126,10 +126,10 @@ header {
   }
   body {
     top: 14%;
-    height: 86%;
+    height: 90%;
   }
-  body, html {
-    /*height: 100vh;*/
+  html {
+    height: 100%;
   }
 }
 
