@@ -17,16 +17,6 @@
     border-radius: .688rem;
 }
 
-.keyboard-deck {
-  /* height:65vw;
-  width: 50%; */
-  min-height: 12rem;
-  min-width: 10rem;
-  /* max-height: 20rem;
-  max-width: 20rem; */
-}
-
-
 .deck:hover {
     /* transform: translateY(-0.5rem); */
     box-shadow: 0 0 3rem rgba(66, 54, 54, 0.4);
@@ -404,4 +394,9 @@ h1 {
   .deck {
     min-height: 24rem;
   }
+}
+
+.keyboard-deck {
+  min-height: 12rem;
+  min-width: 10rem;
 }
