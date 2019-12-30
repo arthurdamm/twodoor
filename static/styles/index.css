@@ -118,6 +118,7 @@ header {
   height: fill-available;
   height:-webkit-fill-available;
   width: 100%;
+  bottom: 0;
 }
 
 @media only screen and (max-width: 600px) {

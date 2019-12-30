@@ -387,6 +387,7 @@ const keyboardDeck = () => {
     }).on("focusout", function() {
       $('.deck').toggleClass('keyboard-deck');
       $('header').show();
+      $('.main-container').css('bottom', '0');
       checkGameFocus();
     });
   }
