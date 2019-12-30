@@ -400,7 +400,7 @@ h1 {
   margin-left: 0.5rem;
 }
 
-@media only screen and (max-width: 667vh) {
+@media only screen and (max-height: 667vh) and (max-width: 375vw) {
   .deck {
     min-height: 24rem;
   }
