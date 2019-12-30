@@ -167,10 +167,15 @@ h2 {
       /*display: none;*/
   }
 
+
   .deck-selector {
     color: red;
     margin-left: .1rem;
     margin-right: .1rem;
+  }
+
+  .app-settings {
+    margin-top: 18.5%;
   }
 }
 

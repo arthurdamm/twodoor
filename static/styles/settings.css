@@ -60,7 +60,6 @@
 .app-settings-icon .app-settings-dropdown,
 .app-settings:focus-within .app-settings-dropdown,
 .app-settings .app-settings-dropdown:active {
-  /*display: block;*/
   visibility: visible;
   opacity: 1;
   animation-name: easeOutBounce;
