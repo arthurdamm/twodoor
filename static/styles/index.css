@@ -19,10 +19,12 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   overflow-x: hidden;
   position: relative;
+  padding: 1rem;
 }
 header {
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 1;
   height: 10%;
   width: 100%;
@@ -129,7 +131,7 @@ header {
   }
   body {
     top: 14%;
-    height: 90%;
+    height: 86%;
   }
   html {
     height: 100%;
