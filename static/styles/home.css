@@ -22,13 +22,15 @@ h2 {
   vertical-align: middle;
 }
 .home-component--main {
-  display: block;
+  display: flex;
   font-size: 3rem;
   font-weight: 800;
   letter-spacing: .2rem;
   animation-name: moveInRight;
   animation-duration: 1s;
   font-family: 'Montserrat', sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 
 .deck-container {

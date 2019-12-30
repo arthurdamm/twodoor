@@ -124,6 +124,9 @@ header {
     z-index: 0;*/
     height: 14%;
   }
+  .app-settings {
+    padding: 0%;
+  }
   body {
     top: 14%;
     height: 90%;
