@@ -40,7 +40,7 @@
 }
 
 .app-settings-dropdown {
-  /*display: none;*/
+  display: none;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -60,6 +60,7 @@
 .app-settings-icon .app-settings-dropdown,
 .app-settings:focus-within .app-settings-dropdown,
 .app-settings .app-settings-dropdown:active {
+  display: block;
   visibility: visible;
   opacity: 1;
   animation-name: easeOutBounce;
