@@ -17,14 +17,15 @@ $(() => {
   const firebase = authenticate();
   $('.bttn--signin').on('click', function() {
     console.log('bttn--signin click');
-    if ($(this).text() == 'SIGN IN')
+    console.log($(this).text());
+    if ($(this).text() == 'Sign In')
     {
       showHolbie();
     }
     else
     {
       firebase.auth().signOut().then(function() {
-        $('.bttn--signin').text('SIGN IN');
+        $('.bttn--signin').text('Sign In');
         $('.signin-welcome').text('Welcome Guest!');
       }).catch(function(error) {
         console.log(error);

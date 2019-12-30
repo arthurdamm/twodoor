@@ -10,7 +10,16 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  /*z-index: 1;*/
+  /* z-index: -1; */
+}
+.bttn--signin {
+  width: 100%;
+  background-color: #B7312C;
+  color: white;
+}
+
+.bttn--signin:hover {
+  background-color: rgb(153, 42, 38);
 }
 
 .app-settings-icon {
@@ -69,7 +78,7 @@ li.settings-title {
   text-align: center;
   justify-content: center;
   /*font-weight: bold;*/
-  background-color: darkred;
+  background-color: #B7312C;
   color: white;
   height: 1.75rem;
   margin: 0;
