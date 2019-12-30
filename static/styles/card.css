@@ -18,12 +18,12 @@
 }
 
 .keyboard-deck {
-  height:65vw;
-  width: 50%;
-  min-height: 18rem;
-  min-width: 14rem;
-  max-height: 28rem;
-  max-width: 20rem;
+  /* height:65vw;
+  width: 50%; */
+  min-height: 12rem;
+  min-width: 10rem;
+  /* max-height: 20rem;
+  max-width: 20rem; */
 }
 
 
