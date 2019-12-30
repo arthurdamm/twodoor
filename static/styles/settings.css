@@ -24,13 +24,19 @@
 }
 
 .app-settings-icon {
-  background: url("../images/settings-icon.png") no-repeat;
+  /* background: url("../images/hamburger-icon.png") no-repeat; */
   background-size: 100% 100%;
   width: 2.5rem;
   height: 2rem;
   position: absolute;
   top: 0;
   right: 0;
+}
+
+.app-settings-icon:hover,
+.app-settings-icon:checked {
+  background: url("../images/hamburger-icon-active.png") no-repeat;
+  background-size: 100% 100%;
 }
 
 .app-settings-dropdown {
@@ -45,7 +51,7 @@
   margin-top: 2rem;
   transition: .33s;
   visibility: hidden;
-  transform: translateY(0%, -100%);
+  transform: translate(0%, -100%);
   /*padding: .1rem;*/
   /*box-shadow: 2px 2px 2px 1px grey*/
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
@@ -59,7 +65,7 @@
   opacity: 1;
   animation-name: easeOutBounce;
   animation-duration: 0.7s;
-  transform: translateY(0%, 0%);
+  transform: translate(0%, 0%);
 }
 
 .app-settings-dropdown li {
