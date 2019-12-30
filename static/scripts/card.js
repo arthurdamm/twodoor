@@ -382,11 +382,11 @@ if (!isMobile()) {
 const keyboardDeck = () => {
   if (isMobile()) {
     $('[name=text-answer]').on("focus", function() {
-      $('.deck').css("min-height", "12rem");
-      $('.deck').css("min-width", "10rem");
+      $('.deck').toggleClass('keyboard-deck');
+      $('header').hide();
     }).on("focusout", function() {
-      $('.deck').css("min-height", "28rem");
-      $('.deck').css("min-width", "20rem");
+      $('.deck').toggleClass('keyboard-deck');
+      $('header').show();
       checkGameFocus();
     });
   }
