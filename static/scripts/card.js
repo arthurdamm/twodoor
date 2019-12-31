@@ -244,7 +244,7 @@ const LearningGame = () => {
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
   // Unless no-algorithm button is clicked use the current algorithm.
-  if (getSetting("algoType") == "linear")
+  if (getSetting("algoType") == "leitner")
     return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   // Else just select the cards in sequence.
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
@@ -379,13 +379,15 @@ if (!isMobile()) {
 /**
  * resizes card when keyboard is open on mobile
  */
-if (isMobile()) {
-  $('[name=text-answer]').on("focus", function() {
-    $('.deck').addClass('keyboard-deck');
-    $('header').hide();
-  }).on("focusout", function() {
-    $('.deck').removeClass('keyboard-deck');
-    $('header').show();
-    setTimeout(() => checkGameFocus(), 100);
-  });
+const keyboardDeck = () => {
+  if (isMobile()) {
+    $('[name=text-answer]').on("focus", function() {
+      $('.deck').addClass('keyboard-deck');
+      $('header').hide();
+    }).on("focusout", function() {
+      $('.deck').removeClass('keyboard-deck');
+      $('header').show();
+      setTimeout(() => checkGameFocus(), 100);
+    });
+  }
 }

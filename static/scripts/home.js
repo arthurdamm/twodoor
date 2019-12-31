@@ -69,6 +69,7 @@ $(() => {
   $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
+  keyboardDeck();
 });
 
 /**

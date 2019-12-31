@@ -14,7 +14,6 @@
 }
 
 .app-settings-icon {
-  background: url("../images/settings-icon.png") no-repeat;
   background-size: 100% 100%;
   width: 2.5rem;
   height: 2rem;
@@ -35,7 +34,7 @@
   margin-top: 2rem;
   transition: .33s;
   visibility: hidden;
-  transform: translate(0%, -100%);
+  transform: translateY(-100%);
   /*padding: .1rem;*/
   /*box-shadow: 2px 2px 2px 1px grey*/
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
@@ -47,7 +46,10 @@
   display: block;
   visibility: visible;
   opacity: 1;
-  transform: translate(0%, 0%);
+  animation-name: easeOutBounce;
+  backface-visibility: visible;
+  animation-duration: 0.7s;
+  transform: translateY(0%);
 }
 
 .app-settings-dropdown li {
@@ -74,4 +76,46 @@ li.settings-title {
   height: 1.75rem;
   margin: 0;
   padding: 0;
+}
+
+@keyframes easeOutBounce {
+	0% {
+		transform: translateY(-100%);
+	}
+
+	12% {
+		transform: translateY(-89.11%);
+	}
+
+	24% {
+		transform: translateY(-56,44%);
+	}
+
+	36% {
+		transform: translateY(-1.99%);
+	}
+
+	54% {
+		transform: translateY(-18.98%);
+	}
+
+	74% {
+		transform: translateY(-1.63%);
+	}
+
+	82% {
+		transform: translateY(-4.25%);
+	}
+
+	92% {
+		transform: translateY(-0.76%);
+	}
+
+	96% {
+		transform: translateY(-1.64%);
+	}
+
+	100% {
+		transform: translateY(0%);
+  }
 }
