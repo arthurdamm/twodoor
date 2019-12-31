@@ -387,5 +387,6 @@ if (isMobile()) {
     $('.deck').removeClass('keyboard-deck');
     $('header').show();
     setTimeout(() => checkGameFocus(), 10);
+    setTimeout(() => checkGameFocus(), 100);
   });
 }
