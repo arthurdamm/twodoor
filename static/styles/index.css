@@ -106,7 +106,6 @@ header {
 .main-container {
   display: none;
   position: relative;
-  padding-top: 5rem;
   height: 100%;
   height: fill-available;
   height:-webkit-fill-available;
