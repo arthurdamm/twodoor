@@ -47,7 +47,6 @@
   visibility: visible;
   opacity: 1;
   animation-name: easeOutBounce;
-  backface-visibility: visible;
   animation-duration: 0.7s;
   transform: translateY(0%);
 }
