@@ -338,6 +338,12 @@ h1 {
   }
 }
 
+@media only screen and (max-height: 667vh) and (max-width: 375vw) {
+  .deck {
+    min-height: 24rem;
+  }
+}
+
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
