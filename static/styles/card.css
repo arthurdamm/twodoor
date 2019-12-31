@@ -299,8 +299,8 @@ h1 {
 }
 
 .keyboard-deck {
-    min-height: 12rem;
-    min-width: 10rem;
+    min-height: 18rem;
+    min-width: 15rem;
 }
 
 @media only screen and (max-width: 600px) {
@@ -333,7 +333,7 @@ h1 {
   }
 }
 
-@media only screen and (max-height: 667px) and (max-width: 375px) {
+@media only screen and (max-width: 375px) and (max-height: 667px) {
   .deck {
     min-height: 24rem;
   }
