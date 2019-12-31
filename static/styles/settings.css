@@ -34,7 +34,7 @@
   margin-top: 2rem;
   transition: .33s;
   visibility: hidden;
-  transform: translateY(-100%);
+  transform: translate(0, -100%);
   /*padding: .1rem;*/
   /*box-shadow: 2px 2px 2px 1px grey*/
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
@@ -48,7 +48,7 @@
   opacity: 1;
   animation-name: easeOutBounce;
   animation-duration: 0.7s;
-  transform: translateY(0%);
+  transform: translate(0%, 0%);
 }
 
 .app-settings-dropdown li {
