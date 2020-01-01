@@ -127,28 +127,28 @@ const DECKS = {
   HOLBIE: {
     name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getBuiltDeck
   },
-  FACE: {
-    name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
-  },
+  // FACE: {
+  //   name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
+  // },
   BUILDER: {
     name: 'BUILDER', text: 'Build a Deck!', factory: getBuiltDeck
   },
-  DINO: {
-    name: 'DINO', text: 'Dino Deck', factory: getDinoDeck
-  },
+  // DINO: {
+  //   name: 'DINO', text: 'Dino Deck', factory: getDinoDeck
+  // },
   COLOR: {
     name: 'COLOR', text: 'Color Coding', factory: generateColorDeck
   },
   TRIVIA: {
     name: 'TRIVIA', text: 'CSS Trivia', factory: getTriviaDeck
   },
-  PRESENTATION: {
-    name: 'PRESENTATION', text: 'PRESENTATION ❤️ DAY!', factory: getPresentationDeck
-  },
+  // PRESENTATION: {
+  //   name: 'PRESENTATION', text: 'PRESENTATION ❤️ DAY!', factory: getPresentationDeck
+  // },
   CUSTOM: {
     name: 'CUSTOM', text: 'Custom', factory: getCustomDeck
   },
-  TUTORIAL: { 
-    name: 'TUTORIAL', text: 'How to Play?', factory: getTutorialDeck
-  },
+  // TUTORIAL: { 
+  //   name: 'TUTORIAL', text: 'How to Play?', factory: getTutorialDeck
+  // },
 };

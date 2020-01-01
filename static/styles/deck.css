@@ -23,6 +23,10 @@
 .deck-settings-select select {
 }
 
+.deck-selector .bttn--deck {
+  width: 5rem;
+  height: 5rem;
+}
 
 .deck-settings-text {
   font-weight: bold;
