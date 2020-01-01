@@ -68,9 +68,6 @@ const renderDeckSelectorTemplate = deck => {
 <div class="deck-selector flippable${deck.deckName ? ' custom-deck' : ''}" deck="${name}">
   <div class="front">
     <h2 class="deckText">${deck.deckName ? deck.deckName : deck.text}</h2>
-    <form class="deck-settings-form" id="deck-settings-form-${name}">
-      <input class="bttn bttn--deck" name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="" />
-    </form>
   </div>
   <div class="back">
     <div class="deck-settings-component">
@@ -117,6 +114,9 @@ const renderDeckSelectorTemplate = deck => {
           <option value="5">5</option>
         </select>
       </div>
+      <form class="deck-settings-form" id="deck-settings-form-${name}">
+        <input class="bttn bttn--deck" name="deck-settings-submit-${name}" id="deck-settings-submit-${name}" type="submit" value="" />
+      </form>
     </div>
   </div>
 </div>`;
