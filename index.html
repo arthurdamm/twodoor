@@ -11,7 +11,7 @@
 
       gtag('config', 'UA-154885834-1');
     </script>
-    <title>TwoDoor</title>
+    <title>HolbieApp</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="static/styles/build.css">
     <link rel="stylesheet" href="static/styles/holbie.css">
     <link rel="stylesheet" href="static/styles/deck.css">
+    <link rel="stylesheet" href="static/styles/settings.css">
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.2.0/firebase-ui-auth.css" />
 
   </head>
@@ -38,17 +39,36 @@
       <div class="logo" id="logo"></div>
       <div class="holbie-logo"></div>
       <div class="timer">3:00</div>
-      <div class="bttn--algo"></div>
       <div class="signin-component">
-        <div class="signin-welcome">Welcome Guest!</div>
-        <div class="bttn--signin bttn--summary">SIGN IN</div>
+        <div class="signin-welcome">Welcome Holbie!</div>
+        <!-- <div class="bttn--signin bttn--summary">SIGN IN</div> -->
+      
+        <div class="app-settings"><div class="app-settings-icon"></div>
+          <ul class="app-settings-dropdown">
+            <li class="settings-title">
+              <div class="settings-label">App Settings:</div> 
+            </li>
+            <li>
+              <input class="setting-adjust-to-input" type="checkbox">
+              <div class="setting-label">Adjust to Input</div> 
+            </li>
+            <li>
+              <input class="setting-adjust-to-input" type="checkbox">
+              <div class="setting-label">Save API Key</div> 
+            </li>
+            <li>
+              <button class="bttn--signin">Sign In</button>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </header>
 
     <div class="main-container">
 
       <div class="home-component">
-        <div class="home-component--main">Holbie App</div>
+        <div class="home-component--main">HolbieApp</div>
         <!-- <div class="home-component--sub">The One and Only</div> -->
         <div class="deck-container"></div>
       </div>

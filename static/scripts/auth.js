@@ -43,9 +43,9 @@ const authenticate = () => {
       const name = user.email.split('@')[0]
       if (!profile())
         $('.signin-welcome').text(`Hi ${name}!`);
-      $('.bttn--signin').text('SIGN OUT');
+      $('.bttn--signin').text('Sign Out');
       loadUserData();
-      if (authToken) saveUserData();
+      // if (authToken) saveUserData();
     }
     
   });

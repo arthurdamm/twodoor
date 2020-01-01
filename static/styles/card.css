@@ -1,5 +1,6 @@
 .game-component {
     position: absolute;
+    bottom: 10%;
     /* bottom: 16%; */
     width: 100%;
     display: flex;
@@ -16,16 +17,6 @@
     transition: all .4s;
     border-radius: .688rem;
 }
-
-.keyboard-deck {
-  height:65vw;
-  width: 50%;
-  min-height: 18rem;
-  min-width: 14rem;
-  max-height: 28rem;
-  max-width: 20rem;
-}
-
 
 .deck:hover {
     /* transform: translateY(-0.5rem); */
@@ -307,6 +298,11 @@ h1 {
     box-shadow: 0 .5rem 1rem rgb(0,0,0,.2);
 }
 
+.keyboard-deck {
+    min-height: 18rem;
+    min-width: 15rem;
+}
+
 @media only screen and (max-width: 600px) {
 
   .game-component {
@@ -333,7 +329,18 @@ h1 {
   }
 
   input {
-    min-width: 5rem;
+    /*min-width: 5rem;*/
+  }
+}
+
+@media only screen and (max-width: 375px) and (max-height: 667px) {
+  .deck {
+    min-height: 24rem;
+  }
+
+  .keyboard-deck {
+    min-height: 12rem;
+    min-width: 10rem;
   }
 }
 

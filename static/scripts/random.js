@@ -47,3 +47,14 @@ async function sha256(message) {
   const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // convert bytes to hex string
   return hashHex;
 }
+
+function isDescendant(parent, child) {
+  let node = child.parentNode;
+  while (node != null) {
+    if (node == parent) {
+       return true;
+    }
+    node = node.parentNode;
+  }
+  return false;
+}
