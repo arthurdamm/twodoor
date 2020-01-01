@@ -12,6 +12,7 @@
 $(() => {
   showHome();
   $('.main-container').show();
+  $('.main-container').css("display", "flex");
   populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
@@ -26,7 +27,7 @@ $(() => {
       showHolbie(true);
       firebase.auth().signOut().then(function() {
         $('.bttn--signin').text('Sign In');
-        $('.signin-welcome').text('Welcome Guest!');
+        $('.signin-welcome').text('Welcome Holbie!');
       }).catch(function(error) {
         console.log(error);
       });

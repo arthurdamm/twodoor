@@ -12,12 +12,12 @@ const LEITNER_BOXES = 5;
  * The deck failure mean percentage at which new cards are released.
  * @const {number} LEITNER_BOXES
  */
-const FAILURE_THRESHOLD = .25;
+const FAILURE_THRESHOLD = .40;
 /**
  * The number of tries per card in active deck before new cards are released.
  * @const {number} LEITNER_BOXES
  */
-const TRIES_THRESHOLD = 6.0;
+const TRIES_THRESHOLD = 4.0;
 
 const STAGGER = 2;
 
