@@ -1,6 +1,5 @@
 .holbie-select-component,
 .holbie-signin-component {
-  padding-top: 10%;
   width: 33%;
   margin: auto;
   font-size: 1.5rem;
@@ -8,10 +7,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  align-self: center;
-  /*
-  justify-content: center;
-  align-items: center;*/
+  transform: translate(0, -100%);
 }
 
 .holbie-select-component * {
@@ -54,6 +50,8 @@
 @media only screen and (max-width: 600px) {
   .holbie-select-component,
   .holbie-signin-component {
+    transform: translate(0, -50%);
+    padding-top: 10%;
     width: 100%;
   }
 

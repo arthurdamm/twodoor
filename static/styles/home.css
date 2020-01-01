@@ -6,7 +6,7 @@
 .home-component {
   display: block;
   color: black;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   backface-visibility: hidden;
   position: relative;
   /* margin-left: 5%; */
