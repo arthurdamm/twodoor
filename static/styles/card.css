@@ -406,3 +406,9 @@ h1 {
 .toggle-flip {
   margin-left: 0.5rem;
 }
+
+.back .settings button,
+.back .settings select,
+.back .settings input {
+  margin-top: .5rem;
+}
