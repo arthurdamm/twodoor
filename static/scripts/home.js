@@ -23,6 +23,7 @@ $(() => {
     }
     else
     {
+      showHolbie(true);
       firebase.auth().signOut().then(function() {
         $('.bttn--signin').text('Sign In');
         $('.signin-welcome').text('Welcome Guest!');
@@ -60,8 +61,12 @@ $(() => {
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
   keyboardDeck();
-  $('.app-settings-icon').click(function() {
-    $('.app-settings-dropdown').toggleClass('app-settings-dropdown-out');
+  $(document).click(function (e) {
+    if (e.target == document.querySelector('.app-settings-icon')) {
+      $('.app-settings-dropdown').toggleClass('app-settings-dropdown-out');
+    } else if (!isDescendant(document.querySelector('.app-settings'), e.target)) {
+      $('.app-settings-dropdown').removeClass('app-settings-dropdown-out');
+    }
   });
 });
 
@@ -91,6 +96,7 @@ const showHolbie = (expireAuthToken) => {
   $('#firebaseui-auth-container').hide();
   if (expireAuthToken) {
     authToken = undefined;
+    $('.holbie-status').html('Please Sign In!');
     saveUserData();
   }
   if (authToken) {
