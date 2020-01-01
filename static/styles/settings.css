@@ -69,11 +69,21 @@ li.settings-title {
   text-align: center;
   justify-content: center;
   /*font-weight: bold;*/
-  background-color: darkred;
+  background-color: #B7312C;
   color: white;
   height: 1.75rem;
   margin: 0;
   padding: 0;
+}
+
+.bttn--signin {
+  width: 100%;
+  background-color: #B7312C;
+  color: white;
+}
+
+.bttn--signin:hover {
+  background-color: rgb(153, 42, 38);
 }
 
 @keyframes easeOutBounce {
