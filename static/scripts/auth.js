@@ -45,7 +45,7 @@ const authenticate = () => {
         $('.signin-welcome').text(`Hi ${name}!`);
       $('.bttn--signin').text('Sign Out');
       loadUserData();
-      if (authToken) saveUserData();
+      // if (authToken) saveUserData();
     }
     
   });

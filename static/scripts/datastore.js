@@ -84,6 +84,8 @@ const loadUserData = () => {
         if (!authToken && data.authToken) {
           authToken = data.authToken;
           requestUserProfile();
+        } else if (authToken && !data.authToken) {
+          saveUserData();
         }
         assignSettings(data.settings);
         $('.custom-deck').remove();
