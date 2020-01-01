@@ -12,20 +12,22 @@
 $(() => {
   showHome();
   $('.main-container').show();
+  $('.main-container').css("display", "flex");
   populateDeckSelectors();
   LearningGame();
   const firebase = authenticate();
   $('.bttn--signin').on('click', function() {
     console.log('bttn--signin click');
-    if ($(this).text() == 'SIGN IN')
+    if ($(this).text() == 'Sign In')
     {
       showHolbie();
     }
     else
     {
+      showHolbie(true);
       firebase.auth().signOut().then(function() {
-        $('.bttn--signin').text('SIGN IN');
-        $('.signin-welcome').text('Welcome Guest!');
+        $('.bttn--signin').text('Sign In');
+        $('.signin-welcome').text('Welcome Holbie!');
       }).catch(function(error) {
         console.log(error);
       });
@@ -40,18 +42,15 @@ $(() => {
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
   $('.holbie-logo').on('click', function() {
-      holbieTheme();
+      if (getSetting("holbie-theme")) {
+        putSetting("holbie-theme", false);
+        saveUserData();
+      } else {
+        putSetting("holbie-theme", true);
+        saveUserData();
+      }
+      holbieTheme(getSetting("holbie-theme"));
   });
-
-  const holbieTheme = () => {
-    $('header').toggleClass('hb-theme--header');
-    $('body').toggleClass('hb-theme--body');
-    $('.deck-selector').toggleClass('hb-theme--deck-selector');
-    $('.holbie-logo').toggleClass('hb-theme--logo');
-    $('.logo').toggleClass('hb-theme--td-logo');
-    $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
-    $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
-  };
 
   $('.bttn--play').click(() => {
     goPlay();
@@ -69,6 +68,14 @@ $(() => {
   $(document).on('click', '.deck-selector .bttn--cancel', deckSelectorDelete);
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
+  keyboardDeck();
+  $(document).on('click', function (e) {
+    if (e.target == document.querySelector('.app-settings-icon')) {
+      $('.app-settings-dropdown').toggleClass('app-settings-dropdown-out');
+    } else if (!isDescendant(document.querySelector('.app-settings'), e.target)) {
+      $('.app-settings-dropdown').removeClass('app-settings-dropdown-out');
+    }
+  });
 });
 
 /**
@@ -97,6 +104,7 @@ const showHolbie = (expireAuthToken) => {
   $('#firebaseui-auth-container').hide();
   if (expireAuthToken) {
     authToken = undefined;
+    $('.holbie-status').html('Please Sign In!');
     saveUserData();
   }
   if (authToken) {
@@ -169,4 +177,24 @@ const showSignin = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('#firebaseui-auth-container').show();
+};
+
+const holbieTheme = (on) => {
+  if (on) {
+    $('header').addClass('hb-theme--header');
+    $('body').addClass('hb-theme--body');
+    $('.deck-selector').addClass('hb-theme--deck-selector');
+    $('.holbie-logo').addClass('hb-theme--logo');
+    $('.logo').addClass('hb-theme--td-logo');
+    $('.bttn--summary').addClass('hb-theme--bttn--summary');
+    $('.bttn--deck').addClass('hb-theme--bttn--deck');
+  } else {
+    $('header').removeClass('hb-theme--header');
+    $('body').removeClass('hb-theme--body');
+    $('.deck-selector').removeClass('hb-theme--deck-selector');
+    $('.holbie-logo').removeClass('hb-theme--logo');
+    $('.logo').removeClass('hb-theme--td-logo');
+    $('.bttn--summary').removeClass('hb-theme--bttn--summary');
+    $('.bttn--deck').removeClass('hb-theme--bttn--deck');
+  }
 };

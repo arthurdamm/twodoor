@@ -1,0 +1,129 @@
+.app-settings {
+  /*position: fixed;*/
+  position: relative;
+  /*right: 0rem;
+  top: 0rem;*/
+  /*border: 1px solid red;*/
+  width: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  /*z-index: 1;*/
+}
+
+.app-settings-icon {
+  background: url("../images/hamburger-icon-black.png") no-repeat;
+  background-size: 100% 100%;
+  width: 2.5rem;
+  height: 2rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.app-settings-dropdown {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 10rem;
+  /*border: 1px solid black;*/
+  opacity: 0;
+  background-color: lightgrey;
+  margin-top: 2rem;
+  transition: .33s;
+  visibility: hidden;
+  transform: translate(0, -100%);
+  /*padding: .1rem;*/
+  /*box-shadow: 2px 2px 2px 1px grey*/
+  box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
+}
+
+.app-settings-dropdown-out {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  animation-name: easeOutBounce;
+  animation-duration: 0.7s;
+  transform: translate(0%, 0%);
+}
+
+.app-settings-dropdown li {
+  margin: 3%;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 5%;
+  /*justify-content: center;
+  align-content: center;*/
+  align-items: center;
+}
+
+.app-settings-dropdown li input[type=checkbox] {
+  margin-right: .25rem;
+}
+
+li.settings-title {
+  text-align: center;
+  justify-content: center;
+  /*font-weight: bold;*/
+  background-color: #B7312C;
+  color: white;
+  height: 1.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bttn--signin {
+  width: 100%;
+  background-color: #B7312C;
+  color: white;
+}
+
+.bttn--signin:hover {
+  background-color: rgb(153, 42, 38);
+}
+
+@keyframes easeOutBounce {
+	0% {
+		transform: translateY(-100%);
+	}
+
+	12% {
+		transform: translateY(-89.11%);
+	}
+
+	24% {
+		transform: translateY(-56,44%);
+	}
+
+	36% {
+		transform: translateY(-1.99%);
+	}
+
+	54% {
+		transform: translateY(-18.98%);
+	}
+
+	74% {
+		transform: translateY(-1.63%);
+	}
+
+	82% {
+		transform: translateY(-4.25%);
+	}
+
+	92% {
+		transform: translateY(-0.76%);
+	}
+
+	96% {
+		transform: translateY(-1.64%);
+	}
+
+	100% {
+		transform: translateY(0%);
+  }
+}
