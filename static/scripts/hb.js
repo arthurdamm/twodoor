@@ -94,7 +94,7 @@ const requestUserProfile = () => {
 }
 
 const authenticateUserHB = async function () {
-  const email = getemail();
+  const email = getemail().trim();
   const hashedPass = await sha256(getpassword());
   $.ajax(authenticationRequest(requestJson()))
     .done(({ auth_token }) => {
