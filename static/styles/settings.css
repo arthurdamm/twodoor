@@ -14,6 +14,7 @@
 }
 
 .app-settings-icon {
+  background: url("../images/hamburger-icon-black.png") no-repeat;
   background-size: 100% 100%;
   width: 2.5rem;
   height: 2rem;
@@ -40,9 +41,7 @@
   box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
-.app-settings:active .app-settings-dropdown,
-.app-settings:focus-within .app-settings-dropdown,
-.app-settings .app-settings-dropdown:active {
+.app-settings-dropdown-out {
   display: block;
   visibility: visible;
   opacity: 1;

@@ -43,16 +43,6 @@ $(() => {
       holbieTheme();
   });
 
-  const holbieTheme = () => {
-    $('header').toggleClass('hb-theme--header');
-    $('body').toggleClass('hb-theme--body');
-    $('.deck-selector').toggleClass('hb-theme--deck-selector');
-    $('.holbie-logo').toggleClass('hb-theme--logo');
-    $('.logo').toggleClass('hb-theme--td-logo');
-    $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
-    $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
-  };
-
   $('.bttn--play').click(() => {
     goPlay();
     showGame();
@@ -70,6 +60,9 @@ $(() => {
   $(document).on('submit', '.deck-settings-form', deckSelectorSubmit);
   populateCohortSelectors();
   keyboardDeck();
+  $('.app-settings-icon').click(function() {
+    $('.app-settings-dropdown').toggleClass('app-settings-dropdown-out');
+  });
 });
 
 /**
@@ -170,4 +163,14 @@ const showSignin = () => {
   $('.holbie-signin-component').hide();
   $('.holbie-select-component').hide();
   $('#firebaseui-auth-container').show();
+};
+
+const holbieTheme = () => {
+  $('header').toggleClass('hb-theme--header');
+  $('body').toggleClass('hb-theme--body');
+  $('.deck-selector').toggleClass('hb-theme--deck-selector');
+  $('.holbie-logo').toggleClass('hb-theme--logo');
+  $('.logo').toggleClass('hb-theme--td-logo');
+  $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
+  $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
 };
