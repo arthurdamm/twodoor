@@ -42,7 +42,14 @@ $(() => {
   const holbieLogo = $('.holbie-logo');
   holbieLogo.state = "classic";
   $('.holbie-logo').on('click', function() {
-      holbieTheme();
+      if (getSetting("holbie-theme")) {
+        putSetting("holbie-theme", false);
+        saveUserData();
+      } else {
+        putSetting("holbie-theme", true);
+        saveUserData();
+      }
+      holbieTheme(getSetting("holbie-theme"));
   });
 
   $('.bttn--play').click(() => {
@@ -172,12 +179,22 @@ const showSignin = () => {
   $('#firebaseui-auth-container').show();
 };
 
-const holbieTheme = () => {
-  $('header').toggleClass('hb-theme--header');
-  $('body').toggleClass('hb-theme--body');
-  $('.deck-selector').toggleClass('hb-theme--deck-selector');
-  $('.holbie-logo').toggleClass('hb-theme--logo');
-  $('.logo').toggleClass('hb-theme--td-logo');
-  $('.bttn--summary').toggleClass('hb-theme--bttn--summary');
-  $('.bttn--deck').toggleClass('hb-theme--bttn--deck');
+const holbieTheme = (on) => {
+  if (on) {
+    $('header').addClass('hb-theme--header');
+    $('body').addClass('hb-theme--body');
+    $('.deck-selector').addClass('hb-theme--deck-selector');
+    $('.holbie-logo').addClass('hb-theme--logo');
+    $('.logo').addClass('hb-theme--td-logo');
+    $('.bttn--summary').addClass('hb-theme--bttn--summary');
+    $('.bttn--deck').addClass('hb-theme--bttn--deck');
+  } else {
+    $('header').removeClass('hb-theme--header');
+    $('body').removeClass('hb-theme--body');
+    $('.deck-selector').removeClass('hb-theme--deck-selector');
+    $('.holbie-logo').removeClass('hb-theme--logo');
+    $('.logo').removeClass('hb-theme--td-logo');
+    $('.bttn--summary').removeClass('hb-theme--bttn--summary');
+    $('.bttn--deck').removeClass('hb-theme--bttn--deck');
+  }
 };

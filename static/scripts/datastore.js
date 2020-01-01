@@ -88,6 +88,7 @@ const loadUserData = () => {
           saveUserData();
         }
         assignSettings(data.settings);
+        holbieTheme(getSetting('holbie-theme'));
         $('.custom-deck').remove();
         loadDeckSettings();
         for (let [i, deck] of Object.entries(data.decks)) {
