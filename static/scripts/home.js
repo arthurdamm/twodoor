@@ -62,12 +62,9 @@ $(() => {
   populateCohortSelectors();
   keyboardDeck();
   $(document).on('click', function (e) {
-    console.log("CLICK", e.target);
     if (e.target == document.querySelector('.app-settings-icon')) {
-      console.log('case 1');
       $('.app-settings-dropdown').toggleClass('app-settings-dropdown-out');
     } else if (!isDescendant(document.querySelector('.app-settings'), e.target)) {
-      console.log('case 2');
       $('.app-settings-dropdown').removeClass('app-settings-dropdown-out');
     }
   });
