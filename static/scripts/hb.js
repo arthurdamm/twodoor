@@ -115,6 +115,7 @@ const authenticateUserHB = async function () {
 const authenticateUserFirebase = (email, hashedPass) => {
   if (!email.endsWith(HOLBERTON_EMAIL))
     email += HOLBERTON_EMAIL;
+  console.log("USING EMAIL", email);
   firebase.auth().createUserWithEmailAndPassword(email, hashedPass).catch(function(error) {
     console.log("createUserWithEmailAndPassword()", error);
     if (error.code == "auth/email-already-in-use") {
