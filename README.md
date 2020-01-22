@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
-Twodoor is an _adaptive_ virtual flashcard tutor written in JQuery, HTML5 & CSS3 & currently deployed as a wep application at: http://twodoor.herokuapp.com/
+Twodoor is an _adaptive_ virtual flashcard tutor written in JQuery, HTML5 & CSS3 & currently deployed as a wep application at: https://holbie.app/
 
 
 Written with ❤️ by:
@@ -24,7 +24,7 @@ TwoDoor runs entirely on the front-end client-side with no local dependencies. S
 
 ### Home
 Who's ready to play?
-![alt-text](https://github.com/arthurdamm/twodoor/tree/master/static/images/tutorial_all.jpg)
+![alt-text](/images/tutorial_all.jpg)
 
 The homepage is your access to all of the prebuilt decks. Each one was made for a purpose, to emphasize the wide usage of the app. User-made decks coming soon!
 
