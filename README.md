@@ -24,7 +24,7 @@ TwoDoor runs entirely on the front-end client-side with no local dependencies. S
 
 ### Home
 Who's ready to play?
-![alt-text](/images/tutorial_all.jpg)
+![alt-text](https://github.com/arthurdamm/twodoor/blob/master/staticimages/tutorial_all.jpg)
 
 The homepage is your access to all of the prebuilt decks. Each one was made for a purpose, to emphasize the wide usage of the app. User-made decks coming soon!
 
