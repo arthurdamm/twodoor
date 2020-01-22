@@ -14,6 +14,8 @@ Written with ❤️ by:
 * _Adaptive Algorithm_ - we use a custom implementation of the Leitner System, an evidence-based method of spaced-repetition. It serves as a robust way to show you the cards you don’t know more frequently than the ones you do, and staggers how many cards you are working with in the active tag at any given time to keep the information manageable.
 * _Polished UX_ - We know that if the learning game is not fun and engaging, no one will want to play it. So we invested a large part of our design and development time into creating an agile, intuitive interface with eye-catching animations that keep the user actively engaged with positive and negative reinforcement.
 * _Responsive_ - TwoDoor is designed to display on any screen and is desktop, tablet, and mobile-friendly so you can use it to train or refresh your memory with any device, anytime, anywhere.
+* _Profiles_ - Thanks to Firebase, you can build your own decks that will be saved to your personal account.
+* _Holberton API_ - If you're a Holberton student with an API key, you can use the new _holbie app_! Memorize your peer's names and faces from any cohort! 
 
 ## Installation
 TwoDoor runs entirely on the front-end client-side with no local dependencies. Simply clone this repository and open the _main.html_ with your browser or point your web server's document root at it.
@@ -72,9 +74,11 @@ The goal is to make an adaptive flashcard tutoring app that we, as well as any u
 This app was Arthur's vision, as he has been a tutor for 7 years before joining the Holberton curriculum. Scout joined in on the team for project-partnering experience as well as enthusiasm for the potential the product holds. We spent most of the time pair programming the app and had an amazing experience working together. We implemented features as we saw fit, which led to muddled roles throughout development, but led to an overall sense that the app is but an extension of our capabilities.
 
 
-## The Future
+## TwoDoor ToDo's
 
-We are both very excited to continue adding features, such as a backend with authentication for users and ability for anyone to create their own decks. When a deck is created, it may be added to a list of recently added and most popular decks, which will be displayed on the home page. It's also important to be able to send your custom made decks to other users, so teachers can make decks applicable to the lesson they are teaching and send them to their students.
+* _Featured Decks_: sharing privileges for decks, so that you can send your favorite decks to your freinds, or even a featured section with the highest rated decks on top.
+* _New Algorithms_: The _Leitner Box_ learning algorithm has proven to work well, but new selection algorithms are always good! 
+* _Framework Implementations_: Using basic JavaScript, JQuery, HTML and CSS has provided an excellent backbone to add features quickly and easily, but it's now time to implement _React_ or other frameworks to provide a more dynamic and beautiful webpage.
 
 
 ## Tech
