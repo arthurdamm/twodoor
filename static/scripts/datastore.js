@@ -128,9 +128,9 @@ const DECKS = {
   HOLBIE: {
     name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getBuiltDeck
   },
-  // FACE: {
-  //   name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
-  // },
+  FACE: {
+    name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
+  },
   BUILDER: {
     name: 'BUILDER', text: 'Build a Deck!', factory: getBuiltDeck
   },
@@ -143,9 +143,9 @@ const DECKS = {
   TRIVIA: {
     name: 'TRIVIA', text: 'CSS Trivia', factory: getTriviaDeck
   },
-  // PRESENTATION: {
-  //   name: 'PRESENTATION', text: 'PRESENTATION ❤️ DAY!', factory: getPresentationDeck
-  // },
+  PRESENTATION: {
+    name: 'PRESENTATION', text: 'DEMO ❤️ DAY!', factory: getPresentationDeck
+  },
   CUSTOM: {
     name: 'CUSTOM', text: 'Custom', factory: getCustomDeck
   },
