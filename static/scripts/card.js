@@ -244,7 +244,7 @@ const LearningGame = () => {
 const getNextCard = (currentDoor, deck) => {
   if (!deck) return {};
   // Unless no-algorithm button is clicked use the current algorithm.
-  if (getSetting("algoType") == "leitner")
+  if ((getSetting("algoType") == undefined) || (getSetting("algoType") == "leitner"))
     return selectNextCard(deck, deck[parseInt(currentDoor.attr('card-id'))]);
   // Else just select the cards in sequence.
   let cardId = (parseInt(currentDoor.attr('card-id')) + 1) % deck.length;
