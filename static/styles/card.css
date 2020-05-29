@@ -1,18 +1,23 @@
 .game-component {
-    position: absolute;
-    bottom: 10%;
+    /* position: absolute; */
+    /* bottom: 10%; */
     /* bottom: 16%; */
+    height: 90vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-position: top;
-    margin-top: 1%;
+    /* margin-top: 1%; */
+    margin: auto;
 }
 
 .deck {
     position: relative;
-    min-height: 28rem;
+    height: 50vh;
+    width: 35vh;
+    min-height: 27.5rem;
     min-width: 20rem;
     transition: all .4s;
     border-radius: .688rem;
@@ -29,6 +34,8 @@
     height: 100%;
     perspective: 1000px;
     cursor: pointer;
+    border-radius: .688rem;
+    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
 }
 
 .flippable {
@@ -45,11 +52,11 @@
 }
 
 .slide {
-  -webkit-transform: translateX(20rem);
-  -moz-transform: translateX(20rem);
-  -ms-transform: translateX(20rem);
-  -o-transform: translateX(20rem);
-  transform: translateX(20rem);
+  -webkit-transform: translateX(50vh);
+  -moz-transform: translateX(50vh);
+  -ms-transform: translateX(50vh);
+  -o-transform: translateX(50vh);
+  transform: translateX(50vh);
 }
 
 .front, .back, .success, .fail {
@@ -67,7 +74,6 @@
     -o-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: .688rem;
-    box-shadow: 0 1rem 1rem rgb(0,0,0,.2);
     background-color: rgb(255, 255, 255);
     color: black;
     text-align: center;
@@ -86,7 +92,6 @@
     -ms-transform: rotateY(0deg); /* Firefox 31 fix */
     -o-transform: rotateY(0deg); /* Firefox 31 fix */
     transform: rotateY(0deg); /* Firefox 31 fix */
-    
 }
 
 .back {
@@ -177,6 +182,8 @@ p {
     min-width: 18rem;
     min-height: 1.25rem;
     font-size: 1.25rem;
+    text-align: center;
+
 }
 
 .next-button {

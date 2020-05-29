@@ -1,3 +1,8 @@
+
+@font-face {
+  font-family: TypoGraphica; src: url('Typographica-Blp5.ttf');
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -9,16 +14,14 @@ html {
   overflow-x: hidden;
 }
 body {
-  top: 10%;
   background-image: linear-gradient(to top, #ace0f9 0%, #fff1eb 80%);
-  height: 90%;
   width: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  overflow-x: hidden;
-  position: relative;
+  /* overflow-x: hidden; */
+  /* position: relative; */
 }
 header {
   position: fixed;
@@ -33,6 +36,7 @@ header {
   border-bottom: .3rem solid rgb(107, 67, 52);
   background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
 }
+
 
 .logo {
   position: absolute;
@@ -104,6 +108,7 @@ header {
 
 
 .main-container {
+  /* top: 5rem; */
   display: none;
   position: relative;
   height: 100%;

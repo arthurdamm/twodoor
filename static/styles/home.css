@@ -6,12 +6,13 @@
 .home-component {
   display: block;
   color: black;
-  /*text-transform: uppercase;*/
   backface-visibility: hidden;
   position: relative;
-  /* margin-left: 5%; */
   margin-top: 1%;
   text-align: center;
+  margin-right: 10%;
+  margin-left: 10%;
+
 }
 
 h2 {
@@ -23,12 +24,13 @@ h2 {
 }
 .home-component--main {
   display: block;
-  font-size: 3rem;
-  font-weight: 800;
-  letter-spacing: .2rem;
+  font-size: 7.5rem;
+  /* font-weight: 800; */
+  letter-spacing: .5rem;
   animation-name: moveInRight;
   animation-duration: 1s;
-  font-family: 'Montserrat', sans-serif;
+  font-family: TypoGraphica, 'Montserrat', sans-serif;
+  margin-top: 6rem;
 }
 
 .deck-container {
@@ -58,6 +60,9 @@ h2 {
 
 }
 
+.build-front {
+}
+
 /* .deck-selector-b {
   background-color: rgba(255, 255, 255, 0.212);
 } */
@@ -65,7 +70,7 @@ h2 {
 
 
 .deck-selector:hover {
-  box-shadow: 0 1.5rem 4rem rgb(0,0,0,.3);
+  box-shadow: 0 1.5rem 2rem rgb(0,0,0,.3);
 }
 
 /* .deckText {
