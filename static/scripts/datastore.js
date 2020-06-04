@@ -131,9 +131,6 @@ const DECKS = {
   FACE: {
     name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
   },
-  BUILDER: {
-    name: 'BUILDER', text: 'Build a Deck!', factory: getBuiltDeck
-  },
   // DINO: {
   //   name: 'DINO', text: 'Dino Deck', factory: getDinoDeck
   // },
@@ -152,4 +149,7 @@ const DECKS = {
   // TUTORIAL: { 
   //   name: 'TUTORIAL', text: 'How to Play?', factory: getTutorialDeck
   // },
+  BUILDER: {
+    name: 'BUILDER', text: 'Create A Deck', factory: getBuiltDeck
+  }
 };
