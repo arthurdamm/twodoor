@@ -7,8 +7,10 @@ Twodoor is an _adaptive_ virtual flashcard tutor written in JQuery, HTML5 & CSS3
 
 
 Written with ❤️ by:
-* [Scout Curry](https://www.linkedin.com/in/scout-curry-96356217a/) - Full-Stack Developer
-* [Arthur Damm](https://www.linkedin.com/in/arthur-damm-96527042/) - Full-Stack Developer
+- [Scout Curry](https://www.linkedin.com/in/scout-curry-96356217a/) - Full-Stack Developer
+- [Arthur Damm](https://github.com/arthurdamm/twodoor) ~ [LinkedIn](https://www.linkedin.com/in/arthur-damm-96527042/) ~ [@arthurdamm](https://twitter.com/arthurdamm):
+*Sharpening my skills at Holberton School of Software Engineering. I have a lifelong passion for programming with a background in mathematics and a daily meditation practice. Spent the last several
+years enjoying working as a private tutor and am now excited to practice software wizardry professionally.*
 
 ## Features
 * _Adaptive Algorithm_ - we use a custom implementation of the Leitner System, an evidence-based method of spaced-repetition. It serves as a robust way to show you the cards you don’t know more frequently than the ones you do, and staggers how many cards you are working with in the active tag at any given time to keep the information manageable.
