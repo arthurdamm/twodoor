@@ -125,9 +125,6 @@ const getCardTemplate = (json, i) => {
  * @enum {string}
  */
 const DECKS = {
-  HOLBIE: {
-    name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getBuiltDeck
-  },
   FACE: {
     name: 'FACE', text: 'Name Recognition', factory: getFaceDeck
   },
@@ -151,5 +148,8 @@ const DECKS = {
   // },
   BUILDER: {
     name: 'BUILDER', text: 'Create A Deck', factory: getBuiltDeck
-  }
+  },
+  HOLBIE: {
+    name: 'HOLBIE', text: 'Team Holbie 🙃', factory: getBuiltDeck
+  },
 };
