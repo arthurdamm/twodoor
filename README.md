@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 ___
 ## Introduction
-Twodoor is an _adaptive_ virtual flashcard tutor written in JQuery, HTML5 & CSS3 & currently deployed as a wep application at: https://holbie.app/
+Twodoor is an _adaptive_ virtual flashcard tutor written in JQuery, HTML5 & CSS3 & currently deployed as a web application at: https://arthurdamm.com/twodoor/
 
 
 Written with ❤️ by:
